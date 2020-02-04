@@ -2,7 +2,7 @@ import React from "react";
 
 const Main = (props) => {
   // eslint-disable-next-line react/prop-types
-  const {name, genre, releaseYear, posterUrl} = props;
+  const {name, genre, releaseYear, posterUrl, posterDescription} = props;
 
   return (
     <>
@@ -42,7 +42,7 @@ const Main = (props) => {
             <div className="movie-card__poster">
               <img
                 src={posterUrl}
-                alt="The Grand Budapest Hotel poster"
+                alt={posterDescription}
                 width="218"
                 height="327"
               />
