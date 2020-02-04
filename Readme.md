@@ -1,7 +1,7 @@
 # Личный проект «Что посмотреть» [![Build status][travis-image]][travis-url]
 
-* Студент: [Снайпер](https://up.htmlacademy.ru/react/3/user/432537).
-* Наставник: `Неизвестно`.
+- Студент: [Снайпер](https://up.htmlacademy.ru/react/3/user/432537).
+- Наставник: [Вадим Шевяков](https://htmlacademy.ru/profile/id574589).
 
 ---
 
