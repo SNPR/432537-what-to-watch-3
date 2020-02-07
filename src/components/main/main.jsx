@@ -154,12 +154,12 @@ const Main = ({name, genre, releaseYear, movies}) => {
               movies.map((movie, index) => (
                 <article
                   className="small-movie-card catalog__movies-card"
-                  key={movie.name + index}
+                  key={movie + index}
                 >
                   <div className="small-movie-card__image">
                     <img
-                      src={movie.posterUrl}
-                      alt={movie.posterDescription}
+                      src="img/johnny-english.jpg"
+                      alt={movie}
                       width="280"
                       height="175"
                     />
@@ -169,7 +169,7 @@ const Main = ({name, genre, releaseYear, movies}) => {
                       className="small-movie-card__link"
                       href="movie-page.html"
                     >
-                      {movie.name}
+                      {movie}
                     </a>
                   </h3>
                 </article>
@@ -191,13 +191,7 @@ Main.propTypes = {
   name: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   releaseYear: PropTypes.number.isRequired,
-  movies: PropTypes.arrayOf(
-      PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        posterUrl: PropTypes.string.isRequired,
-        posterDescription: PropTypes.string.isRequired
-      })
-  ).isRequired
+  movies: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired
 };
 
 export default Main;
