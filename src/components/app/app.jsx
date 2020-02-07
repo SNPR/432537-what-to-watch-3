@@ -1,11 +1,11 @@
 import React from "react";
 import Main from "../main/main.jsx";
 
-const App = (props) => {
-  // eslint-disable-next-line react/prop-types
-  const {name, genre, releaseYear} = props;
-
-  return <Main name={name} genre={genre} releaseYear={releaseYear} />;
+// eslint-disable-next-line react/prop-types
+const App = ({name, genre, releaseYear, movies}) => {
+  return (
+    <Main name={name} genre={genre} releaseYear={releaseYear} movies={movies} />
+  );
 };
 
 export default App;
