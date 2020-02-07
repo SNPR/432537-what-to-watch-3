@@ -310,6 +310,7 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
+              onClick={[Function]}
             >
               The Dark Knight
             </a>
@@ -334,6 +335,7 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
+              onClick={[Function]}
             >
               The Shawshank Redemption
             </a>
@@ -358,6 +360,7 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
+              onClick={[Function]}
             >
               Pulp Fiction
             </a>

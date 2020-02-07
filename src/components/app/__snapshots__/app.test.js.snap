@@ -310,6 +310,7 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
+              onClick={[Function]}
             >
               Avengers: Endgame
             </a>
@@ -334,6 +335,7 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
+              onClick={[Function]}
             >
               The Irishman
             </a>
@@ -358,6 +360,7 @@ Array [
             <a
               className="small-movie-card__link"
               href="movie-page.html"
+              onClick={[Function]}
             >
               Mad Max: Fury Road
             </a>

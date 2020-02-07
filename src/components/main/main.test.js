@@ -34,6 +34,7 @@ it(`Should render App component`, () => {
           genre={Movie.GENRE}
           releaseYear={Movie.RELEASE_YEAR}
           movies={MOVIES}
+          onMovieTitleClick={() => {}}
         />
     )
     .toJSON();
