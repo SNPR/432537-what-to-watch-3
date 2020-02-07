@@ -8,23 +8,7 @@ const Movie = {
   RELEASE_YEAR: 2014
 };
 
-const MOVIES = [
-  {
-    name: `The Shawshank Redemption`,
-    posterUrl: `img/johnny-english.jpg`,
-    posterDescription: `The Shawshank Redemption`
-  },
-  {
-    name: `Pulp Fiction`,
-    posterUrl: `img/johnny-english.jpg`,
-    posterDescription: `Pulp Fiction`
-  },
-  {
-    name: `Star Wars`,
-    posterUrl: `img/johnny-english.jpg`,
-    posterDescription: `Star Wars`
-  }
-];
+const MOVIES = [`The Shawshank Redemption`, `Pulp Fiction`, `Star Wars`];
 
 ReactDOM.render(
     <App

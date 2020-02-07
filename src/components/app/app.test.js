@@ -8,23 +8,7 @@ const Movie = {
   RELEASE_YEAR: 2017
 };
 
-const MOVIES = [
-  {
-    name: `Avengers: Endgame`,
-    posterUrl: `img/johnny-english.jpg`,
-    posterDescription: `Avengers: Endgame`
-  },
-  {
-    name: `The Irishman`,
-    posterUrl: `img/johnny-english.jpg`,
-    posterDescription: `The Irishman`
-  },
-  {
-    name: `Mad Max: Fury Road`,
-    posterUrl: `img/johnny-english.jpg`,
-    posterDescription: `Mad Max: Fury Road`
-  }
-];
+const MOVIES = [`Avengers: Endgame`, `The Irishman`, `Mad Max: Fury Road`];
 
 it(`Should render App component`, () => {
   const tree = renderer

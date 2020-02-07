@@ -8,23 +8,7 @@ const Movie = {
   RELEASE_YEAR: 1972
 };
 
-const MOVIES = [
-  {
-    name: `The Dark Knight`,
-    posterUrl: `img/johnny-english.jpg`,
-    posterDescription: `The Dark Knight`
-  },
-  {
-    name: `The Shawshank Redemption`,
-    posterUrl: `img/johnny-english.jpg`,
-    posterDescription: `The Shawshank Redemption`
-  },
-  {
-    name: `Pulp Fiction`,
-    posterUrl: `img/johnny-english.jpg`,
-    posterDescription: `Pulp Fiction`
-  }
-];
+const MOVIES = [`The Dark Knight`, `The Shawshank Redemption`, `Pulp Fiction`];
 
 it(`Should render App component`, () => {
   const tree = renderer
