@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Main = ({name, genre, releaseYear, movies}) => {
+const Main = ({name, genre, releaseYear, movies, onMovieTitleClick}) => {
   return (
     <>
       <section className="movie-card">
@@ -168,6 +168,7 @@ const Main = ({name, genre, releaseYear, movies}) => {
                     <a
                       className="small-movie-card__link"
                       href="movie-page.html"
+                      onClick={onMovieTitleClick}
                     >
                       {movie.name}
                     </a>
@@ -197,7 +198,8 @@ Main.propTypes = {
         posterUrl: PropTypes.string.isRequired,
         posterDescription: PropTypes.string.isRequired
       })
-  ).isRequired
+  ).isRequired,
+  onMovieTitleClick: PropTypes.func.isRequired
 };
 
 export default Main;
