@@ -32,7 +32,7 @@ it(`Should welcome button be pressed`, () => {
       />
   );
 
-  const movieTitle = main.find(`a.small-movie-card__link`).first();
+  const movieTitle = main.find(`h3.small-movie-card__title`).first();
 
   movieTitle.props().onClick();
 
