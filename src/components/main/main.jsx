@@ -1,6 +1,6 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-// eslint-disable-next-line react/prop-types
 const Main = ({name, genre, releaseYear, movies}) => {
   return (
     <>
@@ -150,27 +150,30 @@ const Main = ({name, genre, releaseYear, movies}) => {
           </ul>
 
           <div className="catalog__movies-list">
-            {/* eslint-disable-next-line react/prop-types*/}
-            {movies.map((movie, index) => (
-              <article
-                className="small-movie-card catalog__movies-card"
-                key={movie.name + index}
-              >
-                <div className="small-movie-card__image">
-                  <img
-                    src={movie.posterUrl}
-                    alt={movie.posterDescription}
-                    width="280"
-                    height="175"
-                  />
-                </div>
-                <h3 className="small-movie-card__title">
-                  <a className="small-movie-card__link" href="movie-page.html">
-                    {movie.name}
-                  </a>
-                </h3>
-              </article>
-            ))}
+            {movies &&
+              movies.map((movie, index) => (
+                <article
+                  className="small-movie-card catalog__movies-card"
+                  key={movie.name + index}
+                >
+                  <div className="small-movie-card__image">
+                    <img
+                      src={movie.posterUrl}
+                      alt={movie.posterDescription}
+                      width="280"
+                      height="175"
+                    />
+                  </div>
+                  <h3 className="small-movie-card__title">
+                    <a
+                      className="small-movie-card__link"
+                      href="movie-page.html"
+                    >
+                      {movie.name}
+                    </a>
+                  </h3>
+                </article>
+              ))}
           </div>
 
           <div className="catalog__more">
@@ -182,6 +185,19 @@ const Main = ({name, genre, releaseYear, movies}) => {
       </div>
     </>
   );
+};
+
+Main.propTypes = {
+  name: PropTypes.string.isRequired,
+  genre: PropTypes.string.isRequired,
+  releaseYear: PropTypes.number.isRequired,
+  movies: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        posterUrl: PropTypes.string.isRequired,
+        posterDescription: PropTypes.string.isRequired
+      })
+  ).isRequired
 };
 
 export default Main;
