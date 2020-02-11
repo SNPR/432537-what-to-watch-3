@@ -19,12 +19,12 @@ it(`Should pass data to handler on hover`, () => {
       <MovieCard
         movie={movie}
         onMovieTitleClick={() => {}}
-        onMovieCardHover={() => onMovieCardHover(movie.name)}
+        onMovieCardHover={() => onMovieCardHover(movie)}
       />
   );
 
   movieCard.simulate(`mouseover`);
 
   expect(onMovieCardHover.mock.calls.length).toBe(1);
-  expect(onMovieCardHover).toHaveBeenCalledWith(movie.name);
+  expect(onMovieCardHover.mock.calls[0][0]).toMatchObject(movie);
 });
