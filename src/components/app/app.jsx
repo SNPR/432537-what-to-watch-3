@@ -2,6 +2,7 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import Main from "../main/main.jsx";
+import MovieDetails from "../movie-details/movie-details.jsx";
 
 const movieTitleClickHandler = () => {};
 
@@ -13,13 +14,22 @@ class App extends PureComponent {
   render() {
     const {name, genre, releaseYear, movies} = this.props;
     return (
-      <Main
-        name={name}
-        genre={genre}
-        releaseYear={releaseYear}
-        movies={movies}
-        onMovieTitleClick={movieTitleClickHandler}
-      />
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/">
+            <Main
+              name={name}
+              genre={genre}
+              releaseYear={releaseYear}
+              movies={movies}
+              onMovieTitleClick={movieTitleClickHandler}
+            />
+          </Route>
+          <Route exact path="/dev-movie-details">
+            <MovieDetails />
+          </Route>
+        </Switch>
+      </BrowserRouter>
     );
   }
 }
