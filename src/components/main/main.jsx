@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import MoviesList from "../movies-list/movies-list.jsx";
 
 const Main = ({name, genre, releaseYear, movies, onMovieTitleClick}) => {
   return (
@@ -149,35 +150,7 @@ const Main = ({name, genre, releaseYear, movies, onMovieTitleClick}) => {
             </li>
           </ul>
 
-          <div className="catalog__movies-list">
-            {movies &&
-              movies.map((movie, index) => (
-                <article
-                  className="small-movie-card catalog__movies-card"
-                  key={movie + index}
-                >
-                  <div className="small-movie-card__image">
-                    <img
-                      src="img/johnny-english.jpg"
-                      alt={movie}
-                      width="280"
-                      height="175"
-                    />
-                  </div>
-                  <h3
-                    className="small-movie-card__title"
-                    onClick={onMovieTitleClick}
-                  >
-                    <a
-                      className="small-movie-card__link"
-                      href="movie-page.html"
-                    >
-                      {movie}
-                    </a>
-                  </h3>
-                </article>
-              ))}
-          </div>
+          <MoviesList movies={movies} onMovieTitleClick={onMovieTitleClick} />
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">
@@ -194,7 +167,12 @@ Main.propTypes = {
   name: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   releaseYear: PropTypes.number.isRequired,
-  movies: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+  movies: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        posterUrl: PropTypes.string.isRequired
+      }).isRequired
+  ).isRequired,
   onMovieTitleClick: PropTypes.func.isRequired
 };
 
