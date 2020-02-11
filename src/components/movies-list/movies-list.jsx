@@ -1,5 +1,5 @@
 import React, {PureComponent} from "react";
-import MovieCard from "../movie-card/movie-card";
+import MovieCard from "../movie-card/movie-card.jsx";
 import PropTypes from "prop-types";
 
 class MoviesList extends PureComponent {
@@ -13,8 +13,8 @@ class MoviesList extends PureComponent {
     this.movieCardHoverHandler = this.movieCardHoverHandler.bind(this);
   }
 
-  movieCardHoverHandler(evt) {
-    console.log(evt.target);
+  movieCardHoverHandler(selectedMovieId) {
+    this.setState({selectedMovieId});
   }
 
   render() {
@@ -27,7 +27,7 @@ class MoviesList extends PureComponent {
             key={movie.name + index}
             movie={movie}
             onMovieTitleClick={onMovieTitleClick}
-            onMovieCardHover={this.movieCardHoverHandler}
+            onMovieCardHover={() => this.movieCardHoverHandler(index)}
           />
         ))}
       </div>
