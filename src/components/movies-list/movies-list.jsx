@@ -9,10 +9,16 @@ class MoviesList extends PureComponent {
     this.state = {
       selectedMovieId: null
     };
+
+    this.movieCardHoverHandler = this.movieCardHoverHandler.bind(this);
+  }
+
+  movieCardHoverHandler(evt) {
+    console.log(evt.target);
   }
 
   render() {
-    const {movies} = this.props;
+    const {movies, onMovieTitleClick} = this.props;
 
     return (
       <div className="catalog__movies-list">
@@ -20,7 +26,8 @@ class MoviesList extends PureComponent {
           <MovieCard
             key={movie.name + index}
             movie={movie}
-            onMovieTitleClick={() => {}}
+            onMovieTitleClick={onMovieTitleClick}
+            onMovieCardHover={this.movieCardHoverHandler}
           />
         ))}
       </div>
@@ -34,7 +41,8 @@ MoviesList.propTypes = {
         name: PropTypes.string.isRequired,
         posterUrl: PropTypes.string.isRequired
       }).isRequired
-  ).isRequired
+  ).isRequired,
+  onMovieTitleClick: PropTypes.func.isRequired
 };
 
 export default MoviesList;
