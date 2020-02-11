@@ -22,6 +22,18 @@ const films = [
   {
     name: `Casablanca`,
     posterUrl: `https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRlIHtgWeQQsiZaY5iw_A5FTDeKr7bNFWo1W_zObm0h_ti2Yk0V`
+  },
+  {
+    name: `Seven Samurai`,
+    posterUrl: `https://lh3.googleusercontent.com/proxy/uCMd0BWvzRk-9TXG2lmlrKRfYf-j5bIB2bW4nJZ2ihLzyZErqplfokWFSrn9pdH2LoMMoCyjeQHqHi3jzBk63_jCgn9MqDVl-LxP`
+  },
+  {
+    name: `Back to the Future`,
+    posterUrl: `https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT9d_lBBx0xxB7_d4RP82MlRcK82lzT2W1ZavxhV39SSTZOofDX`
+  },
+  {
+    name: `Blade Runner`,
+    posterUrl: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzBrtjEYPZ9LdbAgkIib6W6u5S7fOm8XRlUkd9kCDbftfly3u_`
   }
 ];
 

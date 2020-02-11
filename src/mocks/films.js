@@ -18,5 +18,17 @@ export default [
   {
     name: `The Dark Knight`,
     posterUrl: `https://contentserver.com.au/assets/598411_p173378_p_v8_au.jpg`
+  },
+  {
+    name: `The Matrix`,
+    posterUrl: `https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcS4jfQQt_0vCA4XSwGiWkffC32Tv2oajdWhaYHHVYylYGJ3v17Q`
+  },
+  {
+    name: `Saving Private Ryan`,
+    posterUrl: `https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR0lDhR_dXAKTm9wysp3nWu6kP0V5skJBVbCNC_Q8urAWcr4iF_`
+  },
+  {
+    name: `Alien`,
+    posterUrl: `https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSKWeplicF676cMRKV8kqkCErnbNxp6Sm2XQyrrjGNpoLp_lrjI`
   }
 ];
