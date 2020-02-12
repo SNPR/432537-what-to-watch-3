@@ -19,7 +19,7 @@ class App extends PureComponent {
   }
 
   _renderApp() {
-    const {genre, releaseYear, movies} = this.props;
+    const {name, genre, releaseYear, movies} = this.props;
     const {selectedMovieId} = this.state;
 
     if (selectedMovieId) {
