@@ -1,15 +1,13 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-const MovieDetails = () => {
+const MovieDetails = ({movie}) => {
   return (
     <>
       <section className="movie-card movie-card--full">
         <div className="movie-card__hero">
           <div className="movie-card__bg">
-            <img
-              src="img/bg-the-grand-budapest-hotel.jpg"
-              alt="The Grand Budapest Hotel"
-            />
+            <img src={movie.bigPosterUrl} alt={movie.name} />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -37,10 +35,10 @@ const MovieDetails = () => {
 
           <div className="movie-card__wrap">
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">The Grand Budapest Hotel</h2>
+              <h2 className="movie-card__title">{movie.name}</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">Drama</span>
-                <span className="movie-card__year">2014</span>
+                <span className="movie-card__genre">{movie.genre}</span>
+                <span className="movie-card__year">{movie.releaseYear}</span>
               </p>
 
               <div className="movie-card__buttons">
@@ -74,8 +72,8 @@ const MovieDetails = () => {
           <div className="movie-card__info">
             <div className="movie-card__poster movie-card__poster--big">
               <img
-                src="img/the-grand-budapest-hotel-poster.jpg"
-                alt="The Grand Budapest Hotel poster"
+                src={movie.posterUrl}
+                alt={movie.name}
                 width="218"
                 height="327"
               />
@@ -109,7 +107,7 @@ const MovieDetails = () => {
                       Director
                     </strong>
                     <span className="movie-card__details-value">
-                      Wes Andreson
+                      {movie.director}
                     </span>
                   </p>
                   <p className="movie-card__details-item">
@@ -117,18 +115,11 @@ const MovieDetails = () => {
                       Starring
                     </strong>
                     <span className="movie-card__details-value">
-                      Bill Murray, <br />
-                      Edward Norton, <br />
-                      Jude Law, <br />
-                      Willem Dafoe, <br />
-                      Saoirse Ronan, <br />
-                      Tony Revoloru, <br />
-                      Tilda Swinton, <br />
-                      Tom Wilkinson, <br />
-                      Owen Wilkinson, <br />
-                      Adrien Brody, <br />
-                      Ralph Fiennes, <br />
-                      Jeff Goldblum
+                      {movie.starring.map((actor) => (
+                        <>
+                          {actor} <br />
+                        </>
+                      ))}
                     </span>
                   </p>
                 </div>
@@ -138,17 +129,23 @@ const MovieDetails = () => {
                     <strong className="movie-card__details-name">
                       Run Time
                     </strong>
-                    <span className="movie-card__details-value">1h 39m</span>
+                    <span className="movie-card__details-value">
+                      {movie.runTime}
+                    </span>
                   </p>
                   <p className="movie-card__details-item">
                     <strong className="movie-card__details-name">Genre</strong>
-                    <span className="movie-card__details-value">Comedy</span>
+                    <span className="movie-card__details-value">
+                      {movie.genre}
+                    </span>
                   </p>
                   <p className="movie-card__details-item">
                     <strong className="movie-card__details-name">
                       Released
                     </strong>
-                    <span className="movie-card__details-value">2014</span>
+                    <span className="movie-card__details-value">
+                      {movie.releaseYear}
+                    </span>
                   </p>
                 </div>
               </div>
@@ -244,6 +241,22 @@ const MovieDetails = () => {
       </div>
     </>
   );
+};
+
+MovieDetails.propTypes = {
+  movie: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    posterUrl: PropTypes.string.isRequired,
+    bigPosterUrl: PropTypes.string.isRequired,
+    director: PropTypes.string.isRequired,
+    starring: PropTypes.arrayOf(PropTypes.string).isRequired,
+    runTime: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    releaseYear: PropTypes.number.isRequired,
+    rating: PropTypes.number.isRequired,
+    votes: PropTypes.number.isRequired,
+    description: PropTypes.string.isRequired
+  }).isRequired
 };
 
 export default MovieDetails;
