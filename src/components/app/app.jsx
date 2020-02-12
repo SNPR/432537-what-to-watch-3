@@ -1,22 +1,20 @@
-import React, {PureComponent} from "react";
+import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
-import {Switch, Route, BrowserRouter} from "react-router-dom";
+import { Switch, Route, BrowserRouter } from "react-router-dom";
 import Main from "../main/main.jsx";
 import MovieDetails from "../movie-details/movie-details.jsx";
-
-const movieCardClickHandler = (
-    // index
-) => {
-  // console.log(`index`, index);
-};
 
 class App extends PureComponent {
   constructor(props) {
     super(props);
+
+    this.movieCardClickHandler = this.movieCardClickHandler.bind(this);
   }
 
+  movieCardClickHandler() {}
+
   render() {
-    const {name, genre, releaseYear, movies} = this.props;
+    const { name, genre, releaseYear, movies } = this.props;
     return (
       <BrowserRouter>
         <Switch>
@@ -26,7 +24,7 @@ class App extends PureComponent {
               genre={genre}
               releaseYear={releaseYear}
               movies={movies}
-              onMovieCardClick={movieCardClickHandler}
+              onMovieCardClick={this.movieCardClickHandler}
             />
           </Route>
           <Route exact path="/dev-movie-details">
@@ -43,19 +41,19 @@ App.propTypes = {
   genre: PropTypes.string.isRequired,
   releaseYear: PropTypes.number.isRequired,
   movies: PropTypes.arrayOf(
-      PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        posterUrl: PropTypes.string.isRequired,
-        bigPosterUrl: PropTypes.string.isRequired,
-        director: PropTypes.string.isRequired,
-        starring: PropTypes.arrayOf(PropTypes.string).isRequired,
-        runTime: PropTypes.string.isRequired,
-        genre: PropTypes.string.isRequired,
-        releaseYear: PropTypes.number.isRequired,
-        rating: PropTypes.number.isRequired,
-        votes: PropTypes.number.isRequired,
-        description: PropTypes.string.isRequired
-      }).isRequired
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      posterUrl: PropTypes.string.isRequired,
+      bigPosterUrl: PropTypes.string.isRequired,
+      director: PropTypes.string.isRequired,
+      starring: PropTypes.arrayOf(PropTypes.string).isRequired,
+      runTime: PropTypes.string.isRequired,
+      genre: PropTypes.string.isRequired,
+      releaseYear: PropTypes.number.isRequired,
+      rating: PropTypes.number.isRequired,
+      votes: PropTypes.number.isRequired,
+      description: PropTypes.string.isRequired
+    }).isRequired
   ).isRequired
 };
 
