@@ -22,7 +22,7 @@ class App extends PureComponent {
     const {name, genre, releaseYear, movies} = this.props;
     const {selectedMovieId} = this.state;
 
-    if (selectedMovieId) {
+    if (selectedMovieId !== null) {
       return <MovieDetails movie={this.props.movies[selectedMovieId]} />;
     }
 
