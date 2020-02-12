@@ -115,10 +115,10 @@ const MovieDetails = ({movie}) => {
                       Starring
                     </strong>
                     <span className="movie-card__details-value">
-                      {movie.starring.map((actor) => (
-                        <>
+                      {movie.starring.map((actor, index) => (
+                        <React.Fragment key={actor + index}>
                           {actor} <br />
-                        </>
+                        </React.Fragment>
                       ))}
                     </span>
                   </p>
