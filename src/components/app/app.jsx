@@ -4,7 +4,11 @@ import {Switch, Route, BrowserRouter} from "react-router-dom";
 import Main from "../main/main.jsx";
 import MovieDetails from "../movie-details/movie-details.jsx";
 
-const movieTitleClickHandler = () => {};
+const movieCardClickHandler = (
+    // index
+) => {
+  // console.log(`index`, index);
+};
 
 class App extends PureComponent {
   constructor(props) {
@@ -22,7 +26,7 @@ class App extends PureComponent {
               genre={genre}
               releaseYear={releaseYear}
               movies={movies}
-              onMovieTitleClick={movieTitleClickHandler}
+              onMovieCardClick={movieCardClickHandler}
             />
           </Route>
           <Route exact path="/dev-movie-details">
