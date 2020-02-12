@@ -1,17 +1,6 @@
 import React from "react";
-import Enzyme, {mount} from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
-import Main from "./main.jsx";
-
-Enzyme.configure({
-  adapter: new Adapter()
-});
-
-const Movie = {
-  NAME: `Psycho`,
-  GENRE: `Horror`,
-  RELEASE_YEAR: 1960
-};
+import renderer from "react-test-renderer";
+import MoviesList from "./movies-list.jsx";
 
 const films = [
   {
@@ -33,25 +22,25 @@ const films = [
   {
     name: `Casablanca`,
     posterUrl: `https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRlIHtgWeQQsiZaY5iw_A5FTDeKr7bNFWo1W_zObm0h_ti2Yk0V`
+  },
+  {
+    name: `Seven Samurai`,
+    posterUrl: `https://lh3.googleusercontent.com/proxy/uCMd0BWvzRk-9TXG2lmlrKRfYf-j5bIB2bW4nJZ2ihLzyZErqplfokWFSrn9pdH2LoMMoCyjeQHqHi3jzBk63_jCgn9MqDVl-LxP`
+  },
+  {
+    name: `Back to the Future`,
+    posterUrl: `https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT9d_lBBx0xxB7_d4RP82MlRcK82lzT2W1ZavxhV39SSTZOofDX`
+  },
+  {
+    name: `Blade Runner`,
+    posterUrl: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzBrtjEYPZ9LdbAgkIib6W6u5S7fOm8XRlUkd9kCDbftfly3u_`
   }
 ];
 
-it(`Should welcome button be pressed`, () => {
-  const movieTitleClickHandler = jest.fn();
+it(`Should render MoviesList component`, () => {
+  const tree = renderer
+    .create(<MoviesList movies={films} onMovieTitleClick={() => {}} />)
+    .toJSON();
 
-  const main = mount(
-      <Main
-        name={Movie.NAME}
-        genre={Movie.GENRE}
-        releaseYear={Movie.RELEASE_YEAR}
-        movies={films}
-        onMovieTitleClick={movieTitleClickHandler}
-      />
-  );
-
-  const movieTitle = main.find(`h3.small-movie-card__title`).first();
-
-  movieTitle.props().onClick();
-
-  expect(movieTitleClickHandler.mock.calls.length).toBe(1);
+  expect(tree).toMatchSnapshot();
 });
