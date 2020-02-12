@@ -170,7 +170,16 @@ Main.propTypes = {
   movies: PropTypes.arrayOf(
       PropTypes.shape({
         name: PropTypes.string.isRequired,
-        posterUrl: PropTypes.string.isRequired
+        posterUrl: PropTypes.string.isRequired,
+        bigPosterUrl: PropTypes.string.isRequired,
+        director: PropTypes.string.isRequired,
+        starring: PropTypes.arrayOf(PropTypes.string).isRequired,
+        runTime: PropTypes.string.isRequired,
+        genre: PropTypes.string.isRequired,
+        releaseYear: PropTypes.number.isRequired,
+        rating: PropTypes.number.isRequired,
+        votes: PropTypes.number.isRequired,
+        description: PropTypes.string.isRequired
       }).isRequired
   ).isRequired,
   onMovieCardClick: PropTypes.func.isRequired
