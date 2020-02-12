@@ -3,8 +3,17 @@ import renderer from "react-test-renderer";
 import MovieCard from "./movie-card.jsx";
 
 const movie = {
-  name: `12 Angry Men`,
-  posterUrl: `https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQuhFZT3lQfr0vDy4XWMHQ8X93FWuamEuw_5iB4dmOTxc_w79rA`
+  name: `Movie name`,
+  posterUrl: `https://poster-url.com`,
+  bigPosterUrl: `https://image-url.com/1.jpg`,
+  director: `Director Name`,
+  starring: [`Actor 1`, `Actor 2`, `Actor 3`],
+  runTime: `1h 00m`,
+  genre: `Movie Genre`,
+  releaseYear: 2000,
+  rating: 8.9,
+  votes: 4235,
+  description: `Movie description`
 };
 
 it(`Should render MovieCard component`, () => {
@@ -12,7 +21,7 @@ it(`Should render MovieCard component`, () => {
     .create(
         <MovieCard
           movie={movie}
-          onMovieTitleClick={() => {}}
+          onMovieCardClick={() => {}}
           onMovieCardHover={() => {}}
         />
     )
