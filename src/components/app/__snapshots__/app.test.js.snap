@@ -293,209 +293,183 @@ Array [
       >
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
             <img
-              alt="Star Wars: A New Hope"
+              alt="Movie name"
               height="175"
-              src="https://www.gstatic.com/tv/thumb/v22vodart/4407/p4407_v_v8_be.jpg/images?q=tbn:ANd9GcSkmMH-bEDUS2TmK8amBqgIMgrfzN1_mImChPuMrunA1XjNTSKm"
+              src="https://poster-url.com"
               width="280"
             />
           </div>
           <h3
             className="small-movie-card__title"
-            onClick={[Function]}
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="#"
             >
-              Star Wars: A New Hope
+              Movie name
             </a>
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
             <img
-              alt="2001: A Space Odyssey"
+              alt="Movie name"
               height="175"
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdmmLZ7lXsw1WRy7c5qN3mka2e9ANSpHIG2INi53P6OVS8KyJo/images?q=tbn:ANd9GcRz_2nKTNlxhVtzbh29kgL3m2ebLv3TlYyzrbyqBtEUxt6mBuZ-"
+              src="https://poster-url.com"
               width="280"
             />
           </div>
           <h3
             className="small-movie-card__title"
-            onClick={[Function]}
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="#"
             >
-              2001: A Space Odyssey
+              Movie name
             </a>
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
             <img
-              alt="Goodfellas"
+              alt="Movie name"
               height="175"
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkuxYKBhyPQq4e_cbYRDfZRjWkUx2GIKlUpUkHiuVeLg2GhN0D"
+              src="https://poster-url.com"
               width="280"
             />
           </div>
           <h3
             className="small-movie-card__title"
-            onClick={[Function]}
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="#"
             >
-              Goodfellas
+              Movie name
             </a>
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
             <img
-              alt="Taxi Driver"
+              alt="Movie name"
               height="175"
-              src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQ4QYpWCQ5pareSyOO3YNI3YsOmAeF4qcRDwHCDwf3-a3F0Y7N6/images?q=tbn:ANd9GcTLgFST-pqPgU9CcWUDE4xqqgSxB1n7dulszo08FjRyXyCxV8TH"
+              src="https://poster-url.com"
               width="280"
             />
           </div>
           <h3
             className="small-movie-card__title"
-            onClick={[Function]}
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="#"
             >
-              Taxi Driver
+              Movie name
             </a>
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
             <img
-              alt="Casablanca"
+              alt="Movie name"
               height="175"
-              src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRlIHtgWeQQsiZaY5iw_A5FTDeKr7bNFWo1W_zObm0h_ti2Yk0V"
+              src="https://poster-url.com"
               width="280"
             />
           </div>
           <h3
             className="small-movie-card__title"
-            onClick={[Function]}
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="#"
             >
-              Casablanca
+              Movie name
             </a>
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
             <img
-              alt="Seven Samurai"
+              alt="Movie name"
               height="175"
-              src="https://lh3.googleusercontent.com/proxy/uCMd0BWvzRk-9TXG2lmlrKRfYf-j5bIB2bW4nJZ2ihLzyZErqplfokWFSrn9pdH2LoMMoCyjeQHqHi3jzBk63_jCgn9MqDVl-LxP"
+              src="https://poster-url.com"
               width="280"
             />
           </div>
           <h3
             className="small-movie-card__title"
-            onClick={[Function]}
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="#"
             >
-              Seven Samurai
+              Movie name
             </a>
           </h3>
         </article>
         <article
           className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
           onMouseOver={[Function]}
         >
           <div
             className="small-movie-card__image"
           >
             <img
-              alt="Back to the Future"
+              alt="Movie name"
               height="175"
-              src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcT9d_lBBx0xxB7_d4RP82MlRcK82lzT2W1ZavxhV39SSTZOofDX"
+              src="https://poster-url.com"
               width="280"
             />
           </div>
           <h3
             className="small-movie-card__title"
-            onClick={[Function]}
           >
             <a
               className="small-movie-card__link"
-              href="movie-page.html"
+              href="#"
             >
-              Back to the Future
-            </a>
-          </h3>
-        </article>
-        <article
-          className="small-movie-card catalog__movies-card"
-          onMouseOver={[Function]}
-        >
-          <div
-            className="small-movie-card__image"
-          >
-            <img
-              alt="Blade Runner"
-              height="175"
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzBrtjEYPZ9LdbAgkIib6W6u5S7fOm8XRlUkd9kCDbftfly3u_"
-              width="280"
-            />
-          </div>
-          <h3
-            className="small-movie-card__title"
-            onClick={[Function]}
-          >
-            <a
-              className="small-movie-card__link"
-              href="movie-page.html"
-            >
-              Blade Runner
+              Movie name
             </a>
           </h3>
         </article>
