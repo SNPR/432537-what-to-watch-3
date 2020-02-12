@@ -8,8 +8,17 @@ Enzyme.configure({
 });
 
 const movie = {
-  name: `Star Wars: A New Hope`,
-  posterUrl: `https://www.gstatic.com/tv/thumb/v22vodart/4407/p4407_v_v8_be.jpg/images?q=tbn:ANd9GcSkmMH-bEDUS2TmK8amBqgIMgrfzN1_mImChPuMrunA1XjNTSKm`
+  name: `Movie name`,
+  posterUrl: `https://poster-url.com`,
+  bigPosterUrl: `https://image-url.com/1.jpg`,
+  director: `Director Name`,
+  starring: [`Actor 1`, `Actor 2`, `Actor 3`],
+  runTime: `1h 00m`,
+  genre: `Movie Genre`,
+  releaseYear: 2000,
+  rating: 8.9,
+  votes: 4235,
+  description: `Movie description`
 };
 
 it(`Should pass data to handler on hover`, () => {
@@ -18,7 +27,7 @@ it(`Should pass data to handler on hover`, () => {
   const movieCard = shallow(
       <MovieCard
         movie={movie}
-        onMovieTitleClick={() => {}}
+        onMovieCardClick={() => {}}
         onMovieCardHover={() => onMovieCardHover(movie)}
       />
   );

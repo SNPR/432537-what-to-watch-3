@@ -1,12 +1,11 @@
 import React from "react";
-import renderer from "react-test-renderer";
-import Main from "./main.jsx";
+import Enzyme, {mount} from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
+import MoviesList from "./movies-list.jsx";
 
-const Movie = {
-  NAME: `The Godfather`,
-  GENRE: `Drama`,
-  RELEASE_YEAR: 1972
-};
+Enzyme.configure({
+  adapter: new Adapter()
+});
 
 const films = [
   {
@@ -102,18 +101,19 @@ const films = [
   }
 ];
 
-it(`Should render App component`, () => {
-  const tree = renderer
-    .create(
-        <Main
-          name={Movie.NAME}
-          genre={Movie.GENRE}
-          releaseYear={Movie.RELEASE_YEAR}
-          movies={films}
-          onMovieCardClick={() => {}}
-        />
-    )
-    .toJSON();
+it(`Should pass data to handler on click`, () => {
+  const movieCardClickHandler = jest.fn();
 
-  expect(tree).toMatchSnapshot();
+  const moviesList = mount(
+      <MoviesList movies={films} onMovieCardClick={movieCardClickHandler} />
+  );
+
+  const movieCard = moviesList
+    .find(`article.small-movie-card.catalog__movies-card`)
+    .first();
+
+  movieCard.simulate(`click`);
+
+  expect(movieCardClickHandler.mock.calls.length).toBe(1);
+  expect(movieCardClickHandler.mock.calls[0][0]).toBe(0);
 });
