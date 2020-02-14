@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import MovieCard from "./movie-card.jsx";
+import MovieDetails from "./movie-details.jsx";
 
 const movie = {
   name: `Movie name`,
@@ -16,16 +16,8 @@ const movie = {
   description: `Movie description`
 };
 
-it(`Should render MovieCard component`, () => {
-  const tree = renderer
-    .create(
-        <MovieCard
-          movie={movie}
-          onMovieCardClick={() => {}}
-          onMovieCardHover={() => {}}
-        />
-    )
-    .toJSON();
+it(`Should render MovieDetails component`, () => {
+  const tree = renderer.create(<MovieDetails movie={movie} />).toJSON();
 
   expect(tree).toMatchSnapshot();
 });
