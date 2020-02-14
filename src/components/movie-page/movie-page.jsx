@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {getTextRating} from "../../utils/utils.js";
 
 const MoviePage = ({movie}) => {
   return (
@@ -103,7 +104,9 @@ const MoviePage = ({movie}) => {
               <div className="movie-rating">
                 <div className="movie-rating__score">{movie.rating}</div>
                 <p className="movie-rating__meta">
-                  <span className="movie-rating__level">Very good</span>
+                  <span className="movie-rating__level">
+                    {getTextRating(movie.rating)}
+                  </span>
                   <span className="movie-rating__count">
                     {movie.votes} ratings
                   </span>
