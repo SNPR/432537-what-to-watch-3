@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import Main from "../main/main.jsx";
 import MovieDetails from "../movie-details/movie-details.jsx";
+import MoviePage from "../movie-page/movie-page.jsx";
 
 class App extends PureComponent {
   constructor(props) {
@@ -23,7 +24,7 @@ class App extends PureComponent {
     const {selectedMovieId} = this.state;
 
     if (selectedMovieId !== null) {
-      return <MovieDetails movie={this.props.movies[selectedMovieId]} />;
+      return <MoviePage movie={this.props.movies[selectedMovieId]} />;
     }
 
     return (
