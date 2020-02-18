@@ -5,14 +5,15 @@ import MoviePlayer from "../movie-player/movie-player.jsx";
 const MovieCard = ({
   movie,
   onMovieCardClick,
-  onMovieCardHover,
+  onMovieCardMouseOver,
+  onMovieCardMouseOut,
   isPlaying
 }) => {
   return (
     <article
       className="small-movie-card catalog__movies-card"
-      onMouseOver={onMovieCardHover}
-      onMouseOut={onMovieCardHover}
+      onMouseOver={onMovieCardMouseOver}
+      onMouseOut={onMovieCardMouseOut}
       onClick={onMovieCardClick}
     >
       <div className="small-movie-card__image">
@@ -51,7 +52,8 @@ MovieCard.propTypes = {
   }).isRequired,
   isPlaying: PropTypes.bool.isRequired,
   onMovieCardClick: PropTypes.func.isRequired,
-  onMovieCardHover: PropTypes.func.isRequired
+  onMovieCardMouseOver: PropTypes.func.isRequired,
+  onMovieCardMouseOut: PropTypes.func.isRequired,
 };
 
 export default MovieCard;
