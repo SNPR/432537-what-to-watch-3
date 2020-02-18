@@ -1,15 +1,30 @@
 import React from "react";
 import PropTypes from "prop-types";
+import MoviePlayer from "../movie-player/movie-player.jsx";
 
-const MovieCard = ({movie, onMovieCardClick, onMovieCardHover}) => {
+const MovieCard = ({
+  movie,
+  onMovieCardClick,
+  onMovieCardHover,
+  isPlaying
+}) => {
   return (
     <article
       className="small-movie-card catalog__movies-card"
       onMouseOver={onMovieCardHover}
+      onMouseOut={onMovieCardHover}
       onClick={onMovieCardClick}
     >
       <div className="small-movie-card__image">
-        <img src={movie.posterUrl} alt={movie.name} width="280" height="175" />
+        {!isPlaying && (
+          <img
+            src={movie.posterUrl}
+            alt={movie.name}
+            width="280"
+            height="175"
+          />
+        )}
+        {isPlaying && <MoviePlayer movie={movie} muted={true} />}
       </div>
       <h3 className="small-movie-card__title">
         <a className="small-movie-card__link" href="#">
@@ -34,6 +49,7 @@ MovieCard.propTypes = {
     votes: PropTypes.number.isRequired,
     description: PropTypes.string.isRequired
   }).isRequired,
+  isPlaying: PropTypes.bool.isRequired,
   onMovieCardClick: PropTypes.func.isRequired,
   onMovieCardHover: PropTypes.func.isRequired
 };

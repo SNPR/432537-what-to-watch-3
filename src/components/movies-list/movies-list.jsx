@@ -7,14 +7,18 @@ class MoviesList extends PureComponent {
     super(props);
 
     this.state = {
-      selectedMovieId: null
+      selectedMovieId: null,
+      isPlaying: false
     };
 
     this.movieCardHoverHandler = this.movieCardHoverHandler.bind(this);
   }
 
   movieCardHoverHandler(selectedMovieId) {
-    this.setState({selectedMovieId});
+    this.setState((prevState) => ({
+      selectedMovieId,
+      isPlaying: !prevState.isPlaying
+    }));
   }
 
   render() {
@@ -28,6 +32,9 @@ class MoviesList extends PureComponent {
             movie={movie}
             onMovieCardClick={() => onMovieCardClick(index)}
             onMovieCardHover={() => this.movieCardHoverHandler(index)}
+            isPlaying={
+              this.state.selectedMovieId === index && this.state.isPlaying
+            }
           />
         ))}
       </div>
