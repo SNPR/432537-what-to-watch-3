@@ -25,7 +25,7 @@ export default [
     name: `Pulp Fiction`,
     posterUrl: `https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRz_2nKTNlxhVtzbh29kgL3m2ebLv3TlYyzrbyqBtEUxt6mBuZ-`,
     bigPosterUrl: `https://api.time.com/wp-content/uploads/2014/10/pulp-fiction.jpeg`,
-    trailerUrl: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    trailerUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     director: `Quentin Tarantino`,
     starring: [
       `John Travolta`,
@@ -73,7 +73,7 @@ export default [
     name: `Parasite`,
     posterUrl: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLgFST-pqPgU9CcWUDE4xqqgSxB1n7dulszo08FjRyXyCxV8TH`,
     bigPosterUrl: `https://static.rogerebert.com/uploads/review/primary_image/reviews/parasite-movie-review-2019/hero_parasite-movie-review-2019.jpeg`,
-    trailerUrl: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    trailerUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     director: `Bong Joon-ho`,
     starring: [
       `Song Kang-ho`,
@@ -117,7 +117,7 @@ export default [
     name: `The Matrix`,
     posterUrl: `https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcS4jfQQt_0vCA4XSwGiWkffC32Tv2oajdWhaYHHVYylYGJ3v17Q`,
     bigPosterUrl: `https://img1.looper.com/img/gallery/the-matrix-4-will-reportedly-start-something-big/intro-1576775790.jpg`,
-    trailerUrl: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    trailerUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     director: `The Wachowskis`,
     starring: [
       `Keanu Reeves`,
@@ -151,7 +151,7 @@ export default [
     name: `Alien`,
     posterUrl: `https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSKWeplicF676cMRKV8kqkCErnbNxp6Sm2XQyrrjGNpoLp_lrjI`,
     bigPosterUrl: `https://bloody-disgusting.com/wp-content/uploads/2018/10/alien-tv-seies.png`,
-    trailerUrl: `https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4`,
+    trailerUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     director: `Ridley Scott`,
     starring: [
       `Tom Skerritt`,
