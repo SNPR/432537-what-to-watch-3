@@ -25,7 +25,9 @@ const MovieCard = ({
             height="175"
           />
         )}
-        {isPlaying && <MoviePlayer movie={movie} muted={true} />}
+        {isPlaying && (
+          <MoviePlayer movie={movie} muted={true} autoPlay={true} />
+        )}
       </div>
       <h3 className="small-movie-card__title">
         <a className="small-movie-card__link" href="#">
@@ -53,7 +55,7 @@ MovieCard.propTypes = {
   isPlaying: PropTypes.bool.isRequired,
   onMovieCardClick: PropTypes.func.isRequired,
   onMovieCardMouseOver: PropTypes.func.isRequired,
-  onMovieCardMouseOut: PropTypes.func.isRequired,
+  onMovieCardMouseOut: PropTypes.func.isRequired
 };
 
 export default MovieCard;

@@ -1,14 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const MoviePlayer = ({movie, muted}) => {
+const MoviePlayer = ({movie, muted, autoPlay}) => {
   return (
     <video
       muted={muted}
       controls
       poster={movie.posterUrl}
       width="100%"
-      autoPlay
+      autoPlay={autoPlay}
     >
       <source src={movie.trailerUrl} />
     </video>
@@ -30,7 +30,8 @@ MoviePlayer.propTypes = {
     votes: PropTypes.number.isRequired,
     description: PropTypes.string.isRequired
   }).isRequired,
-  muted: PropTypes.bool.isRequired
+  muted: PropTypes.bool.isRequired,
+  autoPlay: PropTypes.bool.isRequired
 };
 
 export default MoviePlayer;
