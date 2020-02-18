@@ -4,17 +4,23 @@ exports[`Should render MovieCard component 1`] = `
 <article
   className="small-movie-card catalog__movies-card"
   onClick={[Function]}
+  onMouseOut={[Function]}
   onMouseOver={[Function]}
 >
   <div
     className="small-movie-card__image"
   >
-    <img
-      alt="Movie name"
-      height="175"
-      src="https://poster-url.com"
-      width="280"
-    />
+    <video
+      autoPlay={true}
+      controls={true}
+      muted={true}
+      poster="https://poster-url.com"
+      width="100%"
+    >
+      <source
+        src="https://video-url.com/1.mp4"
+      />
+    </video>
   </div>
   <h3
     className="small-movie-card__title"
