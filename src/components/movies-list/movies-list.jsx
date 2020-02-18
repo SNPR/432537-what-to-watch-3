@@ -15,13 +15,10 @@ class MoviesList extends PureComponent {
 
     this.movieCardMouseOverHandler = this.movieCardMouseOverHandler.bind(this);
     this.movieCardMouseOutHandler = this.movieCardMouseOutHandler.bind(this);
+    this.togglePlay = this.togglePlay.bind(this);
   }
 
-  movieCardMouseOverHandler(selectedMovieId) {
-    this.setState(() => ({
-      selectedMovieId
-    }));
-
+  togglePlay(selectedMovieId) {
     setTimeout(() => {
       if (this.state.selectedMovieId === selectedMovieId) {
         this.setState((prevState) => ({
@@ -29,6 +26,15 @@ class MoviesList extends PureComponent {
         }));
       }
     }, PLAYBACK_DELAY_TIMEOUT);
+  }
+
+  movieCardMouseOverHandler(selectedMovieId) {
+    this.setState(
+        () => ({
+          selectedMovieId
+        }),
+        () => this.togglePlay(selectedMovieId)
+    );
   }
 
   movieCardMouseOutHandler() {

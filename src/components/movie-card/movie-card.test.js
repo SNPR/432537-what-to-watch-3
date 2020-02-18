@@ -20,13 +20,13 @@ const movie = {
 it(`Should render MovieCard component`, () => {
   const tree = renderer
     .create(
-      <MovieCard
-        movie={movie}
-        onMovieCardClick={() => {}}
-        onMovieCardMouseOver={() => {}}
-        onMovieCardMouseOut={() => {}}
-        isPlaying={true}
-      />
+        <MovieCard
+          movie={movie}
+          onMovieCardClick={() => {}}
+          onMovieCardMouseOver={() => {}}
+          onMovieCardMouseOut={() => {}}
+          isPlaying={true}
+        />
     )
     .toJSON();
 
