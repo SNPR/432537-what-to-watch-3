@@ -3,7 +3,13 @@ import PropTypes from "prop-types";
 
 const MoviePlayer = ({movie, muted}) => {
   return (
-    <video muted={muted} controls poster={movie.posterUrl} width="280" autoPlay>
+    <video
+      muted={muted}
+      controls
+      poster={movie.posterUrl}
+      width="100%"
+      autoPlay
+    >
       <source src={movie.trailerUrl} />
     </video>
   );
