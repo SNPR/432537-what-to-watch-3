@@ -11,6 +11,7 @@ const movie = {
   name: `Movie name`,
   posterUrl: `https://poster-url.com`,
   bigPosterUrl: `https://image-url.com/1.jpg`,
+  trailerUrl: `https://video-url.com/1.mp4`,
   director: `Director Name`,
   starring: [`Actor 1`, `Actor 2`, `Actor 3`],
   runTime: `1h 00m`,
@@ -22,18 +23,23 @@ const movie = {
 };
 
 it(`Should pass data to handler on hover`, () => {
-  const onMovieCardHover = jest.fn();
+  const movieCardMouseOverHandler = jest.fn();
+  const movieCardMouseOutHandler = jest.fn();
 
   const movieCard = shallow(
       <MovieCard
         movie={movie}
+        isPlaying={true}
         onMovieCardClick={() => {}}
-        onMovieCardHover={() => onMovieCardHover(movie)}
+        onMovieCardMouseOver={() => movieCardMouseOverHandler(movie)}
+        onMovieCardMouseOut={movieCardMouseOutHandler}
       />
   );
 
   movieCard.simulate(`mouseover`);
+  movieCard.simulate(`mouseout`);
 
-  expect(onMovieCardHover.mock.calls.length).toBe(1);
-  expect(onMovieCardHover.mock.calls[0][0]).toMatchObject(movie);
+  expect(movieCardMouseOverHandler.mock.calls.length).toBe(1);
+  expect(movieCardMouseOverHandler.mock.calls[0][0]).toMatchObject(movie);
+  expect(movieCardMouseOutHandler.mock.calls.length).toBe(1);
 });

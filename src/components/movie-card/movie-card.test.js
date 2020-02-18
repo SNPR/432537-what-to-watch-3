@@ -6,6 +6,7 @@ const movie = {
   name: `Movie name`,
   posterUrl: `https://poster-url.com`,
   bigPosterUrl: `https://image-url.com/1.jpg`,
+  trailerUrl: `https://video-url.com/1.mp4`,
   director: `Director Name`,
   starring: [`Actor 1`, `Actor 2`, `Actor 3`],
   runTime: `1h 00m`,
@@ -19,11 +20,13 @@ const movie = {
 it(`Should render MovieCard component`, () => {
   const tree = renderer
     .create(
-        <MovieCard
-          movie={movie}
-          onMovieCardClick={() => {}}
-          onMovieCardHover={() => {}}
-        />
+      <MovieCard
+        movie={movie}
+        onMovieCardClick={() => {}}
+        onMovieCardMouseOver={() => {}}
+        onMovieCardMouseOut={() => {}}
+        isPlaying={true}
+      />
     )
     .toJSON();
 
