@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {getTextRating} from "../../utils/utils.js";
+import Tabs from "../tabs/tabs.jsx";
 
 const MoviePage = ({movie}) => {
   return (
@@ -80,53 +80,7 @@ const MoviePage = ({movie}) => {
               />
             </div>
 
-            <div className="movie-card__desc">
-              <nav className="movie-nav movie-card__nav">
-                <ul className="movie-nav__list">
-                  <li className="movie-nav__item movie-nav__item--active">
-                    <a href="#" className="movie-nav__link">
-                      Overview
-                    </a>
-                  </li>
-                  <li className="movie-nav__item">
-                    <a href="#" className="movie-nav__link">
-                      Details
-                    </a>
-                  </li>
-                  <li className="movie-nav__item">
-                    <a href="#" className="movie-nav__link">
-                      Reviews
-                    </a>
-                  </li>
-                </ul>
-              </nav>
-
-              <div className="movie-rating">
-                <div className="movie-rating__score">{movie.rating}</div>
-                <p className="movie-rating__meta">
-                  <span className="movie-rating__level">
-                    {getTextRating(movie.rating)}
-                  </span>
-                  <span className="movie-rating__count">
-                    {movie.votes} ratings
-                  </span>
-                </p>
-              </div>
-
-              <div className="movie-card__text">
-                <p>{movie.description}</p>
-
-                <p className="movie-card__director">
-                  <strong>Director: {movie.director}</strong>
-                </p>
-
-                <p className="movie-card__starring">
-                  <strong>
-                    Starring: {`${movie.starring.join(`, `)} and other`}
-                  </strong>
-                </p>
-              </div>
-            </div>
+            <Tabs movie={movie} />
           </div>
         </div>
       </section>
