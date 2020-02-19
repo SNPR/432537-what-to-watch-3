@@ -2,7 +2,6 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import Main from "../main/main.jsx";
-import MovieDetails from "../movie-details/movie-details.jsx";
 import MoviePage from "../movie-page/movie-page.jsx";
 
 class App extends PureComponent {
@@ -45,8 +44,8 @@ class App extends PureComponent {
           <Route exact path="/">
             {this._renderApp()}
           </Route>
-          <Route exact path="/dev-movie-details">
-            <MovieDetails
+          <Route exact path="/dev-movie-page">
+            <MoviePage
               movie={this.props.movies[this.state.selectedMovieId || 0]}
             />
           </Route>
