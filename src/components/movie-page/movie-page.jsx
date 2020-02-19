@@ -4,7 +4,7 @@ import Tabs from "../tabs/tabs.jsx";
 import SimilarMovies from "../similar-movies/similar-movies.jsx";
 import films from "../../mocks/films.js";
 
-const MoviePage = ({movie}) => {
+const MoviePage = ({movie, onMovieCardClick}) => {
   return (
     <>
       <section className="movie-card movie-card--full">
@@ -91,7 +91,11 @@ const MoviePage = ({movie}) => {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
 
-          <SimilarMovies movies={films} movie={movie} />
+          <SimilarMovies
+            movies={films}
+            movie={movie}
+            onMovieCardClick={onMovieCardClick}
+          />
         </section>
 
         <footer className="page-footer">
@@ -133,7 +137,8 @@ MoviePage.propTypes = {
           text: PropTypes.string.isRequired
         })
     ).isRequired
-  }).isRequired
+  }).isRequired,
+  onMovieCardClick: PropTypes.func.isRequired
 };
 
 export default MoviePage;

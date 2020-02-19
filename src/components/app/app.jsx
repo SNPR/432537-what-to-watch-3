@@ -9,21 +9,26 @@ class App extends PureComponent {
     super(props);
 
     this.state = {
-      selectedMovieId: null
+      selectedMovie: null
     };
     this.movieCardClickHandler = this.movieCardClickHandler.bind(this);
   }
 
-  movieCardClickHandler(selectedMovieId) {
-    this.setState({selectedMovieId});
+  movieCardClickHandler(selectedMovie) {
+    this.setState({selectedMovie});
   }
 
   _renderApp() {
     const {name, genre, releaseYear, movies} = this.props;
-    const {selectedMovieId} = this.state;
+    const {selectedMovie} = this.state;
 
-    if (selectedMovieId !== null) {
-      return <MoviePage movie={this.props.movies[selectedMovieId]} />;
+    if (selectedMovie !== null) {
+      return (
+        <MoviePage
+          movie={selectedMovie}
+          onMovieCardClick={this.movieCardClickHandler}
+        />
+      );
     }
 
     return (

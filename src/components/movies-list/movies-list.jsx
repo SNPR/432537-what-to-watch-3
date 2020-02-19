@@ -53,7 +53,7 @@ class MoviesList extends PureComponent {
           <MovieCard
             key={movie.name + index}
             movie={movie}
-            onMovieCardClick={() => onMovieCardClick(index)}
+            onMovieCardClick={() => onMovieCardClick(movie)}
             onMovieCardMouseOver={() => this.movieCardMouseOverHandler(index)}
             onMovieCardMouseOut={this.movieCardMouseOutHandler}
             isPlaying={

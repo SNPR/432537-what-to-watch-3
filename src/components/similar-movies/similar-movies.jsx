@@ -9,11 +9,11 @@ const getSimilarMovies = (movies, movie) => {
   );
 };
 
-const SimilarMovies = ({movies, movie}) => {
+const SimilarMovies = ({movies, movie, onMovieCardClick}) => {
   return (
     <MoviesList
       movies={getSimilarMovies(movies, movie)}
-      onMovieCardClick={() => {}}
+      onMovieCardClick={onMovieCardClick}
     />
   );
 };
@@ -62,7 +62,8 @@ SimilarMovies.propTypes = {
           text: PropTypes.string.isRequired
         })
     ).isRequired
-  }).isRequired
+  }).isRequired,
+  onMovieCardClick: PropTypes.func.isRequired
 };
 
 export default SimilarMovies;

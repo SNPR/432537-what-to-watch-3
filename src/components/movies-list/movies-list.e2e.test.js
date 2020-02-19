@@ -171,5 +171,5 @@ it(`Should pass data to handler on click`, () => {
   movieCard.simulate(`click`);
 
   expect(movieCardClickHandler.mock.calls.length).toBe(1);
-  expect(movieCardClickHandler.mock.calls[0][0]).toBe(0);
+  expect(movieCardClickHandler.mock.calls[0][0]).toMatchObject(films[0]);
 });
