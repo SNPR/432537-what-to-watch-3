@@ -1,5 +1,5 @@
 import React from "react";
-import Enzyme, {mount} from "enzyme";
+import Enzyme, { mount } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import MoviesList from "./movies-list.jsx";
 
@@ -19,7 +19,15 @@ const films = [
     releaseYear: 2000,
     rating: 8.9,
     votes: 4235,
-    description: `Movie description`
+    description: `Movie description`,
+    reviews: [
+      {
+        rating: 9,
+        date: `November 10, 2019`,
+        author: `Dmitriy`,
+        text: `Review text`
+      }
+    ]
   },
   {
     name: `Movie name`,
@@ -32,7 +40,15 @@ const films = [
     releaseYear: 2000,
     rating: 8.9,
     votes: 4235,
-    description: `Movie description`
+    description: `Movie description`,
+    reviews: [
+      {
+        rating: 9,
+        date: `November 10, 2019`,
+        author: `Dmitriy`,
+        text: `Review text`
+      }
+    ]
   },
   {
     name: `Movie name`,
@@ -45,7 +61,15 @@ const films = [
     releaseYear: 2000,
     rating: 8.9,
     votes: 4235,
-    description: `Movie description`
+    description: `Movie description`,
+    reviews: [
+      {
+        rating: 9,
+        date: `November 10, 2019`,
+        author: `Dmitriy`,
+        text: `Review text`
+      }
+    ]
   },
   {
     name: `Movie name`,
@@ -58,7 +82,15 @@ const films = [
     releaseYear: 2000,
     rating: 8.9,
     votes: 4235,
-    description: `Movie description`
+    description: `Movie description`,
+    reviews: [
+      {
+        rating: 9,
+        date: `November 10, 2019`,
+        author: `Dmitriy`,
+        text: `Review text`
+      }
+    ]
   },
   {
     name: `Movie name`,
@@ -71,7 +103,15 @@ const films = [
     releaseYear: 2000,
     rating: 8.9,
     votes: 4235,
-    description: `Movie description`
+    description: `Movie description`,
+    reviews: [
+      {
+        rating: 9,
+        date: `November 10, 2019`,
+        author: `Dmitriy`,
+        text: `Review text`
+      }
+    ]
   },
   {
     name: `Movie name`,
@@ -84,7 +124,15 @@ const films = [
     releaseYear: 2000,
     rating: 8.9,
     votes: 4235,
-    description: `Movie description`
+    description: `Movie description`,
+    reviews: [
+      {
+        rating: 9,
+        date: `November 10, 2019`,
+        author: `Dmitriy`,
+        text: `Review text`
+      }
+    ]
   },
   {
     name: `Movie name`,
@@ -113,7 +161,7 @@ it(`Should pass data to handler on click`, () => {
   const movieCardClickHandler = jest.fn();
 
   const moviesList = mount(
-      <MoviesList movies={films} onMovieCardClick={movieCardClickHandler} />
+    <MoviesList movies={films} onMovieCardClick={movieCardClickHandler} />
   );
 
   const movieCard = moviesList
