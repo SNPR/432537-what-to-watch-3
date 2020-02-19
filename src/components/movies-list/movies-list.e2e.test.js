@@ -97,7 +97,15 @@ const films = [
     releaseYear: 2000,
     rating: 8.9,
     votes: 4235,
-    description: `Movie description`
+    description: `Movie description`,
+    reviews: [
+      {
+        rating: 9,
+        date: `November 10, 2019`,
+        author: `Dmitriy`,
+        text: `Review text`
+      }
+    ]
   }
 ];
 

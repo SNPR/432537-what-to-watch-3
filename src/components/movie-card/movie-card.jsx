@@ -50,7 +50,15 @@ MovieCard.propTypes = {
     releaseYear: PropTypes.number.isRequired,
     rating: PropTypes.number.isRequired,
     votes: PropTypes.number.isRequired,
-    description: PropTypes.string.isRequired
+    description: PropTypes.string.isRequired,
+    reviews: PropTypes.arrayOf(
+        PropTypes.shape({
+          rating: PropTypes.number.isRequired,
+          date: PropTypes.string.isRequired,
+          author: PropTypes.string.isRequired,
+          text: PropTypes.string.isRequired
+        })
+    ).isRequired
   }).isRequired,
   isPlaying: PropTypes.bool.isRequired,
   onMovieCardClick: PropTypes.func.isRequired,
