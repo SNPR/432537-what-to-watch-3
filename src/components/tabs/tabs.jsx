@@ -34,7 +34,6 @@ class Tabs extends PureComponent {
               )}`}
             >
               <a
-                href="#"
                 className="movie-nav__link"
                 onClick={() => this.setState({selectedTab: TabName.OVERVIEW})}
               >
@@ -47,7 +46,6 @@ class Tabs extends PureComponent {
               )}`}
             >
               <a
-                href="#"
                 className="movie-nav__link"
                 onClick={() => this.setState({selectedTab: TabName.DETAILS})}
               >
@@ -60,7 +58,6 @@ class Tabs extends PureComponent {
               )}`}
             >
               <a
-                href="#"
                 className="movie-nav__link"
                 onClick={() => this.setState({selectedTab: TabName.REVIEWS})}
               >
