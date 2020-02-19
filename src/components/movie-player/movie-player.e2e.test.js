@@ -23,6 +23,10 @@ const movie = {
 };
 
 it(`Should play video on click`, () => {
+  const fakePlay = jest
+    .spyOn(window.HTMLMediaElement.prototype, `play`)
+    .mockImplementation(() => {});
+
   const moviePlayer = mount(
       <MoviePlayer movie={movie} muted={true} autoPlay={false} />
   );
@@ -30,4 +34,7 @@ it(`Should play video on click`, () => {
   expect(moviePlayer.state(`isPlaying`)).toBe(false);
   moviePlayer.simulate(`click`);
   expect(moviePlayer.state(`isPlaying`)).toBe(true);
+
+  expect(fakePlay).toHaveBeenCalled();
+  fakePlay.mockRestore();
 });
