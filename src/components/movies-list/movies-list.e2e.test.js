@@ -1,5 +1,5 @@
 import React from "react";
-import Enzyme, { mount } from "enzyme";
+import Enzyme, {mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import MoviesList from "./movies-list.jsx";
 
@@ -161,7 +161,7 @@ it(`Should pass data to handler on click`, () => {
   const movieCardClickHandler = jest.fn();
 
   const moviesList = mount(
-    <MoviesList movies={films} onMovieCardClick={movieCardClickHandler} />
+      <MoviesList movies={films} onMovieCardClick={movieCardClickHandler} />
   );
 
   const movieCard = moviesList
