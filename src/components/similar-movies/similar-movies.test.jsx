@@ -177,7 +177,9 @@ const films = [
 
 it(`Should render SimilarMovies component`, () => {
   const tree = renderer
-    .create(<SimilarMovies movies={films} movie={movie} />)
+    .create(
+        <SimilarMovies movies={films} movie={movie} onMovieCardClick={() => {}} />
+    )
     .toJSON();
 
   expect(tree).toMatchSnapshot();
