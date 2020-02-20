@@ -161,12 +161,12 @@ const films = [
 it(`Should render App component`, () => {
   const tree = renderer
     .create(
-      <App
-        name={Movie.NAME}
-        genre={Movie.GENRE}
-        releaseYear={Movie.RELEASE_YEAR}
-        movies={films}
-      />
+        <App
+          name={Movie.NAME}
+          genre={Movie.GENRE}
+          releaseYear={Movie.RELEASE_YEAR}
+          movies={films}
+        />
     )
     .toJSON();
 
