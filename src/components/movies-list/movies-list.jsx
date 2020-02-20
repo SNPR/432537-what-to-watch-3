@@ -8,6 +8,8 @@ class MoviesList extends PureComponent {
   constructor(props) {
     super(props);
 
+    this.playbackTimeout = null;
+
     this.state = {
       selectedMovieId: null,
       isPlaying: false
@@ -19,7 +21,7 @@ class MoviesList extends PureComponent {
   }
 
   togglePlay(selectedMovieId) {
-    setTimeout(() => {
+    this.playbackTimeout = setTimeout(() => {
       if (this.state.selectedMovieId === selectedMovieId) {
         this.setState((prevState) => ({
           isPlaying: !prevState.isPlaying
@@ -42,6 +44,12 @@ class MoviesList extends PureComponent {
       selectedMovieId: null,
       isPlaying: false
     }));
+  }
+
+  componentWillUnmount() {
+    if (this.playbackTimeout) {
+      clearTimeout(this.playbackTimeout);
+    }
   }
 
   render() {
