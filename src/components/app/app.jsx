@@ -52,6 +52,7 @@ class App extends PureComponent {
           <Route exact path="/dev-movie-page">
             <MoviePage
               movie={this.props.movies[this.state.selectedMovieId || 0]}
+              onMovieCardClick={this.movieCardClickHandler}
             />
           </Route>
         </Switch>
