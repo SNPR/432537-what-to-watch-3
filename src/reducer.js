@@ -1,8 +1,9 @@
 import {extend} from "./utils/utils.js";
 import films from "./mocks/films.js";
+import {ALL_GENRES} from "./utils/constants.js";
 
 const initialState = {
-  genre: `All genres`,
+  genre: ALL_GENRES,
   films
 };
 
