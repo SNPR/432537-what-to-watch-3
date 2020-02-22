@@ -32,7 +32,10 @@ const reducer = (state = initialState, action) => {
 
     case ActionType.GET_MOVIES_BY_GENRE:
       return extend(state, {
-        films: state.films.filter((film) => film.genre === action.payload)
+        films:
+          action.payload === ALL_GENRES
+            ? state.films
+            : state.films.filter((film) => film.genre === action.payload)
       });
   }
 
