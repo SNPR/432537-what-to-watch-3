@@ -19,7 +19,15 @@ const films = [
     releaseYear: 2000,
     rating: 8.9,
     votes: 4235,
-    description: `Movie description`
+    description: `Movie description`,
+    reviews: [
+      {
+        rating: 9,
+        date: `November 10, 2019`,
+        author: `Dmitriy`,
+        text: `Review text`
+      }
+    ]
   },
   {
     name: `Movie name`,
@@ -32,7 +40,15 @@ const films = [
     releaseYear: 2000,
     rating: 8.9,
     votes: 4235,
-    description: `Movie description`
+    description: `Movie description`,
+    reviews: [
+      {
+        rating: 9,
+        date: `November 10, 2019`,
+        author: `Dmitriy`,
+        text: `Review text`
+      }
+    ]
   },
   {
     name: `Movie name`,
@@ -45,7 +61,15 @@ const films = [
     releaseYear: 2000,
     rating: 8.9,
     votes: 4235,
-    description: `Movie description`
+    description: `Movie description`,
+    reviews: [
+      {
+        rating: 9,
+        date: `November 10, 2019`,
+        author: `Dmitriy`,
+        text: `Review text`
+      }
+    ]
   },
   {
     name: `Movie name`,
@@ -58,7 +82,15 @@ const films = [
     releaseYear: 2000,
     rating: 8.9,
     votes: 4235,
-    description: `Movie description`
+    description: `Movie description`,
+    reviews: [
+      {
+        rating: 9,
+        date: `November 10, 2019`,
+        author: `Dmitriy`,
+        text: `Review text`
+      }
+    ]
   },
   {
     name: `Movie name`,
@@ -71,7 +103,15 @@ const films = [
     releaseYear: 2000,
     rating: 8.9,
     votes: 4235,
-    description: `Movie description`
+    description: `Movie description`,
+    reviews: [
+      {
+        rating: 9,
+        date: `November 10, 2019`,
+        author: `Dmitriy`,
+        text: `Review text`
+      }
+    ]
   },
   {
     name: `Movie name`,
@@ -84,7 +124,15 @@ const films = [
     releaseYear: 2000,
     rating: 8.9,
     votes: 4235,
-    description: `Movie description`
+    description: `Movie description`,
+    reviews: [
+      {
+        rating: 9,
+        date: `November 10, 2019`,
+        author: `Dmitriy`,
+        text: `Review text`
+      }
+    ]
   },
   {
     name: `Movie name`,
@@ -97,7 +145,15 @@ const films = [
     releaseYear: 2000,
     rating: 8.9,
     votes: 4235,
-    description: `Movie description`
+    description: `Movie description`,
+    reviews: [
+      {
+        rating: 9,
+        date: `November 10, 2019`,
+        author: `Dmitriy`,
+        text: `Review text`
+      }
+    ]
   }
 ];
 
@@ -115,5 +171,5 @@ it(`Should pass data to handler on click`, () => {
   movieCard.simulate(`click`);
 
   expect(movieCardClickHandler.mock.calls.length).toBe(1);
-  expect(movieCardClickHandler.mock.calls[0][0]).toBe(0);
+  expect(movieCardClickHandler.mock.calls[0][0]).toMatchObject(films[0]);
 });

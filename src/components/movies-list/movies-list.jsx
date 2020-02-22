@@ -8,6 +8,8 @@ class MoviesList extends PureComponent {
   constructor(props) {
     super(props);
 
+    this.playbackTimeout = null;
+
     this.state = {
       selectedMovieId: null,
       isPlaying: false
@@ -19,10 +21,10 @@ class MoviesList extends PureComponent {
   }
 
   togglePlay(selectedMovieId) {
-    setTimeout(() => {
+    this.playbackTimeout = setTimeout(() => {
       if (this.state.selectedMovieId === selectedMovieId) {
-        this.setState((prevState) => ({
-          isPlaying: !prevState.isPlaying
+        this.setState(() => ({
+          isPlaying: true
         }));
       }
     }, PLAYBACK_DELAY_TIMEOUT);
@@ -44,6 +46,12 @@ class MoviesList extends PureComponent {
     }));
   }
 
+  componentWillUnmount() {
+    if (this.playbackTimeout) {
+      clearTimeout(this.playbackTimeout);
+    }
+  }
+
   render() {
     const {movies, onMovieCardClick} = this.props;
 
@@ -53,7 +61,7 @@ class MoviesList extends PureComponent {
           <MovieCard
             key={movie.name + index}
             movie={movie}
-            onMovieCardClick={() => onMovieCardClick(index)}
+            onMovieCardClick={() => onMovieCardClick(movie)}
             onMovieCardMouseOver={() => this.movieCardMouseOverHandler(index)}
             onMovieCardMouseOut={this.movieCardMouseOutHandler}
             isPlaying={
@@ -79,7 +87,15 @@ MoviesList.propTypes = {
         releaseYear: PropTypes.number.isRequired,
         rating: PropTypes.number.isRequired,
         votes: PropTypes.number.isRequired,
-        description: PropTypes.string.isRequired
+        description: PropTypes.string.isRequired,
+        reviews: PropTypes.arrayOf(
+            PropTypes.shape({
+              rating: PropTypes.number.isRequired,
+              date: PropTypes.string.isRequired,
+              author: PropTypes.string.isRequired,
+              text: PropTypes.string.isRequired
+            })
+        ).isRequired
       }).isRequired
   ).isRequired,
   onMovieCardClick: PropTypes.func.isRequired

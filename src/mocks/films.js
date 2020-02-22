@@ -19,7 +19,27 @@ export default [
     releaseYear: 1994,
     rating: 9.3,
     votes: 123,
-    description: `Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.`
+    description: `Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.`,
+    reviews: [
+      {
+        rating: 9,
+        date: `December 15, 2019`,
+        author: `John Doe`,
+        text: `This is an awesome movie! You should watch it!`
+      },
+      {
+        rating: 9,
+        date: `December 15, 2019`,
+        author: `John Doe`,
+        text: `This is an awesome movie! You should watch it!`
+      },
+      {
+        rating: 9,
+        date: `December 15, 2019`,
+        author: `John Doe`,
+        text: `This is an awesome movie! You should watch it!`
+      }
+    ]
   },
   {
     name: `Pulp Fiction`,
@@ -46,7 +66,27 @@ export default [
     releaseYear: 1994,
     rating: 8.9,
     votes: 4235,
-    description: `The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.`
+    description: `The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.`,
+    reviews: [
+      {
+        rating: 9,
+        date: `December 15, 2019`,
+        author: `John Doe`,
+        text: `This is an awesome movie! You should watch it!`
+      },
+      {
+        rating: 9,
+        date: `December 15, 2019`,
+        author: `John Doe`,
+        text: `This is an awesome movie! You should watch it!`
+      },
+      {
+        rating: 9,
+        date: `December 15, 2019`,
+        author: `John Doe`,
+        text: `This is an awesome movie! You should watch it!`
+      }
+    ]
   },
   {
     name: `Psycho`,
@@ -67,7 +107,27 @@ export default [
     releaseYear: 1960,
     rating: 8.9,
     votes: 4235,
-    description: `A Phoenix secretary embezzles forty thousand dollars from her employer's client, goes on the run, and checks into a remote motel run by a young man under the domination of his mother.`
+    description: `A Phoenix secretary embezzles forty thousand dollars from her employer's client, goes on the run, and checks into a remote motel run by a young man under the domination of his mother.`,
+    reviews: [
+      {
+        rating: 9,
+        date: `December 15, 2019`,
+        author: `John Doe`,
+        text: `This is an awesome movie! You should watch it!`
+      },
+      {
+        rating: 9,
+        date: `December 15, 2019`,
+        author: `John Doe`,
+        text: `This is an awesome movie! You should watch it!`
+      },
+      {
+        rating: 9,
+        date: `December 15, 2019`,
+        author: `John Doe`,
+        text: `This is an awesome movie! You should watch it!`
+      }
+    ]
   },
   {
     name: `Parasite`,
@@ -89,7 +149,27 @@ export default [
     releaseYear: 2019,
     rating: 8.5,
     votes: 3453,
-    description: `A poor family, the Kims, con their way into becoming the servants of a rich family, the Parks. But their easy life gets complicated when their deception is threatened with exposure.`
+    description: `A poor family, the Kims, con their way into becoming the servants of a rich family, the Parks. But their easy life gets complicated when their deception is threatened with exposure.`,
+    reviews: [
+      {
+        rating: 9,
+        date: `December 15, 2019`,
+        author: `John Doe`,
+        text: `This is an awesome movie! You should watch it!`
+      },
+      {
+        rating: 9,
+        date: `December 15, 2019`,
+        author: `John Doe`,
+        text: `This is an awesome movie! You should watch it!`
+      },
+      {
+        rating: 9,
+        date: `December 15, 2019`,
+        author: `John Doe`,
+        text: `This is an awesome movie! You should watch it!`
+      }
+    ]
   },
   {
     name: `The Dark Knight`,
@@ -111,7 +191,27 @@ export default [
     releaseYear: 2008,
     rating: 8.9,
     votes: 4363,
-    description: `When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.`
+    description: `When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.`,
+    reviews: [
+      {
+        rating: 9,
+        date: `December 15, 2019`,
+        author: `John Doe`,
+        text: `This is an awesome movie! You should watch it!`
+      },
+      {
+        rating: 9,
+        date: `December 15, 2019`,
+        author: `John Doe`,
+        text: `This is an awesome movie! You should watch it!`
+      },
+      {
+        rating: 9,
+        date: `December 15, 2019`,
+        author: `John Doe`,
+        text: `This is an awesome movie! You should watch it!`
+      }
+    ]
   },
   {
     name: `The Matrix`,
@@ -131,7 +231,27 @@ export default [
     releaseYear: 1999,
     rating: 8.7,
     votes: 5472,
-    description: `A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.`
+    description: `A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.`,
+    reviews: [
+      {
+        rating: 9,
+        date: `December 15, 2019`,
+        author: `John Doe`,
+        text: `This is an awesome movie! You should watch it!`
+      },
+      {
+        rating: 9,
+        date: `December 15, 2019`,
+        author: `John Doe`,
+        text: `This is an awesome movie! You should watch it!`
+      },
+      {
+        rating: 9,
+        date: `December 15, 2019`,
+        author: `John Doe`,
+        text: `This is an awesome movie! You should watch it!`
+      }
+    ]
   },
   {
     name: `Saving Private Ryan`,
@@ -145,7 +265,27 @@ export default [
     releaseYear: 1998,
     rating: 8.6,
     votes: 4536,
-    description: `Following the Normandy Landings, a group of U.S. soldiers go behind enemy lines to retrieve a paratrooper whose brothers have been killed in action.`
+    description: `Following the Normandy Landings, a group of U.S. soldiers go behind enemy lines to retrieve a paratrooper whose brothers have been killed in action.`,
+    reviews: [
+      {
+        rating: 9,
+        date: `December 15, 2019`,
+        author: `John Doe`,
+        text: `This is an awesome movie! You should watch it!`
+      },
+      {
+        rating: 9,
+        date: `December 15, 2019`,
+        author: `John Doe`,
+        text: `This is an awesome movie! You should watch it!`
+      },
+      {
+        rating: 9,
+        date: `December 15, 2019`,
+        author: `John Doe`,
+        text: `This is an awesome movie! You should watch it!`
+      }
+    ]
   },
   {
     name: `Alien`,
@@ -167,6 +307,26 @@ export default [
     releaseYear: 1979,
     rating: 8.4,
     votes: 4536,
-    description: `After a space merchant vessel receives an unknown transmission as a distress call, one of the crew is attacked by a mysterious life form and they soon realize that its life cycle has merely begun.`
+    description: `After a space merchant vessel receives an unknown transmission as a distress call, one of the crew is attacked by a mysterious life form and they soon realize that its life cycle has merely begun.`,
+    reviews: [
+      {
+        rating: 9,
+        date: `December 15, 2019`,
+        author: `John Doe`,
+        text: `This is an awesome movie! You should watch it!`
+      },
+      {
+        rating: 9,
+        date: `December 15, 2019`,
+        author: `John Doe`,
+        text: `This is an awesome movie! You should watch it!`
+      },
+      {
+        rating: 9,
+        date: `December 15, 2019`,
+        author: `John Doe`,
+        text: `This is an awesome movie! You should watch it!`
+      }
+    ]
   }
 ];

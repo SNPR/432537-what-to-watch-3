@@ -2,7 +2,6 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import Main from "../main/main.jsx";
-import MovieDetails from "../movie-details/movie-details.jsx";
 import MoviePage from "../movie-page/movie-page.jsx";
 
 class App extends PureComponent {
@@ -10,21 +9,26 @@ class App extends PureComponent {
     super(props);
 
     this.state = {
-      selectedMovieId: null
+      selectedMovie: null
     };
     this.movieCardClickHandler = this.movieCardClickHandler.bind(this);
   }
 
-  movieCardClickHandler(selectedMovieId) {
-    this.setState({selectedMovieId});
+  movieCardClickHandler(selectedMovie) {
+    this.setState({selectedMovie});
   }
 
   _renderApp() {
     const {name, genre, releaseYear, movies} = this.props;
-    const {selectedMovieId} = this.state;
+    const {selectedMovie} = this.state;
 
-    if (selectedMovieId !== null) {
-      return <MoviePage movie={this.props.movies[selectedMovieId]} />;
+    if (selectedMovie !== null) {
+      return (
+        <MoviePage
+          movie={selectedMovie}
+          onMovieCardClick={this.movieCardClickHandler}
+        />
+      );
     }
 
     return (
@@ -45,9 +49,10 @@ class App extends PureComponent {
           <Route exact path="/">
             {this._renderApp()}
           </Route>
-          <Route exact path="/dev-movie-details">
-            <MovieDetails
+          <Route exact path="/dev-movie-page">
+            <MoviePage
               movie={this.props.movies[this.state.selectedMovieId || 0]}
+              onMovieCardClick={this.movieCardClickHandler}
             />
           </Route>
         </Switch>
@@ -72,7 +77,15 @@ App.propTypes = {
         releaseYear: PropTypes.number.isRequired,
         rating: PropTypes.number.isRequired,
         votes: PropTypes.number.isRequired,
-        description: PropTypes.string.isRequired
+        description: PropTypes.string.isRequired,
+        reviews: PropTypes.arrayOf(
+            PropTypes.shape({
+              rating: PropTypes.number.isRequired,
+              date: PropTypes.string.isRequired,
+              author: PropTypes.string.isRequired,
+              text: PropTypes.string.isRequired
+            })
+        ).isRequired
       }).isRequired
   ).isRequired
 };
