@@ -13,11 +13,11 @@ const ActionType = {
 };
 
 const ActionCreator = {
-  changeGenre: (genre) => ({
+  changeGenre: (genre = ALL_GENRES) => ({
     type: ActionType.CHANGE_GENRE,
     payload: genre
   }),
-  filterMoviesByGenre: (genre) => ({
+  filterMoviesByGenre: (genre = ALL_GENRES) => ({
     type: ActionType.FILTER_MOVIES_BY_GENRE,
     payload: genre
   })
