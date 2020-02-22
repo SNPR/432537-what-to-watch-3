@@ -34,8 +34,8 @@ const reducer = (state = initialState, action) => {
       return extend(state, {
         films:
           action.payload === ALL_GENRES
-            ? state.films
-            : state.films.filter((film) => film.genre === action.payload)
+            ? initialState.films
+            : initialState.films.filter((film) => film.genre === action.payload)
       });
   }
 
