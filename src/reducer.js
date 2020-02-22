@@ -9,7 +9,7 @@ const initialState = {
 
 const ActionType = {
   CHANGE_GENRE: `CHANGE_GENRE`,
-  GET_MOVIES_BY_GENRE: `GET_MOVIES_BY_GENRE`
+  FILTER_MOVIES_BY_GENRE: `FILTE_MOVIES_BY_GENRE`
 };
 
 const ActionCreator = {
@@ -17,8 +17,8 @@ const ActionCreator = {
     type: ActionType.CHANGE_GENRE,
     payload: genre
   }),
-  getMoviesByGenre: (genre) => ({
-    type: ActionType.GET_MOVIES_BY_GENRE,
+  filterMoviesByGenre: (genre) => ({
+    type: ActionType.FILTER_MOVIES_BY_GENRE,
     payload: genre
   })
 };
@@ -30,7 +30,7 @@ const reducer = (state = initialState, action) => {
         genre: action.payload
       });
 
-    case ActionType.GET_MOVIES_BY_GENRE:
+    case ActionType.FILTER_MOVIES_BY_GENRE:
       return extend(state, {
         films:
           action.payload === ALL_GENRES
