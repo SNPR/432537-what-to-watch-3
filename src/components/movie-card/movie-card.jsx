@@ -17,16 +17,15 @@ const MovieCard = ({
       onClick={onMovieCardClick}
     >
       <div className="small-movie-card__image">
-        {!isPlaying && (
+        {isPlaying ? (
+          <MoviePlayer movie={movie} muted={true} autoPlay={true} />
+        ) : (
           <img
             src={movie.posterUrl}
             alt={movie.name}
             width="280"
             height="175"
           />
-        )}
-        {isPlaying && (
-          <MoviePlayer movie={movie} muted={true} autoPlay={true} />
         )}
       </div>
       <h3 className="small-movie-card__title">
