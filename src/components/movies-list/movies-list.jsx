@@ -23,8 +23,8 @@ class MoviesList extends PureComponent {
   togglePlay(selectedMovieId) {
     this.playbackTimeout = setTimeout(() => {
       if (this.state.selectedMovieId === selectedMovieId) {
-        this.setState((prevState) => ({
-          isPlaying: !prevState.isPlaying
+        this.setState(() => ({
+          isPlaying: true
         }));
       }
     }, PLAYBACK_DELAY_TIMEOUT);
