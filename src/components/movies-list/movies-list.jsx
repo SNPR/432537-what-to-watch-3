@@ -2,19 +2,46 @@ import React, {PureComponent} from "react";
 import MovieCard from "../movie-card/movie-card.jsx";
 import PropTypes from "prop-types";
 
+const PLAYBACK_DELAY_TIMEOUT = 1000;
+
 class MoviesList extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      selectedMovieId: null
+      selectedMovieId: null,
+      isPlaying: false
     };
 
-    this.movieCardHoverHandler = this.movieCardHoverHandler.bind(this);
+    this.movieCardMouseOverHandler = this.movieCardMouseOverHandler.bind(this);
+    this.movieCardMouseOutHandler = this.movieCardMouseOutHandler.bind(this);
+    this.togglePlay = this.togglePlay.bind(this);
   }
 
-  movieCardHoverHandler(selectedMovieId) {
-    this.setState({selectedMovieId});
+  togglePlay(selectedMovieId) {
+    setTimeout(() => {
+      if (this.state.selectedMovieId === selectedMovieId) {
+        this.setState((prevState) => ({
+          isPlaying: !prevState.isPlaying
+        }));
+      }
+    }, PLAYBACK_DELAY_TIMEOUT);
+  }
+
+  movieCardMouseOverHandler(selectedMovieId) {
+    this.setState(
+        () => ({
+          selectedMovieId
+        }),
+        () => this.togglePlay(selectedMovieId)
+    );
+  }
+
+  movieCardMouseOutHandler() {
+    this.setState(() => ({
+      selectedMovieId: null,
+      isPlaying: false
+    }));
   }
 
   render() {
@@ -27,7 +54,11 @@ class MoviesList extends PureComponent {
             key={movie.name + index}
             movie={movie}
             onMovieCardClick={() => onMovieCardClick(index)}
-            onMovieCardHover={() => this.movieCardHoverHandler(index)}
+            onMovieCardMouseOver={() => this.movieCardMouseOverHandler(index)}
+            onMovieCardMouseOut={this.movieCardMouseOutHandler}
+            isPlaying={
+              this.state.selectedMovieId === index && this.state.isPlaying
+            }
           />
         ))}
       </div>

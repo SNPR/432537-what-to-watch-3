@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render MoviePlayer component 1`] = `
+<video
+  controls={true}
+  muted={true}
+  onClick={[Function]}
+  poster="https://poster-url.com"
+  width="100%"
+>
+  <source
+    src="https://upload.wikimedia.org/wikipedia/commons/d/d2/Frankenstein_trailer_%281931%29.webm"
+  />
+</video>
+`;

@@ -3,6 +3,7 @@ export default [
     name: `The Shawshank Redemption`,
     posterUrl: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkmMH-bEDUS2TmK8amBqgIMgrfzN1_mImChPuMrunA1XjNTSKm`,
     bigPosterUrl: `https://s.yimg.com/uu/api/res/1.2/gHxCDbiivyHYCbyHSE7dDw--~B/aD0xODAwO3c9MjcwMDtzbT0xO2FwcGlkPXl0YWNoeW9u/https://media.zenfs.com/en/entertainment_weekly_785/18f5f9b6612fac1508035825df45fd0e`,
+    trailerUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     director: `Frank Darabont`,
     starring: [
       `Tim Robbins`,
@@ -24,6 +25,7 @@ export default [
     name: `Pulp Fiction`,
     posterUrl: `https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRz_2nKTNlxhVtzbh29kgL3m2ebLv3TlYyzrbyqBtEUxt6mBuZ-`,
     bigPosterUrl: `https://api.time.com/wp-content/uploads/2014/10/pulp-fiction.jpeg`,
+    trailerUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     director: `Quentin Tarantino`,
     starring: [
       `John Travolta`,
@@ -50,6 +52,7 @@ export default [
     name: `Psycho`,
     posterUrl: `https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRicca1uD1bCkKQF3FqdlhTpxRnsetHxLWfQPXU8B1Mt-uqXYHr`,
     bigPosterUrl: `https://i1.wp.com/pic3.zhimg.com/v2-e707f5f5677ae7a1afbc8225301adea8_r.jpg`,
+    trailerUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     director: `Alfred Hitchcock`,
     starring: [
       `Anthony Perkins`,
@@ -70,6 +73,7 @@ export default [
     name: `Parasite`,
     posterUrl: `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLgFST-pqPgU9CcWUDE4xqqgSxB1n7dulszo08FjRyXyCxV8TH`,
     bigPosterUrl: `https://static.rogerebert.com/uploads/review/primary_image/reviews/parasite-movie-review-2019/hero_parasite-movie-review-2019.jpeg`,
+    trailerUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     director: `Bong Joon-ho`,
     starring: [
       `Song Kang-ho`,
@@ -91,6 +95,7 @@ export default [
     name: `The Dark Knight`,
     posterUrl: `https://contentserver.com.au/assets/598411_p173378_p_v8_au.jpg`,
     bigPosterUrl: `https://images.squarespace-cdn.com/content/v1/5639de22e4b066e11bd2e072/1459966649320-S6VOCPI5IMD8WLC503KJ/ke17ZwdGBToddI8pDm48kMRAFB1RodNO9oKzWt0nwcV7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0s1LK8gu64hle203mIYOUnq4WwnXZ2M7HMqaQPPtdKvCCXUkFhmRgkdHdfPSVdZZ2Q/image-asset.jpeg`,
+    trailerUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     director: `Christopher Nolan`,
     starring: [
       `Christian Bale`,
@@ -112,6 +117,7 @@ export default [
     name: `The Matrix`,
     posterUrl: `https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcS4jfQQt_0vCA4XSwGiWkffC32Tv2oajdWhaYHHVYylYGJ3v17Q`,
     bigPosterUrl: `https://img1.looper.com/img/gallery/the-matrix-4-will-reportedly-start-something-big/intro-1576775790.jpg`,
+    trailerUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     director: `The Wachowskis`,
     starring: [
       `Keanu Reeves`,
@@ -131,6 +137,7 @@ export default [
     name: `Saving Private Ryan`,
     posterUrl: `https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR0lDhR_dXAKTm9wysp3nWu6kP0V5skJBVbCNC_Q8urAWcr4iF_`,
     bigPosterUrl: `https://cropper.watch.aetnd.com/cdn.watch.aetnd.com/sites/2/2018/06/Saving-Private-Ryan-494551565.jpg`,
+    trailerUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     director: `Steven Spielberg`,
     starring: [`Tom Hanks`, `Edward Burns`, `Matt Damon`, `Tom Sizemore`],
     runTime: `2h 49m`,
@@ -144,6 +151,7 @@ export default [
     name: `Alien`,
     posterUrl: `https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSKWeplicF676cMRKV8kqkCErnbNxp6Sm2XQyrrjGNpoLp_lrjI`,
     bigPosterUrl: `https://bloody-disgusting.com/wp-content/uploads/2018/10/alien-tv-seies.png`,
+    trailerUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
     director: `Ridley Scott`,
     starring: [
       `Tom Skerritt`,
