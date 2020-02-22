@@ -9,7 +9,7 @@ const initialState = {
 
 const ActionType = {
   CHANGE_GENRE: `CHANGE_GENRE`,
-  FILTER_MOVIES_BY_GENRE: `FILTE_MOVIES_BY_GENRE`
+  FILTER_MOVIES_BY_GENRE: `FILTER_MOVIES_BY_GENRE`
 };
 
 const ActionCreator = {
