@@ -1,6 +1,11 @@
 import React from "react";
 import renderer from "react-test-renderer";
+import {Provider} from "react-redux";
+import configureStore from "redux-mock-store";
 import Main from "./main.jsx";
+import {ALL_GENRES} from "../../utils/constants";
+
+const mockStore = configureStore([]);
 
 const Movie = {
   NAME: `The Godfather`,
@@ -159,15 +164,22 @@ const films = [
 ];
 
 it(`Should render App component`, () => {
+  const store = mockStore({
+    genre: ALL_GENRES,
+    films
+  });
+
   const tree = renderer
     .create(
-        <Main
-          name={Movie.NAME}
-          genre={Movie.GENRE}
-          releaseYear={Movie.RELEASE_YEAR}
-          movies={films}
-          onMovieCardClick={() => {}}
-        />
+        <Provider store={store}>
+          <Main
+            name={Movie.NAME}
+            genre={Movie.GENRE}
+            releaseYear={Movie.RELEASE_YEAR}
+            movies={films}
+            onMovieCardClick={() => {}}
+          />
+        </Provider>
     )
     .toJSON();
 
