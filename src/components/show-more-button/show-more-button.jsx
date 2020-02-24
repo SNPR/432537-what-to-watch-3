@@ -56,4 +56,5 @@ ShowMoreButton.propTypes = {
   showedMovies: PropTypes.number.isRequired
 };
 
+export {ShowMoreButton};
 export default connect(mapStateToProps, mapDispatchToProps)(ShowMoreButton);
