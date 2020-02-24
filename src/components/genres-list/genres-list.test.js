@@ -3,6 +3,8 @@ import renderer from "react-test-renderer";
 import {GenresList} from "./genres-list.jsx";
 import {ALL_GENRES} from "../../utils/constants";
 
+const SHOWED_MOVIES_DEFAULT = 8;
+
 const films = [
   {
     name: `Movie name`,
@@ -163,6 +165,8 @@ it(`Should render GenresList component`, () => {
           changeGenre={() => {}}
           filterMoviesByGenre={() => {}}
           onMovieCardClick={() => {}}
+          showedMovies={SHOWED_MOVIES_DEFAULT}
+          resetShowedMoviesAmount={() => {}}
         />
     )
     .toJSON();
