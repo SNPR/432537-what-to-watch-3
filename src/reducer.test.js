@@ -2,9 +2,12 @@ import {reducer, ActionCreator, ActionType} from "./reducer.js";
 import {ALL_GENRES} from "./utils/constants";
 import films from "./mocks/films";
 
+const SHOWED_MOVIES_DEFAULT = 8;
+
 const initialState = {
   genre: ALL_GENRES,
-  films
+  films,
+  showedMovies: SHOWED_MOVIES_DEFAULT
 };
 
 it(`Reducer without additional parameters should return initial state`, () => {
@@ -33,6 +36,30 @@ it(`Reducer should change genre`, () => {
           }
       )
   ).toEqual({genre: `Crime`});
+});
+
+it(`Reducer should increase and reset showed movies counter`, () => {
+  expect(
+      reducer(
+          {showedMovies: SHOWED_MOVIES_DEFAULT},
+          {
+            type: ActionType.SHOW_MORE_MOVIES
+          }
+      )
+  ).toEqual({
+    showedMovies: 16
+  });
+
+  expect(
+      reducer(
+          {showedMovies: 1},
+          {
+            type: ActionType.RESET_SHOWED_MOVIES_AMOUNT
+          }
+      )
+  ).toEqual({
+    showedMovies: SHOWED_MOVIES_DEFAULT
+  });
 });
 
 describe(`Action creators work correctly`, () => {
