@@ -1,6 +1,11 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import App from "./app.jsx";
+import {Provider} from "react-redux";
+import configureStore from "redux-mock-store";
+import {ALL_GENRES} from "../../utils/constants";
+
+const mockStore = configureStore([]);
 
 const Movie = {
   NAME: `Logan`,
@@ -159,14 +164,21 @@ const films = [
 ];
 
 it(`Should render App component`, () => {
+  const store = mockStore({
+    genre: ALL_GENRES,
+    films
+  });
+
   const tree = renderer
     .create(
-        <App
-          name={Movie.NAME}
-          genre={Movie.GENRE}
-          releaseYear={Movie.RELEASE_YEAR}
-          movies={films}
-        />
+        <Provider store={store}>
+          <App
+            name={Movie.NAME}
+            genre={Movie.GENRE}
+            releaseYear={Movie.RELEASE_YEAR}
+            movies={films}
+          />
+        </Provider>
     )
     .toJSON();
 

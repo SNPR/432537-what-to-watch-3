@@ -1,17 +1,12 @@
 import React from "react";
-import renderer from "react-test-renderer";
-import {Provider} from "react-redux";
-import configureStore from "redux-mock-store";
-import Main from "./main.jsx";
+import Enzyme, {mount} from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
+import {GenresList} from "./genres-list.jsx";
 import {ALL_GENRES} from "../../utils/constants";
 
-const mockStore = configureStore([]);
-
-const Movie = {
-  NAME: `The Godfather`,
-  GENRE: `Drama`,
-  RELEASE_YEAR: 1972
-};
+Enzyme.configure({
+  adapter: new Adapter()
+});
 
 const films = [
   {
@@ -163,25 +158,24 @@ const films = [
   }
 ];
 
-it(`Should render App component`, () => {
-  const store = mockStore({
-    genre: ALL_GENRES,
-    films
-  });
+it(`Should call handler on genre link click`, () => {
+  const changeGenreHandler = jest.fn();
+  const movieCardClickHandler = jest.fn();
 
-  const tree = renderer
-    .create(
-        <Provider store={store}>
-          <Main
-            name={Movie.NAME}
-            genre={Movie.GENRE}
-            releaseYear={Movie.RELEASE_YEAR}
-            movies={films}
-            onMovieCardClick={() => {}}
-          />
-        </Provider>
-    )
-    .toJSON();
+  const genresList = mount(
+      <GenresList
+        movies={films}
+        genre={ALL_GENRES}
+        changeGenre={changeGenreHandler}
+        onMovieCardClick={movieCardClickHandler}
+      />
+  );
 
-  expect(tree).toMatchSnapshot();
+  const genreLink = genresList.find(`a.catalog__genres-link`).first();
+
+  genreLink.simulate(`click`);
+
+  expect(changeGenreHandler.mock.calls.length).toBe(1);
+
+  expect(changeGenreHandler.mock.calls[0][0]).toBe(ALL_GENRES);
 });
