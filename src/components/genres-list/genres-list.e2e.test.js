@@ -158,7 +158,7 @@ const films = [
   }
 ];
 
-it(`Should call two hanlers on genre link click`, () => {
+it(`Should call two handlers on genre link click`, () => {
   const changeGenreHandler = jest.fn();
   const filterMoviesByGenreHandler = jest.fn();
   const movieCardClickHandler = jest.fn();
