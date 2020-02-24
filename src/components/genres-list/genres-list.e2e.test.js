@@ -158,9 +158,8 @@ const films = [
   }
 ];
 
-it(`Should call two handlers on genre link click`, () => {
+it(`Should call handler on genre link click`, () => {
   const changeGenreHandler = jest.fn();
-  const filterMoviesByGenreHandler = jest.fn();
   const movieCardClickHandler = jest.fn();
 
   const genresList = mount(
@@ -168,18 +167,15 @@ it(`Should call two handlers on genre link click`, () => {
         movies={films}
         genre={ALL_GENRES}
         changeGenre={changeGenreHandler}
-        filterMoviesByGenre={filterMoviesByGenreHandler}
         onMovieCardClick={movieCardClickHandler}
       />
   );
 
-  const genreLink = genresList.find(`li.catalog__genres-item`).first();
+  const genreLink = genresList.find(`a.catalog__genres-link`).first();
 
   genreLink.simulate(`click`);
 
   expect(changeGenreHandler.mock.calls.length).toBe(1);
-  expect(filterMoviesByGenreHandler.mock.calls.length).toBe(1);
 
   expect(changeGenreHandler.mock.calls[0][0]).toBe(ALL_GENRES);
-  expect(filterMoviesByGenreHandler.mock.calls[0][0]).toBe(ALL_GENRES);
 });

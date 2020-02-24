@@ -8,57 +8,47 @@ import MoviesList from "../movies-list/movies-list.jsx";
 class GenresList extends PureComponent {
   constructor(props) {
     super(props);
-
-    this.state = {
-      genres: []
-    };
   }
 
   getGenresList(movies) {
     return [ALL_GENRES, ...new Set(movies.map((movie) => movie.genre))];
   }
 
-  componentDidMount() {
-    this.props.filterMoviesByGenre(this.props.genre);
-    this.props.changeGenre(this.props.genre);
-    this.setState(() => ({genres: this.getGenresList(this.props.movies)}));
+  getMoviesByGenre(genre, movies) {
+    return genre === ALL_GENRES
+      ? movies
+      : movies.filter((movie) => movie.genre === genre);
   }
 
   render() {
-    const {
-      movies,
-      genre,
-      changeGenre,
-      filterMoviesByGenre,
-      onMovieCardClick
-    } = this.props;
+    const {movies, genre, changeGenre, onMovieCardClick} = this.props;
 
     return (
       <>
         <ul className="catalog__genres-list">
-          {(this.state.genres || this.getGenresList(movies)).map(
-              (availableGenre, index) => (
-                <li
-                  className={`catalog__genres-item ${
-                    genre === availableGenre ? `catalog__genres-item--active` : ``
-                  }`}
-                  key={availableGenre + index}
-                >
-                  <a
-                    className="catalog__genres-link"
-                    onClick={() => {
-                      changeGenre(availableGenre);
-                      filterMoviesByGenre(availableGenre);
-                    }}
-                  >
-                    {availableGenre}
-                  </a>
-                </li>
-              )
-          )}
+          {this.getGenresList(movies).map((availableGenre, index) => (
+            <li
+              className={`catalog__genres-item ${
+                genre === availableGenre ? `catalog__genres-item--active` : ``
+              }`}
+              key={availableGenre + index}
+            >
+              <a
+                className="catalog__genres-link"
+                onClick={() => {
+                  changeGenre(availableGenre);
+                }}
+              >
+                {availableGenre}
+              </a>
+            </li>
+          ))}
         </ul>
 
-        <MoviesList movies={movies} onMovieCardClick={onMovieCardClick} />
+        <MoviesList
+          movies={this.getMoviesByGenre(genre, movies)}
+          onMovieCardClick={onMovieCardClick}
+        />
       </>
     );
   }
@@ -72,9 +62,6 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   changeGenre(genre) {
     dispatch(ActionCreator.changeGenre(genre));
-  },
-  filterMoviesByGenre(genre) {
-    dispatch(ActionCreator.filterMoviesByGenre(genre));
   }
 });
 
@@ -104,7 +91,6 @@ GenresList.propTypes = {
   ).isRequired,
   genre: PropTypes.string.isRequired,
   changeGenre: PropTypes.func.isRequired,
-  filterMoviesByGenre: PropTypes.func.isRequired,
   onMovieCardClick: PropTypes.func.isRequired
 };
 
