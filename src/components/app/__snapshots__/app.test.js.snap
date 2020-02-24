@@ -207,14 +207,6 @@ Array [
             Movie Genre
           </a>
         </li>
-        <li
-          className="catalog__genres-item "
-        >
-          <a
-            className="catalog__genres-link"
-            onClick={[Function]}
-          />
-        </li>
       </ul>
       <div
         className="catalog__movies-list"
