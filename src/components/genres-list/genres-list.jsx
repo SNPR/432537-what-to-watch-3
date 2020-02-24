@@ -15,7 +15,7 @@ class GenresList extends PureComponent {
   }
 
   getGenresList(movies) {
-    return [ALL_GENRES, ...new Set([...movies.map((movie) => movie.genre)])];
+    return [ALL_GENRES, ...new Set(movies.map((movie) => movie.genre))];
   }
 
   componentDidMount() {
