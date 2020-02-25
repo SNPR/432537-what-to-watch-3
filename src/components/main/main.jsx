@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import GenresList from "../genres-list/genres-list.jsx";
+import ShowMoreButton from "../show-more-button/show-more-button.jsx";
 
 const Main = ({name, genre, releaseYear, onMovieCardClick}) => {
   return (
@@ -99,11 +100,7 @@ const Main = ({name, genre, releaseYear, onMovieCardClick}) => {
 
           <GenresList onMovieCardClick={onMovieCardClick} />
 
-          <div className="catalog__more">
-            <button className="catalog__button" type="button">
-              Show more
-            </button>
-          </div>
+          <ShowMoreButton />
         </section>
       </div>
     </>

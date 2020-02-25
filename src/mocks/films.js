@@ -328,5 +328,121 @@ export default [
         text: `This is an awesome movie! You should watch it!`
       }
     ]
+  },
+  {
+    name: `The Matrix`,
+    posterUrl: `https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcS4jfQQt_0vCA4XSwGiWkffC32Tv2oajdWhaYHHVYylYGJ3v17Q`,
+    bigPosterUrl: `https://img1.looper.com/img/gallery/the-matrix-4-will-reportedly-start-something-big/intro-1576775790.jpg`,
+    trailerUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    director: `The Wachowskis`,
+    starring: [
+      `Keanu Reeves`,
+      `Laurence Fishburne`,
+      `Carrie-Anne Moss`,
+      `Hugo Weaving`,
+      `Joe Pantoliano`
+    ],
+    runTime: `2h 16m`,
+    genre: `Action`,
+    releaseYear: 1999,
+    rating: 8.7,
+    votes: 5472,
+    description: `A computer hacker learns from mysterious rebels about the true nature of his reality and his role in the war against its controllers.`,
+    reviews: [
+      {
+        rating: 9,
+        date: `December 15, 2019`,
+        author: `John Doe`,
+        text: `This is an awesome movie! You should watch it!`
+      },
+      {
+        rating: 9,
+        date: `December 15, 2019`,
+        author: `John Doe`,
+        text: `This is an awesome movie! You should watch it!`
+      },
+      {
+        rating: 9,
+        date: `December 15, 2019`,
+        author: `John Doe`,
+        text: `This is an awesome movie! You should watch it!`
+      }
+    ]
+  },
+  {
+    name: `Saving Private Ryan`,
+    posterUrl: `https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR0lDhR_dXAKTm9wysp3nWu6kP0V5skJBVbCNC_Q8urAWcr4iF_`,
+    bigPosterUrl: `https://cropper.watch.aetnd.com/cdn.watch.aetnd.com/sites/2/2018/06/Saving-Private-Ryan-494551565.jpg`,
+    trailerUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    director: `Steven Spielberg`,
+    starring: [`Tom Hanks`, `Edward Burns`, `Matt Damon`, `Tom Sizemore`],
+    runTime: `2h 49m`,
+    genre: `Drama`,
+    releaseYear: 1998,
+    rating: 8.6,
+    votes: 4536,
+    description: `Following the Normandy Landings, a group of U.S. soldiers go behind enemy lines to retrieve a paratrooper whose brothers have been killed in action.`,
+    reviews: [
+      {
+        rating: 9,
+        date: `December 15, 2019`,
+        author: `John Doe`,
+        text: `This is an awesome movie! You should watch it!`
+      },
+      {
+        rating: 9,
+        date: `December 15, 2019`,
+        author: `John Doe`,
+        text: `This is an awesome movie! You should watch it!`
+      },
+      {
+        rating: 9,
+        date: `December 15, 2019`,
+        author: `John Doe`,
+        text: `This is an awesome movie! You should watch it!`
+      }
+    ]
+  },
+  {
+    name: `Alien`,
+    posterUrl: `https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSKWeplicF676cMRKV8kqkCErnbNxp6Sm2XQyrrjGNpoLp_lrjI`,
+    bigPosterUrl: `https://bloody-disgusting.com/wp-content/uploads/2018/10/alien-tv-seies.png`,
+    trailerUrl: `https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm`,
+    director: `Ridley Scott`,
+    starring: [
+      `Tom Skerritt`,
+      `Sigourney Weaver`,
+      `Veronica Cartwright`,
+      `Harry Dean Stanton`,
+      `John Hurt`,
+      `Ian Holm`,
+      `Yaphet Kotto`
+    ],
+    runTime: `2h 34m`,
+    genre: `Horror`,
+    releaseYear: 1979,
+    rating: 8.4,
+    votes: 4536,
+    description: `After a space merchant vessel receives an unknown transmission as a distress call, one of the crew is attacked by a mysterious life form and they soon realize that its life cycle has merely begun.`,
+    reviews: [
+      {
+        rating: 9,
+        date: `December 15, 2019`,
+        author: `John Doe`,
+        text: `This is an awesome movie! You should watch it!`
+      },
+      {
+        rating: 9,
+        date: `December 15, 2019`,
+        author: `John Doe`,
+        text: `This is an awesome movie! You should watch it!`
+      },
+      {
+        rating: 9,
+        date: `December 15, 2019`,
+        author: `John Doe`,
+        text: `This is an awesome movie! You should watch it!`
+      }
+    ]
   }
 ];

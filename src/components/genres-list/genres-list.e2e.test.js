@@ -4,6 +4,8 @@ import Adapter from "enzyme-adapter-react-16";
 import {GenresList} from "./genres-list.jsx";
 import {ALL_GENRES} from "../../utils/constants";
 
+const SHOWED_MOVIES_DEFAULT = 8;
+
 Enzyme.configure({
   adapter: new Adapter()
 });
@@ -161,6 +163,7 @@ const films = [
 it(`Should call handler on genre link click`, () => {
   const changeGenreHandler = jest.fn();
   const movieCardClickHandler = jest.fn();
+  const resetShowedMoviesAmountHandler = jest.fn();
 
   const genresList = mount(
       <GenresList
@@ -168,6 +171,8 @@ it(`Should call handler on genre link click`, () => {
         genre={ALL_GENRES}
         changeGenre={changeGenreHandler}
         onMovieCardClick={movieCardClickHandler}
+        showedMovies={SHOWED_MOVIES_DEFAULT}
+        resetShowedMoviesAmount={resetShowedMoviesAmountHandler}
       />
   );
 
@@ -176,6 +181,6 @@ it(`Should call handler on genre link click`, () => {
   genreLink.simulate(`click`);
 
   expect(changeGenreHandler.mock.calls.length).toBe(1);
-
   expect(changeGenreHandler.mock.calls[0][0]).toBe(ALL_GENRES);
+  expect(resetShowedMoviesAmountHandler.mock.calls.length).toBe(1);
 });

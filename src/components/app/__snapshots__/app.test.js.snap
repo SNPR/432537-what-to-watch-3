@@ -400,16 +400,33 @@ Array [
             </a>
           </h3>
         </article>
-      </div>
-      <div
-        className="catalog__more"
-      >
-        <button
-          className="catalog__button"
-          type="button"
+        <article
+          className="small-movie-card catalog__movies-card"
+          onClick={[Function]}
+          onMouseOut={[Function]}
+          onMouseOver={[Function]}
         >
-          Show more
-        </button>
+          <div
+            className="small-movie-card__image"
+          >
+            <img
+              alt="Movie name"
+              height="175"
+              src="https://poster-url.com"
+              width="280"
+            />
+          </div>
+          <h3
+            className="small-movie-card__title"
+          >
+            <a
+              className="small-movie-card__link"
+              href="#"
+            >
+              Movie name
+            </a>
+          </h3>
+        </article>
       </div>
     </section>
   </div>,
