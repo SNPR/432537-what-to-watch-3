@@ -6,6 +6,8 @@ import configureStore from "redux-mock-store";
 import Main from "./main.jsx";
 import {ALL_GENRES} from "../../utils/constants";
 
+const SHOWED_MOVIES_DEFAULT = 8;
+
 const mockStore = configureStore([]);
 
 Enzyme.configure({
@@ -192,7 +194,8 @@ const films = [
 it(`Should movie card be pressed`, () => {
   const store = mockStore({
     genre: ALL_GENRES,
-    films
+    films,
+    showedMovies: SHOWED_MOVIES_DEFAULT
   });
 
   const movieCardClickHandler = jest.fn();

@@ -7,6 +7,8 @@ import {ALL_GENRES} from "../../utils/constants";
 
 const mockStore = configureStore([]);
 
+const SHOWED_MOVIES_DEFAULT = 8;
+
 const Movie = {
   NAME: `Logan`,
   GENRE: `Action`,
@@ -187,7 +189,8 @@ const films = [
 it(`Should render App component`, () => {
   const store = mockStore({
     genre: ALL_GENRES,
-    films
+    films,
+    showedMovies: SHOWED_MOVIES_DEFAULT
   });
 
   const tree = renderer
