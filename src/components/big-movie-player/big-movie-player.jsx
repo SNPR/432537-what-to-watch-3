@@ -52,6 +52,11 @@ class BigMoviePlayer extends PureComponent {
         videoDuration: Math.floor(video.duration)
       });
     };
+
+    video.ontimeupdate = () =>
+      this.setState({
+        currentTime: Math.floor(video.currentTime)
+      });
   }
 
   render() {
