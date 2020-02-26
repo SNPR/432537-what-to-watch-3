@@ -182,7 +182,13 @@ it(`Should pass data to handler on click`, () => {
   const movieCardClickHandler = jest.fn();
 
   const moviesList = mount(
-      <MoviesList movies={films} onMovieCardClick={movieCardClickHandler} />
+      <MoviesList
+        movies={films}
+        onMovieCardClick={movieCardClickHandler}
+        onMovieCardMouseOver={() => {}}
+        onMovieCardMouseOut={() => {}}
+        isPlaying={false}
+      />
   );
 
   const movieCard = moviesList
