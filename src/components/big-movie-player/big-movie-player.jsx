@@ -9,7 +9,9 @@ class BigMoviePlayer extends PureComponent {
 
     this.state = {
       isPlaying: false,
-      isFullscreen: false
+      isFullscreen: false,
+      videoDuration: 0,
+      currentTime: 0
     };
 
     this.handleVideoPlay = this.handleVideoPlay.bind(this);
@@ -35,8 +37,21 @@ class BigMoviePlayer extends PureComponent {
     this.setState({isFullscreen: true});
   }
 
+  setCurrentTime() {
+    const video = this._videoRef.current;
+
+    this.setState({currentTime: Math.floor(video.currentTime)});
+  }
+
   componentDidMount() {
-    this.setState({isPlaying: this.props.autoPlay});
+    const video = this._videoRef.current;
+
+    video.onloadedmetadata = () => {
+      this.setState({
+        isPlaying: this.props.autoPlay,
+        videoDuration: Math.floor(video.duration)
+      });
+    };
   }
 
   render() {
@@ -68,11 +83,15 @@ class BigMoviePlayer extends PureComponent {
                 Toggler
               </div>
             </div>
-            <div className="player__time-value">1:30:29</div>
+            <div className="player__time-value">{this.state.videoDuration}</div>
           </div>
 
           <div className="player__controls-row">
-            <button type="button" className="player__play">
+            <button
+              type="button"
+              className="player__play"
+              onClick={this.handleVideoPlay}
+            >
               {this.state.isPlaying ? (
                 <>
                   <svg viewBox="0 0 14 21" width="14" height="21">
