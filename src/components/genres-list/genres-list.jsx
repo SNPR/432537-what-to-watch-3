@@ -4,6 +4,9 @@ import PropTypes from "prop-types";
 import {ALL_GENRES} from "../../utils/constants.js";
 import {ActionCreator} from "../../reducer.js";
 import MoviesList from "../movies-list/movies-list.jsx";
+import withActiveMovieCard from "../../hocs/with-active-movie-card/with-active-movie-card.jsx";
+
+const MoviesListWrapped = withActiveMovieCard(MoviesList);
 
 class GenresList extends PureComponent {
   constructor(props) {
@@ -54,7 +57,7 @@ class GenresList extends PureComponent {
           ))}
         </ul>
 
-        <MoviesList
+        <MoviesListWrapped
           movies={this.getMoviesByGenre(genre, movies)}
           onMovieCardClick={onMovieCardClick}
         />

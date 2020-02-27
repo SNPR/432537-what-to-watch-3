@@ -1,6 +1,9 @@
 import React from "react";
 import MoviesList from "../movies-list/movies-list.jsx";
 import PropTypes from "prop-types";
+import withActiveMovieCard from "../../hocs/with-active-movie-card/with-active-movie-card.jsx";
+
+const MoviesListWrapped = withActiveMovieCard(MoviesList);
 
 const getSimilarMovies = (movies, movie) => {
   return movies.filter(
@@ -11,7 +14,7 @@ const getSimilarMovies = (movies, movie) => {
 
 const SimilarMovies = ({movies, movie, onMovieCardClick}) => {
   return (
-    <MoviesList
+    <MoviesListWrapped
       movies={getSimilarMovies(movies, movie)}
       onMovieCardClick={onMovieCardClick}
     />

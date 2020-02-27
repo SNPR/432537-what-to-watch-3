@@ -1,11 +1,12 @@
 import React from "react";
-import Enzyme, {mount} from "enzyme";
+import {configure, shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import MoviesList from "./movies-list.jsx";
+import withActiveMovieCard from "./with-active-movie-card.jsx";
 
-Enzyme.configure({
-  adapter: new Adapter()
-});
+configure({adapter: new Adapter()});
+
+const MockComponent = () => <div />;
+const MockComponentWrapped = withActiveMovieCard(MockComponent);
 
 const films = [
   {
@@ -178,25 +179,16 @@ const films = [
   }
 ];
 
-it(`Should pass data to handler on click`, () => {
-  const movieCardClickHandler = jest.fn();
-
-  const moviesList = mount(
-      <MoviesList
-        movies={films}
-        onMovieCardClick={movieCardClickHandler}
-        onMovieCardMouseOver={() => {}}
-        onMovieCardMouseOut={() => {}}
-        isPlaying={false}
-      />
+it(`Should change selected movie ID on mouseover/mouseout`, () => {
+  const wrapper = shallow(
+      <MockComponentWrapped movies={films} onMovieCardClick={() => {}} />
   );
 
-  const movieCard = moviesList
-    .find(`article.small-movie-card.catalog__movies-card`)
-    .first();
+  expect(wrapper.props().selectedMovieId).toEqual(null);
 
-  movieCard.simulate(`click`);
+  wrapper.props().onMovieCardMouseOver(0);
+  expect(wrapper.props().selectedMovieId).toEqual(0);
 
-  expect(movieCardClickHandler.mock.calls.length).toBe(1);
-  expect(movieCardClickHandler.mock.calls[0][0]).toMatchObject(films[0]);
+  wrapper.props().onMovieCardMouseOut();
+  expect(wrapper.props().selectedMovieId).toEqual(null);
 });

@@ -175,7 +175,15 @@ const films = [
 
 it(`Should render MoviesList component`, () => {
   const tree = renderer
-    .create(<MoviesList movies={films} onMovieCardClick={() => {}} />)
+    .create(
+        <MoviesList
+          movies={films}
+          onMovieCardClick={() => {}}
+          onMovieCardMouseOver={() => {}}
+          onMovieCardMouseOut={() => {}}
+          isPlaying={false}
+        />
+    )
     .toJSON();
 
   expect(tree).toMatchSnapshot();
