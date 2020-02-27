@@ -89,7 +89,9 @@ class BigMoviePlayer extends PureComponent {
                 Toggler
               </div>
             </div>
-            <div className="player__time-value">{this.state.videoDuration}</div>
+            <div className="player__time-value">
+              {this.state.videoDuration - this.state.currentTime}
+            </div>
           </div>
 
           <div className="player__controls-row">
