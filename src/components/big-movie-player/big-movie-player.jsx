@@ -59,6 +59,7 @@ class BigMoviePlayer extends PureComponent {
 
   render() {
     const {movie, muted, autoPlay} = this.props;
+    const {videoDuration, currentTime, isPlaying} = this.state;
 
     return (
       <div className="player">
@@ -94,7 +95,7 @@ class BigMoviePlayer extends PureComponent {
               </div>
             </div>
             <div className="player__time-value">
-              {this.state.videoDuration - this.state.currentTime}
+              {videoDuration - currentTime}
             </div>
           </div>
 
@@ -104,7 +105,7 @@ class BigMoviePlayer extends PureComponent {
               className="player__play"
               onClick={this.handleVideoPlay}
             >
-              {this.state.isPlaying ? (
+              {isPlaying ? (
                 <>
                   <svg viewBox="0 0 14 21" width="14" height="21">
                     <use xlinkHref="#pause"></use>
