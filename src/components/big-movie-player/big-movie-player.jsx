@@ -126,7 +126,8 @@ BigMoviePlayer.propTypes = {
   videoRef: PropTypes.oneOfType([
     PropTypes.func,
     PropTypes.shape({current: PropTypes.instanceOf(Element)})
-  ]).isRequired
+  ]).isRequired,
+  onExitButtonClick: PropTypes.func.isRequired
 };
 
 export default BigMoviePlayer;
