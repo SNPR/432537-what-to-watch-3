@@ -7,6 +7,7 @@ import BigMoviePlayer from "../big-movie-player/big-movie-player.jsx";
 import films from "../../mocks/films";
 
 const BigMoviePlayerWrapped = withPlayer(BigMoviePlayer);
+
 const MoviePage = ({
   movie,
   onMovieCardClick,

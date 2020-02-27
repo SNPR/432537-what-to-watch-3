@@ -43,6 +43,7 @@ class App extends PureComponent {
 
     return (
       <Main
+        movie={selectedMovie || movies[0]}
         name={name}
         genre={genre}
         releaseYear={releaseYear}
