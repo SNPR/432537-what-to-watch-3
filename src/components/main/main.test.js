@@ -201,6 +201,9 @@ it(`Should render Main component`, () => {
             releaseYear={Movie.RELEASE_YEAR}
             movies={films}
             onMovieCardClick={() => {}}
+            movie={films[0]}
+            isBigMoviePlayerVisible={false}
+            onVisibilityChange={() => {}}
           />
         </Provider>
     )

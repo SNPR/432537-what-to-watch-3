@@ -26,7 +26,14 @@ const movie = {
 
 it(`Should render MovieDetails component`, () => {
   const tree = renderer
-    .create(<MoviePage movie={movie} onMovieCardClick={() => {}} />)
+    .create(
+        <MoviePage
+          movie={movie}
+          onMovieCardClick={() => {}}
+          isBigMoviePlayerVisible={false}
+          onVisibilityChange={() => {}}
+        />
+    )
     .toJSON();
 
   expect(tree).toMatchSnapshot();
