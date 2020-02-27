@@ -3,31 +3,40 @@ import PropTypes from "prop-types";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import Main from "../main/main.jsx";
 import MoviePage from "../movie-page/movie-page.jsx";
-import BigMoviePlayer from "../big-movie-player/big-movie-player.jsx";
 
 class App extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      selectedMovie: null
+      selectedMovie: null,
+      isBigMoviePlayerVisible: false
     };
     this.movieCardClickHandler = this.movieCardClickHandler.bind(this);
+    this.handleVisibility = this.handleVisibility.bind(this);
   }
 
   movieCardClickHandler(selectedMovie) {
     this.setState({selectedMovie});
   }
 
+  handleVisibility() {
+    this.setState({
+      isBigMoviePlayerVisible: !this.state.isBigMoviePlayerVisible
+    });
+  }
+
   _renderApp() {
     const {name, genre, releaseYear, movies} = this.props;
-    const {selectedMovie} = this.state;
+    const {selectedMovie, isBigMoviePlayerVisible} = this.state;
 
     if (selectedMovie !== null) {
       return (
         <MoviePage
           movie={selectedMovie}
           onMovieCardClick={this.movieCardClickHandler}
+          isBigMoviePlayerVisible={isBigMoviePlayerVisible}
+          onVisibilityChange={this.handleVisibility}
         />
       );
     }
@@ -39,6 +48,8 @@ class App extends PureComponent {
         releaseYear={releaseYear}
         movies={movies}
         onMovieCardClick={this.movieCardClickHandler}
+        isBigMoviePlayerVisible={isBigMoviePlayerVisible}
+        onVisibilityChange={this.handleVisibility}
       />
     );
   }

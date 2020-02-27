@@ -10,7 +10,8 @@ const BigMoviePlayer = ({
   videoRef,
   muted,
   autoPlay,
-  movie
+  movie,
+  onExitButtonClick
 }) => {
   return (
     <div className="player">
@@ -26,7 +27,11 @@ const BigMoviePlayer = ({
         <source src={movie.trailerUrl} />
       </video>
 
-      <button type="button" className="player__exit">
+      <button
+        type="button"
+        className="player__exit"
+        onClick={onExitButtonClick}
+      >
         Exit
       </button>
 

@@ -134,7 +134,9 @@ Main.propTypes = {
         ).isRequired
       }).isRequired
   ).isRequired,
-  onMovieCardClick: PropTypes.func.isRequired
+  onMovieCardClick: PropTypes.func.isRequired,
+  isBigMoviePlayerVisible: PropTypes.bool.isRequired,
+  onVisibilityChange: PropTypes.func.isRequired
 };
 
 export default Main;

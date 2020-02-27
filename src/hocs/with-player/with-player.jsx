@@ -64,6 +64,7 @@ const withPlayer = (Component) => {
     }
 
     render() {
+      const {onExitButtonClick} = this.props;
       const {isPlaying} = this.state;
 
       return (
@@ -75,6 +76,7 @@ const withPlayer = (Component) => {
           getPlaybackProgress={this.getPlaybackProgress}
           getElapsedTime={this.getElapsedTime}
           videoRef={this._videoRef}
+          onExitButtonClick={onExitButtonClick}
         />
       );
     }
@@ -104,7 +106,8 @@ const withPlayer = (Component) => {
       ).isRequired
     }).isRequired,
     muted: PropTypes.bool.isRequired,
-    autoPlay: PropTypes.bool.isRequired
+    autoPlay: PropTypes.bool.isRequired,
+    onExitButtonClick: PropTypes.func.isRequired
   };
 
   return WithPlayer;
