@@ -1,5 +1,6 @@
 import React, {PureComponent, createRef} from "react";
 import PropTypes from "prop-types";
+import {toHHMMSS} from "../../utils/utils.js";
 
 class BigMoviePlayer extends PureComponent {
   constructor(props) {
@@ -37,6 +38,10 @@ class BigMoviePlayer extends PureComponent {
 
   getPlaybackProgress() {
     return (this.state.currentTime / this.state.videoDuration) * 100;
+  }
+
+  getElapsedTime() {
+    return toHHMMSS(this.state.videoDuration - this.state.currentTime);
   }
 
   componentDidMount() {
@@ -92,9 +97,7 @@ class BigMoviePlayer extends PureComponent {
                 Toggler
               </div>
             </div>
-            <div className="player__time-value">
-              {videoDuration - currentTime}
-            </div>
+            <div className="player__time-value">{this.getElapsedTime()}</div>
           </div>
 
           <div className="player__controls-row">
