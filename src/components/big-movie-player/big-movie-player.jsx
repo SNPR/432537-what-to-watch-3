@@ -62,7 +62,7 @@ class BigMoviePlayer extends PureComponent {
 
   render() {
     const {movie, muted, autoPlay} = this.props;
-    const {videoDuration, currentTime, isPlaying} = this.state;
+    const {isPlaying} = this.state;
 
     return (
       <div className="player">
