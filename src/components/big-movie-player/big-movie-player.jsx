@@ -9,7 +9,6 @@ class BigMoviePlayer extends PureComponent {
 
     this.state = {
       isPlaying: false,
-      isFullscreen: false,
       videoDuration: 0,
       currentTime: 0
     };
@@ -34,7 +33,6 @@ class BigMoviePlayer extends PureComponent {
     const video = this._videoRef.current;
 
     video.requestFullscreen();
-    this.setState({isFullscreen: true});
   }
 
   getPlaybackProgress() {
