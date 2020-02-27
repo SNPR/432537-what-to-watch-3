@@ -37,6 +37,10 @@ class BigMoviePlayer extends PureComponent {
     this.setState({isFullscreen: true});
   }
 
+  getPlaybackProgress() {
+    return (this.state.currentTime / this.state.videoDuration) * 100;
+  }
+
   componentDidMount() {
     const video = this._videoRef.current;
 
@@ -79,12 +83,12 @@ class BigMoviePlayer extends PureComponent {
             <div className="player__time">
               <progress
                 className="player__progress"
-                value={this.state.currentTime}
+                value={this.getPlaybackProgress()}
                 max="100"
               />
               <div
                 className="player__toggler"
-                style={{left: `${this.state.currentTime}%`}}
+                style={{left: `${this.getPlaybackProgress()}%`}}
               >
                 Toggler
               </div>
