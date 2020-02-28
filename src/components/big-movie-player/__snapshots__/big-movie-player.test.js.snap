@@ -9,6 +9,8 @@ exports[`Should render BigMoviePlayer component 1`] = `
     className="player__video"
     muted={true}
     onClick={[Function]}
+    onLoadedMetadata={[Function]}
+    onTimeUpdate={[Function]}
     poster="https://image-url.com/1.jpg"
     width="100%"
   >

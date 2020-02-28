@@ -40,6 +40,8 @@ it(`Should render BigMoviePlayer component`, () => {
           onPlayButtonClick={() => {}}
           onFullscreenButtonClick={() => {}}
           onExitButtonClick={() => {}}
+          onLoadedMetadata={() => {}}
+          onTimeUpdate={() => {}}
           videoRef={React.createRef()}
         />
     )
