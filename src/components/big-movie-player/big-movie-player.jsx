@@ -11,7 +11,9 @@ const BigMoviePlayer = ({
   muted,
   autoPlay,
   movie,
-  onExitButtonClick
+  onExitButtonClick,
+  onLoadedMetadata,
+  onTimeUpdate
 }) => {
   return (
     <div className="player">
@@ -23,6 +25,8 @@ const BigMoviePlayer = ({
         autoPlay={autoPlay}
         onClick={onPlayButtonClick}
         className="player__video"
+        onLoadedMetadata={onLoadedMetadata}
+        onTimeUpdate={onTimeUpdate}
       >
         <source src={movie.trailerUrl} />
       </video>
@@ -127,7 +131,9 @@ BigMoviePlayer.propTypes = {
     PropTypes.func,
     PropTypes.shape({current: PropTypes.instanceOf(Element)})
   ]).isRequired,
-  onExitButtonClick: PropTypes.func.isRequired
+  onExitButtonClick: PropTypes.func.isRequired,
+  onLoadedMetadata: PropTypes.func.isRequired,
+  onTimeUpdate: PropTypes.func.isRequired
 };
 
 export default BigMoviePlayer;

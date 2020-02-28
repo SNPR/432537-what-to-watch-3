@@ -19,6 +19,8 @@ const withPlayer = (Component) => {
       this.handleFullscreen = this.handleFullscreen.bind(this);
       this.getPlaybackProgress = this.getPlaybackProgress.bind(this);
       this.getElapsedTime = this.getElapsedTime.bind(this);
+      this.timeUpdateHandler = this.timeUpdateHandler.bind(this);
+      this.loadedMetadataHandler = this.loadedMetadataHandler.bind(this);
     }
 
     handleVideoPlay() {
@@ -47,20 +49,17 @@ const withPlayer = (Component) => {
       return formatTime(this.state.videoDuration - this.state.currentTime);
     }
 
-    componentDidMount() {
-      const video = this._videoRef.current;
+    timeUpdateHandler(evt) {
+      this.setState({
+        currentTime: Math.floor(evt.target.currentTime)
+      });
+    }
 
-      video.onloadedmetadata = () => {
-        this.setState({
-          isPlaying: this.props.autoPlay,
-          videoDuration: Math.floor(video.duration)
-        });
-      };
-
-      video.ontimeupdate = () =>
-        this.setState({
-          currentTime: Math.floor(video.currentTime)
-        });
+    loadedMetadataHandler(evt) {
+      this.setState({
+        isPlaying: this.props.autoPlay,
+        videoDuration: Math.floor(evt.target.duration)
+      });
     }
 
     render() {
@@ -77,6 +76,8 @@ const withPlayer = (Component) => {
           getElapsedTime={this.getElapsedTime}
           videoRef={this._videoRef}
           onExitButtonClick={onExitButtonClick}
+          onLoadedMetadata={this.loadedMetadataHandler}
+          onTimeUpdate={this.timeUpdateHandler}
         />
       );
     }
