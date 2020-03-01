@@ -207,7 +207,10 @@ it(`Should movie card be pressed`, () => {
           genre={Movie.GENRE}
           releaseYear={Movie.RELEASE_YEAR}
           movies={films}
+          movie={films[0]}
           onMovieCardClick={movieCardClickHandler}
+          isBigMoviePlayerVisible={false}
+          onVisibilityChange={() => {}}
         />
       </Provider>
   );

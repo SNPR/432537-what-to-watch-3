@@ -9,35 +9,48 @@ class App extends PureComponent {
     super(props);
 
     this.state = {
-      selectedMovie: null
+      selectedMovie: null,
+      isBigMoviePlayerVisible: false
     };
     this.movieCardClickHandler = this.movieCardClickHandler.bind(this);
+    this.handleVisibility = this.handleVisibility.bind(this);
   }
 
   movieCardClickHandler(selectedMovie) {
     this.setState({selectedMovie});
   }
 
+  handleVisibility() {
+    this.setState({
+      isBigMoviePlayerVisible: !this.state.isBigMoviePlayerVisible
+    });
+  }
+
   _renderApp() {
     const {name, genre, releaseYear, movies} = this.props;
-    const {selectedMovie} = this.state;
+    const {selectedMovie, isBigMoviePlayerVisible} = this.state;
 
     if (selectedMovie !== null) {
       return (
         <MoviePage
           movie={selectedMovie}
           onMovieCardClick={this.movieCardClickHandler}
+          isBigMoviePlayerVisible={isBigMoviePlayerVisible}
+          onVisibilityChange={this.handleVisibility}
         />
       );
     }
 
     return (
       <Main
+        movie={selectedMovie || movies[0]}
         name={name}
         genre={genre}
         releaseYear={releaseYear}
         movies={movies}
         onMovieCardClick={this.movieCardClickHandler}
+        isBigMoviePlayerVisible={isBigMoviePlayerVisible}
+        onVisibilityChange={this.handleVisibility}
       />
     );
   }
@@ -48,12 +61,6 @@ class App extends PureComponent {
         <Switch>
           <Route exact path="/">
             {this._renderApp()}
-          </Route>
-          <Route exact path="/dev-movie-page">
-            <MoviePage
-              movie={this.props.movies[this.state.selectedMovieId || 0]}
-              onMovieCardClick={this.movieCardClickHandler}
-            />
           </Route>
         </Switch>
       </BrowserRouter>

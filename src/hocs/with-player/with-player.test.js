@@ -1,11 +1,12 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import MoviePage from "./movie-page.jsx";
+import withPlayer from "./with-player.jsx";
 
 const movie = {
   name: `Movie name`,
   posterUrl: `https://poster-url.com`,
   bigPosterUrl: `https://image-url.com/1.jpg`,
+  trailerUrl: `https://image-url.com/1.mp4`,
   director: `Director Name`,
   starring: [`Actor 1`, `Actor 2`, `Actor 3`],
   runTime: `1h 00m`,
@@ -24,14 +25,17 @@ const movie = {
   ]
 };
 
-it(`Should render MovieDetails component`, () => {
+const MockComponent = () => <div></div>;
+const MockComponentWrapped = withPlayer(MockComponent);
+
+it(`withPlayer is rendered correctly`, () => {
   const tree = renderer
     .create(
-        <MoviePage
+        <MockComponentWrapped
           movie={movie}
-          onMovieCardClick={() => {}}
-          isBigMoviePlayerVisible={false}
-          onVisibilityChange={() => {}}
+          muted={true}
+          autoPlay={false}
+          onExitButtonClick={() => {}}
         />
     )
     .toJSON();

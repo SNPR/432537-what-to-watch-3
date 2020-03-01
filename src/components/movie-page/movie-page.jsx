@@ -2,10 +2,26 @@ import React from "react";
 import PropTypes from "prop-types";
 import Tabs from "../tabs/tabs.jsx";
 import SimilarMovies from "../similar-movies/similar-movies.jsx";
-import films from "../../mocks/films.js";
+import withPlayer from "../../hocs/with-player/with-player.jsx";
+import BigMoviePlayer from "../big-movie-player/big-movie-player.jsx";
+import films from "../../mocks/films";
 
-const MoviePage = ({movie, onMovieCardClick}) => {
-  return (
+const BigMoviePlayerWrapped = withPlayer(BigMoviePlayer);
+
+const MoviePage = ({
+  movie,
+  onMovieCardClick,
+  isBigMoviePlayerVisible,
+  onVisibilityChange
+}) => {
+  return isBigMoviePlayerVisible ? (
+    <BigMoviePlayerWrapped
+      onExitButtonClick={onVisibilityChange}
+      movie={movie}
+      autoPlay={false}
+      muted={true}
+    />
+  ) : (
     <>
       <section className="movie-card movie-card--full">
         <div className="movie-card__hero">
@@ -48,6 +64,7 @@ const MoviePage = ({movie, onMovieCardClick}) => {
                 <button
                   className="btn btn--play movie-card__button"
                   type="button"
+                  onClick={onVisibilityChange}
                 >
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
@@ -86,7 +103,6 @@ const MoviePage = ({movie, onMovieCardClick}) => {
           </div>
         </div>
       </section>
-
       <div className="page-content">
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
@@ -112,6 +128,7 @@ const MoviePage = ({movie, onMovieCardClick}) => {
           </div>
         </footer>
       </div>
+      )
     </>
   );
 };
@@ -138,7 +155,9 @@ MoviePage.propTypes = {
         })
     ).isRequired
   }).isRequired,
-  onMovieCardClick: PropTypes.func.isRequired
+  onMovieCardClick: PropTypes.func.isRequired,
+  isBigMoviePlayerVisible: PropTypes.bool.isRequired,
+  onVisibilityChange: PropTypes.func.isRequired
 };
 
 export default MoviePage;

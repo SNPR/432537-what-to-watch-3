@@ -93,6 +93,7 @@ Array [
           >
             <button
               className="btn btn--play movie-card__button"
+              onClick={[Function]}
               type="button"
             >
               <svg
@@ -294,5 +295,6 @@ Array [
       </div>
     </footer>
   </div>,
+  ")",
 ]
 `;
