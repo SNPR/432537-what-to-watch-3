@@ -25,7 +25,7 @@ ReactDOM.render(
         name={Movie.NAME}
         genre={Movie.GENRE}
         releaseYear={Movie.RELEASE_YEAR}
-        movies={films}
+        movies={store.getState().films}
       />
     </Provider>,
     document.querySelector(`#root`)
