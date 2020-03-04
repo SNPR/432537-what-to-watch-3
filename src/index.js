@@ -9,12 +9,6 @@ import {composeWithDevTools} from "redux-devtools-extension";
 import {createAPI} from "./api.js";
 import {Operation} from "./reducer.js";
 
-const Movie = {
-  NAME: `The Grand Budapest Hotel`,
-  GENRE: `Drama`,
-  RELEASE_YEAR: 2014
-};
-
 const api = createAPI();
 
 const store = createStore(
@@ -23,15 +17,11 @@ const store = createStore(
 );
 
 store.dispatch(Operation.getMovies());
+store.dispatch(Operation.getPromoMovie());
 
 ReactDOM.render(
     <Provider store={store}>
-      <App
-        name={Movie.NAME}
-        genre={Movie.GENRE}
-        releaseYear={Movie.RELEASE_YEAR}
-        movies={store.getState().films}
-      />
+      <App />
     </Provider>,
     document.querySelector(`#root`)
 );
