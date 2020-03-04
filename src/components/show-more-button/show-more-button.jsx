@@ -2,6 +2,8 @@ import React from "react";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import {ActionCreator} from "../../reducer/state/state.js";
+import {getMovies} from "../../reducer/data/selectors.js";
+import {getShowedMovies} from "../../reducer/state/selectors.js";
 
 const ShowMoreButton = ({movies, showedMovies, showMoreMovies}) => {
   return showedMovies < movies.length ? (
@@ -18,8 +20,8 @@ const ShowMoreButton = ({movies, showedMovies, showMoreMovies}) => {
 };
 
 const mapStateToProps = (state) => ({
-  movies: state.DATA.films,
-  showedMovies: state.STATE.showedMovies
+  movies: getMovies(state),
+  showedMovies: getShowedMovies(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({

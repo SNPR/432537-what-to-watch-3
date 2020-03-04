@@ -5,6 +5,7 @@ import ShowMoreButton from "../show-more-button/show-more-button.jsx";
 import withPlayer from "../../hocs/with-player/with-player.jsx";
 import BigMoviePlayer from "../big-movie-player/big-movie-player.jsx";
 import {connect} from "react-redux";
+import {getPromoMovie} from "../../reducer/data/selectors.js";
 
 const BigMoviePlayerWrapped = withPlayer(BigMoviePlayer);
 
@@ -150,7 +151,7 @@ Main.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  promoMovie: state.DATA.promoFilm
+  promoMovie: getPromoMovie(state)
 });
 
 export default connect(mapStateToProps)(Main);

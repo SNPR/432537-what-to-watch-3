@@ -5,6 +5,7 @@ import SimilarMovies from "../similar-movies/similar-movies.jsx";
 import withPlayer from "../../hocs/with-player/with-player.jsx";
 import BigMoviePlayer from "../big-movie-player/big-movie-player.jsx";
 import {connect} from "react-redux";
+import {getMovies} from "../../reducer/data/selectors.js";
 
 const BigMoviePlayerWrapped = withPlayer(BigMoviePlayer);
 
@@ -154,12 +155,33 @@ MoviePage.propTypes = {
     videoUrl: PropTypes.string,
     trailerUrl: PropTypes.string
   }).isRequired,
+  movies: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string,
+        posterUrl: PropTypes.string,
+        previewUrl: PropTypes.string,
+        bigPosterUrl: PropTypes.string,
+        backgroundColor: PropTypes.string,
+        description: PropTypes.string,
+        rating: PropTypes.number,
+        votes: PropTypes.number,
+        director: PropTypes.string,
+        starring: PropTypes.arrayOf(PropTypes.string),
+        runTime: PropTypes.string,
+        genre: PropTypes.string,
+        releaseYear: PropTypes.number,
+        id: PropTypes.number,
+        isFavorite: PropTypes.bool,
+        videoUrl: PropTypes.string,
+        trailerUrl: PropTypes.string
+      })
+  ).isRequired,
   onMovieCardClick: PropTypes.func.isRequired,
   isBigMoviePlayerVisible: PropTypes.bool.isRequired,
   onVisibilityChange: PropTypes.func.isRequired
 };
 const mapStateToProps = (state) => ({
-  movies: state.DATA.films
+  movies: getMovies(state)
 });
 
 export default connect(mapStateToProps)(MoviePage);

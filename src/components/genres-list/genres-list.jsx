@@ -5,6 +5,8 @@ import {ALL_GENRES} from "../../utils/constants.js";
 import {ActionCreator} from "../../reducer/state/state.js";
 import MoviesList from "../movies-list/movies-list.jsx";
 import withActiveMovieCard from "../../hocs/with-active-movie-card/with-active-movie-card.jsx";
+import {getGenre, getShowedMovies} from "../../reducer/state/selectors.js";
+import {getMovies} from "../../reducer/data/selectors.js";
 
 const MoviesListWrapped = withActiveMovieCard(MoviesList);
 
@@ -67,9 +69,9 @@ class GenresList extends PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-  genre: state.STATE.genre,
-  movies: state.DATA.films,
-  showedMovies: state.STATE.showedMovies
+  genre: getGenre(state),
+  movies: getMovies(state),
+  showedMovies: getShowedMovies(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({

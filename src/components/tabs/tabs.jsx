@@ -2,6 +2,7 @@ import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {getTextRating} from "../../utils/utils";
 import {connect} from "react-redux";
+import {getComments} from "../../reducer/data/selectors.js";
 
 const TabName = {
   OVERVIEW: `overview`,
@@ -20,7 +21,6 @@ class Tabs extends PureComponent {
   getActiveClass(tabName) {
     return this.state.selectedTab === tabName ? `movie-nav__item--active` : ``;
   }
-
 
   render() {
     const {movie, comments} = this.props;
@@ -199,8 +199,7 @@ Tabs.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  comments: state.DATA.currentFilmComments
+  comments: getComments(state)
 });
-
 
 export default connect(mapStateToProps)(Tabs);
