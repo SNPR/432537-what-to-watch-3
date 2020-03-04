@@ -150,7 +150,7 @@ Main.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  promoMovie: state.promoFilm
+  promoMovie: state.DATA.promoFilm
 });
 
 export default connect(mapStateToProps)(Main);

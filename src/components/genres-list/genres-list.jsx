@@ -67,9 +67,9 @@ class GenresList extends PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-  genre: state.genre,
-  movies: state.films,
-  showedMovies: state.showedMovies
+  genre: state.STATE.genre,
+  movies: state.DATA.films,
+  showedMovies: state.STATE.showedMovies
 });
 
 const mapDispatchToProps = (dispatch) => ({

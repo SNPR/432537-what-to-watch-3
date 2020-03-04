@@ -18,8 +18,8 @@ const ShowMoreButton = ({movies, showedMovies, showMoreMovies}) => {
 };
 
 const mapStateToProps = (state) => ({
-  movies: state.films,
-  showedMovies: state.showedMovies
+  movies: state.DATA.films,
+  showedMovies: state.STATE.showedMovies
 });
 
 const mapDispatchToProps = (dispatch) => ({

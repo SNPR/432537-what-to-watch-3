@@ -136,32 +136,30 @@ const MoviePage = ({
 
 MoviePage.propTypes = {
   movie: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    posterUrl: PropTypes.string.isRequired,
-    bigPosterUrl: PropTypes.string.isRequired,
-    director: PropTypes.string.isRequired,
-    starring: PropTypes.arrayOf(PropTypes.string).isRequired,
-    runTime: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    releaseYear: PropTypes.number.isRequired,
-    rating: PropTypes.number.isRequired,
-    votes: PropTypes.number.isRequired,
-    description: PropTypes.string.isRequired,
-    reviews: PropTypes.arrayOf(
-        PropTypes.shape({
-          rating: PropTypes.number.isRequired,
-          date: PropTypes.string.isRequired,
-          author: PropTypes.string.isRequired,
-          text: PropTypes.string.isRequired
-        })
-    ).isRequired
+    name: PropTypes.string,
+    posterUrl: PropTypes.string,
+    previewUrl: PropTypes.string,
+    bigPosterUrl: PropTypes.string,
+    backgroundColor: PropTypes.string,
+    description: PropTypes.string,
+    rating: PropTypes.number,
+    votes: PropTypes.number,
+    director: PropTypes.string,
+    starring: PropTypes.arrayOf(PropTypes.string),
+    runTime: PropTypes.string,
+    genre: PropTypes.string,
+    releaseYear: PropTypes.number,
+    id: PropTypes.number,
+    isFavorite: PropTypes.bool,
+    videoUrl: PropTypes.string,
+    trailerUrl: PropTypes.string
   }).isRequired,
   onMovieCardClick: PropTypes.func.isRequired,
   isBigMoviePlayerVisible: PropTypes.bool.isRequired,
   onVisibilityChange: PropTypes.func.isRequired
 };
 const mapStateToProps = (state) => ({
-  movies: state.films
+  movies: state.DATA.films
 });
 
 export default connect(mapStateToProps)(MoviePage);
