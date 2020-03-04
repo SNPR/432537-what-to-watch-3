@@ -2,6 +2,7 @@ import React, {PureComponent} from "react";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import Main from "../main/main.jsx";
 import MoviePage from "../movie-page/movie-page.jsx";
+import PropTypes from "prop-types";
 
 class App extends PureComponent {
   constructor(props) {
@@ -61,5 +62,9 @@ class App extends PureComponent {
     );
   }
 }
+
+App.propTypes = {
+  getComments: PropTypes.func.isRequired
+};
 
 export default App;

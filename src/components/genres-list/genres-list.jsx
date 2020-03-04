@@ -84,27 +84,25 @@ const mapDispatchToProps = (dispatch) => ({
 GenresList.propTypes = {
   movies: PropTypes.arrayOf(
       PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        posterUrl: PropTypes.string.isRequired,
-        bigPosterUrl: PropTypes.string.isRequired,
-        director: PropTypes.string.isRequired,
-        starring: PropTypes.arrayOf(PropTypes.string).isRequired,
-        runTime: PropTypes.string.isRequired,
-        genre: PropTypes.string.isRequired,
-        releaseYear: PropTypes.number.isRequired,
-        rating: PropTypes.number.isRequired,
-        votes: PropTypes.number.isRequired,
-        description: PropTypes.string.isRequired,
-        reviews: PropTypes.arrayOf(
-            PropTypes.shape({
-              rating: PropTypes.number.isRequired,
-              date: PropTypes.string.isRequired,
-              author: PropTypes.string.isRequired,
-              text: PropTypes.string.isRequired
-            })
-        ).isRequired
-      }).isRequired
-  ).isRequired,
+        name: PropTypes.string,
+        posterUrl: PropTypes.string,
+        previewUrl: PropTypes.string,
+        bigPosterUrl: PropTypes.string,
+        backgroundColor: PropTypes.string,
+        description: PropTypes.string,
+        rating: PropTypes.number,
+        votes: PropTypes.number,
+        director: PropTypes.string,
+        starring: PropTypes.arrayOf(PropTypes.string),
+        runTime: PropTypes.string,
+        genre: PropTypes.string,
+        releaseYear: PropTypes.number,
+        id: PropTypes.number,
+        isFavorite: PropTypes.bool,
+        videoUrl: PropTypes.string,
+        trailerUrl: PropTypes.string
+      })
+  ),
   genre: PropTypes.string.isRequired,
   changeGenre: PropTypes.func.isRequired,
   onMovieCardClick: PropTypes.func.isRequired,
