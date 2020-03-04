@@ -4,7 +4,7 @@ import Tabs from "../tabs/tabs.jsx";
 import SimilarMovies from "../similar-movies/similar-movies.jsx";
 import withPlayer from "../../hocs/with-player/with-player.jsx";
 import BigMoviePlayer from "../big-movie-player/big-movie-player.jsx";
-import films from "../../mocks/films";
+import {connect} from "react-redux";
 
 const BigMoviePlayerWrapped = withPlayer(BigMoviePlayer);
 
@@ -12,7 +12,8 @@ const MoviePage = ({
   movie,
   onMovieCardClick,
   isBigMoviePlayerVisible,
-  onVisibilityChange
+  onVisibilityChange,
+  movies
 }) => {
   return isBigMoviePlayerVisible ? (
     <BigMoviePlayerWrapped
@@ -108,7 +109,7 @@ const MoviePage = ({
           <h2 className="catalog__title">More like this</h2>
 
           <SimilarMovies
-            movies={films}
+            movies={movies}
             movie={movie}
             onMovieCardClick={onMovieCardClick}
           />
@@ -159,5 +160,8 @@ MoviePage.propTypes = {
   isBigMoviePlayerVisible: PropTypes.bool.isRequired,
   onVisibilityChange: PropTypes.func.isRequired
 };
+const mapStateToProps = (state) => ({
+  movies: state.films
+});
 
-export default MoviePage;
+export default connect(mapStateToProps)(MoviePage);
