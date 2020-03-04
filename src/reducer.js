@@ -8,6 +8,7 @@ const initialState = {
   genre: ALL_GENRES,
   promoFilm: {},
   films: [],
+  currentFilmComments: [],
   showedMovies: SHOWED_MOVIES_DEFAULT
 };
 
@@ -16,7 +17,8 @@ const ActionType = {
   SHOW_MORE_MOVIES: `SHOW_MORE_MOVIES`,
   RESET_SHOWED_MOVIES_AMOUNT: `RESET_SHOWED_MOVIES_AMOUNT`,
   GET_MOVIES: `GET_MOVIES`,
-  GET_PROMO_MOVIE: `GET_PROMO_MOVIE`
+  GET_PROMO_MOVIE: `GET_PROMO_MOVIE`,
+  GET_COMMENTS: `GET_COMMENTS`
 };
 
 export const Operation = {
@@ -28,6 +30,11 @@ export const Operation = {
   getPromoMovie: () => (dispatch, getState, api) => {
     return api.get(`/films/promo`).then((response) => {
       dispatch(ActionCreator.getPromoMovie(normalizeMovieData(response.data)));
+    });
+  },
+  getComments: (movieId) => (dispatch, getState, api) => {
+    return api.get(`/comments/${movieId}`).then((response) => {
+      dispatch(ActionCreator.getComments(response.data));
     });
   }
 };
@@ -52,6 +59,10 @@ const ActionCreator = {
   getPromoMovie: (movie) => ({
     type: ActionType.GET_PROMO_MOVIE,
     payload: movie
+  }),
+  getComments: (comments) => ({
+    type: ActionType.GET_COMMENTS,
+    payload: comments
   })
 };
 
@@ -76,6 +87,10 @@ const reducer = (state = initialState, action) => {
     case ActionType.GET_PROMO_MOVIE:
       return extend(state, {
         promoFilm: action.payload
+      });
+    case ActionType.GET_COMMENTS:
+      return extend(state, {
+        currentFilmComments: action.payload
       });
   }
 
