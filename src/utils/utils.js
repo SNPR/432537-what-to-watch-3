@@ -26,7 +26,7 @@ export const formatTime = (time) =>
     .reverse()
     .join(`:`);
 
-const normalizeMovieData = (movie) => ({
+export const normalizeMovieData = (movie) => ({
   name: movie.name,
   posterUrl: movie.poster_image,
   previewUrl: movie.preview_image,
