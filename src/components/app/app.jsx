@@ -17,6 +17,7 @@ class App extends PureComponent {
 
   movieCardClickHandler(selectedMovie) {
     this.setState({selectedMovie});
+    this.props.getComments(selectedMovie.id);
   }
 
   handleVisibility() {
