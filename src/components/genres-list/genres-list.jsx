@@ -2,7 +2,7 @@ import React, {PureComponent} from "react";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import {ALL_GENRES} from "../../utils/constants.js";
-import {ActionCreator} from "../../reducer.js";
+import {ActionCreator} from "../../reducer/state/state.js";
 import MoviesList from "../movies-list/movies-list.jsx";
 import withActiveMovieCard from "../../hocs/with-active-movie-card/with-active-movie-card.jsx";
 

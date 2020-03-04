@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
-import {ActionCreator} from "../../reducer.js";
+import {ActionCreator} from "../../reducer/state/state.js";
 
 const ShowMoreButton = ({movies, showedMovies, showMoreMovies}) => {
   return showedMovies < movies.length ? (
