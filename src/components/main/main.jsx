@@ -4,22 +4,20 @@ import GenresList from "../genres-list/genres-list.jsx";
 import ShowMoreButton from "../show-more-button/show-more-button.jsx";
 import withPlayer from "../../hocs/with-player/with-player.jsx";
 import BigMoviePlayer from "../big-movie-player/big-movie-player.jsx";
+import {connect} from "react-redux";
 
 const BigMoviePlayerWrapped = withPlayer(BigMoviePlayer);
 
 const Main = ({
-  name,
-  genre,
-  releaseYear,
   onMovieCardClick,
   isBigMoviePlayerVisible,
   onVisibilityChange,
-  movie
+  promoMovie
 }) => {
   return isBigMoviePlayerVisible ? (
     <BigMoviePlayerWrapped
       onExitButtonClick={onVisibilityChange}
-      movie={movie}
+      movie={promoMovie}
       autoPlay={false}
       muted={true}
     />
@@ -27,10 +25,7 @@ const Main = ({
     <>
       <section className="movie-card">
         <div className="movie-card__bg">
-          <img
-            src="img/bg-the-grand-budapest-hotel.jpg"
-            alt="The Grand Budapest Hotel"
-          />
+          <img src={promoMovie.bigPosterUrl} alt={promoMovie.name} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -60,8 +55,8 @@ const Main = ({
           <div className="movie-card__info">
             <div className="movie-card__poster">
               <img
-                src="img/the-grand-budapest-hotel-poster.jpg"
-                alt="The Grand Budapest Hotel poster"
+                src={promoMovie.posterUrl}
+                alt={promoMovie.name}
                 width="218"
                 height="327"
               />
@@ -70,8 +65,10 @@ const Main = ({
             <div className="movie-card__desc">
               <h2 className="movie-card__title">{name}</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">{genre}</span>
-                <span className="movie-card__year">{releaseYear}</span>
+                <span className="movie-card__genre">{promoMovie.genre}</span>
+                <span className="movie-card__year">
+                  {promoMovie.releaseYear}
+                </span>
               </p>
 
               <div className="movie-card__buttons">
@@ -131,7 +128,7 @@ Main.propTypes = {
   name: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   releaseYear: PropTypes.number.isRequired,
-  movie: PropTypes.shape({
+  promoMovie: PropTypes.shape({
     name: PropTypes.string.isRequired,
     posterUrl: PropTypes.string.isRequired,
     bigPosterUrl: PropTypes.string.isRequired,
@@ -157,4 +154,8 @@ Main.propTypes = {
   onVisibilityChange: PropTypes.func.isRequired
 };
 
-export default Main;
+const mapStateToProps = (state) => ({
+  promoMovie: state.promoFilm
+});
+
+export default connect(mapStateToProps)(Main);
