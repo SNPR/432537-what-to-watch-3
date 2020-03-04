@@ -195,7 +195,19 @@ Tabs.propTypes = {
     isFavorite: PropTypes.bool,
     videoUrl: PropTypes.string,
     trailerUrl: PropTypes.string
-  }).isRequired
+  }).isRequired,
+  comments: PropTypes.arrayOf(
+      PropTypes.shape({
+        comment: PropTypes.string,
+        date: PropTypes.string,
+        id: PropTypes.number,
+        rating: PropTypes.number,
+        user: PropTypes.shape({
+          id: PropTypes.number,
+          name: PropTypes.string
+        })
+      })
+  )
 };
 
 const mapStateToProps = (state) => ({
