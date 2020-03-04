@@ -63,7 +63,7 @@ const Main = ({
             </div>
 
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">{name}</h2>
+              <h2 className="movie-card__title">{promoMovie.name}</h2>
               <p className="movie-card__meta">
                 <span className="movie-card__genre">{promoMovie.genre}</span>
                 <span className="movie-card__year">
