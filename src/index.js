@@ -7,6 +7,7 @@ import {reducer} from "./reducer.js";
 import thunk from "redux-thunk";
 import {composeWithDevTools} from "redux-devtools-extension";
 import {createAPI} from "./api.js";
+import {Operation} from "./reducer.js";
 
 const Movie = {
   NAME: `The Grand Budapest Hotel`,
@@ -20,6 +21,8 @@ const store = createStore(
     reducer,
     composeWithDevTools(applyMiddleware(thunk.withExtraArgument(api)))
 );
+
+store.dispatch(Operation.getMovies());
 
 ReactDOM.render(
     <Provider store={store}>
