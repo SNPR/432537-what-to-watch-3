@@ -1,7 +1,7 @@
 import {extend} from "./utils/utils.js";
 import films from "./mocks/films.js";
 import {ALL_GENRES} from "./utils/constants.js";
-import {normalizeData} from "./utils/utils.js";
+import {normalizeMoviesData} from "./utils/utils.js";
 
 const SHOWED_MOVIES_DEFAULT = 8;
 
@@ -21,7 +21,7 @@ const ActionType = {
 export const Operation = {
   getMovies: () => (dispatch, getState, api) => {
     return api.get(`/films`).then((response) => {
-      dispatch(ActionCreator.getMovies(normalizeData(response.data)));
+      dispatch(ActionCreator.getMovies(normalizeMoviesData(response.data)));
     });
   }
 };

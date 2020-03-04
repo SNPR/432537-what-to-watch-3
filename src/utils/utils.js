@@ -26,24 +26,24 @@ export const formatTime = (time) =>
     .reverse()
     .join(`:`);
 
-export const normalizeData = (movies) => {
-  return movies.map((movie) => ({
-    name: movie.name,
-    posterUrl: movie.poster_image,
-    previewUrl: movie.preview_image,
-    bigPosterUrl: movie.background_image,
-    backgroundColor: movie.background_color,
-    description: movie.description,
-    rating: movie.rating,
-    votes: movie.scores_count,
-    director: movie.director,
-    starring: movie.starring,
-    runTime: movie.run_time,
-    genre: movie.genre,
-    releaseYear: movie.released,
-    id: movie.id,
-    isFavorite: movie.is_favorite,
-    videoUrl: movie.video_link,
-    trailerUrl: movie.preview_video_link
-  }));
-};
+const normalizeMovieData = (movie) => ({
+  name: movie.name,
+  posterUrl: movie.poster_image,
+  previewUrl: movie.preview_image,
+  bigPosterUrl: movie.background_image,
+  backgroundColor: movie.background_color,
+  description: movie.description,
+  rating: movie.rating,
+  votes: movie.scores_count,
+  director: movie.director,
+  starring: movie.starring,
+  runTime: movie.run_time,
+  genre: movie.genre,
+  releaseYear: movie.released,
+  id: movie.id,
+  isFavorite: movie.is_favorite,
+  videoUrl: movie.video_link,
+  trailerUrl: movie.preview_video_link
+});
+
+export const normalizeMoviesData = (movies) => movies.map(normalizeMovieData);
