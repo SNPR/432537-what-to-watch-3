@@ -1,6 +1,7 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {getTextRating} from "../../utils/utils";
+import {connect} from "react-redux";
 
 const TabName = {
   OVERVIEW: `overview`,
@@ -20,8 +21,9 @@ class Tabs extends PureComponent {
     return this.state.selectedTab === tabName ? `movie-nav__item--active` : ``;
   }
 
+
   render() {
-    const {movie} = this.props;
+    const {movie, comments} = this.props;
     const {selectedTab} = this.state;
 
     return (
@@ -147,14 +149,16 @@ class Tabs extends PureComponent {
           <>
             <div className="movie-card__reviews movie-card__row">
               <div className="movie-card__reviews-col">
-                {movie.reviews.map((review, index) => (
-                  <div className="review" key={index + review.author}>
+                {comments.map((review, index) => (
+                  <div className="review" key={review.id}>
                     <blockquote className="review__quote">
-                      <p className="review__text">{review.text}</p>
+                      <p className="review__text">{review.comment}</p>
 
                       <footer className="review__details">
-                        <cite className="review__author">{review.author}</cite>
-                        <time className="review__date" dateTime="2019-12-15">
+                        <cite className="review__author">
+                          {review.user.name}
+                        </cite>
+                        <time className="review__date" dateTime={review.date}>
                           {review.date}
                         </time>
                       </footer>
@@ -196,4 +200,9 @@ Tabs.propTypes = {
   }).isRequired
 };
 
-export default Tabs;
+const mapStateToProps = (state) => ({
+  comments: state.currentFilmComments
+});
+
+
+export default connect(mapStateToProps)(Tabs);
