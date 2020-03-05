@@ -11,9 +11,8 @@ const initialState = {
 const ActionType = {
   CHANGE_GENRE: `CHANGE_GENRE`,
   SHOW_MORE_MOVIES: `SHOW_MORE_MOVIES`,
-  RESET_SHOWED_MOVIES_AMOUNT: `RESET_SHOWED_MOVIES_AMOUNT`,
+  RESET_SHOWED_MOVIES_AMOUNT: `RESET_SHOWED_MOVIES_AMOUNT`
 };
-
 
 const ActionCreator = {
   changeGenre: (genre = ALL_GENRES) => ({
@@ -27,8 +26,7 @@ const ActionCreator = {
   resetShowedMoviesAmount: () => ({
     type: ActionType.RESET_SHOWED_MOVIES_AMOUNT,
     payload: null
-  }),
-
+  })
 };
 
 const reducer = (state = initialState, action) => {

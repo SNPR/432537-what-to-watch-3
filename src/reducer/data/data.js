@@ -1,11 +1,10 @@
 import {extend} from "../../utils/utils.js";
 import {normalizeMovieData, normalizeMoviesData} from "../../utils/utils.js";
 
-
 const initialState = {
   promoFilm: {},
   films: [],
-  currentFilmComments: [],
+  currentFilmComments: []
 };
 
 const ActionType = {

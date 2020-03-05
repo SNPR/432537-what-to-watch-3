@@ -156,7 +156,6 @@ const films = [
 ];
 
 it(`Should render GenresList component`, () => {
-
   const tree = renderer
     .create(
         <GenresList

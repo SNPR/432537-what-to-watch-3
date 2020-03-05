@@ -21,7 +21,11 @@ store.dispatch(DataOperation.getPromoMovie());
 
 ReactDOM.render(
     <Provider store={store}>
-      <App getComments={(movieId) => store.dispatch(DataOperation.getComments(movieId))} />
+      <App
+        getComments={(movieId) =>
+          store.dispatch(DataOperation.getComments(movieId))
+        }
+      />
     </Provider>,
     document.querySelector(`#root`)
 );

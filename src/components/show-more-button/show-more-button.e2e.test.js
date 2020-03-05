@@ -198,14 +198,18 @@ const films = [
         text: `Review text`
       }
     ]
-  },
+  }
 ];
 
 it(`Should call handler on button click`, () => {
   const showMoreMoviesButtonClickHandler = jest.fn();
 
   const showMoreButton = mount(
-      <ShowMoreButton movies={films} showedMovies={SHOWED_MOVIES_DEFAULT} showMoreMovies={showMoreMoviesButtonClickHandler}/>
+      <ShowMoreButton
+        movies={films}
+        showedMovies={SHOWED_MOVIES_DEFAULT}
+        showMoreMovies={showMoreMoviesButtonClickHandler}
+      />
   );
 
   showMoreButton.find(`button.catalog__button`).simulate(`click`);
