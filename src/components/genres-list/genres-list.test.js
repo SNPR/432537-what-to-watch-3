@@ -156,17 +156,16 @@ const films = [
 ];
 
 it(`Should render GenresList component`, () => {
-
   const tree = renderer
     .create(
         <GenresList
           movies={films}
           genre={ALL_GENRES}
           changeGenre={() => {}}
-          filterMoviesByGenre={() => {}}
           onMovieCardClick={() => {}}
           showedMovies={SHOWED_MOVIES_DEFAULT}
           resetShowedMoviesAmount={() => {}}
+          filteredMovies={films}
         />
     )
     .toJSON();

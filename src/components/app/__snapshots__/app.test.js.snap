@@ -9,8 +9,8 @@ Array [
       className="movie-card__bg"
     >
       <img
-        alt="The Grand Budapest Hotel"
-        src="img/bg-the-grand-budapest-hotel.jpg"
+        alt="Movie name"
+        src="https://image-url.com/1.jpg"
       />
     </div>
     <h1
@@ -69,9 +69,9 @@ Array [
           className="movie-card__poster"
         >
           <img
-            alt="The Grand Budapest Hotel poster"
+            alt="Movie name"
             height="327"
-            src="img/the-grand-budapest-hotel-poster.jpg"
+            src="https://poster-url.com"
             width="218"
           />
         </div>
@@ -81,7 +81,7 @@ Array [
           <h2
             className="movie-card__title"
           >
-            Logan
+            Movie name
           </h2>
           <p
             className="movie-card__meta"
@@ -89,12 +89,12 @@ Array [
             <span
               className="movie-card__genre"
             >
-              Action
+              Movie Genre
             </span>
             <span
               className="movie-card__year"
             >
-              2017
+              2000
             </span>
           </p>
           <div

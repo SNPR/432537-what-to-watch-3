@@ -4,7 +4,8 @@ import Adapter from "enzyme-adapter-react-16";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import Main from "./main.jsx";
-import {ALL_GENRES} from "../../utils/constants";
+import {ALL_GENRES} from "../../utils/constants.js";
+import Namespace from "../../reducer/namespace.js";
 
 const SHOWED_MOVIES_DEFAULT = 8;
 
@@ -13,12 +14,6 @@ const mockStore = configureStore([]);
 Enzyme.configure({
   adapter: new Adapter()
 });
-
-const Movie = {
-  NAME: `Psycho`,
-  GENRE: `Horror`,
-  RELEASE_YEAR: 1960
-};
 
 const films = [
   {
@@ -193,9 +188,14 @@ const films = [
 
 it(`Should movie card be pressed`, () => {
   const store = mockStore({
-    genre: ALL_GENRES,
-    films,
-    showedMovies: SHOWED_MOVIES_DEFAULT
+    [Namespace.DATA]: {
+      films,
+      promoFilm: films[0]
+    },
+    [Namespace.STATE]: {
+      genre: ALL_GENRES,
+      showedMovies: SHOWED_MOVIES_DEFAULT
+    }
   });
 
   const movieCardClickHandler = jest.fn();
@@ -203,11 +203,7 @@ it(`Should movie card be pressed`, () => {
   const main = mount(
       <Provider store={store}>
         <Main
-          name={Movie.NAME}
-          genre={Movie.GENRE}
-          releaseYear={Movie.RELEASE_YEAR}
-          movies={films}
-          movie={films[0]}
+          promoMovie={films[0]}
           onMovieCardClick={movieCardClickHandler}
           isBigMoviePlayerVisible={false}
           onVisibilityChange={() => {}}

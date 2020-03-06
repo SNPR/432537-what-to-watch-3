@@ -4,16 +4,11 @@ import App from "./app.jsx";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import {ALL_GENRES} from "../../utils/constants";
+import Namespace from "../../reducer/namespace.js";
 
 const mockStore = configureStore([]);
 
 const SHOWED_MOVIES_DEFAULT = 8;
-
-const Movie = {
-  NAME: `Logan`,
-  GENRE: `Action`,
-  RELEASE_YEAR: 2017
-};
 
 const films = [
   {
@@ -188,20 +183,20 @@ const films = [
 
 it(`Should render App component`, () => {
   const store = mockStore({
-    genre: ALL_GENRES,
-    films,
-    showedMovies: SHOWED_MOVIES_DEFAULT
+    [Namespace.DATA]: {
+      films,
+      promoFilm: films[0]
+    },
+    [Namespace.STATE]: {
+      genre: ALL_GENRES,
+      showedMovies: SHOWED_MOVIES_DEFAULT
+    }
   });
 
   const tree = renderer
     .create(
         <Provider store={store}>
-          <App
-            name={Movie.NAME}
-            genre={Movie.GENRE}
-            releaseYear={Movie.RELEASE_YEAR}
-            movies={films}
-          />
+          <App getComments={() => {}} />
         </Provider>
     )
     .toJSON();

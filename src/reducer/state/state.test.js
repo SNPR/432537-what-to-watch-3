@@ -1,12 +1,14 @@
-import {reducer, ActionCreator, ActionType} from "./reducer.js";
-import {ALL_GENRES} from "./utils/constants";
-import films from "./mocks/films";
+import {
+  reducer,
+  ActionCreator,
+  ActionType
+} from "../../reducer/state/state.js";
+import {ALL_GENRES} from "../../utils/constants";
 
 const SHOWED_MOVIES_DEFAULT = 8;
 
 const initialState = {
   genre: ALL_GENRES,
-  films,
   showedMovies: SHOWED_MOVIES_DEFAULT
 };
 

@@ -1,6 +1,8 @@
 import React, {PureComponent} from "react";
 import PropTypes from "prop-types";
 import {getTextRating} from "../../utils/utils";
+import {connect} from "react-redux";
+import {getComments} from "../../reducer/data/selectors.js";
 
 const TabName = {
   OVERVIEW: `overview`,
@@ -21,7 +23,7 @@ class Tabs extends PureComponent {
   }
 
   render() {
-    const {movie} = this.props;
+    const {movie, comments} = this.props;
     const {selectedTab} = this.state;
 
     return (
@@ -147,14 +149,16 @@ class Tabs extends PureComponent {
           <>
             <div className="movie-card__reviews movie-card__row">
               <div className="movie-card__reviews-col">
-                {movie.reviews.map((review, index) => (
-                  <div className="review" key={index + review.author}>
+                {comments.map((review) => (
+                  <div className="review" key={review.id}>
                     <blockquote className="review__quote">
-                      <p className="review__text">{review.text}</p>
+                      <p className="review__text">{review.comment}</p>
 
                       <footer className="review__details">
-                        <cite className="review__author">{review.author}</cite>
-                        <time className="review__date" dateTime="2019-12-15">
+                        <cite className="review__author">
+                          {review.user.name}
+                        </cite>
+                        <time className="review__date" dateTime={review.date}>
                           {review.date}
                         </time>
                       </footer>
@@ -174,26 +178,40 @@ class Tabs extends PureComponent {
 
 Tabs.propTypes = {
   movie: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    posterUrl: PropTypes.string.isRequired,
-    bigPosterUrl: PropTypes.string.isRequired,
-    director: PropTypes.string.isRequired,
-    starring: PropTypes.arrayOf(PropTypes.string).isRequired,
-    runTime: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    releaseYear: PropTypes.number.isRequired,
-    rating: PropTypes.number.isRequired,
-    votes: PropTypes.number.isRequired,
-    description: PropTypes.string.isRequired,
-    reviews: PropTypes.arrayOf(
-        PropTypes.shape({
-          rating: PropTypes.number.isRequired,
-          date: PropTypes.string.isRequired,
-          author: PropTypes.string.isRequired,
-          text: PropTypes.string.isRequired
+    name: PropTypes.string,
+    posterUrl: PropTypes.string,
+    previewUrl: PropTypes.string,
+    bigPosterUrl: PropTypes.string,
+    backgroundColor: PropTypes.string,
+    description: PropTypes.string,
+    rating: PropTypes.number,
+    votes: PropTypes.number,
+    director: PropTypes.string,
+    starring: PropTypes.arrayOf(PropTypes.string),
+    runTime: PropTypes.string,
+    genre: PropTypes.string,
+    releaseYear: PropTypes.number,
+    id: PropTypes.number,
+    isFavorite: PropTypes.bool,
+    videoUrl: PropTypes.string,
+    trailerUrl: PropTypes.string
+  }).isRequired,
+  comments: PropTypes.arrayOf(
+      PropTypes.shape({
+        comment: PropTypes.string,
+        date: PropTypes.string,
+        id: PropTypes.number,
+        rating: PropTypes.number,
+        user: PropTypes.shape({
+          id: PropTypes.number,
+          name: PropTypes.string
         })
-    ).isRequired
-  }).isRequired
+      })
+  )
 };
 
-export default Tabs;
+const mapStateToProps = (state) => ({
+  comments: getComments(state)
+});
+
+export default connect(mapStateToProps)(Tabs);

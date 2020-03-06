@@ -3,16 +3,11 @@ import renderer from "react-test-renderer";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import Main from "./main.jsx";
-import {ALL_GENRES} from "../../utils/constants";
+import {ALL_GENRES} from "../../utils/constants.js";
+import Namespace from "../../reducer/namespace.js";
 
 const SHOWED_MOVIES_DEFAULT = 8;
 const mockStore = configureStore([]);
-
-const Movie = {
-  NAME: `The Godfather`,
-  GENRE: `Drama`,
-  RELEASE_YEAR: 1972
-};
 
 const films = [
   {
@@ -187,21 +182,22 @@ const films = [
 
 it(`Should render Main component`, () => {
   const store = mockStore({
-    genre: ALL_GENRES,
-    films,
-    showedMovies: SHOWED_MOVIES_DEFAULT
+    [Namespace.DATA]: {
+      films,
+      promoFilm: films[0]
+    },
+    [Namespace.STATE]: {
+      genre: ALL_GENRES,
+      showedMovies: SHOWED_MOVIES_DEFAULT
+    }
   });
 
   const tree = renderer
     .create(
         <Provider store={store}>
           <Main
-            name={Movie.NAME}
-            genre={Movie.GENRE}
-            releaseYear={Movie.RELEASE_YEAR}
-            movies={films}
             onMovieCardClick={() => {}}
-            movie={films[0]}
+            promoMovie={films[0]}
             isBigMoviePlayerVisible={false}
             onVisibilityChange={() => {}}
           />

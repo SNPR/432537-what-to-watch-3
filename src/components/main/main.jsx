@@ -4,22 +4,21 @@ import GenresList from "../genres-list/genres-list.jsx";
 import ShowMoreButton from "../show-more-button/show-more-button.jsx";
 import withPlayer from "../../hocs/with-player/with-player.jsx";
 import BigMoviePlayer from "../big-movie-player/big-movie-player.jsx";
+import {connect} from "react-redux";
+import {getPromoMovie} from "../../reducer/data/selectors.js";
 
 const BigMoviePlayerWrapped = withPlayer(BigMoviePlayer);
 
 const Main = ({
-  name,
-  genre,
-  releaseYear,
   onMovieCardClick,
   isBigMoviePlayerVisible,
   onVisibilityChange,
-  movie
+  promoMovie
 }) => {
   return isBigMoviePlayerVisible ? (
     <BigMoviePlayerWrapped
       onExitButtonClick={onVisibilityChange}
-      movie={movie}
+      movie={promoMovie}
       autoPlay={false}
       muted={true}
     />
@@ -27,10 +26,7 @@ const Main = ({
     <>
       <section className="movie-card">
         <div className="movie-card__bg">
-          <img
-            src="img/bg-the-grand-budapest-hotel.jpg"
-            alt="The Grand Budapest Hotel"
-          />
+          <img src={promoMovie.bigPosterUrl} alt={promoMovie.name} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -60,18 +56,20 @@ const Main = ({
           <div className="movie-card__info">
             <div className="movie-card__poster">
               <img
-                src="img/the-grand-budapest-hotel-poster.jpg"
-                alt="The Grand Budapest Hotel poster"
+                src={promoMovie.posterUrl}
+                alt={promoMovie.name}
                 width="218"
                 height="327"
               />
             </div>
 
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">{name}</h2>
+              <h2 className="movie-card__title">{promoMovie.name}</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">{genre}</span>
-                <span className="movie-card__year">{releaseYear}</span>
+                <span className="movie-card__genre">{promoMovie.genre}</span>
+                <span className="movie-card__year">
+                  {promoMovie.releaseYear}
+                </span>
               </p>
 
               <div className="movie-card__buttons">
@@ -128,33 +126,32 @@ const Main = ({
 };
 
 Main.propTypes = {
-  name: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
-  releaseYear: PropTypes.number.isRequired,
-  movie: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    posterUrl: PropTypes.string.isRequired,
-    bigPosterUrl: PropTypes.string.isRequired,
-    director: PropTypes.string.isRequired,
-    starring: PropTypes.arrayOf(PropTypes.string).isRequired,
-    runTime: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    releaseYear: PropTypes.number.isRequired,
-    rating: PropTypes.number.isRequired,
-    votes: PropTypes.number.isRequired,
-    description: PropTypes.string.isRequired,
-    reviews: PropTypes.arrayOf(
-        PropTypes.shape({
-          rating: PropTypes.number.isRequired,
-          date: PropTypes.string.isRequired,
-          author: PropTypes.string.isRequired,
-          text: PropTypes.string.isRequired
-        })
-    ).isRequired
-  }).isRequired,
+  promoMovie: PropTypes.shape({
+    name: PropTypes.string,
+    posterUrl: PropTypes.string,
+    previewUrl: PropTypes.string,
+    bigPosterUrl: PropTypes.string,
+    backgroundColor: PropTypes.string,
+    description: PropTypes.string,
+    rating: PropTypes.number,
+    votes: PropTypes.number,
+    director: PropTypes.string,
+    starring: PropTypes.arrayOf(PropTypes.string),
+    runTime: PropTypes.string,
+    genre: PropTypes.string,
+    releaseYear: PropTypes.number,
+    id: PropTypes.number,
+    isFavorite: PropTypes.bool,
+    videoUrl: PropTypes.string,
+    trailerUrl: PropTypes.string
+  }),
   onMovieCardClick: PropTypes.func.isRequired,
   isBigMoviePlayerVisible: PropTypes.bool.isRequired,
   onVisibilityChange: PropTypes.func.isRequired
 };
 
-export default Main;
+const mapStateToProps = (state) => ({
+  promoMovie: getPromoMovie(state)
+});
+
+export default connect(mapStateToProps)(Main);

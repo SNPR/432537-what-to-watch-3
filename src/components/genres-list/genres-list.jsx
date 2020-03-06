@@ -2,9 +2,11 @@ import React, {PureComponent} from "react";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import {ALL_GENRES} from "../../utils/constants.js";
-import {ActionCreator} from "../../reducer.js";
+import {ActionCreator} from "../../reducer/state/state.js";
 import MoviesList from "../movies-list/movies-list.jsx";
 import withActiveMovieCard from "../../hocs/with-active-movie-card/with-active-movie-card.jsx";
+import {getGenre, getShowedMovies} from "../../reducer/state/selectors.js";
+import {getMovies, getMoviesByGenre} from "../../reducer/data/selectors.js";
 
 const MoviesListWrapped = withActiveMovieCard(MoviesList);
 
@@ -17,17 +19,10 @@ class GenresList extends PureComponent {
     return [ALL_GENRES, ...new Set(movies.map((movie) => movie.genre))];
   }
 
-  getMoviesByGenre(genre, movies) {
-    const {showedMovies} = this.props;
-
-    return genre === ALL_GENRES
-      ? movies.slice(0, showedMovies)
-      : movies.filter((movie) => movie.genre === genre).slice(0, showedMovies);
-  }
-
   render() {
     const {
       movies,
+      filteredMovies,
       genre,
       changeGenre,
       onMovieCardClick,
@@ -58,7 +53,7 @@ class GenresList extends PureComponent {
         </ul>
 
         <MoviesListWrapped
-          movies={this.getMoviesByGenre(genre, movies)}
+          movies={filteredMovies}
           onMovieCardClick={onMovieCardClick}
         />
       </>
@@ -67,9 +62,10 @@ class GenresList extends PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-  genre: state.genre,
-  movies: state.films,
-  showedMovies: state.showedMovies
+  genre: getGenre(state),
+  movies: getMovies(state),
+  filteredMovies: getMoviesByGenre(state),
+  showedMovies: getShowedMovies(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -84,27 +80,46 @@ const mapDispatchToProps = (dispatch) => ({
 GenresList.propTypes = {
   movies: PropTypes.arrayOf(
       PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        posterUrl: PropTypes.string.isRequired,
-        bigPosterUrl: PropTypes.string.isRequired,
-        director: PropTypes.string.isRequired,
-        starring: PropTypes.arrayOf(PropTypes.string).isRequired,
-        runTime: PropTypes.string.isRequired,
-        genre: PropTypes.string.isRequired,
-        releaseYear: PropTypes.number.isRequired,
-        rating: PropTypes.number.isRequired,
-        votes: PropTypes.number.isRequired,
-        description: PropTypes.string.isRequired,
-        reviews: PropTypes.arrayOf(
-            PropTypes.shape({
-              rating: PropTypes.number.isRequired,
-              date: PropTypes.string.isRequired,
-              author: PropTypes.string.isRequired,
-              text: PropTypes.string.isRequired
-            })
-        ).isRequired
-      }).isRequired
-  ).isRequired,
+        name: PropTypes.string,
+        posterUrl: PropTypes.string,
+        previewUrl: PropTypes.string,
+        bigPosterUrl: PropTypes.string,
+        backgroundColor: PropTypes.string,
+        description: PropTypes.string,
+        rating: PropTypes.number,
+        votes: PropTypes.number,
+        director: PropTypes.string,
+        starring: PropTypes.arrayOf(PropTypes.string),
+        runTime: PropTypes.string,
+        genre: PropTypes.string,
+        releaseYear: PropTypes.number,
+        id: PropTypes.number,
+        isFavorite: PropTypes.bool,
+        videoUrl: PropTypes.string,
+        trailerUrl: PropTypes.string
+      })
+  ),
+  filteredMovies: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string,
+        posterUrl: PropTypes.string,
+        previewUrl: PropTypes.string,
+        bigPosterUrl: PropTypes.string,
+        backgroundColor: PropTypes.string,
+        description: PropTypes.string,
+        rating: PropTypes.number,
+        votes: PropTypes.number,
+        director: PropTypes.string,
+        starring: PropTypes.arrayOf(PropTypes.string),
+        runTime: PropTypes.string,
+        genre: PropTypes.string,
+        releaseYear: PropTypes.number,
+        id: PropTypes.number,
+        isFavorite: PropTypes.bool,
+        videoUrl: PropTypes.string,
+        trailerUrl: PropTypes.string
+      })
+  ),
   genre: PropTypes.string.isRequired,
   changeGenre: PropTypes.func.isRequired,
   onMovieCardClick: PropTypes.func.isRequired,

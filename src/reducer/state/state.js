@@ -1,12 +1,10 @@
-import {extend} from "./utils/utils.js";
-import films from "./mocks/films.js";
-import {ALL_GENRES} from "./utils/constants.js";
+import {extend} from "../../utils/utils.js";
+import {ALL_GENRES} from "../../utils/constants.js";
 
 const SHOWED_MOVIES_DEFAULT = 8;
 
 const initialState = {
   genre: ALL_GENRES,
-  films,
   showedMovies: SHOWED_MOVIES_DEFAULT
 };
 

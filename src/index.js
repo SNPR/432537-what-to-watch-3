@@ -1,31 +1,30 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/app/app.jsx";
-import films from "./mocks/films";
-import {createStore} from "redux";
+import {createStore, applyMiddleware} from "redux";
 import {Provider} from "react-redux";
-import {reducer} from "./reducer.js";
+import reducer from "./reducer/reducer.js";
+import thunk from "redux-thunk";
+import {composeWithDevTools} from "redux-devtools-extension";
+import {createAPI} from "./api.js";
+import {Operation as DataOperation} from "./reducer/data/data.js";
 
-const Movie = {
-  NAME: `The Grand Budapest Hotel`,
-  GENRE: `Drama`,
-  RELEASE_YEAR: 2014
-};
+const api = createAPI();
 
 const store = createStore(
     reducer,
-    window.__REDUX_DEVTOOLS_EXTENSION__
-      ? window.__REDUX_DEVTOOLS_EXTENSION__()
-      : (f) => f
+    composeWithDevTools(applyMiddleware(thunk.withExtraArgument(api)))
 );
+
+store.dispatch(DataOperation.getMovies());
+store.dispatch(DataOperation.getPromoMovie());
 
 ReactDOM.render(
     <Provider store={store}>
       <App
-        name={Movie.NAME}
-        genre={Movie.GENRE}
-        releaseYear={Movie.RELEASE_YEAR}
-        movies={films}
+        getComments={(movieId) =>
+          store.dispatch(DataOperation.getComments(movieId))
+        }
       />
     </Provider>,
     document.querySelector(`#root`)

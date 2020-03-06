@@ -173,6 +173,7 @@ it(`Should call handler on genre link click`, () => {
         onMovieCardClick={movieCardClickHandler}
         showedMovies={SHOWED_MOVIES_DEFAULT}
         resetShowedMoviesAmount={resetShowedMoviesAmountHandler}
+        filteredMovies={films}
       />
   );
 
