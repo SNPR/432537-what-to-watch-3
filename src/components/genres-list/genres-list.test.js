@@ -162,10 +162,10 @@ it(`Should render GenresList component`, () => {
           movies={films}
           genre={ALL_GENRES}
           changeGenre={() => {}}
-          filterMoviesByGenre={() => {}}
           onMovieCardClick={() => {}}
           showedMovies={SHOWED_MOVIES_DEFAULT}
           resetShowedMoviesAmount={() => {}}
+          filteredMovies={films}
         />
     )
     .toJSON();
