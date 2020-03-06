@@ -15,12 +15,6 @@ Enzyme.configure({
   adapter: new Adapter()
 });
 
-const Movie = {
-  NAME: `Psycho`,
-  GENRE: `Horror`,
-  RELEASE_YEAR: 1960
-};
-
 const films = [
   {
     name: `Movie name`,
