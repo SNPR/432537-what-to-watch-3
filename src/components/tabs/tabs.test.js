@@ -1,6 +1,10 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import Tabs from "./tabs.jsx";
+import {Provider} from "react-redux";
+import configureStore from "redux-mock-store";
+import Namespace from "../../reducer/namespace.js";
+
 
 const movie = {
   name: `Movie name`,
@@ -26,7 +30,21 @@ const movie = {
 };
 
 it(`Should render Tabs component`, () => {
-  const tree = renderer.create(<Tabs movie={movie} />).toJSON();
+  const mockStore = configureStore([]);
+
+  const store = mockStore({
+    [Namespace.DATA]: {
+      promoFilm: movie
+    }
+  });
+
+  const tree = renderer
+    .create(
+        <Provider store={store}>
+          <Tabs movie={movie} />
+        </Provider>
+    )
+    .toJSON();
 
   expect(tree).toMatchSnapshot();
 });
