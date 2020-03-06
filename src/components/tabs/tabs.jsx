@@ -149,7 +149,7 @@ class Tabs extends PureComponent {
           <>
             <div className="movie-card__reviews movie-card__row">
               <div className="movie-card__reviews-col">
-                {comments.map((review, index) => (
+                {comments.map((review) => (
                   <div className="review" key={review.id}>
                     <blockquote className="review__quote">
                       <p className="review__text">{review.comment}</p>
