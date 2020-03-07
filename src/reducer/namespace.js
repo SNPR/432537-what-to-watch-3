@@ -1,6 +1,7 @@
 const Namespace = {
   DATA: `DATA`,
-  STATE: `STATE`
+  STATE: `STATE`,
+  USER: `USER`
 };
 
 export default Namespace;
