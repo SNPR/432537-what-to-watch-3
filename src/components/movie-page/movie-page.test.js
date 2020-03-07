@@ -5,6 +5,8 @@ import configureStore from "redux-mock-store";
 import Namespace from "../../reducer/namespace.js";
 import {Provider} from "react-redux";
 import {ALL_GENRES} from "../../utils/constants.js";
+import {AuthorizationStatus} from "../../reducer/user/user";
+import {MemoryRouter} from "react-router-dom";
 
 const SHOWED_MOVIES_DEFAULT = 8;
 const films = [
@@ -168,19 +170,25 @@ it(`Should render MoviePage component`, () => {
     [Namespace.STATE]: {
       genre: ALL_GENRES,
       showedMovies: SHOWED_MOVIES_DEFAULT
+    },
+    [Namespace.USER]: {
+      authorizationStatus: AuthorizationStatus.AUTH
     }
   });
 
   const tree = renderer
     .create(
         <Provider store={store}>
-          <MoviePage
-            movie={films[0]}
-            onMovieCardClick={() => {}}
-            isBigMoviePlayerVisible={false}
-            onVisibilityChange={() => {}}
-            movies={films}
-          />
+          <MemoryRouter>
+            <MoviePage
+              movie={films[0]}
+              onMovieCardClick={() => {}}
+              isBigMoviePlayerVisible={false}
+              onVisibilityChange={() => {}}
+              movies={films}
+              authorizationStatus={AuthorizationStatus.AUTH}
+            />
+          </MemoryRouter>
         </Provider>
     )
     .toJSON();
