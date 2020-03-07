@@ -155,6 +155,8 @@ class AddReview extends PureComponent {
                 id="review-text"
                 placeholder="Review text"
                 ref={this.commentRef}
+                minLength="50"
+                maxLength="400"
               />
               <div className="add-review__submit">
                 <button className="add-review__btn" type="submit">
