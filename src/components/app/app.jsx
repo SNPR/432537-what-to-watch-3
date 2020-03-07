@@ -60,7 +60,7 @@ class App extends PureComponent {
           <Route exact path="/">
             {this._renderApp()}
           </Route>
-          <Route exact path="/dev-sign-in">
+          <Route exact path="/sign-in">
             <SignIn onSubmit={this.props.login} />
           </Route>
         </Switch>
