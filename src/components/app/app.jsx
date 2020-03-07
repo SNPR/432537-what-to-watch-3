@@ -3,6 +3,7 @@ import {Switch, Route, BrowserRouter} from "react-router-dom";
 import Main from "../main/main.jsx";
 import MoviePage from "../movie-page/movie-page.jsx";
 import PropTypes from "prop-types";
+import SignIn from "../sign-in/sign-in.jsx";
 
 class App extends PureComponent {
   constructor(props) {
@@ -56,6 +57,9 @@ class App extends PureComponent {
         <Switch>
           <Route exact path="/">
             {this._renderApp()}
+          </Route>
+          <Route exact path="/dev-sign-in">
+            <SignIn />
           </Route>
         </Switch>
       </BrowserRouter>
