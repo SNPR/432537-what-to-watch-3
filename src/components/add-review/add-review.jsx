@@ -5,17 +5,23 @@ import {getSelectedMovie} from "../../reducer/state/selectors.js";
 import {Operation} from "../../reducer/data/data";
 import {Redirect} from "react-router-dom";
 
+const MIN_REVIEW_LENGTH = 50;
+const MAX_REVIEW_LENGTH = 400;
+
 class AddReview extends PureComponent {
   constructor(props) {
     super(props);
 
     this.submitFormRef = createRef();
     this.commentRef = createRef();
+    this.sendCommentButtonRef = createRef();
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
 
     this.state = {
-      commentAdded: false
+      commentAdded: false,
+      isFormInvalid: true
     };
   }
 
@@ -30,6 +36,14 @@ class AddReview extends PureComponent {
     });
 
     this.setState({commentAdded: true});
+  }
+
+  handleChange(evt) {
+    this.setState({
+      isFormInvalid:
+        evt.target.value.length < MIN_REVIEW_LENGTH ||
+        evt.target.value.length > MAX_REVIEW_LENGTH
+    });
   }
 
   render() {
@@ -164,11 +178,17 @@ class AddReview extends PureComponent {
                   id="review-text"
                   placeholder="Review text"
                   ref={this.commentRef}
-                  minLength="50"
-                  maxLength="400"
+                  minLength={MIN_REVIEW_LENGTH}
+                  maxLength={MAX_REVIEW_LENGTH}
+                  onChange={this.handleChange}
                 />
                 <div className="add-review__submit">
-                  <button className="add-review__btn" type="submit">
+                  <button
+                    className="add-review__btn"
+                    type="submit"
+                    ref={this.sendCommentButtonRef}
+                    disabled={this.state.isFormInvalid}
+                  >
                     Post
                   </button>
                 </div>
