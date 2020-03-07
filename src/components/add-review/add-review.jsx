@@ -116,12 +116,12 @@ class AddReview extends PureComponent {
                   className="rating__input"
                   id="star-3"
                   type="radio"
-                  name="rating"
-                  value="3"
-                  checked
-                />
-                <label className="rating__label" htmlFor="star-3">
-                  Rating 3
+                    name="rating"
+                    value="3"
+                    defaultChecked
+                  />
+                  <label className="rating__label" htmlFor="star-3">
+                    Rating 3
                 </label>
 
                 <input
