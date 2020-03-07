@@ -6,6 +6,7 @@ import configureStore from "redux-mock-store";
 import Main from "./main.jsx";
 import {ALL_GENRES} from "../../utils/constants.js";
 import Namespace from "../../reducer/namespace.js";
+import {AuthorizationStatus} from "../../reducer/user/user.js";
 
 const SHOWED_MOVIES_DEFAULT = 8;
 
@@ -195,6 +196,9 @@ it(`Should movie card be pressed`, () => {
     [Namespace.STATE]: {
       genre: ALL_GENRES,
       showedMovies: SHOWED_MOVIES_DEFAULT
+    },
+    [Namespace.USER]: {
+      authorizationStatus: AuthorizationStatus.NO_AUTH
     }
   });
 
@@ -207,6 +211,7 @@ it(`Should movie card be pressed`, () => {
           onMovieCardClick={movieCardClickHandler}
           isBigMoviePlayerVisible={false}
           onVisibilityChange={() => {}}
+          authorizationStatus={AuthorizationStatus.NO_AUTH}
         />
       </Provider>
   );
