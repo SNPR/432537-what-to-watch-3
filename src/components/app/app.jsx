@@ -6,6 +6,8 @@ import PropTypes from "prop-types";
 import SignIn from "../sign-in/sign-in.jsx";
 import {connect} from "react-redux";
 import {Operation as UserOperation} from "../../reducer/user/user.js";
+import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
+import {AuthorizationStatus} from "../../reducer/user/user.js";
 
 class App extends PureComponent {
   constructor(props) {
@@ -54,6 +56,8 @@ class App extends PureComponent {
   }
 
   render() {
+    const {login, authorizationStatus} = this.props;
+
     return (
       <BrowserRouter>
         <Switch>
@@ -61,13 +65,21 @@ class App extends PureComponent {
             {this._renderApp()}
           </Route>
           <Route exact path="/sign-in">
-            <SignIn onSubmit={this.props.login} />
+            {authorizationStatus === AuthorizationStatus.NO_AUTH ? (
+              <SignIn onSubmit={login} />
+            ) : (
+              this._renderApp()
+            )}
           </Route>
         </Switch>
       </BrowserRouter>
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  authorizationStatus: getAuthorizationStatus(state)
+});
 
 const mapDispatchToProps = (dispatch) => ({
   login(authData) {
@@ -77,7 +89,8 @@ const mapDispatchToProps = (dispatch) => ({
 
 App.propTypes = {
   getComments: PropTypes.func.isRequired,
-  login: PropTypes.func.isRequired
+  login: PropTypes.func.isRequired,
+  authorizationStatus: PropTypes.string.isRequired
 };
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
