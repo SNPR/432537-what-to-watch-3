@@ -8,6 +8,7 @@ import {connect} from "react-redux";
 import {getMovies} from "../../reducer/data/selectors.js";
 import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
 import {AuthorizationStatus} from "../../reducer/user/user";
+import {Link} from "react-router-dom";
 
 const BigMoviePlayerWrapped = withPlayer(BigMoviePlayer);
 
@@ -86,9 +87,9 @@ const MoviePage = ({
                   <span>My list</span>
                 </button>
                 {authorizationStatus === AuthorizationStatus.AUTH && (
-                  <a href="add-review.html" className="btn movie-card__button">
+                  <Link to="/dev-add-review" className="btn movie-card__button">
                     Add review
-                  </a>
+                  </Link>
                 )}
               </div>
             </div>
