@@ -6,6 +6,8 @@ import withPlayer from "../../hocs/with-player/with-player.jsx";
 import BigMoviePlayer from "../big-movie-player/big-movie-player.jsx";
 import {connect} from "react-redux";
 import {getMovies} from "../../reducer/data/selectors.js";
+import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
+import {AuthorizationStatus} from "../../reducer/user/user";
 
 const BigMoviePlayerWrapped = withPlayer(BigMoviePlayer);
 
@@ -14,7 +16,8 @@ const MoviePage = ({
   onMovieCardClick,
   isBigMoviePlayerVisible,
   onVisibilityChange,
-  movies
+  movies,
+  authorizationStatus
 }) => {
   return isBigMoviePlayerVisible ? (
     <BigMoviePlayerWrapped
@@ -82,9 +85,11 @@ const MoviePage = ({
                   </svg>
                   <span>My list</span>
                 </button>
-                <a href="add-review.html" className="btn movie-card__button">
-                  Add review
-                </a>
+                {authorizationStatus === AuthorizationStatus.AUTH && (
+                  <a href="add-review.html" className="btn movie-card__button">
+                    Add review
+                  </a>
+                )}
               </div>
             </div>
           </div>
@@ -178,10 +183,12 @@ MoviePage.propTypes = {
   ).isRequired,
   onMovieCardClick: PropTypes.func.isRequired,
   isBigMoviePlayerVisible: PropTypes.bool.isRequired,
-  onVisibilityChange: PropTypes.func.isRequired
+  onVisibilityChange: PropTypes.func.isRequired,
+  authorizationStatus: PropTypes.string.isRequired
 };
 const mapStateToProps = (state) => ({
-  movies: getMovies(state)
+  movies: getMovies(state),
+  authorizationStatus: getAuthorizationStatus(state)
 });
 
 export default connect(mapStateToProps)(MoviePage);
