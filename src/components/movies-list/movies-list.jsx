@@ -16,7 +16,7 @@ const MoviesList = ({
         <MovieCard
           key={movie.name + index}
           movie={movie}
-          onMovieCardClick={() => onMovieCardClick(movie)}
+          onMovieCardClick={() => onMovieCardClick(movie.id)}
           onMovieCardMouseOver={() => onMovieCardMouseOver(index)}
           onMovieCardMouseOut={onMovieCardMouseOut}
           isPlaying={selectedMovieId === index && isPlaying}
