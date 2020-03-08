@@ -6,6 +6,8 @@ import withPlayer from "../../hocs/with-player/with-player.jsx";
 import BigMoviePlayer from "../big-movie-player/big-movie-player.jsx";
 import {connect} from "react-redux";
 import {getPromoMovie} from "../../reducer/data/selectors.js";
+import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
+import {AuthorizationStatus} from "../../reducer/user/user.js";
 
 const BigMoviePlayerWrapped = withPlayer(BigMoviePlayer);
 
@@ -13,7 +15,8 @@ const Main = ({
   onMovieCardClick,
   isBigMoviePlayerVisible,
   onVisibilityChange,
-  promoMovie
+  promoMovie,
+  authorizationStatus
 }) => {
   return isBigMoviePlayerVisible ? (
     <BigMoviePlayerWrapped
@@ -41,14 +44,20 @@ const Main = ({
           </div>
 
           <div className="user-block">
-            <div className="user-block__avatar">
-              <img
-                src="img/avatar.jpg"
-                alt="User avatar"
-                width="63"
-                height="63"
-              />
-            </div>
+            {authorizationStatus === AuthorizationStatus.AUTH ? (
+              <div className="user-block__avatar">
+                <img
+                  src="img/avatar.jpg"
+                  alt="User avatar"
+                  width="63"
+                  height="63"
+                />
+              </div>
+            ) : (
+              <a href="#" className="user-block__link">
+                Sign in
+              </a>
+            )}
           </div>
         </header>
 
@@ -147,11 +156,13 @@ Main.propTypes = {
   }),
   onMovieCardClick: PropTypes.func.isRequired,
   isBigMoviePlayerVisible: PropTypes.bool.isRequired,
-  onVisibilityChange: PropTypes.func.isRequired
+  onVisibilityChange: PropTypes.func.isRequired,
+  authorizationStatus: PropTypes.string.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  promoMovie: getPromoMovie(state)
+  promoMovie: getPromoMovie(state),
+  authorizationStatus: getAuthorizationStatus(state)
 });
 
 export default connect(mapStateToProps)(Main);

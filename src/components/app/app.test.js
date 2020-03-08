@@ -5,6 +5,7 @@ import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import {ALL_GENRES} from "../../utils/constants";
 import Namespace from "../../reducer/namespace.js";
+import {AuthorizationStatus} from "../../reducer/user/user.js";
 
 const mockStore = configureStore([]);
 
@@ -190,13 +191,20 @@ it(`Should render App component`, () => {
     [Namespace.STATE]: {
       genre: ALL_GENRES,
       showedMovies: SHOWED_MOVIES_DEFAULT
+    },
+    [Namespace.USER]: {
+      authorizationStatus: AuthorizationStatus.NO_AUTH
     }
   });
 
   const tree = renderer
     .create(
         <Provider store={store}>
-          <App getComments={() => {}} />
+          <App
+            getComments={() => {}}
+            login={() => {}}
+            authorizationStatus={AuthorizationStatus.NO_AUTH}
+          />
         </Provider>
     )
     .toJSON();
