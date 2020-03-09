@@ -5,19 +5,25 @@ const SHOWED_MOVIES_DEFAULT = 8;
 
 const initialState = {
   genre: ALL_GENRES,
-  showedMovies: SHOWED_MOVIES_DEFAULT
+  showedMovies: SHOWED_MOVIES_DEFAULT,
+  selectedMovieId: 0
 };
 
 const ActionType = {
   CHANGE_GENRE: `CHANGE_GENRE`,
   SHOW_MORE_MOVIES: `SHOW_MORE_MOVIES`,
-  RESET_SHOWED_MOVIES_AMOUNT: `RESET_SHOWED_MOVIES_AMOUNT`
+  RESET_SHOWED_MOVIES_AMOUNT: `RESET_SHOWED_MOVIES_AMOUNT`,
+  CHANGE_SELECTED_MOVIE_ID: `CHANGE_SELECTED_MOVIE_ID`
 };
 
 const ActionCreator = {
   changeGenre: (genre = ALL_GENRES) => ({
     type: ActionType.CHANGE_GENRE,
     payload: genre
+  }),
+  changeSelectedMovieId: (id = 0) => ({
+    type: ActionType.CHANGE_SELECTED_MOVIE_ID,
+    payload: id
   }),
   showMoreMovies: () => ({
     type: ActionType.SHOW_MORE_MOVIES,
@@ -42,6 +48,10 @@ const reducer = (state = initialState, action) => {
     case ActionType.RESET_SHOWED_MOVIES_AMOUNT:
       return extend(state, {
         showedMovies: SHOWED_MOVIES_DEFAULT
+      });
+    case ActionType.CHANGE_SELECTED_MOVIE_ID:
+      return extend(state, {
+        selectedMovieId: action.payload
       });
   }
 

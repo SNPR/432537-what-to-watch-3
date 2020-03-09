@@ -9,7 +9,8 @@ const SHOWED_MOVIES_DEFAULT = 8;
 
 const initialState = {
   genre: ALL_GENRES,
-  showedMovies: SHOWED_MOVIES_DEFAULT
+  showedMovies: SHOWED_MOVIES_DEFAULT,
+  selectedMovieId: 0
 };
 
 it(`Reducer without additional parameters should return initial state`, () => {
@@ -38,6 +39,30 @@ it(`Reducer should change genre`, () => {
           }
       )
   ).toEqual({genre: `Crime`});
+});
+
+it(`Reducer should change selected movie ID`, () => {
+  expect(
+      reducer(
+          {selectedMovieId: 0},
+          {
+            type: ActionType.CHANGE_SELECTED_MOVIE_ID,
+            payload: 1
+          }
+      )
+  ).toEqual({
+    selectedMovieId: 1
+  });
+
+  expect(
+      reducer(
+          {selectedMovieId: 0},
+          {
+            type: ActionType.CHANGE_SELECTED_MOVIE_ID,
+            payload: 2
+          }
+      )
+  ).toEqual({selectedMovieId: 2});
 });
 
 it(`Reducer should increase and reset showed movies counter`, () => {
@@ -76,6 +101,20 @@ describe(`Action creators work correctly`, () => {
     expect(ActionCreator.changeGenre()).toEqual({
       type: ActionType.CHANGE_GENRE,
       payload: ALL_GENRES
+    });
+  });
+
+  it(`Action creator for selected movie id returns 0 by default`, () => {
+    expect(ActionCreator.changeSelectedMovieId()).toEqual({
+      type: ActionType.CHANGE_SELECTED_MOVIE_ID,
+      payload: 0
+    });
+  });
+
+  it(`Action creator for selected movie id returns correct action`, () => {
+    expect(ActionCreator.changeSelectedMovieId(1)).toEqual({
+      type: ActionType.CHANGE_SELECTED_MOVIE_ID,
+      payload: 1
     });
   });
 });
