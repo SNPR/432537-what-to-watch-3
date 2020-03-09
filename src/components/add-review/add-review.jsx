@@ -45,8 +45,6 @@ class AddReview extends PureComponent {
         },
         () => {
           this.toggleFormDisability();
-          debugger;
-
           this.setState({commentAdded: true});
         },
         () => {
