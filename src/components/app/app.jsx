@@ -8,22 +8,24 @@ import {connect} from "react-redux";
 import {Operation as UserOperation} from "../../reducer/user/user.js";
 import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
 import {AuthorizationStatus} from "../../reducer/user/user.js";
+import AddReview from "../add-review/add-review.jsx";
+import {getSelectedMovie} from "../../reducer/state/selectors.js";
+import {ActionCreator} from "../../reducer/state/state.js";
 
 class App extends PureComponent {
   constructor(props) {
     super(props);
 
     this.state = {
-      selectedMovie: null,
       isBigMoviePlayerVisible: false
     };
     this.movieCardClickHandler = this.movieCardClickHandler.bind(this);
     this.handleVisibility = this.handleVisibility.bind(this);
   }
 
-  movieCardClickHandler(selectedMovie) {
-    this.setState({selectedMovie});
-    this.props.getComments(selectedMovie.id);
+  movieCardClickHandler(selectedMovieId) {
+    this.props.changeSelectedMovieId(selectedMovieId);
+    this.props.getComments(selectedMovieId);
   }
 
   handleVisibility() {
@@ -33,9 +35,10 @@ class App extends PureComponent {
   }
 
   _renderApp() {
-    const {selectedMovie, isBigMoviePlayerVisible} = this.state;
+    const {isBigMoviePlayerVisible} = this.state;
+    const {selectedMovie} = this.props;
 
-    if (selectedMovie !== null) {
+    if (selectedMovie) {
       return (
         <MoviePage
           movie={selectedMovie}
@@ -64,6 +67,9 @@ class App extends PureComponent {
           <Route exact path="/">
             {this._renderApp()}
           </Route>
+          <Route exact path="/dev-add-review">
+            <AddReview />
+          </Route>
           <Route exact path="/sign-in">
             {authorizationStatus === AuthorizationStatus.NO_AUTH ? (
               <SignIn onSubmit={login} />
@@ -78,19 +84,43 @@ class App extends PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-  authorizationStatus: getAuthorizationStatus(state)
+  authorizationStatus: getAuthorizationStatus(state),
+  selectedMovie: getSelectedMovie(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
   login(authData) {
     dispatch(UserOperation.login(authData));
+  },
+  changeSelectedMovieId(id) {
+    dispatch(ActionCreator.changeSelectedMovieId(id));
   }
 });
 
 App.propTypes = {
   getComments: PropTypes.func.isRequired,
   login: PropTypes.func.isRequired,
-  authorizationStatus: PropTypes.string.isRequired
+  authorizationStatus: PropTypes.string.isRequired,
+  changeSelectedMovieId: PropTypes.func.isRequired,
+  selectedMovie: PropTypes.shape({
+    name: PropTypes.string,
+    posterUrl: PropTypes.string,
+    previewUrl: PropTypes.string,
+    bigPosterUrl: PropTypes.string,
+    backgroundColor: PropTypes.string,
+    description: PropTypes.string,
+    rating: PropTypes.number,
+    votes: PropTypes.number,
+    director: PropTypes.string,
+    starring: PropTypes.arrayOf(PropTypes.string),
+    runTime: PropTypes.string,
+    genre: PropTypes.string,
+    releaseYear: PropTypes.number,
+    id: PropTypes.number,
+    isFavorite: PropTypes.bool,
+    videoUrl: PropTypes.string,
+    trailerUrl: PropTypes.string
+  })
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

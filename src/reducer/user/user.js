@@ -10,7 +10,7 @@ const initialState = {
 };
 
 const ActionType = {
-  REQUIRE_AUTHORIZATION: `REQUIRED_AUTHORIZATION`
+  REQUIRE_AUTHORIZATION: `REQUIRE_AUTHORIZATION`
 };
 
 const ActionCreator = {

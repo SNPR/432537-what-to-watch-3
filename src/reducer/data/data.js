@@ -10,7 +10,7 @@ const initialState = {
 const ActionType = {
   GET_MOVIES: `GET_MOVIES`,
   GET_PROMO_MOVIE: `GET_PROMO_MOVIE`,
-  GET_COMMENTS: `GET_COMMENTS`
+  GET_COMMENTS: `GET_COMMENTS`,
 };
 
 const Operation = {
@@ -28,6 +28,16 @@ const Operation = {
     return api.get(`/comments/${movieId}`).then((response) => {
       dispatch(ActionCreator.getComments(response.data));
     });
+  },
+  addComment: (commentData) => (dispatch, getState, api) => {
+    return api
+      .post(`/comments/${commentData.movieId}`, {
+        rating: commentData.rating,
+        comment: commentData.comment
+      })
+      .then(() => {
+        dispatch(Operation.getComments(commentData.movieId));
+      });
   }
 };
 
