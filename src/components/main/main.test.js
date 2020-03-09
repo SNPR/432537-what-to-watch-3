@@ -6,6 +6,7 @@ import Main from "./main.jsx";
 import {ALL_GENRES} from "../../utils/constants.js";
 import Namespace from "../../reducer/namespace.js";
 import {AuthorizationStatus} from "../../reducer/user/user.js";
+import {MemoryRouter} from "react-router-dom";
 
 const SHOWED_MOVIES_DEFAULT = 8;
 const mockStore = configureStore([]);
@@ -199,13 +200,15 @@ it(`Should render Main component`, () => {
   const tree = renderer
     .create(
         <Provider store={store}>
-          <Main
-            onMovieCardClick={() => {}}
-            promoMovie={films[0]}
-            isBigMoviePlayerVisible={false}
-            onVisibilityChange={() => {}}
-            authorizationStatus={AuthorizationStatus.NO_AUTH}
-          />
+          <MemoryRouter>
+            <Main
+              onMovieCardClick={() => {}}
+              promoMovie={films[0]}
+              isBigMoviePlayerVisible={false}
+              onVisibilityChange={() => {}}
+              authorizationStatus={AuthorizationStatus.NO_AUTH}
+            />
+          </MemoryRouter>
         </Provider>
     )
     .toJSON();
