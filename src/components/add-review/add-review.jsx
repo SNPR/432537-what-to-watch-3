@@ -18,6 +18,7 @@ class AddReview extends PureComponent {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.toggleFormDisability = this.toggleFormDisability.bind(this);
 
     this.state = {
       commentAdded: false,
@@ -25,17 +26,33 @@ class AddReview extends PureComponent {
     };
   }
 
+  toggleFormDisability() {
+    this.commentRef.current.disabled = !this.commentRef.current.disabled;
+    this.sendCommentButtonRef.current.disabled = !this.sendCommentButtonRef
+      .current.disabled;
+  }
+
   handleSubmit(evt) {
     const {onSubmit} = this.props;
-
     evt.preventDefault();
-    onSubmit({
-      movieId: this.props.movie.id,
-      rating: this.submitFormRef.current.rating.value,
-      comment: this.commentRef.current.value
-    });
+    this.toggleFormDisability();
 
-    this.setState({commentAdded: true});
+    onSubmit(
+        {
+          movieId: this.props.movie.id,
+          rating: this.submitFormRef.current.rating.value,
+          comment: this.commentRef.current.value
+        },
+        () => {
+          this.toggleFormDisability();
+          debugger;
+
+          this.setState({commentAdded: true});
+        },
+        () => {
+          this.toggleFormDisability();
+        }
+    );
   }
 
   handleChange(evt) {
@@ -48,7 +65,6 @@ class AddReview extends PureComponent {
 
   render() {
     const {movie} = this.props;
-
     return (
       <>
         {(this.state.commentAdded || !this.props.movie) && <Redirect to="/" />}
@@ -206,8 +222,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onSubmit(commentData) {
-    dispatch(Operation.addComment(commentData));
+  onSubmit(commentData, onSuccess, onError) {
+    dispatch(Operation.addComment(commentData, onSuccess, onError));
   }
 });
 
