@@ -21,7 +21,7 @@ const ActionCreator = {
     type: ActionType.CHANGE_GENRE,
     payload: genre
   }),
-  changeSelectedMovieId: (id) => ({
+  changeSelectedMovieId: (id = 0) => ({
     type: ActionType.CHANGE_SELECTED_MOVIE_ID,
     payload: id
   }),
