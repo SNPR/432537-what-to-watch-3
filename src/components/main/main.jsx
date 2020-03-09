@@ -8,6 +8,7 @@ import {connect} from "react-redux";
 import {getPromoMovie} from "../../reducer/data/selectors.js";
 import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
 import {AuthorizationStatus} from "../../reducer/user/user.js";
+import {Link} from "react-router-dom";
 
 const BigMoviePlayerWrapped = withPlayer(BigMoviePlayer);
 
@@ -54,9 +55,9 @@ const Main = ({
                 />
               </div>
             ) : (
-              <a href="#" className="user-block__link">
+              <Link to="sign-in" className="user-block__link">
                 Sign in
-              </a>
+              </Link>
             )}
           </div>
         </header>
