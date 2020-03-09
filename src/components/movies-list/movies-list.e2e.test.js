@@ -10,6 +10,7 @@ Enzyme.configure({
 const films = [
   {
     name: `Movie name`,
+    id: 1,
     posterUrl: `https://poster-url.com`,
     bigPosterUrl: `https://image-url.com/1.jpg`,
     director: `Director Name`,
@@ -188,6 +189,7 @@ it(`Should pass data to handler on click`, () => {
         onMovieCardMouseOver={() => {}}
         onMovieCardMouseOut={() => {}}
         isPlaying={false}
+        selectedMovieId={1}
       />
   );
 
@@ -198,5 +200,5 @@ it(`Should pass data to handler on click`, () => {
   movieCard.simulate(`click`);
 
   expect(movieCardClickHandler.mock.calls.length).toBe(1);
-  expect(movieCardClickHandler.mock.calls[0][0]).toMatchObject(films[0]);
+  expect(movieCardClickHandler.mock.calls[0][0]).toBe(1);
 });

@@ -182,6 +182,7 @@ it(`Should render MoviesList component`, () => {
           onMovieCardMouseOver={() => {}}
           onMovieCardMouseOut={() => {}}
           isPlaying={false}
+          selectedMovieId={1}
         />
     )
     .toJSON();
