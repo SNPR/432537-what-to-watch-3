@@ -3,5 +3,5 @@ export const ALL_GENRES = `All genres`;
 export const AppRoute = {
   LOGIN: `/login`,
   ROOT: `/`,
-  ADD_REVIEW: `add-review`
+  ADD_REVIEW: `/add-review`
 };
