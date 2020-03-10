@@ -12,6 +12,7 @@ import AddReview from "../add-review/add-review.jsx";
 import {getSelectedMovie} from "../../reducer/state/selectors.js";
 import {ActionCreator} from "../../reducer/state/state.js";
 import history from "../../history.js";
+import {AppRoute} from "../../utils/constants.js";
 
 class App extends PureComponent {
   constructor(props) {
@@ -68,10 +69,10 @@ class App extends PureComponent {
           <Route exact path="/">
             {this._renderApp()}
           </Route>
-          <Route exact path="/dev-add-review">
+          <Route exact path={AppRoute.ADD_REVIEW}>
             <AddReview />
           </Route>
-          <Route exact path="/login">
+          <Route exact path={AppRoute.LOGIN}>
             {authorizationStatus === AuthorizationStatus.NO_AUTH ? (
               <SignIn onSubmit={login} />
             ) : (
