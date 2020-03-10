@@ -10,6 +10,8 @@ import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
 import {AuthorizationStatus} from "../../reducer/user/user";
 import {Link} from "react-router-dom";
 import {AppRoute} from "../../utils/constants.js";
+import {getMyMoviesIdsList} from "../../reducer/state/selectors.js";
+import {ActionCreator} from "../../reducer/state/state.js";
 
 const BigMoviePlayerWrapped = withPlayer(BigMoviePlayer);
 
@@ -19,7 +21,10 @@ const MoviePage = ({
   isBigMoviePlayerVisible,
   onVisibilityChange,
   movies,
-  authorizationStatus
+  authorizationStatus,
+  addMovieToMyList,
+  myMoviesIdsList,
+  removeMovieFromMyList
 }) => {
   return isBigMoviePlayerVisible ? (
     <BigMoviePlayerWrapped
@@ -81,10 +86,21 @@ const MoviePage = ({
                 <button
                   className="btn btn--list movie-card__button"
                   type="button"
+                  onClick={() => {
+                    myMoviesIdsList.includes(movie.id)
+                      ? removeMovieFromMyList(movie.id)
+                      : addMovieToMyList(movie.id);
+                  }}
                 >
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"></use>
-                  </svg>
+                  {myMoviesIdsList.includes(movie.id) ? (
+                    <svg viewBox="0 0 18 14" width="18" height="14">
+                      <use xlinkHref="#in-list"></use>
+                    </svg>
+                  ) : (
+                    <svg viewBox="0 0 19 20" width="19" height="20">
+                      <use xlinkHref="#add"></use>
+                    </svg>
+                  )}
                   <span>My list</span>
                 </button>
                 {authorizationStatus === AuthorizationStatus.AUTH && (
@@ -193,7 +209,17 @@ MoviePage.propTypes = {
 };
 const mapStateToProps = (state) => ({
   movies: getMovies(state),
-  authorizationStatus: getAuthorizationStatus(state)
+  authorizationStatus: getAuthorizationStatus(state),
+  myMoviesIdsList: getMyMoviesIdsList(state)
 });
 
-export default connect(mapStateToProps)(MoviePage);
+const mapDispatchToProps = (dispatch) => ({
+  addMovieToMyList(id) {
+    dispatch(ActionCreator.addMovieToMyList(id));
+  },
+  removeMovieFromMyList(id) {
+    dispatch(ActionCreator.removeMovieFromMyList(id));
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MoviePage);
