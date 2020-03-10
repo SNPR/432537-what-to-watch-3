@@ -21,7 +21,7 @@ export const getSelectedMovie = createSelector(
 
 const findMoviesFromMylist = (state) => {
   const movies = state[Namespace.DATA].films;
-  const myList = state[Namespace.STATE].myMoviesList;
+  const myList = state[Namespace.STATE].myMoviesIdsList;
 
   return movies.filter((movie) => myList.includes(movie.id));
 };
@@ -32,5 +32,5 @@ export const getMoviesFromMyList = createSelector(
 );
 
 export const getMyMoviesIdsList = (state) => {
-  return state[Namespace.STATE].myMoviesList;
+  return state[Namespace.STATE].myMoviesIdsList;
 };

@@ -7,7 +7,7 @@ const initialState = {
   genre: ALL_GENRES,
   showedMovies: SHOWED_MOVIES_DEFAULT,
   selectedMovieId: 0,
-  myMoviesList: []
+  myMoviesIdsList: []
 };
 
 const ActionType = {
@@ -66,12 +66,12 @@ const reducer = (state = initialState, action) => {
       });
     case ActionType.ADD_MOVIE_TO_MY_LIST:
       return extend(state, {
-        myMoviesList: [...state.myMoviesList].push(action.payload)
+        myMoviesIdsList: [...state.myMoviesIdsList, action.payload]
       });
     case ActionType.REMOVE_MOVIE_FROM_MY_LIST:
       return extend(state, {
-        myMoviesList: [...state.myMoviesList].filter(
-            (movie) => movie.id !== action.payload
+        myMoviesIdsList: state.myMoviesIdsList.filter(
+            (movieId) => movieId !== action.payload
         )
       });
   }
