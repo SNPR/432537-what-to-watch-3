@@ -9,6 +9,8 @@ import {getPromoMovie} from "../../reducer/data/selectors.js";
 import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
 import {AuthorizationStatus} from "../../reducer/user/user.js";
 import {Link} from "react-router-dom";
+import {ActionCreator} from "../../reducer/state/state.js";
+import {getMyMoviesIdsList} from "../../reducer/state/selectors.js";
 
 const BigMoviePlayerWrapped = withPlayer(BigMoviePlayer);
 
@@ -17,7 +19,10 @@ const Main = ({
   isBigMoviePlayerVisible,
   onVisibilityChange,
   promoMovie,
-  authorizationStatus
+  authorizationStatus,
+  addMovieToMyList,
+  myMoviesIdsList,
+  removeMovieFromMyList
 }) => {
   return isBigMoviePlayerVisible ? (
     <BigMoviePlayerWrapped
@@ -96,10 +101,21 @@ const Main = ({
                 <button
                   className="btn btn--list movie-card__button"
                   type="button"
+                  onClick={() => {
+                    myMoviesIdsList.includes(promoMovie.id)
+                      ? removeMovieFromMyList(promoMovie.id)
+                      : addMovieToMyList(promoMovie.id);
+                  }}
                 >
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"></use>
-                  </svg>
+                  {myMoviesIdsList.includes(promoMovie.id) ? (
+                    <svg viewBox="0 0 18 14" width="18" height="14">
+                      <use xlinkHref="#in-list"></use>
+                    </svg>
+                  ) : (
+                    <svg viewBox="0 0 19 20" width="19" height="20">
+                      <use xlinkHref="#add"></use>
+                    </svg>
+                  )}
                   <span>My list</span>
                 </button>
               </div>
@@ -163,7 +179,17 @@ Main.propTypes = {
 
 const mapStateToProps = (state) => ({
   promoMovie: getPromoMovie(state),
-  authorizationStatus: getAuthorizationStatus(state)
+  authorizationStatus: getAuthorizationStatus(state),
+  myMoviesIdsList: getMyMoviesIdsList(state)
 });
 
-export default connect(mapStateToProps)(Main);
+const mapDispatchToProps = (dispatch) => ({
+  addMovieToMyList(id) {
+    dispatch(ActionCreator.addMovieToMyList(id));
+  },
+  removeMovieFromMyList(id) {
+    dispatch(ActionCreator.removeMovieFromMyList(id));
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
