@@ -55,7 +55,7 @@ const Main = ({
                 />
               </div>
             ) : (
-              <Link to="sign-in" className="user-block__link">
+              <Link to="login" className="user-block__link">
                 Sign in
               </Link>
             )}

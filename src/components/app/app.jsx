@@ -71,7 +71,7 @@ class App extends PureComponent {
           <Route exact path="/dev-add-review">
             <AddReview />
           </Route>
-          <Route exact path="/sign-in">
+          <Route exact path="/login">
             {authorizationStatus === AuthorizationStatus.NO_AUTH ? (
               <SignIn onSubmit={login} />
             ) : (
