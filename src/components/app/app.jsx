@@ -1,5 +1,5 @@
 import React, {PureComponent} from "react";
-import {Switch, Route, BrowserRouter} from "react-router-dom";
+import {Switch, Route, Router} from "react-router-dom";
 import Main from "../main/main.jsx";
 import MoviePage from "../movie-page/movie-page.jsx";
 import PropTypes from "prop-types";
@@ -11,6 +11,7 @@ import {AuthorizationStatus} from "../../reducer/user/user.js";
 import AddReview from "../add-review/add-review.jsx";
 import {getSelectedMovie} from "../../reducer/state/selectors.js";
 import {ActionCreator} from "../../reducer/state/state.js";
+import history from "../../history.js";
 
 class App extends PureComponent {
   constructor(props) {
@@ -62,7 +63,7 @@ class App extends PureComponent {
     const {login, authorizationStatus} = this.props;
 
     return (
-      <BrowserRouter>
+      <Router history={history}>
         <Switch>
           <Route exact path="/">
             {this._renderApp()}
@@ -78,7 +79,7 @@ class App extends PureComponent {
             )}
           </Route>
         </Switch>
-      </BrowserRouter>
+      </Router>
     );
   }
 }
