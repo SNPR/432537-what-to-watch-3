@@ -16,6 +16,7 @@ import MyList from "../my-list/my-list.jsx";
 import PrivateRoute from "../private-route/private-route.jsx";
 import withPlayer from "../../hocs/with-player/with-player.jsx";
 import BigMoviePlayer from "../big-movie-player/big-movie-player.jsx";
+import {getPromoMovie} from "../../reducer/data/selectors.js";
 
 const BigMoviePlayerWrapped = withPlayer(BigMoviePlayer);
 
@@ -32,7 +33,7 @@ class App extends PureComponent {
   }
 
   render() {
-    const {login, selectedMovie} = this.props;
+    const {login, selectedMovie, promoMovie} = this.props;
 
     return (
       <Router history={history}>
@@ -67,8 +68,8 @@ class App extends PureComponent {
             path={`${AppRoute.FILMS}/:id${AppRoute.PLAYER}`}
             render={(props) => (
               <BigMoviePlayerWrapped
-                {...props}
-                movie={selectedMovie}
+                onExitButtonClick={props.history.goBack}
+                movie={selectedMovie || promoMovie}
                 autoPlay={false}
                 muted={true}
               />
@@ -95,7 +96,8 @@ class App extends PureComponent {
 
 const mapStateToProps = (state) => ({
   authorizationStatus: getAuthorizationStatus(state),
-  selectedMovie: getSelectedMovie(state)
+  selectedMovie: getSelectedMovie(state),
+  promoMovie: getPromoMovie(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -113,6 +115,25 @@ App.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
   changeSelectedMovieId: PropTypes.func.isRequired,
   selectedMovie: PropTypes.shape({
+    name: PropTypes.string,
+    posterUrl: PropTypes.string,
+    previewUrl: PropTypes.string,
+    bigPosterUrl: PropTypes.string,
+    backgroundColor: PropTypes.string,
+    description: PropTypes.string,
+    rating: PropTypes.number,
+    votes: PropTypes.number,
+    director: PropTypes.string,
+    starring: PropTypes.arrayOf(PropTypes.string),
+    runTime: PropTypes.string,
+    genre: PropTypes.string,
+    releaseYear: PropTypes.number,
+    id: PropTypes.number,
+    isFavorite: PropTypes.bool,
+    videoUrl: PropTypes.string,
+    trailerUrl: PropTypes.string
+  }),
+  promoMovie: PropTypes.shape({
     name: PropTypes.string,
     posterUrl: PropTypes.string,
     previewUrl: PropTypes.string,
