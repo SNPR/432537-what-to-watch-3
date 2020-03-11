@@ -103,9 +103,10 @@ const Main = ({
                   className="btn btn--list movie-card__button"
                   type="button"
                   onClick={() => {
-                    promoMovie.isFavorite
-                      ? removeMovieFromMyList(promoMovie.id)
-                      : addMovieToMyList(promoMovie.id);
+                    if (promoMovie.isFavorite) {
+                      removeMovieFromMyList(promoMovie.id);
+                    }
+                    addMovieToMyList(promoMovie.id);
                   }}
                 >
                   {promoMovie.isFavorite ? (
