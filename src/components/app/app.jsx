@@ -46,7 +46,7 @@ class App extends PureComponent {
             )}
           />
 
-          <PrivateRoute
+          <Route
             exact
             path={`${AppRoute.FILMS}/:id`}
             render={() => (
@@ -76,17 +76,20 @@ class App extends PureComponent {
             )}
           />
 
-          <Route
+          <PrivateRoute
             exact
             path={AppRoute.MY_LIST}
             render={() => (
               <MyList onMovieCardClick={this.movieCardClickHandler} />
             )}
           />
+
           <Route
             exact
             path={AppRoute.LOGIN}
-            render={(props) => <SignIn {...props} onSubmit={login} />}
+            render={(props) => (
+              <SignIn goBack={props.history.goBack} onSubmit={login} />
+            )}
           />
         </Switch>
       </Router>
