@@ -107,7 +107,7 @@ const MoviePage = ({
                 </button>
                 {authorizationStatus === AuthorizationStatus.AUTH && (
                   <Link
-                    to={AppRoute.ADD_REVIEW}
+                    to={`${AppRoute.FILMS}/${movie.id}${AppRoute.ADD_REVIEW}`}
                     className="btn movie-card__button"
                   >
                     Add review
