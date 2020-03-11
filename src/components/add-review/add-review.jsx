@@ -76,12 +76,10 @@ class AddReview extends PureComponent {
 
             <header className="page-header">
               <div className="logo">
-                <Link to={AppRoute.ROOT}>
-                  <a className="logo__link">
-                    <span className="logo__letter logo__letter--1">W</span>
-                    <span className="logo__letter logo__letter--2">T</span>
-                    <span className="logo__letter logo__letter--3">W</span>
-                  </a>
+                <Link to={AppRoute.ROOT} className="logo__link">
+                  <span className="logo__letter logo__letter--1">W</span>
+                  <span className="logo__letter logo__letter--2">T</span>
+                  <span className="logo__letter logo__letter--3">W</span>
                 </Link>
               </div>
 
