@@ -4,6 +4,8 @@ import withActiveMovieCard from "../../hocs/with-active-movie-card/with-active-m
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 import {AppRoute} from "../../utils/constants";
+import {getMoviesFromMyList} from "../../reducer/state/selectors.js";
+import {connect} from "react-redux";
 
 const MoviesListWrapped = withActiveMovieCard(MoviesList);
 
@@ -22,14 +24,16 @@ const MyList = ({onMovieCardClick, movies}) => {
         <h1 className="page-title user-page__title">My list</h1>
 
         <div className="user-block">
-          <div className="user-block__avatar">
-            <img
-              src="img/avatar.jpg"
-              alt="User avatar"
-              width="63"
-              height="63"
-            />
-          </div>
+          <Link to={MyList}>
+            <div className="user-block__avatar">
+              <img
+                src="img/avatar.jpg"
+                alt="User avatar"
+                width="63"
+                height="63"
+              />
+            </div>
+          </Link>
         </div>
       </header>
 
@@ -84,4 +88,8 @@ MyList.propTypes = {
   onMovieCardClick: PropTypes.func.isRequired
 };
 
-export default MyList;
+const mapStateToProps = (state) => ({
+  movies: getMoviesFromMyList(state)
+});
+
+export default connect(mapStateToProps)(MyList);
