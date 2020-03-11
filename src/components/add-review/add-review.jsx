@@ -3,8 +3,9 @@ import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import {getSelectedMovie} from "../../reducer/state/selectors.js";
 import {Operation} from "../../reducer/data/data";
-import {Link, Redirect} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {AppRoute} from "../../utils/constants.js";
+import history from "../../history.js";
 
 const MIN_REVIEW_LENGTH = 50;
 const MAX_REVIEW_LENGTH = 400;
@@ -22,7 +23,6 @@ class AddReview extends PureComponent {
     this.toggleFormDisability = this.toggleFormDisability.bind(this);
 
     this.state = {
-      commentAdded: false,
       isFormInvalid: true
     };
   }
@@ -46,7 +46,7 @@ class AddReview extends PureComponent {
         },
         () => {
           this.toggleFormDisability();
-          this.setState({commentAdded: true});
+          history.goBack();
         },
         () => {
           this.toggleFormDisability();
@@ -66,7 +66,6 @@ class AddReview extends PureComponent {
     const {movie} = this.props;
     return (
       <>
-        {(this.state.commentAdded || !this.props.movie) && <Redirect to="/" />}
         <section className="movie-card movie-card--full">
           <div className="movie-card__header">
             <div className="movie-card__bg">
