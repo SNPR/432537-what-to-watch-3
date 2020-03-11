@@ -4,7 +4,7 @@ import withActiveMovieCard from "../../hocs/with-active-movie-card/with-active-m
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 import {AppRoute} from "../../utils/constants";
-import {getMoviesFromMyList} from "../../reducer/state/selectors.js";
+import {getMyMoviesList} from "../../reducer/data/selectors.js";
 import {connect} from "react-redux";
 
 const MoviesListWrapped = withActiveMovieCard(MoviesList);
@@ -89,7 +89,7 @@ MyList.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
-  movies: getMoviesFromMyList(state)
+  movies: getMyMoviesList(state)
 });
 
 export default connect(mapStateToProps)(MyList);
