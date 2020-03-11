@@ -56,7 +56,7 @@ const Operation = {
       const movie = normalizeMovieData(response.data);
       const state = getState();
 
-      if ((state[Namespace.DATA].promoFilm.id = movie.id)) {
+      if (state[Namespace.DATA].promoFilm.id === movie.id) {
         dispatch(ActionCreator.getPromoMovie(movie));
       }
 
@@ -68,7 +68,7 @@ const Operation = {
       const movie = normalizeMovieData(response.data);
       const state = getState();
 
-      if ((state[Namespace.DATA].promoFilm.id = movie.id)) {
+      if (state[Namespace.DATA].promoFilm.id === movie.id) {
         dispatch(ActionCreator.getPromoMovie(movie));
       }
 
