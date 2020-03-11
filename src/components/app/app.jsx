@@ -1,5 +1,5 @@
 import React, {PureComponent} from "react";
-import {Switch, Route, Router, Redirect} from "react-router-dom";
+import {Switch, Route, Router} from "react-router-dom";
 import Main from "../main/main.jsx";
 import MoviePage from "../movie-page/movie-page.jsx";
 import PropTypes from "prop-types";
@@ -7,7 +7,6 @@ import SignIn from "../sign-in/sign-in.jsx";
 import {connect} from "react-redux";
 import {Operation as UserOperation} from "../../reducer/user/user.js";
 import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
-import {AuthorizationStatus} from "../../reducer/user/user.js";
 import AddReview from "../add-review/add-review.jsx";
 import {getSelectedMovie} from "../../reducer/state/selectors.js";
 import {ActionCreator} from "../../reducer/state/state.js";
@@ -62,7 +61,7 @@ class App extends PureComponent {
   }
 
   render() {
-    const {login, authorizationStatus} = this.props;
+    const {login} = this.props;
 
     return (
       <Router history={history}>
@@ -80,13 +79,11 @@ class App extends PureComponent {
               <MyList onMovieCardClick={this.movieCardClickHandler} />
             )}
           />
-          <Route exact path={AppRoute.LOGIN}>
-            {authorizationStatus === AuthorizationStatus.NO_AUTH ? (
-              <SignIn onSubmit={login} />
-            ) : (
-              this._renderApp()
-            )}
-          </Route>
+          <Route
+            exact
+            path={AppRoute.LOGIN}
+            render={(props) => <SignIn {...props} onSubmit={login} />}
+          />
         </Switch>
       </Router>
     );
