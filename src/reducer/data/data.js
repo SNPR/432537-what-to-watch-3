@@ -10,7 +10,10 @@ const initialState = {
 const ActionType = {
   GET_MOVIES: `GET_MOVIES`,
   GET_PROMO_MOVIE: `GET_PROMO_MOVIE`,
-  GET_COMMENTS: `GET_COMMENTS`
+  GET_COMMENTS: `GET_COMMENTS`,
+  ADD_MOVIE_TO_MY_LIST: `ADD_MOVIE_TO_MY_LIST`,
+  REMOVE_MOVIE_FROM_MY_LIST: `REMOVE_MOVIE_FROM_MY_LIST`,
+  GET_MY_MOVIES_LIST: `GET_MY_MOVIES_LIST`
 };
 
 const Operation = {
@@ -46,6 +49,21 @@ const Operation = {
       .catch(() => {
         onError();
       });
+  },
+  addMovieToMyList: (movieId) => (dispatch, getState, api) => {
+    return api.post(`/favorite/${movieId}/1`).then((response) => {
+      dispatch(ActionCreator.addMovieToMyList(response.data));
+    });
+  },
+  removeMovieFromMyList: (movieId) => (dispatch, getState, api) => {
+    return api.post(`/favorite/${movieId}/0`).then((response) => {
+      dispatch(ActionCreator.removeMovieFromMyList(response.data));
+    });
+  },
+  getMyMoviesList: () => (dispatch, getState, api) => {
+    return api.get(`/favorite`).then((response) => {
+      dispatch(ActionCreator.getMyMoviesList(response.data));
+    });
   }
 };
 
@@ -61,6 +79,18 @@ const ActionCreator = {
   getComments: (comments) => ({
     type: ActionType.GET_COMMENTS,
     payload: comments
+  }),
+  addMovieToMyList: (id = 0) => ({
+    type: ActionType.ADD_MOVIE_TO_MY_LIST,
+    payload: id
+  }),
+  removeMovieFromMyList: (id = 0) => ({
+    type: ActionType.REMOVE_MOVIE_FROM_MY_LIST,
+    payload: id
+  }),
+  getMyMoviesList: () => ({
+    type: ActionType.GET_MY_MOVIES_LIST,
+    payload: null
   })
 };
 

@@ -28,3 +28,8 @@ export const getMoviesByGenre = createSelector(
     (state) => state,
     filterMoviesByGenre
 );
+
+const findMoviesList = (state) =>
+  state[Namespace.DATA].films.filter((movie) => movie.isFavorite);
+
+export const getMyMoviesList = createSelector((state) => state, findMoviesList);

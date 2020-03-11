@@ -6,17 +6,14 @@ const SHOWED_MOVIES_DEFAULT = 8;
 const initialState = {
   genre: ALL_GENRES,
   showedMovies: SHOWED_MOVIES_DEFAULT,
-  selectedMovieId: 0,
-  myMoviesIdsList: []
+  selectedMovieId: 0
 };
 
 const ActionType = {
   CHANGE_GENRE: `CHANGE_GENRE`,
   SHOW_MORE_MOVIES: `SHOW_MORE_MOVIES`,
   RESET_SHOWED_MOVIES_AMOUNT: `RESET_SHOWED_MOVIES_AMOUNT`,
-  CHANGE_SELECTED_MOVIE_ID: `CHANGE_SELECTED_MOVIE_ID`,
-  ADD_MOVIE_TO_MY_LIST: `ADD_MOVIE_TO_MY_LIST`,
-  REMOVE_MOVIE_FROM_MY_LIST: `REMOVE_MOVIE_FROM_MY_LIST`
+  CHANGE_SELECTED_MOVIE_ID: `CHANGE_SELECTED_MOVIE_ID`
 };
 
 const ActionCreator = {
@@ -35,14 +32,6 @@ const ActionCreator = {
   resetShowedMoviesAmount: () => ({
     type: ActionType.RESET_SHOWED_MOVIES_AMOUNT,
     payload: null
-  }),
-  addMovieToMyList: (id = 0) => ({
-    type: ActionType.ADD_MOVIE_TO_MY_LIST,
-    payload: id
-  }),
-  removeMovieFromMyList: (id = 0) => ({
-    type: ActionType.REMOVE_MOVIE_FROM_MY_LIST,
-    payload: id
   })
 };
 
@@ -63,16 +52,6 @@ const reducer = (state = initialState, action) => {
     case ActionType.CHANGE_SELECTED_MOVIE_ID:
       return extend(state, {
         selectedMovieId: action.payload
-      });
-    case ActionType.ADD_MOVIE_TO_MY_LIST:
-      return extend(state, {
-        myMoviesIdsList: [...state.myMoviesIdsList, action.payload]
-      });
-    case ActionType.REMOVE_MOVIE_FROM_MY_LIST:
-      return extend(state, {
-        myMoviesIdsList: state.myMoviesIdsList.filter(
-            (movieId) => movieId !== action.payload
-        )
       });
   }
 
