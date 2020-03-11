@@ -105,8 +105,9 @@ const Main = ({
                   onClick={() => {
                     if (promoMovie.isFavorite) {
                       removeMovieFromMyList(promoMovie.id);
+                    } else {
+                      addMovieToMyList(promoMovie.id);
                     }
-                    addMovieToMyList(promoMovie.id);
                   }}
                 >
                   {promoMovie.isFavorite ? (

@@ -87,8 +87,9 @@ const MoviePage = ({
                   onClick={() => {
                     if (movie.isFavorite) {
                       removeMovieFromMyList(movie.id);
+                    } else {
+                      addMovieToMyList(movie.id);
                     }
-                    addMovieToMyList(movie.id);
                   }}
                 >
                   {movie.isFavorite ? (
