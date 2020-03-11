@@ -5,5 +5,6 @@ export const AppRoute = {
   ROOT: `/`,
   ADD_REVIEW: `/add-review`,
   MY_LIST: `/mylist`,
-  FILMS: `/films`
+  FILMS: `/films`,
+  PLAYER: `/player`
 };
