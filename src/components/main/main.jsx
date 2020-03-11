@@ -9,9 +9,8 @@ import {getPromoMovie} from "../../reducer/data/selectors.js";
 import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
 import {AuthorizationStatus} from "../../reducer/user/user.js";
 import {Link} from "react-router-dom";
-import {ActionCreator} from "../../reducer/state/state.js";
-import {getMyMoviesIdsList} from "../../reducer/state/selectors.js";
 import {AppRoute} from "../../utils/constants.js";
+import {Operation} from "../../reducer/data/data.js";
 
 const BigMoviePlayerWrapped = withPlayer(BigMoviePlayer);
 
@@ -22,7 +21,6 @@ const Main = ({
   promoMovie,
   authorizationStatus,
   addMovieToMyList,
-  myMoviesIdsList,
   removeMovieFromMyList
 }) => {
   return isBigMoviePlayerVisible ? (
@@ -105,12 +103,12 @@ const Main = ({
                   className="btn btn--list movie-card__button"
                   type="button"
                   onClick={() => {
-                    myMoviesIdsList.includes(promoMovie.id)
+                    promoMovie.isFavorite
                       ? removeMovieFromMyList(promoMovie.id)
                       : addMovieToMyList(promoMovie.id);
                   }}
                 >
-                  {myMoviesIdsList.includes(promoMovie.id) ? (
+                  {promoMovie.isFavorite ? (
                     <svg viewBox="0 0 18 14" width="18" height="14">
                       <use xlinkHref="#in-list"></use>
                     </svg>
@@ -182,16 +180,15 @@ Main.propTypes = {
 
 const mapStateToProps = (state) => ({
   promoMovie: getPromoMovie(state),
-  authorizationStatus: getAuthorizationStatus(state),
-  myMoviesIdsList: getMyMoviesIdsList(state)
+  authorizationStatus: getAuthorizationStatus(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
   addMovieToMyList(id) {
-    dispatch(ActionCreator.addMovieToMyList(id));
+    dispatch(Operation.addMovieToMyList(id));
   },
   removeMovieFromMyList(id) {
-    dispatch(ActionCreator.removeMovieFromMyList(id));
+    dispatch(Operation.removeMovieFromMyList(id));
   }
 });
 
