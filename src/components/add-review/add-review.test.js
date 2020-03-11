@@ -6,6 +6,7 @@ import AddReview from "./add-review.jsx";
 import {ALL_GENRES} from "../../utils/constants.js";
 import Namespace from "../../reducer/namespace.js";
 import {AuthorizationStatus} from "../../reducer/user/user.js";
+import {MemoryRouter} from "react-router-dom";
 
 const SHOWED_MOVIES_DEFAULT = 8;
 const mockStore = configureStore([]);
@@ -34,7 +35,7 @@ it(`Should render AddReview component`, () => {
   const store = mockStore({
     [Namespace.DATA]: {
       films: [movie],
-      promoFilm: movie,
+      promoFilm: movie
     },
     [Namespace.STATE]: {
       genre: ALL_GENRES,
@@ -48,9 +49,11 @@ it(`Should render AddReview component`, () => {
 
   const tree = renderer
     .create(
-        <Provider store={store}>
-          <AddReview onSubmit={() => {}} movie={movie} />
-        </Provider>
+        <MemoryRouter>
+          <Provider store={store}>
+            <AddReview onSubmit={() => {}} movie={movie} />
+          </Provider>
+        </MemoryRouter>
     )
     .toJSON();
 
