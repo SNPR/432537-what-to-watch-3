@@ -91,7 +91,7 @@ const withActiveMovieCard = (Component) => {
           trailerUrl: PropTypes.string
         })
     ),
-    onMovieCardClick: PropTypes.func.isRequired
+    onMovieCardClick: PropTypes.func
   };
 
   return WithActiveMovieCard;
