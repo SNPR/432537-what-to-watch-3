@@ -2,8 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import Tabs from "../tabs/tabs.jsx";
 import SimilarMovies from "../similar-movies/similar-movies.jsx";
-import withPlayer from "../../hocs/with-player/with-player.jsx";
-import BigMoviePlayer from "../big-movie-player/big-movie-player.jsx";
 import {connect} from "react-redux";
 import {getMovies} from "../../reducer/data/selectors.js";
 import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
@@ -11,27 +9,17 @@ import {AuthorizationStatus} from "../../reducer/user/user";
 import {Link} from "react-router-dom";
 import {AppRoute} from "../../utils/constants.js";
 import {Operation} from "../../reducer/data/data.js";
-
-const BigMoviePlayerWrapped = withPlayer(BigMoviePlayer);
+import history from "../../history";
 
 const MoviePage = ({
   movie,
   onMovieCardClick,
-  isBigMoviePlayerVisible,
-  onVisibilityChange,
   movies,
   authorizationStatus,
   addMovieToMyList,
   removeMovieFromMyList
 }) => {
-  return isBigMoviePlayerVisible ? (
-    <BigMoviePlayerWrapped
-      onExitButtonClick={onVisibilityChange}
-      movie={movie}
-      autoPlay={false}
-      muted={true}
-    />
-  ) : (
+  return (
     <>
       <section className="movie-card movie-card--full">
         <div className="movie-card__hero">
@@ -76,7 +64,11 @@ const MoviePage = ({
                 <button
                   className="btn btn--play movie-card__button"
                   type="button"
-                  onClick={onVisibilityChange}
+                  onClick={() =>
+                    history.push(
+                        `${AppRoute.FILMS}/${movie.id}${AppRoute.PLAYER}`
+                    )
+                  }
                 >
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
@@ -158,7 +150,6 @@ const MoviePage = ({
           </div>
         </footer>
       </div>
-      )
     </>
   );
 };

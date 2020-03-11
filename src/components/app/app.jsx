@@ -14,16 +14,15 @@ import history from "../../history.js";
 import {AppRoute} from "../../utils/constants.js";
 import MyList from "../my-list/my-list.jsx";
 import PrivateRoute from "../private-route/private-route.jsx";
+import withPlayer from "../../hocs/with-player/with-player.jsx";
+import BigMoviePlayer from "../big-movie-player/big-movie-player.jsx";
+
+const BigMoviePlayerWrapped = withPlayer(BigMoviePlayer);
 
 class App extends PureComponent {
   constructor(props) {
     super(props);
-
-    this.state = {
-      isBigMoviePlayerVisible: false
-    };
     this.movieCardClickHandler = this.movieCardClickHandler.bind(this);
-    this.handleVisibility = this.handleVisibility.bind(this);
   }
 
   movieCardClickHandler(selectedMovieId) {
@@ -32,15 +31,8 @@ class App extends PureComponent {
     history.push(`${AppRoute.FILMS}/${selectedMovieId}`);
   }
 
-  handleVisibility() {
-    this.setState({
-      isBigMoviePlayerVisible: !this.state.isBigMoviePlayerVisible
-    });
-  }
-
   render() {
     const {login, selectedMovie} = this.props;
-    const {isBigMoviePlayerVisible} = this.state;
 
     return (
       <Router history={history}>
@@ -49,11 +41,7 @@ class App extends PureComponent {
             exact
             path={AppRoute.ROOT}
             render={() => (
-              <Main
-                onMovieCardClick={this.movieCardClickHandler}
-                isBigMoviePlayerVisible={isBigMoviePlayerVisible}
-                onVisibilityChange={this.handleVisibility}
-              />
+              <Main onMovieCardClick={this.movieCardClickHandler} />
             )}
           />
 
@@ -64,8 +52,6 @@ class App extends PureComponent {
               <MoviePage
                 movie={selectedMovie}
                 onMovieCardClick={this.movieCardClickHandler}
-                isBigMoviePlayerVisible={isBigMoviePlayerVisible}
-                onVisibilityChange={this.handleVisibility}
               />
             )}
           />
@@ -74,6 +60,19 @@ class App extends PureComponent {
             exact
             path={`${AppRoute.FILMS}/:id${AppRoute.ADD_REVIEW}`}
             render={() => <AddReview />}
+          />
+
+          <Route
+            exact
+            path={`${AppRoute.FILMS}/:id${AppRoute.PLAYER}`}
+            render={(props) => (
+              <BigMoviePlayerWrapped
+                {...props}
+                movie={selectedMovie}
+                autoPlay={false}
+                muted={true}
+              />
+            )}
           />
 
           <Route
