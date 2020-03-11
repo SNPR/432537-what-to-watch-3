@@ -1,5 +1,6 @@
 import {extend} from "../../utils/utils.js";
 import {normalizeMovieData, normalizeMoviesData} from "../../utils/utils.js";
+import Namespace from "../namespace.js";
 
 const initialState = {
   promoFilm: {},
@@ -52,12 +53,26 @@ const Operation = {
   },
   addMovieToMyList: (movieId) => (dispatch, getState, api) => {
     return api.post(`/favorite/${movieId}/1`).then((response) => {
-      dispatch(ActionCreator.addMovieToMyList(response.data));
+      const movie = normalizeMovieData(response.data);
+      const state = getState();
+
+      if ((state[Namespace.DATA].promoFilm.id = movie.id)) {
+        dispatch(ActionCreator.getPromoMovie(movie));
+      }
+
+      dispatch(ActionCreator.addMovieToMyList(movie));
     });
   },
   removeMovieFromMyList: (movieId) => (dispatch, getState, api) => {
     return api.post(`/favorite/${movieId}/0`).then((response) => {
-      dispatch(ActionCreator.removeMovieFromMyList(response.data));
+      const movie = normalizeMovieData(response.data);
+      const state = getState();
+
+      if ((state[Namespace.DATA].promoFilm.id = movie.id)) {
+        dispatch(ActionCreator.getPromoMovie(movie));
+      }
+
+      dispatch(ActionCreator.removeMovieFromMyList(movie));
     });
   },
   getMyMoviesList: () => (dispatch, getState, api) => {
@@ -80,13 +95,13 @@ const ActionCreator = {
     type: ActionType.GET_COMMENTS,
     payload: comments
   }),
-  addMovieToMyList: (id = 0) => ({
+  addMovieToMyList: (movie = {}) => ({
     type: ActionType.ADD_MOVIE_TO_MY_LIST,
-    payload: id
+    payload: movie
   }),
-  removeMovieFromMyList: (id = 0) => ({
+  removeMovieFromMyList: (movie = {}) => ({
     type: ActionType.REMOVE_MOVIE_FROM_MY_LIST,
-    payload: id
+    payload: movie
   }),
   getMyMoviesList: () => ({
     type: ActionType.GET_MY_MOVIES_LIST,
@@ -107,6 +122,20 @@ const reducer = (state = initialState, action) => {
     case ActionType.GET_COMMENTS:
       return extend(state, {
         currentFilmComments: action.payload
+      });
+    case ActionType.ADD_MOVIE_TO_MY_LIST:
+      return extend(state, {
+        films: [
+          ...state.films.filter((movie) => movie.id !== action.payload.id),
+          action.payload
+        ]
+      });
+    case ActionType.REMOVE_MOVIE_FROM_MY_LIST:
+      return extend(state, {
+        films: [
+          ...state.films.filter((movie) => movie.id !== action.payload.id),
+          action.payload
+        ]
       });
   }
 
