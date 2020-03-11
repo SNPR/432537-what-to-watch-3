@@ -1,5 +1,5 @@
 import React, {PureComponent} from "react";
-import {Switch, Route, Router} from "react-router-dom";
+import {Switch, Route, Router, Redirect} from "react-router-dom";
 import Main from "../main/main.jsx";
 import MoviePage from "../movie-page/movie-page.jsx";
 import PropTypes from "prop-types";
@@ -13,6 +13,7 @@ import {getSelectedMovie} from "../../reducer/state/selectors.js";
 import {ActionCreator} from "../../reducer/state/state.js";
 import history from "../../history.js";
 import {AppRoute} from "../../utils/constants.js";
+import MyList from "../my-list/my-list.jsx";
 
 class App extends PureComponent {
   constructor(props) {
@@ -72,6 +73,13 @@ class App extends PureComponent {
           <Route exact path={AppRoute.ADD_REVIEW}>
             <AddReview />
           </Route>
+          <Route
+            exact
+            path={AppRoute.MY_LIST}
+            render={() => (
+              <MyList onMovieCardClick={this.movieCardClickHandler} />
+            )}
+          />
           <Route exact path={AppRoute.LOGIN}>
             {authorizationStatus === AuthorizationStatus.NO_AUTH ? (
               <SignIn onSubmit={login} />
