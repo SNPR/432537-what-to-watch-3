@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import BigMoviePlayer from "./big-movie-player.jsx";
+import {BigMoviePlayer} from "./big-movie-player.jsx";
 
 const films = [
   {
@@ -43,6 +43,8 @@ it(`Should render BigMoviePlayer component`, () => {
           onLoadedMetadata={() => {}}
           onTimeUpdate={() => {}}
           videoRef={React.createRef()}
+          changeSelectedMovieId={() => {}}
+          id={0}
         />
     )
     .toJSON();

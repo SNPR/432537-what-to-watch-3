@@ -51,7 +51,12 @@ it(`Should render AddReview component`, () => {
     .create(
         <MemoryRouter>
           <Provider store={store}>
-            <AddReview onSubmit={() => {}} movie={movie} />
+            <AddReview
+              onSubmit={() => {}}
+              movie={movie}
+              id={0}
+              changeSelectedMovieId={() => {}}
+            />
           </Provider>
         </MemoryRouter>
     )
