@@ -6,6 +6,7 @@ import {Operation} from "../../reducer/data/data";
 import {Link} from "react-router-dom";
 import {AppRoute} from "../../utils/constants.js";
 import history from "../../history.js";
+import {ActionCreator} from "../../reducer/state/state.js";
 
 const MIN_REVIEW_LENGTH = 50;
 const MAX_REVIEW_LENGTH = 400;
@@ -25,6 +26,10 @@ class AddReview extends PureComponent {
     this.state = {
       isFormInvalid: true
     };
+  }
+
+  componentDidMount() {
+    this.props.changeSelectedMovieId(this.props.id);
   }
 
   toggleFormDisability() {
@@ -64,7 +69,7 @@ class AddReview extends PureComponent {
 
   render() {
     const {movie} = this.props;
-    return (
+    return movie ? (
       <>
         <section className="movie-card movie-card--full">
           <div className="movie-card__header">
@@ -213,6 +218,8 @@ class AddReview extends PureComponent {
           </div>
         </section>
       </>
+    ) : (
+      <h1>Loading...</h1>
     );
   }
 }
@@ -224,6 +231,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   onSubmit(commentData, onSuccess, onError) {
     dispatch(Operation.addComment(commentData, onSuccess, onError));
+  },
+  changeSelectedMovieId(id) {
+    dispatch(ActionCreator.changeSelectedMovieId(id));
   }
 });
 
@@ -246,8 +256,10 @@ AddReview.propTypes = {
     isFavorite: PropTypes.bool,
     videoUrl: PropTypes.string,
     trailerUrl: PropTypes.string
-  }).isRequired,
-  onSubmit: PropTypes.func.isRequired
+  }),
+  onSubmit: PropTypes.func.isRequired,
+  changeSelectedMovieId: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddReview);
