@@ -10,6 +10,9 @@ import {Link} from "react-router-dom";
 import {AppRoute} from "../../utils/constants.js";
 import {Operation} from "../../reducer/data/data.js";
 import history from "../../history";
+import {ActionCreator} from "../../reducer/state/state.js";
+import {getSelectedMovie} from "../../reducer/state/selectors.js";
+import {Operation as DataOperation} from "../../reducer/data/data.js";
 
 const MoviePage = ({
   movie,
@@ -17,9 +20,15 @@ const MoviePage = ({
   movies,
   authorizationStatus,
   addMovieToMyList,
-  removeMovieFromMyList
+  removeMovieFromMyList,
+  id,
+  changeSelectedMovieId,
+  getComments
 }) => {
-  return (
+  changeSelectedMovieId(id);
+  getComments(id);
+
+  return movie ? (
     <>
       <section className="movie-card movie-card--full">
         <div className="movie-card__hero">
@@ -151,6 +160,8 @@ const MoviePage = ({
         </footer>
       </div>
     </>
+  ) : (
+    <h1>Loading...</h1>
   );
 };
 
@@ -173,7 +184,7 @@ MoviePage.propTypes = {
     isFavorite: PropTypes.bool,
     videoUrl: PropTypes.string,
     trailerUrl: PropTypes.string
-  }).isRequired,
+  }),
   movies: PropTypes.arrayOf(
       PropTypes.shape({
         name: PropTypes.string,
@@ -198,11 +209,15 @@ MoviePage.propTypes = {
   onMovieCardClick: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   addMovieToMyList: PropTypes.func.isRequired,
-  removeMovieFromMyList: PropTypes.func.isRequired
+  removeMovieFromMyList: PropTypes.func.isRequired,
+  getComments: PropTypes.func.isRequired,
+  changeSelectedMovieId: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired
 };
 const mapStateToProps = (state) => ({
   movies: getMovies(state),
-  authorizationStatus: getAuthorizationStatus(state)
+  authorizationStatus: getAuthorizationStatus(state),
+  movie: getSelectedMovie(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -211,6 +226,12 @@ const mapDispatchToProps = (dispatch) => ({
   },
   removeMovieFromMyList(id) {
     dispatch(Operation.removeMovieFromMyList(id));
+  },
+  changeSelectedMovieId(id) {
+    dispatch(ActionCreator.changeSelectedMovieId(id));
+  },
+  getComments(id) {
+    dispatch(DataOperation.getComments(id));
   }
 });
 

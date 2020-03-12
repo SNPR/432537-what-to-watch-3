@@ -9,7 +9,6 @@ import {Operation as UserOperation} from "../../reducer/user/user.js";
 import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
 import AddReview from "../add-review/add-review.jsx";
 import {getSelectedMovie} from "../../reducer/state/selectors.js";
-import {ActionCreator} from "../../reducer/state/state.js";
 import history from "../../history.js";
 import {AppRoute} from "../../utils/constants.js";
 import MyList from "../my-list/my-list.jsx";
@@ -27,13 +26,11 @@ class App extends PureComponent {
   }
 
   movieCardClickHandler(selectedMovieId) {
-    this.props.changeSelectedMovieId(selectedMovieId);
-    this.props.getComments(selectedMovieId);
     history.push(`${AppRoute.FILMS}/${selectedMovieId}`);
   }
 
   render() {
-    const {login, selectedMovie, promoMovie} = this.props;
+    const {login, promoMovie, selectedMovie} = this.props;
 
     return (
       <Router history={history}>
@@ -49,9 +46,9 @@ class App extends PureComponent {
           <Route
             exact
             path={`${AppRoute.FILMS}/:id`}
-            render={() => (
+            render={(props) => (
               <MoviePage
-                movie={selectedMovie}
+                id={Number(props.match.params.id)}
                 onMovieCardClick={this.movieCardClickHandler}
               />
             )}
@@ -106,17 +103,12 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   login(authData) {
     dispatch(UserOperation.login(authData));
-  },
-  changeSelectedMovieId(id) {
-    dispatch(ActionCreator.changeSelectedMovieId(id));
   }
 });
 
 App.propTypes = {
-  getComments: PropTypes.func.isRequired,
   login: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
-  changeSelectedMovieId: PropTypes.func.isRequired,
   selectedMovie: PropTypes.shape({
     name: PropTypes.string,
     posterUrl: PropTypes.string,
