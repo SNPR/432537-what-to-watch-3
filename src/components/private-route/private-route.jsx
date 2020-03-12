@@ -17,7 +17,7 @@ const PrivateRoute = (props) => {
         return authorizationStatus === AuthorizationStatus.AUTH ? (
           render()
         ) : (
-          <Redirect to={AppRoute.LOGIN} />
+          <Redirect push to={AppRoute.LOGIN} />
         );
       }}
     />
