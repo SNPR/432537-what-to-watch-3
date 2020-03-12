@@ -8,14 +8,13 @@ import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
 
 const PrivateRoute = (props) => {
   const {render, path, exact, authorizationStatus} = props;
-
   return (
     <Route
       path={path}
       exact={exact}
       render={() => {
         return authorizationStatus === AuthorizationStatus.AUTH ? (
-          render()
+          render(props)
         ) : (
           <Redirect push to={AppRoute.LOGIN} />
         );
