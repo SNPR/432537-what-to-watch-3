@@ -57,7 +57,9 @@ class App extends PureComponent {
           <PrivateRoute
             exact
             path={`${AppRoute.FILMS}/:id${AppRoute.ADD_REVIEW}`}
-            render={() => <AddReview />}
+            render={(props) => {
+              return <AddReview id={Number(props.computedMatch.params.id)} />;
+            }}
           />
 
           <Route
