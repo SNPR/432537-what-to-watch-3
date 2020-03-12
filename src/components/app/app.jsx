@@ -71,6 +71,7 @@ class App extends PureComponent {
                 movie={selectedMovie || promoMovie}
                 autoPlay={false}
                 muted={true}
+                id={Number(props.match.params.id) || promoMovie.id}
               />
             )}
           />
