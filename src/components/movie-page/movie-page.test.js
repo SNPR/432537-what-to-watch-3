@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import MoviePage from "./movie-page.jsx";
+import {MoviePage} from "./movie-page.jsx";
 import configureStore from "redux-mock-store";
 import Namespace from "../../reducer/namespace.js";
 import {Provider} from "react-redux";
@@ -182,11 +182,14 @@ it(`Should render MoviePage component`, () => {
           <MemoryRouter>
             <MoviePage
               movie={films[0]}
-              onMovieCardClick={() => {}}
-              isBigMoviePlayerVisible={false}
-              onVisibilityChange={() => {}}
               movies={films}
               authorizationStatus={AuthorizationStatus.AUTH}
+              onMovieCardClick={() => {}}
+              addMovieToMyList={() => {}}
+              removeMovieFromMyList={() => {}}
+              getComments={() => {}}
+              changeSelectedMovieId={() => {}}
+              id={0}
             />
           </MemoryRouter>
         </Provider>
