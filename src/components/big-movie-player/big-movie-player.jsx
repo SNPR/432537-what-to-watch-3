@@ -28,9 +28,7 @@ class BigMoviePlayer extends PureComponent {
       movie,
       onExitButtonClick,
       onLoadedMetadata,
-      onTimeUpdate,
-      id,
-      changeSelectedMovieId
+      onTimeUpdate
     } = this.props;
 
     return movie ? (
@@ -166,4 +164,5 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
+export {BigMoviePlayer};
 export default connect(mapStateToProps, mapDispatchToProps)(BigMoviePlayer);
