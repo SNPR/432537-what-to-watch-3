@@ -3,7 +3,8 @@ import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import {getSelectedMovie} from "../../reducer/state/selectors.js";
 import {Operation} from "../../reducer/data/data";
-import {Redirect} from "react-router-dom";
+import {Link, Redirect} from "react-router-dom";
+import {AppRoute} from "../../utils/constants.js";
 
 const MIN_REVIEW_LENGTH = 50;
 const MAX_REVIEW_LENGTH = 400;
@@ -76,11 +77,13 @@ class AddReview extends PureComponent {
 
             <header className="page-header">
               <div className="logo">
-                <a href="main.html" className="logo__link">
-                  <span className="logo__letter logo__letter--1">W</span>
-                  <span className="logo__letter logo__letter--2">T</span>
-                  <span className="logo__letter logo__letter--3">W</span>
-                </a>
+                <Link to={AppRoute.ROOT}>
+                  <a className="logo__link">
+                    <span className="logo__letter logo__letter--1">W</span>
+                    <span className="logo__letter logo__letter--2">T</span>
+                    <span className="logo__letter logo__letter--3">W</span>
+                  </a>
+                </Link>
               </div>
 
               <nav className="breadcrumbs">
@@ -98,12 +101,14 @@ class AddReview extends PureComponent {
 
               <div className="user-block">
                 <div className="user-block__avatar">
-                  <img
-                    src="img/avatar.jpg"
-                    alt="User avatar"
-                    width="63"
-                    height="63"
-                  />
+                  <Link to={AppRoute.MY_LIST}>
+                    <img
+                      src="img/avatar.jpg"
+                      alt="User avatar"
+                      width="63"
+                      height="63"
+                    />
+                  </Link>
                 </div>
               </div>
             </header>

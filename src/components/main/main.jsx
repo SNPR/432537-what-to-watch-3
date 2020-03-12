@@ -9,6 +9,8 @@ import {getPromoMovie} from "../../reducer/data/selectors.js";
 import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
 import {AuthorizationStatus} from "../../reducer/user/user.js";
 import {Link} from "react-router-dom";
+import {AppRoute} from "../../utils/constants.js";
+import {Operation} from "../../reducer/data/data.js";
 
 const BigMoviePlayerWrapped = withPlayer(BigMoviePlayer);
 
@@ -17,7 +19,9 @@ const Main = ({
   isBigMoviePlayerVisible,
   onVisibilityChange,
   promoMovie,
-  authorizationStatus
+  authorizationStatus,
+  addMovieToMyList,
+  removeMovieFromMyList
 }) => {
   return isBigMoviePlayerVisible ? (
     <BigMoviePlayerWrapped
@@ -47,15 +51,17 @@ const Main = ({
           <div className="user-block">
             {authorizationStatus === AuthorizationStatus.AUTH ? (
               <div className="user-block__avatar">
-                <img
-                  src="img/avatar.jpg"
-                  alt="User avatar"
-                  width="63"
-                  height="63"
-                />
+                <Link to={AppRoute.MY_LIST}>
+                  <img
+                    src="img/avatar.jpg"
+                    alt="User avatar"
+                    width="63"
+                    height="63"
+                  />
+                </Link>
               </div>
             ) : (
-              <Link to="sign-in" className="user-block__link">
+              <Link to={AppRoute.LOGIN} className="user-block__link">
                 Sign in
               </Link>
             )}
@@ -96,10 +102,23 @@ const Main = ({
                 <button
                   className="btn btn--list movie-card__button"
                   type="button"
+                  onClick={() => {
+                    if (promoMovie.isFavorite) {
+                      removeMovieFromMyList(promoMovie.id);
+                    } else {
+                      addMovieToMyList(promoMovie.id);
+                    }
+                  }}
                 >
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"></use>
-                  </svg>
+                  {promoMovie.isFavorite ? (
+                    <svg viewBox="0 0 18 14" width="18" height="14">
+                      <use xlinkHref="#in-list"></use>
+                    </svg>
+                  ) : (
+                    <svg viewBox="0 0 19 20" width="19" height="20">
+                      <use xlinkHref="#add"></use>
+                    </svg>
+                  )}
                   <span>My list</span>
                 </button>
               </div>
@@ -111,11 +130,11 @@ const Main = ({
       <div className="page-content">
         <footer className="page-footer">
           <div className="logo">
-            <a className="logo__link logo__link--light">
+            <Link to={AppRoute.ROOT} className="logo__link logo__link--light">
               <span className="logo__letter logo__letter--1">W</span>
               <span className="logo__letter logo__letter--2">T</span>
               <span className="logo__letter logo__letter--3">W</span>
-            </a>
+            </Link>
           </div>
 
           <div className="copyright">
@@ -158,7 +177,9 @@ Main.propTypes = {
   onMovieCardClick: PropTypes.func.isRequired,
   isBigMoviePlayerVisible: PropTypes.bool.isRequired,
   onVisibilityChange: PropTypes.func.isRequired,
-  authorizationStatus: PropTypes.string.isRequired
+  authorizationStatus: PropTypes.string.isRequired,
+  addMovieToMyList: PropTypes.func.isRequired,
+  removeMovieFromMyList: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
@@ -166,4 +187,13 @@ const mapStateToProps = (state) => ({
   authorizationStatus: getAuthorizationStatus(state)
 });
 
-export default connect(mapStateToProps)(Main);
+const mapDispatchToProps = (dispatch) => ({
+  addMovieToMyList(id) {
+    dispatch(Operation.addMovieToMyList(id));
+  },
+  removeMovieFromMyList(id) {
+    dispatch(Operation.removeMovieFromMyList(id));
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
