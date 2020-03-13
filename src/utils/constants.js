@@ -8,3 +8,5 @@ export const AppRoute = {
   FILMS: `/films`,
   PLAYER: `/player`
 };
+
+export const SHOWED_MOVIES_DEFAULT = 8;

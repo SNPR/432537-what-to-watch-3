@@ -4,12 +4,10 @@ import Adapter from "enzyme-adapter-react-16";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import Main from "./main.jsx";
-import {ALL_GENRES} from "../../utils/constants.js";
+import {ALL_GENRES, SHOWED_MOVIES_DEFAULT} from "../../utils/constants.js";
 import Namespace from "../../reducer/namespace.js";
 import {AuthorizationStatus} from "../../reducer/user/user.js";
 import {MemoryRouter} from "react-router-dom";
-
-const SHOWED_MOVIES_DEFAULT = 8;
 
 const mockStore = configureStore([]);
 

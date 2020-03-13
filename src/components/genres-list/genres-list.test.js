@@ -1,9 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import {GenresList} from "./genres-list.jsx";
-import {ALL_GENRES} from "../../utils/constants";
-
-const SHOWED_MOVIES_DEFAULT = 8;
+import {ALL_GENRES, SHOWED_MOVIES_DEFAULT} from "../../utils/constants";
 
 const films = [
   {

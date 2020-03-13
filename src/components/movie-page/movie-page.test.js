@@ -4,11 +4,10 @@ import {MoviePage} from "./movie-page.jsx";
 import configureStore from "redux-mock-store";
 import Namespace from "../../reducer/namespace.js";
 import {Provider} from "react-redux";
-import {ALL_GENRES} from "../../utils/constants.js";
+import {ALL_GENRES, SHOWED_MOVIES_DEFAULT} from "../../utils/constants.js";
 import {AuthorizationStatus} from "../../reducer/user/user";
 import {MemoryRouter} from "react-router-dom";
 
-const SHOWED_MOVIES_DEFAULT = 8;
 const films = [
   {
     name: `Movie name`,
