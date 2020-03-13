@@ -2,8 +2,8 @@ import React from "react";
 import Enzyme, {mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import {ShowMoreButton} from "./show-more-button.jsx";
-
-const SHOWED_MOVIES_DEFAULT = 8;
+import {SHOWED_MOVIES_DEFAULT} from "../../utils/constants.js";
+import {ALL_GENRES} from "../../utils/constants.js";
 
 Enzyme.configure({
   adapter: new Adapter()
@@ -209,6 +209,8 @@ it(`Should call handler on button click`, () => {
         movies={films}
         showedMovies={SHOWED_MOVIES_DEFAULT}
         showMoreMovies={showMoreMoviesButtonClickHandler}
+        filteredMovies={films}
+        genre={ALL_GENRES}
       />
   );
 

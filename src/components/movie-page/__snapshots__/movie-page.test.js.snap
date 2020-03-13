@@ -62,7 +62,7 @@ Array [
               <img
                 alt="User avatar"
                 height="63"
-                src="img/avatar.jpg"
+                src="/img/avatar.jpg"
                 width="63"
               />
             </div>
@@ -135,7 +135,7 @@ Array [
             </button>
             <a
               className="btn movie-card__button"
-              href="/add-review"
+              href="/films/undefined/add-review"
               onClick={[Function]}
             >
               Add review
@@ -304,6 +304,5 @@ Array [
       </div>
     </footer>
   </div>,
-  ")",
 ]
 `;

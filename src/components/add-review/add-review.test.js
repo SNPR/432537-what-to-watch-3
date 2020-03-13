@@ -3,12 +3,11 @@ import renderer from "react-test-renderer";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import AddReview from "./add-review.jsx";
-import {ALL_GENRES} from "../../utils/constants.js";
+import {ALL_GENRES, SHOWED_MOVIES_DEFAULT} from "../../utils/constants.js";
 import Namespace from "../../reducer/namespace.js";
 import {AuthorizationStatus} from "../../reducer/user/user.js";
 import {MemoryRouter} from "react-router-dom";
 
-const SHOWED_MOVIES_DEFAULT = 8;
 const mockStore = configureStore([]);
 
 const movie = {
@@ -51,7 +50,12 @@ it(`Should render AddReview component`, () => {
     .create(
         <MemoryRouter>
           <Provider store={store}>
-            <AddReview onSubmit={() => {}} movie={movie} />
+            <AddReview
+              onSubmit={() => {}}
+              movie={movie}
+              id={0}
+              changeSelectedMovieId={() => {}}
+            />
           </Provider>
         </MemoryRouter>
     )

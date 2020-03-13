@@ -1,14 +1,13 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import MoviePage from "./movie-page.jsx";
+import {MoviePage} from "./movie-page.jsx";
 import configureStore from "redux-mock-store";
 import Namespace from "../../reducer/namespace.js";
 import {Provider} from "react-redux";
-import {ALL_GENRES} from "../../utils/constants.js";
+import {ALL_GENRES, SHOWED_MOVIES_DEFAULT} from "../../utils/constants.js";
 import {AuthorizationStatus} from "../../reducer/user/user";
 import {MemoryRouter} from "react-router-dom";
 
-const SHOWED_MOVIES_DEFAULT = 8;
 const films = [
   {
     name: `Movie name`,
@@ -182,11 +181,14 @@ it(`Should render MoviePage component`, () => {
           <MemoryRouter>
             <MoviePage
               movie={films[0]}
-              onMovieCardClick={() => {}}
-              isBigMoviePlayerVisible={false}
-              onVisibilityChange={() => {}}
               movies={films}
               authorizationStatus={AuthorizationStatus.AUTH}
+              onMovieCardClick={() => {}}
+              addMovieToMyList={() => {}}
+              removeMovieFromMyList={() => {}}
+              getComments={() => {}}
+              changeSelectedMovieId={() => {}}
+              id={0}
             />
           </MemoryRouter>
         </Provider>

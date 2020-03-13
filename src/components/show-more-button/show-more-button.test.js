@@ -1,6 +1,8 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import {ShowMoreButton} from "./show-more-button.jsx";
+import {SHOWED_MOVIES_DEFAULT} from "../../utils/constants.js";
+import {ALL_GENRES} from "../../utils/constants.js";
 
 const films = [
   {
@@ -194,8 +196,6 @@ const films = [
   }
 ];
 
-const SHOWED_MOVIES_DEFAULT = 8;
-
 it(`Should render ShowMoreButton component`, () => {
   const tree = renderer
     .create(
@@ -203,6 +203,8 @@ it(`Should render ShowMoreButton component`, () => {
           movies={films}
           showedMovies={SHOWED_MOVIES_DEFAULT}
           showMoreMovies={() => {}}
+          filteredMovies={films}
+          genre={ALL_GENRES}
         />
     )
     .toJSON();

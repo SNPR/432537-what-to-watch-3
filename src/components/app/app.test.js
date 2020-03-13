@@ -3,13 +3,11 @@ import renderer from "react-test-renderer";
 import App from "./app.jsx";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
-import {ALL_GENRES} from "../../utils/constants";
+import {ALL_GENRES, SHOWED_MOVIES_DEFAULT} from "../../utils/constants";
 import Namespace from "../../reducer/namespace.js";
 import {AuthorizationStatus} from "../../reducer/user/user.js";
 
 const mockStore = configureStore([]);
-
-const SHOWED_MOVIES_DEFAULT = 8;
 
 const films = [
   {

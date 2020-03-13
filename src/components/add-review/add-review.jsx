@@ -3,8 +3,10 @@ import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import {getSelectedMovie} from "../../reducer/state/selectors.js";
 import {Operation} from "../../reducer/data/data";
-import {Link, Redirect} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {AppRoute} from "../../utils/constants.js";
+import history from "../../history.js";
+import {ActionCreator} from "../../reducer/state/state.js";
 
 const MIN_REVIEW_LENGTH = 50;
 const MAX_REVIEW_LENGTH = 400;
@@ -22,9 +24,12 @@ class AddReview extends PureComponent {
     this.toggleFormDisability = this.toggleFormDisability.bind(this);
 
     this.state = {
-      commentAdded: false,
       isFormInvalid: true
     };
+  }
+
+  componentDidMount() {
+    this.props.changeSelectedMovieId(this.props.id);
   }
 
   toggleFormDisability() {
@@ -46,7 +51,7 @@ class AddReview extends PureComponent {
         },
         () => {
           this.toggleFormDisability();
-          this.setState({commentAdded: true});
+          history.goBack();
         },
         () => {
           this.toggleFormDisability();
@@ -64,9 +69,8 @@ class AddReview extends PureComponent {
 
   render() {
     const {movie} = this.props;
-    return (
+    return movie ? (
       <>
-        {(this.state.commentAdded || !this.props.movie) && <Redirect to="/" />}
         <section className="movie-card movie-card--full">
           <div className="movie-card__header">
             <div className="movie-card__bg">
@@ -77,12 +81,10 @@ class AddReview extends PureComponent {
 
             <header className="page-header">
               <div className="logo">
-                <Link to={AppRoute.ROOT}>
-                  <a className="logo__link">
-                    <span className="logo__letter logo__letter--1">W</span>
-                    <span className="logo__letter logo__letter--2">T</span>
-                    <span className="logo__letter logo__letter--3">W</span>
-                  </a>
+                <Link to={AppRoute.ROOT} className="logo__link">
+                  <span className="logo__letter logo__letter--1">W</span>
+                  <span className="logo__letter logo__letter--2">T</span>
+                  <span className="logo__letter logo__letter--3">W</span>
                 </Link>
               </div>
 
@@ -103,7 +105,7 @@ class AddReview extends PureComponent {
                 <div className="user-block__avatar">
                   <Link to={AppRoute.MY_LIST}>
                     <img
-                      src="img/avatar.jpg"
+                      src="/img/avatar.jpg"
                       alt="User avatar"
                       width="63"
                       height="63"
@@ -216,6 +218,8 @@ class AddReview extends PureComponent {
           </div>
         </section>
       </>
+    ) : (
+      <h1>Loading...</h1>
     );
   }
 }
@@ -227,6 +231,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   onSubmit(commentData, onSuccess, onError) {
     dispatch(Operation.addComment(commentData, onSuccess, onError));
+  },
+  changeSelectedMovieId(id) {
+    dispatch(ActionCreator.changeSelectedMovieId(id));
   }
 });
 
@@ -249,8 +256,10 @@ AddReview.propTypes = {
     isFavorite: PropTypes.bool,
     videoUrl: PropTypes.string,
     trailerUrl: PropTypes.string
-  }).isRequired,
-  onSubmit: PropTypes.func.isRequired
+  }),
+  onSubmit: PropTypes.func.isRequired,
+  changeSelectedMovieId: PropTypes.func.isRequired,
+  id: PropTypes.number.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddReview);

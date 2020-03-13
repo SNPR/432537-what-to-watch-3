@@ -33,11 +33,7 @@ store.dispatch(UserOperation.checkAuth());
 
 ReactDOM.render(
     <Provider store={store}>
-      <App
-        getComments={(movieId) =>
-          store.dispatch(DataOperation.getComments(movieId))
-        }
-      />
+      <App />
     </Provider>,
     document.querySelector(`#root`)
 );

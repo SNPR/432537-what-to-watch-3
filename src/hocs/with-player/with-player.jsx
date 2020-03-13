@@ -63,7 +63,8 @@ const withPlayer = (Component) => {
     }
 
     render() {
-      const {onExitButtonClick} = this.props;
+      const {onExitButtonClick, id} = this.props;
+
       const {isPlaying} = this.state;
 
       return (
@@ -78,37 +79,17 @@ const withPlayer = (Component) => {
           onExitButtonClick={onExitButtonClick}
           onLoadedMetadata={this.loadedMetadataHandler}
           onTimeUpdate={this.timeUpdateHandler}
+          id={id}
         />
       );
     }
   }
 
   WithPlayer.propTypes = {
-    movie: PropTypes.shape({
-      name: PropTypes.string.isRequired,
-      posterUrl: PropTypes.string.isRequired,
-      bigPosterUrl: PropTypes.string.isRequired,
-      trailerUrl: PropTypes.string.isRequired,
-      director: PropTypes.string.isRequired,
-      starring: PropTypes.arrayOf(PropTypes.string).isRequired,
-      runTime: PropTypes.string.isRequired,
-      genre: PropTypes.string.isRequired,
-      releaseYear: PropTypes.number.isRequired,
-      rating: PropTypes.number.isRequired,
-      votes: PropTypes.number.isRequired,
-      description: PropTypes.string.isRequired,
-      reviews: PropTypes.arrayOf(
-          PropTypes.shape({
-            rating: PropTypes.number.isRequired,
-            date: PropTypes.string.isRequired,
-            author: PropTypes.string.isRequired,
-            text: PropTypes.string.isRequired
-          })
-      ).isRequired
-    }).isRequired,
     muted: PropTypes.bool.isRequired,
     autoPlay: PropTypes.bool.isRequired,
-    onExitButtonClick: PropTypes.func.isRequired
+    onExitButtonClick: PropTypes.func,
+    id: PropTypes.number
   };
 
   return WithPlayer;

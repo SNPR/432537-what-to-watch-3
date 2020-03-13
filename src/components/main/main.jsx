@@ -2,8 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import GenresList from "../genres-list/genres-list.jsx";
 import ShowMoreButton from "../show-more-button/show-more-button.jsx";
-import withPlayer from "../../hocs/with-player/with-player.jsx";
-import BigMoviePlayer from "../big-movie-player/big-movie-player.jsx";
 import {connect} from "react-redux";
 import {getPromoMovie} from "../../reducer/data/selectors.js";
 import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
@@ -11,26 +9,16 @@ import {AuthorizationStatus} from "../../reducer/user/user.js";
 import {Link} from "react-router-dom";
 import {AppRoute} from "../../utils/constants.js";
 import {Operation} from "../../reducer/data/data.js";
-
-const BigMoviePlayerWrapped = withPlayer(BigMoviePlayer);
+import history from "../../history.js";
 
 const Main = ({
   onMovieCardClick,
-  isBigMoviePlayerVisible,
-  onVisibilityChange,
   promoMovie,
   authorizationStatus,
   addMovieToMyList,
   removeMovieFromMyList
 }) => {
-  return isBigMoviePlayerVisible ? (
-    <BigMoviePlayerWrapped
-      onExitButtonClick={onVisibilityChange}
-      movie={promoMovie}
-      autoPlay={false}
-      muted={true}
-    />
-  ) : (
+  return (
     <>
       <section className="movie-card">
         <div className="movie-card__bg">
@@ -92,7 +80,11 @@ const Main = ({
                 <button
                   className="btn btn--play movie-card__button"
                   type="button"
-                  onClick={onVisibilityChange}
+                  onClick={() =>
+                    history.push(
+                        `${AppRoute.FILMS}/${promoMovie.id}${AppRoute.PLAYER}`
+                    )
+                  }
                 >
                   <svg viewBox="0 0 19 19" width="19" height="19">
                     <use xlinkHref="#play-s"></use>
@@ -175,8 +167,6 @@ Main.propTypes = {
     trailerUrl: PropTypes.string
   }),
   onMovieCardClick: PropTypes.func.isRequired,
-  isBigMoviePlayerVisible: PropTypes.bool.isRequired,
-  onVisibilityChange: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
   addMovieToMyList: PropTypes.func.isRequired,
   removeMovieFromMyList: PropTypes.func.isRequired

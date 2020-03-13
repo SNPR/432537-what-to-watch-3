@@ -36,6 +36,7 @@ it(`withPlayer is rendered correctly`, () => {
           muted={true}
           autoPlay={false}
           onExitButtonClick={() => {}}
+          id={0}
         />
     )
     .toJSON();

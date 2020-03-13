@@ -27,28 +27,25 @@ exports[`Should render AddReview component 1`] = `
         className="logo"
       >
         <a
+          className="logo__link"
           href="/"
           onClick={[Function]}
         >
-          <a
-            className="logo__link"
+          <span
+            className="logo__letter logo__letter--1"
           >
-            <span
-              className="logo__letter logo__letter--1"
-            >
-              W
-            </span>
-            <span
-              className="logo__letter logo__letter--2"
-            >
-              T
-            </span>
-            <span
-              className="logo__letter logo__letter--3"
-            >
-              W
-            </span>
-          </a>
+            W
+          </span>
+          <span
+            className="logo__letter logo__letter--2"
+          >
+            T
+          </span>
+          <span
+            className="logo__letter logo__letter--3"
+          >
+            W
+          </span>
         </a>
       </div>
       <nav
@@ -91,7 +88,7 @@ exports[`Should render AddReview component 1`] = `
             <img
               alt="User avatar"
               height="63"
-              src="img/avatar.jpg"
+              src="/img/avatar.jpg"
               width="63"
             />
           </a>
