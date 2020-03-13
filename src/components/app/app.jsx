@@ -16,6 +16,8 @@ import PrivateRoute from "../private-route/private-route.jsx";
 import withPlayer from "../../hocs/with-player/with-player.jsx";
 import BigMoviePlayer from "../big-movie-player/big-movie-player.jsx";
 import {getPromoMovie} from "../../reducer/data/selectors.js";
+import {ActionCreator} from "../../reducer/state/state.js";
+import {Operation as DataOperation} from "../../reducer/data/data.js";
 
 const BigMoviePlayerWrapped = withPlayer(BigMoviePlayer);
 
@@ -26,6 +28,10 @@ class App extends PureComponent {
   }
 
   movieCardClickHandler(selectedMovieId) {
+    const {changeSelectedMovieId, getComments} = this.props;
+
+    changeSelectedMovieId(selectedMovieId);
+    getComments(selectedMovieId);
     history.push(`${AppRoute.FILMS}/${selectedMovieId}`);
   }
 
@@ -100,12 +106,19 @@ class App extends PureComponent {
 const mapStateToProps = (state) => ({
   authorizationStatus: getAuthorizationStatus(state),
   selectedMovie: getSelectedMovie(state),
-  promoMovie: getPromoMovie(state)
+  promoMovie: getPromoMovie(state),
+  movie: getSelectedMovie(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
   login(authData) {
     dispatch(UserOperation.login(authData));
+  },
+  changeSelectedMovieId(id) {
+    dispatch(ActionCreator.changeSelectedMovieId(id));
+  },
+  getComments(id) {
+    dispatch(DataOperation.getComments(id));
   }
 });
 
@@ -149,7 +162,9 @@ App.propTypes = {
     isFavorite: PropTypes.bool,
     videoUrl: PropTypes.string,
     trailerUrl: PropTypes.string
-  })
+  }),
+  changeSelectedMovieId: PropTypes.func.isRequired,
+  getComments: PropTypes.func.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
