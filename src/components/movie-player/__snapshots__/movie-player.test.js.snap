@@ -5,7 +5,6 @@ exports[`Should render MoviePlayer component 1`] = `
   autoPlay={true}
   controls={true}
   muted={true}
-  onClick={[Function]}
   poster="https://poster-url.com"
   width="100%"
 >

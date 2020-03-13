@@ -88,8 +88,8 @@ const withPlayer = (Component) => {
   WithPlayer.propTypes = {
     muted: PropTypes.bool.isRequired,
     autoPlay: PropTypes.bool.isRequired,
-    onExitButtonClick: PropTypes.func.isRequired,
-    id: PropTypes.number.isRequired
+    onExitButtonClick: PropTypes.func,
+    id: PropTypes.number
   };
 
   return WithPlayer;

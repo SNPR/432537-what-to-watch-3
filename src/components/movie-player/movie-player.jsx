@@ -1,53 +1,27 @@
-import React, {PureComponent, createRef} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
-class MoviePlayer extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this._videoRef = createRef();
-
-    this.state = {
-      isPlaying: false
-    };
-
-    this.handleVideoPlay = this.handleVideoPlay.bind(this);
-  }
-
-  handleVideoPlay() {
-    const video = this._videoRef.current;
-
-    if (video.paused) {
-      video.play();
-      this.setState({isPlaying: true});
-    } else {
-      video.pause();
-      this.setState({isPlaying: false});
-    }
-  }
-
-  componentDidMount() {
-    this.setState({isPlaying: this.props.autoPlay});
-  }
-
-  render() {
-    const {movie, muted, autoPlay} = this.props;
-
-    return (
-      <video
-        ref={this._videoRef}
-        muted={muted}
-        controls
-        poster={movie.posterUrl}
-        width="100%"
-        autoPlay={autoPlay}
-        onClick={this.handleVideoPlay}
-      >
-        <source src={movie.trailerUrl} />
-      </video>
-    );
-  }
-}
+const MoviePlayer = ({
+  movie,
+  muted,
+  autoPlay,
+  onPlayButtonClick,
+  videoRef
+}) => {
+  return (
+    <video
+      ref={videoRef}
+      muted={muted}
+      controls
+      poster={movie.posterUrl}
+      width="100%"
+      autoPlay={autoPlay}
+      onClick={onPlayButtonClick}
+    >
+      <source src={movie.trailerUrl} />
+    </video>
+  );
+};
 
 MoviePlayer.propTypes = {
   movie: PropTypes.shape({
@@ -70,7 +44,12 @@ MoviePlayer.propTypes = {
     trailerUrl: PropTypes.string
   }).isRequired,
   muted: PropTypes.bool.isRequired,
-  autoPlay: PropTypes.bool.isRequired
+  autoPlay: PropTypes.bool.isRequired,
+  onPlayButtonClick: PropTypes.func.isRequired,
+  videoRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({current: PropTypes.instanceOf(Element)})
+  ])
 };
 
 export default MoviePlayer;

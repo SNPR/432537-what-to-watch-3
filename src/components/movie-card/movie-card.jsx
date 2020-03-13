@@ -1,6 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import MoviePlayer from "../movie-player/movie-player.jsx";
+import withPlayer from "../../hocs/with-player/with-player.jsx";
+
+const MoviePlayerWrapped = withPlayer(MoviePlayer);
 
 const MovieCard = ({
   movie,
@@ -18,7 +21,7 @@ const MovieCard = ({
     >
       <div className="small-movie-card__image">
         {isPlaying ? (
-          <MoviePlayer movie={movie} muted={true} autoPlay={true} />
+          <MoviePlayerWrapped movie={movie} muted={true} autoPlay={true} />
         ) : (
           <img
             src={movie.posterUrl}
