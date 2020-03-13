@@ -30,7 +30,7 @@ class App extends PureComponent {
   movieCardClickHandler(selectedMovieId) {
     const {changeSelectedMovieId, getComments, selectedMovie} = this.props;
 
-    if (selectedMovie.id !== selectedMovieId) {
+    if (selectedMovie && selectedMovie.id !== selectedMovieId) {
       changeSelectedMovieId(selectedMovieId);
       getComments(selectedMovieId);
     }
