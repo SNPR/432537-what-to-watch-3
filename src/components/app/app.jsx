@@ -28,10 +28,13 @@ class App extends PureComponent {
   }
 
   movieCardClickHandler(selectedMovieId) {
-    const {changeSelectedMovieId, getComments} = this.props;
+    const {changeSelectedMovieId, getComments, selectedMovie} = this.props;
 
-    changeSelectedMovieId(selectedMovieId);
-    getComments(selectedMovieId);
+    if (selectedMovie.id !== selectedMovieId) {
+      changeSelectedMovieId(selectedMovieId);
+      getComments(selectedMovieId);
+    }
+
     history.push(`${AppRoute.FILMS}/${selectedMovieId}`);
   }
 
