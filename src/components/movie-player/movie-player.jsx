@@ -45,7 +45,7 @@ MoviePlayer.propTypes = {
   }).isRequired,
   muted: PropTypes.bool.isRequired,
   autoPlay: PropTypes.bool.isRequired,
-  onPlayButtonClick: PropTypes.func.isRequired,
+  onPlayButtonClick: PropTypes.func,
   videoRef: PropTypes.oneOfType([
     PropTypes.func,
     PropTypes.shape({current: PropTypes.instanceOf(Element)})
