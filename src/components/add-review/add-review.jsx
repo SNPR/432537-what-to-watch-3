@@ -243,10 +243,10 @@ AddReview.propTypes = {
   onSubmit: PropTypes.func.isRequired,
   changeSelectedMovieId: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
-  isFormInvalid: PropTypes.bool.isRequired,
-  onReviewTextChange: PropTypes.func.isRequired,
-  onSubmitError: PropTypes.func.isRequired,
-  isSubmitError: PropTypes.bool.isRequired
+  isFormInvalid: PropTypes.bool,
+  onReviewTextChange: PropTypes.func,
+  onSubmitError: PropTypes.func,
+  isSubmitError: PropTypes.bool
 };
 
 const mapStateToProps = (state) => ({

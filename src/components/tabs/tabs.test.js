@@ -4,7 +4,7 @@ import Tabs from "./tabs.jsx";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import Namespace from "../../reducer/namespace.js";
-
+import {Tab} from "../../utils/constants.js";
 
 const movie = {
   name: `Movie name`,
@@ -41,7 +41,12 @@ it(`Should render Tabs component`, () => {
   const tree = renderer
     .create(
         <Provider store={store}>
-          <Tabs movie={movie} />
+          <Tabs
+            movie={movie}
+            getActiveClass={() => {}}
+            setActiveTab={() => {}}
+            selectedTab={Tab.Name.DETAILS}
+          />
         </Provider>
     )
     .toJSON();

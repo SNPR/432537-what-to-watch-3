@@ -11,7 +11,7 @@ exports[`Should render Tabs component 1`] = `
       className="movie-nav__list"
     >
       <li
-        className="movie-nav__item movie-nav__item--active"
+        className="movie-nav__item undefined"
       >
         <a
           className="movie-nav__link"
@@ -21,7 +21,7 @@ exports[`Should render Tabs component 1`] = `
         </a>
       </li>
       <li
-        className="movie-nav__item "
+        className="movie-nav__item undefined"
       >
         <a
           className="movie-nav__link"
@@ -31,7 +31,7 @@ exports[`Should render Tabs component 1`] = `
         </a>
       </li>
       <li
-        className="movie-nav__item "
+        className="movie-nav__item undefined"
       >
         <a
           className="movie-nav__link"
@@ -43,51 +43,94 @@ exports[`Should render Tabs component 1`] = `
     </ul>
   </nav>
   <div
-    className="movie-rating"
+    className="movie-card__text movie-card__row"
   >
     <div
-      className="movie-rating__score"
+      className="movie-card__text-col"
     >
-      8.9
+      <p
+        className="movie-card__details-item"
+      >
+        <strong
+          className="movie-card__details-name"
+        >
+          Director
+        </strong>
+        <span
+          className="movie-card__details-value"
+        >
+          Director Name
+        </span>
+      </p>
+      <p
+        className="movie-card__details-item"
+      >
+        <strong
+          className="movie-card__details-name"
+        >
+          Starring
+        </strong>
+        <span
+          className="movie-card__details-value"
+        >
+          Actor 1
+           
+          <br />
+          Actor 2
+           
+          <br />
+          Actor 3
+           
+          <br />
+        </span>
+      </p>
     </div>
-    <p
-      className="movie-rating__meta"
+    <div
+      className="movie-card__text-col"
     >
-      <span
-        className="movie-rating__level"
+      <p
+        className="movie-card__details-item"
       >
-        Very good
-      </span>
-      <span
-        className="movie-rating__count"
+        <strong
+          className="movie-card__details-name"
+        >
+          Run Time
+        </strong>
+        <span
+          className="movie-card__details-value"
+        >
+          1h 00m
+        </span>
+      </p>
+      <p
+        className="movie-card__details-item"
       >
-        4235
-         ratings
-      </span>
-    </p>
-  </div>
-  <div
-    className="movie-card__text"
-  >
-    <p>
-      Movie description
-    </p>
-    <p
-      className="movie-card__director"
-    >
-      <strong>
-        Director: 
-        Director Name
-      </strong>
-    </p>
-    <p
-      className="movie-card__starring"
-    >
-      <strong>
-        Starring: 
-        Actor 1, Actor 2, Actor 3 and other
-      </strong>
-    </p>
+        <strong
+          className="movie-card__details-name"
+        >
+          Genre
+        </strong>
+        <span
+          className="movie-card__details-value"
+        >
+          Movie Genre
+        </span>
+      </p>
+      <p
+        className="movie-card__details-item"
+      >
+        <strong
+          className="movie-card__details-name"
+        >
+          Released
+        </strong>
+        <span
+          className="movie-card__details-value"
+        >
+          2000
+        </span>
+      </p>
+    </div>
   </div>
 </div>
 `;
