@@ -7,9 +7,7 @@ import {Link} from "react-router-dom";
 import {AppRoute} from "../../utils/constants.js";
 import history from "../../history.js";
 import {ActionCreator} from "../../reducer/state/state.js";
-
-const MIN_REVIEW_LENGTH = 50;
-const MAX_REVIEW_LENGTH = 400;
+import {MIN_REVIEW_LENGTH, MAX_REVIEW_LENGTH} from "../../utils/constants.js";
 
 class AddReview extends PureComponent {
   constructor(props) {
@@ -20,12 +18,7 @@ class AddReview extends PureComponent {
     this.sendCommentButtonRef = createRef();
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
     this.toggleFormDisability = this.toggleFormDisability.bind(this);
-
-    this.state = {
-      isFormInvalid: true
-    };
   }
 
   componentDidMount() {
@@ -59,16 +52,8 @@ class AddReview extends PureComponent {
     );
   }
 
-  handleChange(evt) {
-    this.setState({
-      isFormInvalid:
-        evt.target.value.length < MIN_REVIEW_LENGTH ||
-        evt.target.value.length > MAX_REVIEW_LENGTH
-    });
-  }
-
   render() {
-    const {movie} = this.props;
+    const {movie, isFormInvalid, onReviewTextChange} = this.props;
     return movie ? (
       <>
         <section className="movie-card movie-card--full">
@@ -201,14 +186,14 @@ class AddReview extends PureComponent {
                   ref={this.commentRef}
                   minLength={MIN_REVIEW_LENGTH}
                   maxLength={MAX_REVIEW_LENGTH}
-                  onChange={this.handleChange}
+                  onChange={onReviewTextChange}
                 />
                 <div className="add-review__submit">
                   <button
                     className="add-review__btn"
                     type="submit"
                     ref={this.sendCommentButtonRef}
-                    disabled={this.state.isFormInvalid}
+                    disabled={isFormInvalid}
                   >
                     Post
                   </button>
@@ -259,7 +244,9 @@ AddReview.propTypes = {
   }),
   onSubmit: PropTypes.func.isRequired,
   changeSelectedMovieId: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired
+  id: PropTypes.number.isRequired,
+  isFormInvalid: PropTypes.bool.isRequired,
+  onReviewTextChange: PropTypes.func.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddReview);

@@ -18,8 +18,10 @@ import BigMoviePlayer from "../big-movie-player/big-movie-player.jsx";
 import {getPromoMovie} from "../../reducer/data/selectors.js";
 import {ActionCreator} from "../../reducer/state/state.js";
 import {Operation as DataOperation} from "../../reducer/data/data.js";
+import withFormValidation from "../../hocs/with-form-validation/with-form-validation.jsx";
 
 const BigMoviePlayerWrapped = withPlayer(BigMoviePlayer);
+const AddReviewWrapped = withFormValidation(AddReview);
 
 class App extends PureComponent {
   constructor(props) {
@@ -67,7 +69,9 @@ class App extends PureComponent {
             exact
             path={`${AppRoute.FILMS}/:id${AppRoute.ADD_REVIEW}`}
             render={(props) => {
-              return <AddReview id={Number(props.computedMatch.params.id)} />;
+              return (
+                <AddReviewWrapped id={Number(props.computedMatch.params.id)} />
+              );
             }}
           />
 
