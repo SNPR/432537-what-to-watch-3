@@ -61,22 +61,6 @@ class GenresList extends PureComponent {
   }
 }
 
-const mapStateToProps = (state) => ({
-  genre: getGenre(state),
-  movies: getMovies(state),
-  filteredMovies: getMoviesByGenre(state),
-  showedMovies: getShowedMovies(state)
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  changeGenre(genre) {
-    dispatch(ActionCreator.changeGenre(genre));
-  },
-  resetShowedMoviesAmount() {
-    dispatch(ActionCreator.resetShowedMoviesAmount());
-  }
-});
-
 GenresList.propTypes = {
   movies: PropTypes.arrayOf(
       PropTypes.shape({
@@ -126,6 +110,22 @@ GenresList.propTypes = {
   showedMovies: PropTypes.number.isRequired,
   resetShowedMoviesAmount: PropTypes.func.isRequired
 };
+
+const mapStateToProps = (state) => ({
+  genre: getGenre(state),
+  movies: getMovies(state),
+  filteredMovies: getMoviesByGenre(state),
+  showedMovies: getShowedMovies(state)
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  changeGenre(genre) {
+    dispatch(ActionCreator.changeGenre(genre));
+  },
+  resetShowedMoviesAmount() {
+    dispatch(ActionCreator.resetShowedMoviesAmount());
+  }
+});
 
 export {GenresList};
 export default connect(mapStateToProps, mapDispatchToProps)(GenresList);

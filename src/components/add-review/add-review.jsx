@@ -209,19 +209,6 @@ class AddReview extends PureComponent {
   }
 }
 
-const mapStateToProps = (state) => ({
-  movie: getSelectedMovie(state)
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onSubmit(commentData, onSuccess, onError) {
-    dispatch(Operation.addComment(commentData, onSuccess, onError));
-  },
-  changeSelectedMovieId(id) {
-    dispatch(ActionCreator.changeSelectedMovieId(id));
-  }
-});
-
 AddReview.propTypes = {
   movie: PropTypes.shape({
     name: PropTypes.string,
@@ -248,5 +235,18 @@ AddReview.propTypes = {
   isFormInvalid: PropTypes.bool.isRequired,
   onReviewTextChange: PropTypes.func.isRequired
 };
+
+const mapStateToProps = (state) => ({
+  movie: getSelectedMovie(state)
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onSubmit(commentData, onSuccess, onError) {
+    dispatch(Operation.addComment(commentData, onSuccess, onError));
+  },
+  changeSelectedMovieId(id) {
+    dispatch(ActionCreator.changeSelectedMovieId(id));
+  }
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddReview);

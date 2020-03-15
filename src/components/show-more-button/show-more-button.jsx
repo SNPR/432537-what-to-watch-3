@@ -28,19 +28,6 @@ const ShowMoreButton = ({
     ) : null;
 };
 
-const mapStateToProps = (state) => ({
-  movies: getMovies(state),
-  showedMovies: getShowedMovies(state),
-  filteredMovies: getMoviesByGenre(state),
-  genre: getGenre(state)
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  showMoreMovies() {
-    dispatch(ActionCreator.showMoreMovies());
-  }
-});
-
 ShowMoreButton.propTypes = {
   movies: PropTypes.arrayOf(
       PropTypes.shape({
@@ -88,6 +75,19 @@ ShowMoreButton.propTypes = {
   showedMovies: PropTypes.number.isRequired,
   genre: PropTypes.string.isRequired
 };
+
+const mapStateToProps = (state) => ({
+  movies: getMovies(state),
+  showedMovies: getShowedMovies(state),
+  filteredMovies: getMoviesByGenre(state),
+  genre: getGenre(state)
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  showMoreMovies() {
+    dispatch(ActionCreator.showMoreMovies());
+  }
+});
 
 export {ShowMoreButton};
 export default connect(mapStateToProps, mapDispatchToProps)(ShowMoreButton);
