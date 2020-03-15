@@ -135,7 +135,7 @@ BigMoviePlayer.propTypes = {
     isFavorite: PropTypes.bool,
     videoUrl: PropTypes.string,
     trailerUrl: PropTypes.string
-  }).isRequired,
+  }),
   muted: PropTypes.bool.isRequired,
   autoPlay: PropTypes.bool.isRequired,
   isPlaying: PropTypes.bool.isRequired,
