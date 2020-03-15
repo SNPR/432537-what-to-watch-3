@@ -26,10 +26,10 @@ const AddReviewWrapped = withFormValidation(AddReview);
 class App extends PureComponent {
   constructor(props) {
     super(props);
-    this.movieCardClickHandler = this.movieCardClickHandler.bind(this);
+    this.handleMovieCardClick = this.handleMovieCardClick.bind(this);
   }
 
-  movieCardClickHandler(selectedMovieId) {
+  handleMovieCardClick(selectedMovieId) {
     const {changeSelectedMovieId, getComments, selectedMovie} = this.props;
 
     if (selectedMovie && selectedMovie.id !== selectedMovieId) {
@@ -50,7 +50,7 @@ class App extends PureComponent {
             exact
             path={AppRoute.ROOT}
             render={() => (
-              <Main onMovieCardClick={this.movieCardClickHandler} />
+              <Main onMovieCardClick={this.handleMovieCardClick} />
             )}
           />
 
@@ -60,7 +60,7 @@ class App extends PureComponent {
             render={(props) => (
               <MoviePage
                 id={Number(props.match.params.id)}
-                onMovieCardClick={this.movieCardClickHandler}
+                onMovieCardClick={this.handleMovieCardClick}
               />
             )}
           />
@@ -93,7 +93,7 @@ class App extends PureComponent {
             exact
             path={AppRoute.MY_LIST}
             render={() => (
-              <MyList onMovieCardClick={this.movieCardClickHandler} />
+              <MyList onMovieCardClick={this.handleMovieCardClick} />
             )}
           />
 

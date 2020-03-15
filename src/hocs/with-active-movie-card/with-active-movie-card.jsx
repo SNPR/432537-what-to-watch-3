@@ -15,10 +15,10 @@ const withActiveMovieCard = (Component) => {
         isPlaying: false
       };
 
-      this.movieCardMouseOverHandler = this.movieCardMouseOverHandler.bind(
+      this.handleMovieCardMouseOver = this.handleMovieCardMouseOver.bind(
           this
       );
-      this.movieCardMouseOutHandler = this.movieCardMouseOutHandler.bind(this);
+      this.handleMovieCardMouseOut = this.handleMovieCardMouseOut.bind(this);
       this.togglePlay = this.togglePlay.bind(this);
     }
 
@@ -32,7 +32,7 @@ const withActiveMovieCard = (Component) => {
       }, PLAYBACK_DELAY_TIMEOUT);
     }
 
-    movieCardMouseOverHandler(selectedMovieId) {
+    handleMovieCardMouseOver(selectedMovieId) {
       this.setState(
           () => ({
             selectedMovieId
@@ -41,7 +41,7 @@ const withActiveMovieCard = (Component) => {
       );
     }
 
-    movieCardMouseOutHandler() {
+    handleMovieCardMouseOut() {
       this.setState(() => ({
         selectedMovieId: null,
         isPlaying: false
@@ -62,8 +62,8 @@ const withActiveMovieCard = (Component) => {
           {...this.props}
           selectedMovieId={selectedMovieId}
           isPlaying={isPlaying}
-          onMovieCardMouseOver={this.movieCardMouseOverHandler}
-          onMovieCardMouseOut={this.movieCardMouseOutHandler}
+          onMovieCardMouseOver={this.handleMovieCardMouseOver}
+          onMovieCardMouseOut={this.handleMovieCardMouseOut}
         />
       );
     }

@@ -19,8 +19,8 @@ const withPlayer = (Component) => {
       this.handleFullscreen = this.handleFullscreen.bind(this);
       this.getPlaybackProgress = this.getPlaybackProgress.bind(this);
       this.getElapsedTime = this.getElapsedTime.bind(this);
-      this.timeUpdateHandler = this.timeUpdateHandler.bind(this);
-      this.loadedMetadataHandler = this.loadedMetadataHandler.bind(this);
+      this.handleTimeUpdate = this.handleTimeUpdate.bind(this);
+      this.handleLoadedMetadata = this.handleLoadedMetadata.bind(this);
     }
 
     handleVideoPlay() {
@@ -59,13 +59,13 @@ const withPlayer = (Component) => {
       return formatTime(this.state.videoDuration - this.state.currentTime);
     }
 
-    timeUpdateHandler(evt) {
+    handleTimeUpdate(evt) {
       this.setState({
         currentTime: Math.floor(evt.target.currentTime)
       });
     }
 
-    loadedMetadataHandler(evt) {
+    handleLoadedMetadata(evt) {
       this.setState({
         isPlaying: this.props.autoPlay,
         videoDuration: Math.floor(evt.target.duration)
@@ -87,8 +87,8 @@ const withPlayer = (Component) => {
           getElapsedTime={this.getElapsedTime}
           videoRef={this._videoRef}
           onExitButtonClick={onExitButtonClick}
-          onLoadedMetadata={this.loadedMetadataHandler}
-          onTimeUpdate={this.timeUpdateHandler}
+          onLoadedMetadata={this.handleLoadedMetadata}
+          onTimeUpdate={this.handleTimeUpdate}
           id={id}
         />
       );
