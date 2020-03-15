@@ -1,16 +1,16 @@
-import React, {PureComponent} from "react";
+import * as React from "react";
 import PropTypes from "prop-types";
-import {getSelectedMovie} from "../../reducer/state/selectors.js";
-import {ActionCreator} from "../../reducer/state/state.js";
-import {connect} from "react-redux";
+import { getSelectedMovie } from "../../reducer/state/selectors.js";
+import { ActionCreator } from "../../reducer/state/state.js";
+import { connect } from "react-redux";
 
-class BigMoviePlayer extends PureComponent {
+class BigMoviePlayer extends React.PureComponent {
   constructor(props) {
     super(props);
   }
 
   componentDidMount() {
-    const {id, changeSelectedMovieId} = this.props;
+    const { id, changeSelectedMovieId } = this.props;
 
     changeSelectedMovieId(id);
   }
@@ -65,7 +65,7 @@ class BigMoviePlayer extends PureComponent {
               />
               <div
                 className="player__toggler"
-                style={{left: `${getPlaybackProgress()}%`}}
+                style={{ left: `${getPlaybackProgress()}%` }}
               >
                 Toggler
               </div>
@@ -145,7 +145,7 @@ BigMoviePlayer.propTypes = {
   getElapsedTime: PropTypes.func.isRequired,
   videoRef: PropTypes.oneOfType([
     PropTypes.func,
-    PropTypes.shape({current: PropTypes.instanceOf(Element)})
+    PropTypes.shape({ current: PropTypes.instanceOf(Element) })
   ]),
   onExitButtonClick: PropTypes.func.isRequired,
   onLoadedMetadata: PropTypes.func.isRequired,
@@ -154,15 +154,15 @@ BigMoviePlayer.propTypes = {
   id: PropTypes.number.isRequired
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   movie: getSelectedMovie(state)
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   changeSelectedMovieId(id) {
     dispatch(ActionCreator.changeSelectedMovieId(id));
   }
 });
 
-export {BigMoviePlayer};
+export { BigMoviePlayer };
 export default connect(mapStateToProps, mapDispatchToProps)(BigMoviePlayer);

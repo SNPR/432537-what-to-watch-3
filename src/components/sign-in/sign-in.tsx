@@ -1,38 +1,38 @@
-import React, {PureComponent, createRef} from "react";
+import * as React from "react";
 import PropTypes from "prop-types";
-import {AppRoute} from "../../utils/constants";
-import {Link} from "react-router-dom";
+import { AppRoute } from "../../utils/constants";
+import { Link } from "react-router-dom";
 
-class SignIn extends PureComponent {
+class SignIn extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    this.loginRef = createRef();
-    this.passwordRef = createRef();
+    this.loginRef = React.createRef();
+    this.passwordRef = React.createRef();
 
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
 
   handleFormSubmit(evt) {
-    const {onSubmit, goBack, onError} = this.props;
+    const { onSubmit, goBack, onError } = this.props;
 
     evt.preventDefault();
 
     onSubmit(
-        {
-          login: this.loginRef.current.value,
-          password: this.passwordRef.current.value
-        },
-        () => {
-          goBack();
-        },
-        (err) => {
-          onError(err);
-        }
+      {
+        login: this.loginRef.current.value,
+        password: this.passwordRef.current.value
+      },
+      () => {
+        goBack();
+      },
+      err => {
+        onError(err);
+      }
     );
   }
   render() {
-    const {authErrorMessage} = this.props;
+    const { authErrorMessage } = this.props;
 
     return (
       <div className="user-page">

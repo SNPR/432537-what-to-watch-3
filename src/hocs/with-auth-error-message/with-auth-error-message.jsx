@@ -1,7 +1,7 @@
-import React, {PureComponent} from "react";
+import * as React from "react";
 
 const withAuthErrorMessage = (Component) => {
-  class WithAuthErrorMessage extends PureComponent {
+  class WithAuthErrorMessage extends React.PureComponent {
     constructor(props) {
       super(props);
 

@@ -1,13 +1,13 @@
-import React, {PureComponent, createRef} from "react";
+import * as React from "react";
 import PropTypes from "prop-types";
-import {formatTime} from "../../utils/utils";
+import { formatTime } from "../../utils/utils";
 
-const withPlayer = (Component) => {
-  class WithPlayer extends PureComponent {
+const withPlayer = Component => {
+  class WithPlayer extends React.PureComponent {
     constructor(props) {
       super(props);
 
-      this._videoRef = createRef();
+      this._videoRef = React.createRef();
 
       this.state = {
         isPlaying: false,
@@ -28,10 +28,10 @@ const withPlayer = (Component) => {
 
       if (video.paused) {
         video.play();
-        this.setState({isPlaying: true});
+        this.setState({ isPlaying: true });
       } else {
         video.pause();
-        this.setState({isPlaying: false});
+        this.setState({ isPlaying: false });
       }
     }
 
@@ -73,9 +73,9 @@ const withPlayer = (Component) => {
     }
 
     render() {
-      const {onExitButtonClick, id} = this.props;
+      const { onExitButtonClick, id } = this.props;
 
-      const {isPlaying} = this.state;
+      const { isPlaying } = this.state;
 
       return (
         <Component

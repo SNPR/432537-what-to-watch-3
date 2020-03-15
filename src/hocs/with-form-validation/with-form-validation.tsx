@@ -1,8 +1,8 @@
-import React, {PureComponent} from "react";
-import {MIN_REVIEW_LENGTH, MAX_REVIEW_LENGTH} from "../../utils/constants.js";
+import * as React from "react";
+import { MIN_REVIEW_LENGTH, MAX_REVIEW_LENGTH } from "../../utils/constants.js";
 
-const withFormValidation = (Component) => {
-  class WithFormValidation extends PureComponent {
+const withFormValidation = Component => {
+  class WithFormValidation extends React.PureComponent {
     constructor(props) {
       super(props);
 
@@ -15,7 +15,7 @@ const withFormValidation = (Component) => {
       this.handleSubmitError = this.handleSubmitError.bind(this);
     }
 
-    handleChange({target: {value}}) {
+    handleChange({ target: { value } }) {
       this.setState({
         isFormInvalid:
           value.length < MIN_REVIEW_LENGTH || value.length > MAX_REVIEW_LENGTH
@@ -29,7 +29,7 @@ const withFormValidation = (Component) => {
     }
 
     render() {
-      const {isFormInvalid, isSubmitError: isSubmitError} = this.state;
+      const { isFormInvalid, isSubmitError: isSubmitError } = this.state;
 
       return (
         <Component

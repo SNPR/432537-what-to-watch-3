@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import * as React from "react";
 import PropTypes from "prop-types";
 import Tabs from "../tabs/tabs";
 import SimilarMovies from "../similar-movies/similar-movies";
@@ -17,7 +17,7 @@ import withActiveTab from "../../hocs/with-active-tab/with-active-tab.js";
 
 const TabsWrapped = withActiveTab(Tabs);
 
-class MoviePage extends PureComponent {
+class MoviePage extends React.PureComponent {
   constructor(props) {
     super(props);
   }

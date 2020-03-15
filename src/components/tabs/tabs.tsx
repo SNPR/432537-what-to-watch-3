@@ -1,11 +1,11 @@
-import React, {PureComponent} from "react";
+import * as React from "react";
 import PropTypes from "prop-types";
-import {getTextRating} from "../../utils/utils";
-import {connect} from "react-redux";
-import {getComments} from "../../reducer/data/selectors.js";
-import {Tab} from "../../utils/constants.js";
+import { getTextRating } from "../../utils/utils";
+import { connect } from "react-redux";
+import { getComments } from "../../reducer/data/selectors.js";
+import { Tab } from "../../utils/constants.js";
 
-class Tabs extends PureComponent {
+class Tabs extends React.PureComponent {
   constructor(props) {
     super(props);
   }
@@ -136,7 +136,7 @@ class Tabs extends PureComponent {
           <>
             <div className="movie-card__reviews movie-card__row">
               <div className="movie-card__reviews-col">
-                {comments.map((review) => (
+                {comments.map(review => (
                   <div className="review" key={review.id}>
                     <blockquote className="review__quote">
                       <p className="review__text">{review.comment}</p>
@@ -184,23 +184,23 @@ Tabs.propTypes = {
     trailerUrl: PropTypes.string
   }).isRequired,
   comments: PropTypes.arrayOf(
-      PropTypes.shape({
-        comment: PropTypes.string,
-        date: PropTypes.string,
+    PropTypes.shape({
+      comment: PropTypes.string,
+      date: PropTypes.string,
+      id: PropTypes.number,
+      rating: PropTypes.number,
+      user: PropTypes.shape({
         id: PropTypes.number,
-        rating: PropTypes.number,
-        user: PropTypes.shape({
-          id: PropTypes.number,
-          name: PropTypes.string
-        })
+        name: PropTypes.string
       })
+    })
   ),
   getActiveClass: PropTypes.func.isRequired,
   setActiveTab: PropTypes.func.isRequired,
   selectedTab: PropTypes.string.isRequired
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   comments: getComments(state)
 });
 

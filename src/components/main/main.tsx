@@ -1,14 +1,14 @@
-import React from "react";
+import * as React from "react";
 import PropTypes from "prop-types";
 import GenresList from "../genres-list/genres-list";
 import ShowMoreButton from "../show-more-button/show-more-button";
-import {connect} from "react-redux";
-import {getPromoMovie} from "../../reducer/data/selectors.js";
-import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
-import {AuthorizationStatus} from "../../reducer/user/user.js";
-import {Link} from "react-router-dom";
-import {AppRoute} from "../../utils/constants.js";
-import {Operation} from "../../reducer/data/data.js";
+import { connect } from "react-redux";
+import { getPromoMovie } from "../../reducer/data/selectors.js";
+import { getAuthorizationStatus } from "../../reducer/user/selectors.js";
+import { AuthorizationStatus } from "../../reducer/user/user.js";
+import { Link } from "react-router-dom";
+import { AppRoute } from "../../utils/constants.js";
+import { Operation } from "../../reducer/data/data.js";
 import history from "../../history.js";
 
 const Main = ({
@@ -82,7 +82,7 @@ const Main = ({
                   type="button"
                   onClick={() =>
                     history.push(
-                        `${AppRoute.FILMS}/${promoMovie.id}${AppRoute.PLAYER}`
+                      `${AppRoute.FILMS}/${promoMovie.id}${AppRoute.PLAYER}`
                     )
                   }
                 >
@@ -172,12 +172,12 @@ Main.propTypes = {
   removeMovieFromMyList: PropTypes.func.isRequired
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   promoMovie: getPromoMovie(state),
   authorizationStatus: getAuthorizationStatus(state)
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   addMovieToMyList(id) {
     dispatch(Operation.addMovieToMyList(id));
   },

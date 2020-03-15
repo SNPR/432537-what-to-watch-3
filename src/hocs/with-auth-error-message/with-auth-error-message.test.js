@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import {configure, shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import withAuthErrorMessage from "./with-auth-error-message";
@@ -16,5 +16,4 @@ it(`Should change error message on error`, () => {
   wrapper.instance().handleErrorMessage(`Error text`);
 
   expect(wrapper.props().authErrorMessage).toEqual(`Error text`);
-
 });

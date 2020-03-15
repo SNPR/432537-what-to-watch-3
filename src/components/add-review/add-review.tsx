@@ -1,21 +1,21 @@
-import React, {PureComponent, createRef} from "react";
-import {connect} from "react-redux";
+import * as React from "react";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import {getSelectedMovie} from "../../reducer/state/selectors.js";
-import {Operation} from "../../reducer/data/data";
-import {Link} from "react-router-dom";
-import {AppRoute} from "../../utils/constants.js";
+import { getSelectedMovie } from "../../reducer/state/selectors.js";
+import { Operation } from "../../reducer/data/data";
+import { Link } from "react-router-dom";
+import { AppRoute } from "../../utils/constants.js";
 import history from "../../history.js";
-import {ActionCreator} from "../../reducer/state/state.js";
-import {MIN_REVIEW_LENGTH, MAX_REVIEW_LENGTH} from "../../utils/constants.js";
+import { ActionCreator } from "../../reducer/state/state.js";
+import { MIN_REVIEW_LENGTH, MAX_REVIEW_LENGTH } from "../../utils/constants.js";
 
-class AddReview extends PureComponent {
+class AddReview extends React.PureComponent {
   constructor(props) {
     super(props);
 
-    this.submitFormRef = createRef();
-    this.commentRef = createRef();
-    this.sendCommentButtonRef = createRef();
+    this.submitFormRef = React.createRef();
+    this.commentRef = React.createRef();
+    this.sendCommentButtonRef = React.createRef();
 
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.toggleFormDisability = this.toggleFormDisability.bind(this);
@@ -32,24 +32,24 @@ class AddReview extends PureComponent {
   }
 
   handleFormSubmit(evt) {
-    const {onSubmit, onSubmitError} = this.props;
+    const { onSubmit, onSubmitError } = this.props;
     evt.preventDefault();
     this.toggleFormDisability();
 
     onSubmit(
-        {
-          movieId: this.props.movie.id,
-          rating: this.submitFormRef.current.rating.value,
-          comment: this.commentRef.current.value
-        },
-        () => {
-          this.toggleFormDisability();
-          history.goBack();
-        },
-        () => {
-          this.toggleFormDisability();
-          onSubmitError();
-        }
+      {
+        movieId: this.props.movie.id,
+        rating: this.submitFormRef.current.rating.value,
+        comment: this.commentRef.current.value
+      },
+      () => {
+        this.toggleFormDisability();
+        history.goBack();
+      },
+      () => {
+        this.toggleFormDisability();
+        onSubmitError();
+      }
     );
   }
 
@@ -208,7 +208,7 @@ class AddReview extends PureComponent {
             </form>
           </div>
           {isSubmitError && (
-            <p style={{color: `red`, textAlign: `center`}}>
+            <p style={{ color: `red`, textAlign: `center` }}>
               Error. Please try again
             </p>
           )}
@@ -249,11 +249,11 @@ AddReview.propTypes = {
   isSubmitError: PropTypes.bool
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   movie: getSelectedMovie(state)
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   onSubmit(commentData, onSuccess, onError) {
     dispatch(Operation.addComment(commentData, onSuccess, onError));
   },

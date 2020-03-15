@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import * as React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { ALL_GENRES } from "../../utils/constants.js";
@@ -10,7 +10,7 @@ import { getMovies, getMoviesByGenre } from "../../reducer/data/selectors.js";
 
 const MoviesListWrapped = withActiveMovieCard(MoviesList);
 
-class GenresList extends PureComponent {
+class GenresList extends React.PureComponent {
   constructor(props) {
     super(props);
   }

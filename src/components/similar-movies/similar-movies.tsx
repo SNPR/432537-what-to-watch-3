@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import MoviesList from "../movies-list/movies-list";
 import PropTypes from "prop-types";
 import withActiveMovieCard from "../../hocs/with-active-movie-card/with-active-movie-card";

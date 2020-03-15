@@ -1,4 +1,4 @@
-import React from "react";
+import * as React from "react";
 import PropTypes from "prop-types";
 
 const MoviePlayer = ({
@@ -48,7 +48,7 @@ MoviePlayer.propTypes = {
   onPlayButtonClick: PropTypes.func,
   videoRef: PropTypes.oneOfType([
     PropTypes.func,
-    PropTypes.shape({current: PropTypes.instanceOf(Element)})
+    PropTypes.shape({ current: PropTypes.instanceOf(Element) })
   ])
 };
 

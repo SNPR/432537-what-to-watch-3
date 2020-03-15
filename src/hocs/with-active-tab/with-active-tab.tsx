@@ -1,12 +1,12 @@
-import React, {PureComponent} from "react";
-import {Tab} from "../../utils/constants.js";
+import * as React from "react";
+import { Tab } from "../../utils/constants.js";
 
-const withActiveTab = (Component) => {
-  class WithActiveTab extends PureComponent {
+const withActiveTab = Component => {
+  class WithActiveTab extends React.PureComponent {
     constructor(props) {
       super(props);
 
-      this.state = {selectedTab: Tab.Name.OVERVIEW};
+      this.state = { selectedTab: Tab.Name.OVERVIEW };
 
       this.getActiveClass = this.getActiveClass.bind(this);
       this.setActiveTab = this.setActiveTab.bind(this);
@@ -17,11 +17,11 @@ const withActiveTab = (Component) => {
     }
 
     setActiveTab(tabName) {
-      this.setState({selectedTab: tabName});
+      this.setState({ selectedTab: tabName });
     }
 
     render() {
-      const {selectedTab} = this.state;
+      const { selectedTab } = this.state;
 
       return (
         <Component
