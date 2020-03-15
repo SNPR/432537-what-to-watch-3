@@ -17,7 +17,7 @@ class AddReview extends PureComponent {
     this.commentRef = createRef();
     this.sendCommentButtonRef = createRef();
 
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.toggleFormDisability = this.toggleFormDisability.bind(this);
   }
 
@@ -31,7 +31,7 @@ class AddReview extends PureComponent {
       .current.disabled;
   }
 
-  handleSubmit(evt) {
+  handleFormSubmit(evt) {
     const {onSubmit} = this.props;
     evt.preventDefault();
     this.toggleFormDisability();
@@ -114,7 +114,7 @@ class AddReview extends PureComponent {
             <form
               action="#"
               className="add-review__form"
-              onSubmit={this.handleSubmit}
+              onSubmit={this.handleFormSubmit}
               ref={this.submitFormRef}
             >
               <div className="rating">
