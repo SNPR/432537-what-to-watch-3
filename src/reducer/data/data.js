@@ -1,5 +1,9 @@
 import {extend} from "../../utils/utils.js";
-import {normalizeMovieData, normalizeMoviesData} from "../../utils/utils.js";
+import {
+  normalizeMovieData,
+  normalizeMoviesData,
+  formatReviewDate
+} from "../../utils/utils.js";
 import Namespace from "../namespace.js";
 
 const initialState = {
@@ -30,7 +34,7 @@ const Operation = {
   },
   getComments: (movieId) => (dispatch, getState, api) => {
     return api.get(`/comments/${movieId}`).then((response) => {
-      dispatch(ActionCreator.getComments(response.data));
+      dispatch(ActionCreator.getComments(response.data.map(formatReviewDate)));
     });
   },
   addComment: (commentData, onSuccess, onError) => (

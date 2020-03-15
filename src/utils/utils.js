@@ -57,3 +57,15 @@ export const normalizeMovieData = (movie) =>
     : {};
 
 export const normalizeMoviesData = (movies) => movies.map(normalizeMovieData);
+
+export const formatReviewDate = ({comment, date, id, rating, user}) => ({
+  comment,
+  date: new Date(date).toLocaleString(`en-us`, {
+    month: `long`,
+    year: `numeric`,
+    day: `numeric`
+  }),
+  id,
+  rating,
+  user
+});
