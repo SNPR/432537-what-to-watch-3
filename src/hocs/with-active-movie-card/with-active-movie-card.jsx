@@ -15,11 +15,15 @@ const withActiveMovieCard = (Component) => {
         isPlaying: false
       };
 
-      this.handleMovieCardMouseOver = this.handleMovieCardMouseOver.bind(
-          this
-      );
+      this.handleMovieCardMouseOver = this.handleMovieCardMouseOver.bind(this);
       this.handleMovieCardMouseOut = this.handleMovieCardMouseOut.bind(this);
       this.togglePlay = this.togglePlay.bind(this);
+    }
+
+    componentWillUnmount() {
+      if (this.playbackTimeout) {
+        clearTimeout(this.playbackTimeout);
+      }
     }
 
     togglePlay(selectedMovieId) {
@@ -46,12 +50,6 @@ const withActiveMovieCard = (Component) => {
         selectedMovieId: null,
         isPlaying: false
       }));
-    }
-
-    componentWillUnmount() {
-      if (this.playbackTimeout) {
-        clearTimeout(this.playbackTimeout);
-      }
     }
 
     render() {
