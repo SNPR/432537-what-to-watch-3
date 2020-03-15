@@ -1,5 +1,5 @@
 import React from "react";
-import MovieCard from "../movie-card/movie-card.jsx";
+import MovieCard from "../movie-card/movie-card";
 import PropTypes from "prop-types";
 
 const MoviesList = ({

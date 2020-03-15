@@ -1,7 +1,7 @@
 import React from "react";
 import {configure, shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import withActiveMovieCard from "./with-active-movie-card.jsx";
+import withActiveMovieCard from "./with-active-movie-card";
 
 configure({adapter: new Adapter()});
 

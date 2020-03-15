@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import MoviePlayer from "./movie-player.jsx";
+import MoviePlayer from "./movie-player";
 
 const movie = {
   name: `Movie name`,

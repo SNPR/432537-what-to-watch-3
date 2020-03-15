@@ -1,7 +1,7 @@
 import React from "react";
 import {configure, shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import withActiveTab from "./with-active-tab.jsx";
+import withActiveTab from "./with-active-tab";
 import {Tab} from "../../utils/constants.js";
 
 configure({adapter: new Adapter()});

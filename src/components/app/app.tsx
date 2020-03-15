@@ -1,25 +1,25 @@
-import React, {PureComponent} from "react";
-import {Switch, Route, Router} from "react-router-dom";
-import Main from "../main/main.jsx";
-import MoviePage from "../movie-page/movie-page.jsx";
+import React, { PureComponent } from "react";
+import { Switch, Route, Router } from "react-router-dom";
+import Main from "../main/main.js";
+import MoviePage from "../movie-page/movie-page.js";
 import PropTypes from "prop-types";
-import SignIn from "../sign-in/sign-in.jsx";
-import {connect} from "react-redux";
-import {Operation as UserOperation} from "../../reducer/user/user.js";
-import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
-import AddReview from "../add-review/add-review.jsx";
-import {getSelectedMovie} from "../../reducer/state/selectors.js";
+import SignIn from "../sign-in/sign-in.js";
+import { connect } from "react-redux";
+import { Operation as UserOperation } from "../../reducer/user/user.js";
+import { getAuthorizationStatus } from "../../reducer/user/selectors.js";
+import AddReview from "../add-review/add-review";
+import { getSelectedMovie } from "../../reducer/state/selectors.js";
 import history from "../../history.js";
-import {AppRoute} from "../../utils/constants.js";
-import MyList from "../my-list/my-list.jsx";
-import PrivateRoute from "../private-route/private-route.jsx";
-import withPlayer from "../../hocs/with-player/with-player.jsx";
-import BigMoviePlayer from "../big-movie-player/big-movie-player.jsx";
-import {getPromoMovie} from "../../reducer/data/selectors.js";
-import {ActionCreator} from "../../reducer/state/state.js";
-import {Operation as DataOperation} from "../../reducer/data/data.js";
-import withFormValidation from "../../hocs/with-form-validation/with-form-validation.jsx";
-import withAuthErrorMessage from "../../hocs/with-auth-error-message/with-auth-error-message.jsx";
+import { AppRoute } from "../../utils/constants.js";
+import MyList from "../my-list/my-list";
+import PrivateRoute from "../private-route/private-route";
+import withPlayer from "../../hocs/with-player/with-player";
+import BigMoviePlayer from "../big-movie-player/big-movie-player";
+import { getPromoMovie } from "../../reducer/data/selectors.js";
+import { ActionCreator } from "../../reducer/state/state.js";
+import { Operation as DataOperation } from "../../reducer/data/data.js";
+import withFormValidation from "../../hocs/with-form-validation/with-form-validation";
+import withAuthErrorMessage from "../../hocs/with-auth-error-message/with-auth-error-message";
 
 const BigMoviePlayerWrapped = withPlayer(BigMoviePlayer);
 const AddReviewWrapped = withFormValidation(AddReview);
@@ -32,7 +32,7 @@ class App extends PureComponent {
   }
 
   handleMovieCardClick(selectedMovieId) {
-    const {changeSelectedMovieId, getComments, selectedMovie} = this.props;
+    const { changeSelectedMovieId, getComments, selectedMovie } = this.props;
 
     if (selectedMovie && selectedMovie.id !== selectedMovieId) {
       changeSelectedMovieId(selectedMovieId);
@@ -43,7 +43,7 @@ class App extends PureComponent {
   }
 
   render() {
-    const {login, promoMovie, selectedMovie} = this.props;
+    const { login, promoMovie, selectedMovie } = this.props;
 
     return (
       <Router history={history}>
@@ -57,7 +57,7 @@ class App extends PureComponent {
           <Route
             exact
             path={`${AppRoute.FILMS}/:id`}
-            render={(props) => (
+            render={props => (
               <MoviePage
                 id={Number(props.match.params.id)}
                 onMovieCardClick={this.handleMovieCardClick}
@@ -68,7 +68,7 @@ class App extends PureComponent {
           <PrivateRoute
             exact
             path={`${AppRoute.FILMS}/:id${AppRoute.ADD_REVIEW}`}
-            render={(props) => {
+            render={props => {
               return (
                 <AddReviewWrapped id={Number(props.computedMatch.params.id)} />
               );
@@ -78,7 +78,7 @@ class App extends PureComponent {
           <Route
             exact
             path={`${AppRoute.FILMS}/:id${AppRoute.PLAYER}`}
-            render={(props) => (
+            render={props => (
               <BigMoviePlayerWrapped
                 onExitButtonClick={props.history.goBack}
                 movie={selectedMovie || promoMovie}
@@ -100,7 +100,7 @@ class App extends PureComponent {
           <Route
             exact
             path={AppRoute.LOGIN}
-            render={(props) => (
+            render={props => (
               <SignInWrapped goBack={props.history.goBack} onSubmit={login} />
             )}
           />
@@ -155,14 +155,14 @@ App.propTypes = {
   getComments: PropTypes.func.isRequired
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   authorizationStatus: getAuthorizationStatus(state),
   selectedMovie: getSelectedMovie(state),
   promoMovie: getPromoMovie(state),
   movie: getSelectedMovie(state)
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   login(authData, onSuccess, onError) {
     dispatch(UserOperation.login(authData, onSuccess, onError));
   },

@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import {BigMoviePlayer} from "./big-movie-player.jsx";
+import {BigMoviePlayer} from "./big-movie-player";
 
 const films = [
   {

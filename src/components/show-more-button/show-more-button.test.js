@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import {ShowMoreButton} from "./show-more-button.jsx";
+import {ShowMoreButton} from "./show-more-button";
 import {SHOWED_MOVIES_DEFAULT} from "../../utils/constants.js";
 import {ALL_GENRES} from "../../utils/constants.js";
 

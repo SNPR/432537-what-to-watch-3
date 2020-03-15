@@ -1,19 +1,19 @@
-import React, {PureComponent} from "react";
+import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
-import Tabs from "../tabs/tabs.jsx";
-import SimilarMovies from "../similar-movies/similar-movies.jsx";
-import {connect} from "react-redux";
-import {getMovies} from "../../reducer/data/selectors.js";
-import {getAuthorizationStatus} from "../../reducer/user/selectors.js";
-import {AuthorizationStatus} from "../../reducer/user/user";
-import {Link} from "react-router-dom";
-import {AppRoute} from "../../utils/constants.js";
-import {Operation} from "../../reducer/data/data.js";
-import history from "../../history";
-import {ActionCreator} from "../../reducer/state/state.js";
-import {getSelectedMovie} from "../../reducer/state/selectors.js";
-import {Operation as DataOperation} from "../../reducer/data/data.js";
-import withActiveTab from "../../hocs/with-active-tab/with-active-tab.jsx";
+import Tabs from "../tabs/tabs";
+import SimilarMovies from "../similar-movies/similar-movies";
+import { connect } from "react-redux";
+import { getMovies } from "../../reducer/data/selectors.js";
+import { getAuthorizationStatus } from "../../reducer/user/selectors.js";
+import { AuthorizationStatus } from "../../reducer/user/user";
+import { Link } from "react-router-dom";
+import { AppRoute } from "../../utils/constants.js";
+import { Operation } from "../../reducer/data/data.js";
+import history from "../../history.js";
+import { ActionCreator } from "../../reducer/state/state.js";
+import { getSelectedMovie } from "../../reducer/state/selectors.js";
+import { Operation as DataOperation } from "../../reducer/data/data.js";
+import withActiveTab from "../../hocs/with-active-tab/with-active-tab.js";
 
 const TabsWrapped = withActiveTab(Tabs);
 
@@ -23,7 +23,7 @@ class MoviePage extends PureComponent {
   }
 
   componentDidMount() {
-    const {id, changeSelectedMovieId, getComments} = this.props;
+    const { id, changeSelectedMovieId, getComments } = this.props;
 
     changeSelectedMovieId(id);
     getComments(id);
@@ -86,7 +86,7 @@ class MoviePage extends PureComponent {
                     type="button"
                     onClick={() =>
                       history.push(
-                          `${AppRoute.FILMS}/${movie.id}${AppRoute.PLAYER}`
+                        `${AppRoute.FILMS}/${movie.id}${AppRoute.PLAYER}`
                       )
                     }
                   >
@@ -198,25 +198,25 @@ MoviePage.propTypes = {
     trailerUrl: PropTypes.string
   }),
   movies: PropTypes.arrayOf(
-      PropTypes.shape({
-        name: PropTypes.string,
-        posterUrl: PropTypes.string,
-        previewUrl: PropTypes.string,
-        bigPosterUrl: PropTypes.string,
-        backgroundColor: PropTypes.string,
-        description: PropTypes.string,
-        rating: PropTypes.number,
-        votes: PropTypes.number,
-        director: PropTypes.string,
-        starring: PropTypes.arrayOf(PropTypes.string),
-        runTime: PropTypes.string,
-        genre: PropTypes.string,
-        releaseYear: PropTypes.number,
-        id: PropTypes.number,
-        isFavorite: PropTypes.bool,
-        videoUrl: PropTypes.string,
-        trailerUrl: PropTypes.string
-      })
+    PropTypes.shape({
+      name: PropTypes.string,
+      posterUrl: PropTypes.string,
+      previewUrl: PropTypes.string,
+      bigPosterUrl: PropTypes.string,
+      backgroundColor: PropTypes.string,
+      description: PropTypes.string,
+      rating: PropTypes.number,
+      votes: PropTypes.number,
+      director: PropTypes.string,
+      starring: PropTypes.arrayOf(PropTypes.string),
+      runTime: PropTypes.string,
+      genre: PropTypes.string,
+      releaseYear: PropTypes.number,
+      id: PropTypes.number,
+      isFavorite: PropTypes.bool,
+      videoUrl: PropTypes.string,
+      trailerUrl: PropTypes.string
+    })
   ).isRequired,
   onMovieCardClick: PropTypes.func.isRequired,
   authorizationStatus: PropTypes.string.isRequired,
@@ -226,13 +226,13 @@ MoviePage.propTypes = {
   changeSelectedMovieId: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired
 };
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   movies: getMovies(state),
   authorizationStatus: getAuthorizationStatus(state),
   movie: getSelectedMovie(state)
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   addMovieToMyList(id) {
     dispatch(Operation.addMovieToMyList(id));
   },
@@ -247,6 +247,6 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-export {MoviePage};
+export { MoviePage };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MoviePage);

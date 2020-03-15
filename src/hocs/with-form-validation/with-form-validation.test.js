@@ -1,7 +1,7 @@
 import React from "react";
 import {configure, shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import withFormValidation from "./with-form-validation.jsx";
+import withFormValidation from "./with-form-validation";
 
 configure({adapter: new Adapter()});
 

@@ -1,7 +1,7 @@
 import React from "react";
 import Enzyme, {mount} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import {GenresList} from "./genres-list.jsx";
+import {GenresList} from "./genres-list";
 import {ALL_GENRES, SHOWED_MOVIES_DEFAULT} from "../../utils/constants";
 
 Enzyme.configure({

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import MoviePlayer from "../movie-player/movie-player.jsx";
-import withPlayer from "../../hocs/with-player/with-player.jsx";
+import MoviePlayer from "../movie-player/movie-player";
+import withPlayer from "../../hocs/with-player/with-player";
 
 const MoviePlayerWrapped = withPlayer(MoviePlayer);
 

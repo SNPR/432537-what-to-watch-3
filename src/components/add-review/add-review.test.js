@@ -2,7 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
-import AddReview from "./add-review.jsx";
+import AddReview from "./add-review";
 import {ALL_GENRES, SHOWED_MOVIES_DEFAULT} from "../../utils/constants.js";
 import Namespace from "../../reducer/namespace.js";
 import {AuthorizationStatus} from "../../reducer/user/user.js";

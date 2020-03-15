@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import {MoviePage} from "./movie-page.jsx";
+import {MoviePage} from "./movie-page";
 import configureStore from "redux-mock-store";
 import Namespace from "../../reducer/namespace.js";
 import {Provider} from "react-redux";

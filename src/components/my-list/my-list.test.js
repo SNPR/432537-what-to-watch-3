@@ -1,6 +1,6 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import MyList from "./my-list.jsx";
+import MyList from "./my-list";
 import configureStore from "redux-mock-store";
 import Namespace from "../../reducer/namespace";
 import {Provider} from "react-redux";
