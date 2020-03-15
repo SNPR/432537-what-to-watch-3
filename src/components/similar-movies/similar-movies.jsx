@@ -3,13 +3,17 @@ import MoviesList from "../movies-list/movies-list.jsx";
 import PropTypes from "prop-types";
 import withActiveMovieCard from "../../hocs/with-active-movie-card/with-active-movie-card.jsx";
 
+const MAX_SIMILAR_MOVIES_AMOUNT = 4;
+
 const MoviesListWrapped = withActiveMovieCard(MoviesList);
 
 const getSimilarMovies = (movies, movie) => {
-  return movies.filter(
-      (similarMovie) =>
-        similarMovie.genre === movie.genre && similarMovie.name !== movie.name
-  );
+  return movies
+    .filter(
+        (similarMovie) =>
+          similarMovie.genre === movie.genre && similarMovie.name !== movie.name
+    )
+    .slice(0, MAX_SIMILAR_MOVIES_AMOUNT);
 };
 
 const SimilarMovies = ({movies, movie, onMovieCardClick}) => {
