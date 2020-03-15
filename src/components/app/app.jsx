@@ -19,9 +19,11 @@ import {getPromoMovie} from "../../reducer/data/selectors.js";
 import {ActionCreator} from "../../reducer/state/state.js";
 import {Operation as DataOperation} from "../../reducer/data/data.js";
 import withFormValidation from "../../hocs/with-form-validation/with-form-validation.jsx";
+import withAuthErrorMessage from "../../hocs/with-auth-error-message/with-auth-error-message.jsx";
 
 const BigMoviePlayerWrapped = withPlayer(BigMoviePlayer);
 const AddReviewWrapped = withFormValidation(AddReview);
+const SignInWrapped = withAuthErrorMessage(SignIn);
 
 class App extends PureComponent {
   constructor(props) {
@@ -99,7 +101,7 @@ class App extends PureComponent {
             exact
             path={AppRoute.LOGIN}
             render={(props) => (
-              <SignIn goBack={props.history.goBack} onSubmit={login} />
+              <SignInWrapped goBack={props.history.goBack} onSubmit={login} />
             )}
           />
         </Switch>

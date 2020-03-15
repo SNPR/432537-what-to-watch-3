@@ -11,14 +11,10 @@ class SignIn extends PureComponent {
     this.passwordRef = createRef();
 
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
-
-    this.state = {
-      authErrorMessage: ``
-    };
   }
 
   handleFormSubmit(evt) {
-    const {onSubmit, goBack} = this.props;
+    const {onSubmit, goBack, onError} = this.props;
 
     evt.preventDefault();
 
@@ -28,16 +24,15 @@ class SignIn extends PureComponent {
           password: this.passwordRef.current.value
         },
         () => {
-          this.setState({authErrorMessage: ``});
           goBack();
         },
         (err) => {
-          this.setState({authErrorMessage: err});
+          onError(err);
         }
     );
   }
   render() {
-    const {authErrorMessage} = this.state;
+    const {authErrorMessage} = this.props;
 
     return (
       <div className="user-page">
@@ -126,7 +121,9 @@ class SignIn extends PureComponent {
 
 SignIn.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  goBack: PropTypes.func
+  goBack: PropTypes.func,
+  onError: PropTypes.func,
+  authErrorMessage: PropTypes.string
 };
 
 export default SignIn;
