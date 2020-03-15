@@ -11,6 +11,10 @@ class SignIn extends PureComponent {
     this.passwordRef = createRef();
 
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
+
+    this.state = {
+      authErrorMessage: ``
+    };
   }
 
   handleFormSubmit(evt) {
@@ -18,14 +22,23 @@ class SignIn extends PureComponent {
 
     evt.preventDefault();
 
-    onSubmit({
-      login: this.loginRef.current.value,
-      password: this.passwordRef.current.value
-    });
-
-    goBack();
+    onSubmit(
+        {
+          login: this.loginRef.current.value,
+          password: this.passwordRef.current.value
+        },
+        () => {
+          this.setState({authErrorMessage: ``});
+          goBack();
+        },
+        (err) => {
+          this.setState({authErrorMessage: err});
+        }
+    );
   }
   render() {
+    const {authErrorMessage} = this.state;
+
     return (
       <div className="user-page">
         <header className="page-header user-page__head">
@@ -46,6 +59,11 @@ class SignIn extends PureComponent {
             className="sign-in__form"
             onSubmit={this.handleFormSubmit}
           >
+            {authErrorMessage && (
+              <div className="sign-in__message">
+                <p>{authErrorMessage}</p>
+              </div>
+            )}
             <div className="sign-in__fields">
               <div className="sign-in__field">
                 <input

@@ -161,8 +161,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  login(authData) {
-    dispatch(UserOperation.login(authData));
+  login(authData, onSuccess, onError) {
+    dispatch(UserOperation.login(authData, onSuccess, onError));
   },
   changeSelectedMovieId(id) {
     dispatch(ActionCreator.changeSelectedMovieId(id));
