@@ -56,7 +56,9 @@ const Operation = {
         onSuccess();
       })
       .catch((err) => {
-        onError(err.response.data.error);
+        if (err.response) {
+          onError(err.response.data.error);
+        }
       });
   }
 };
