@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Switch, Route, Router } from "react-router-dom";
-import Main from "../main/main.js";
+import Main from "../main/main";
 import MoviePage from "../movie-page/movie-page.js";
 import PropTypes from "prop-types";
 import SignIn from "../sign-in/sign-in.js";

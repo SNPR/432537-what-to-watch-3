@@ -13,7 +13,7 @@ import history from "../../history.js";
 import { ActionCreator } from "../../reducer/state/state.js";
 import { getSelectedMovie } from "../../reducer/state/selectors.js";
 import { Operation as DataOperation } from "../../reducer/data/data.js";
-import withActiveTab from "../../hocs/with-active-tab/with-active-tab.js";
+import withActiveTab from "../../hocs/with-active-tab/with-active-tab";
 
 const TabsWrapped = withActiveTab(Tabs);
 
