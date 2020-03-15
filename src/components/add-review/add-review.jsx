@@ -32,7 +32,7 @@ class AddReview extends PureComponent {
   }
 
   handleFormSubmit(evt) {
-    const {onSubmit} = this.props;
+    const {onSubmit, onSubmitError} = this.props;
     evt.preventDefault();
     this.toggleFormDisability();
 
@@ -48,12 +48,18 @@ class AddReview extends PureComponent {
         },
         () => {
           this.toggleFormDisability();
+          onSubmitError();
         }
     );
   }
 
   render() {
-    const {movie, isFormInvalid, onReviewTextChange} = this.props;
+    const {
+      movie,
+      isFormInvalid,
+      onReviewTextChange,
+      isSubmitError
+    } = this.props;
     return movie ? (
       <>
         <section className="movie-card movie-card--full">
@@ -201,6 +207,11 @@ class AddReview extends PureComponent {
               </div>
             </form>
           </div>
+          {isSubmitError && (
+            <p style={{color: `red`, textAlign: `center`}}>
+              Error. Please try again
+            </p>
+          )}
         </section>
       </>
     ) : (
@@ -233,7 +244,9 @@ AddReview.propTypes = {
   changeSelectedMovieId: PropTypes.func.isRequired,
   id: PropTypes.number.isRequired,
   isFormInvalid: PropTypes.bool.isRequired,
-  onReviewTextChange: PropTypes.func.isRequired
+  onReviewTextChange: PropTypes.func.isRequired,
+  onSubmitError: PropTypes.func.isRequired,
+  isSubmitError: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = (state) => ({

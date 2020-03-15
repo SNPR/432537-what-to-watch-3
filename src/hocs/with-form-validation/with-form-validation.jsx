@@ -7,10 +7,12 @@ const withFormValidation = (Component) => {
       super(props);
 
       this.state = {
-        isFormInvalid: true
+        isFormInvalid: true,
+        isSubmitError: false
       };
 
       this.handleChange = this.handleChange.bind(this);
+      this.handleSubmitError = this.handleSubmitError.bind(this);
     }
 
     handleChange({target: {value}}) {
@@ -20,14 +22,22 @@ const withFormValidation = (Component) => {
       });
     }
 
+    handleSubmitError() {
+      this.setState({
+        isSubmitError: !this.state.isSubmitError
+      });
+    }
+
     render() {
-      const {isFormInvalid} = this.state;
+      const {isFormInvalid, isSubmitError: isSubmitError} = this.state;
 
       return (
         <Component
           {...this.props}
           isFormInvalid={isFormInvalid}
           onReviewTextChange={this.handleChange}
+          onSubmitError={this.handleSubmitError}
+          isSubmitError={isSubmitError}
         />
       );
     }
