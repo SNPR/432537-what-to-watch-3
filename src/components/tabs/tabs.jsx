@@ -3,65 +3,52 @@ import PropTypes from "prop-types";
 import {getTextRating} from "../../utils/utils";
 import {connect} from "react-redux";
 import {getComments} from "../../reducer/data/selectors.js";
-
-const TabName = {
-  OVERVIEW: `overview`,
-  DETAILS: `details`,
-  REVIEWS: `reviews`
-};
+import {Tab} from "../../utils/constants.js";
 
 class Tabs extends PureComponent {
   constructor(props) {
     super(props);
-
-    this.state = {selectedTab: TabName.OVERVIEW};
-    this.getActiveClass = this.getActiveClass.bind(this);
-  }
-
-  getActiveClass(tabName) {
-    return this.state.selectedTab === tabName ? `movie-nav__item--active` : ``;
   }
 
   render() {
-    const {movie, comments} = this.props;
-    const {selectedTab} = this.state;
+    const {
+      movie,
+      comments,
+      getActiveClass,
+      setActiveTab,
+      selectedTab
+    } = this.props;
 
     return (
       <div className="movie-card__desc">
         <nav className="movie-nav movie-card__nav">
           <ul className="movie-nav__list">
             <li
-              className={`movie-nav__item ${this.getActiveClass(
-                  TabName.OVERVIEW
-              )}`}
+              className={`movie-nav__item ${getActiveClass(Tab.Name.OVERVIEW)}`}
             >
               <a
                 className="movie-nav__link"
-                onClick={() => this.setState({selectedTab: TabName.OVERVIEW})}
+                onClick={() => setActiveTab(Tab.Name.OVERVIEW)}
               >
                 Overview
               </a>
             </li>
             <li
-              className={`movie-nav__item ${this.getActiveClass(
-                  TabName.DETAILS
-              )}`}
+              className={`movie-nav__item ${getActiveClass(Tab.Name.DETAILS)}`}
             >
               <a
                 className="movie-nav__link"
-                onClick={() => this.setState({selectedTab: TabName.DETAILS})}
+                onClick={() => setActiveTab(Tab.Name.DETAILS)}
               >
                 Details
               </a>
             </li>
             <li
-              className={`movie-nav__item ${this.getActiveClass(
-                  TabName.REVIEWS
-              )}`}
+              className={`movie-nav__item ${getActiveClass(Tab.Name.REVIEWS)}`}
             >
               <a
                 className="movie-nav__link"
-                onClick={() => this.setState({selectedTab: TabName.REVIEWS})}
+                onClick={() => setActiveTab(Tab.Name.REVIEWS)}
               >
                 Reviews
               </a>
@@ -69,7 +56,7 @@ class Tabs extends PureComponent {
           </ul>
         </nav>
 
-        {selectedTab === TabName.OVERVIEW && (
+        {selectedTab === Tab.Name.OVERVIEW && (
           <>
             <div className="movie-rating">
               <div className="movie-rating__score">{movie.rating}</div>
@@ -99,7 +86,7 @@ class Tabs extends PureComponent {
           </>
         )}
 
-        {selectedTab === TabName.DETAILS && (
+        {selectedTab === Tab.Name.DETAILS && (
           <>
             <div className="movie-card__text movie-card__row">
               <div className="movie-card__text-col">
@@ -145,7 +132,7 @@ class Tabs extends PureComponent {
           </>
         )}
 
-        {selectedTab === TabName.REVIEWS && (
+        {selectedTab === Tab.Name.REVIEWS && (
           <>
             <div className="movie-card__reviews movie-card__row">
               <div className="movie-card__reviews-col">
@@ -207,7 +194,10 @@ Tabs.propTypes = {
           name: PropTypes.string
         })
       })
-  )
+  ),
+  getActiveClass: PropTypes.func.isRequired,
+  setActiveTab: PropTypes.func.isRequired,
+  selectedTab: PropTypes.string.isRequired
 };
 
 const mapStateToProps = (state) => ({
