@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Switch, Route, Router } from "react-router-dom";
+import { Route, Router, Switch } from "react-router-dom";
 import Main from "../main/main";
 import MoviePage from "../movie-page/movie-page.js";
 import PropTypes from "prop-types";

@@ -31,6 +31,7 @@ class SignIn extends React.PureComponent {
       }
     );
   }
+
   render() {
     const { authErrorMessage } = this.props;
 

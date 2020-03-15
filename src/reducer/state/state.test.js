@@ -1,7 +1,7 @@
 import {
-  reducer,
   ActionCreator,
-  ActionType
+  ActionType,
+  reducer
 } from "../../reducer/state/state.js";
 import {ALL_GENRES, SHOWED_MOVIES_DEFAULT} from "../../utils/constants";
 

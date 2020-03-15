@@ -8,11 +8,13 @@ import { getAuthorizationStatus } from "../../reducer/user/selectors.js";
 import { AuthorizationStatus } from "../../reducer/user/user";
 import { Link } from "react-router-dom";
 import { AppRoute } from "../../utils/constants.js";
-import { Operation } from "../../reducer/data/data.js";
+import {
+  Operation,
+  Operation as DataOperation
+} from "../../reducer/data/data.js";
 import history from "../../history.js";
 import { ActionCreator } from "../../reducer/state/state.js";
 import { getSelectedMovie } from "../../reducer/state/selectors.js";
-import { Operation as DataOperation } from "../../reducer/data/data.js";
 import withActiveTab from "../../hocs/with-active-tab/with-active-tab";
 
 const TabsWrapped = withActiveTab(Tabs);

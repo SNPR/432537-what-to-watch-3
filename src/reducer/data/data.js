@@ -1,8 +1,8 @@
-import {extend} from "../../utils/utils.js";
 import {
+  extend,
+  formatReviewDate,
   normalizeMovieData,
-  normalizeMoviesData,
-  formatReviewDate
+  normalizeMoviesData
 } from "../../utils/utils.js";
 import Namespace from "../namespace.js";
 
