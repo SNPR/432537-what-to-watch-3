@@ -31,7 +31,7 @@ const MyList: React.FunctionComponent<MyListProps> = (props: MyListProps) => {
         <h1 className="page-title user-page__title">My list</h1>
 
         <div className="user-block">
-          <Link to={MyList}>
+          <Link to={AppRoute.MY_LIST}>
             <div className="user-block__avatar">
               <img
                 src="img/avatar.jpg"
