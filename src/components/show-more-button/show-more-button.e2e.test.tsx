@@ -1,6 +1,6 @@
 import * as React from "react";
 import Enzyme, {mount} from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
+import * as Adapter from "enzyme-adapter-react-16";
 import {ShowMoreButton} from "./show-more-button";
 import {ALL_GENRES, SHOWED_MOVIES_DEFAULT} from "../../utils/constants";
 

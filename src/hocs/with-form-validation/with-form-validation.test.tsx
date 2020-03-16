@@ -1,9 +1,9 @@
 import * as React from "react";
-import {configure, shallow} from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
+import  { configure, shallow } from "enzyme";
+import * as Adapter from "enzyme-adapter-react-16";
 import withFormValidation from "./with-form-validation";
 
-configure({adapter: new Adapter()});
+configure({ adapter: new Adapter() });
 
 const MockComponent = () => <div />;
 const MockComponentWrapped = withFormValidation(MockComponent);

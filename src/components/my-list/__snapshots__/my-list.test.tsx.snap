@@ -41,7 +41,7 @@ exports[`Should render MyList component 1`] = `
       className="user-block"
     >
       <a
-        href="/"
+        href="/mylist"
         onClick={[Function]}
       >
         <div

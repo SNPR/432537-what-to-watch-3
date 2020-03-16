@@ -1,5 +1,5 @@
 import * as React from "react";
-import renderer from "react-test-renderer";
+import * as renderer  from "react-test-renderer";
 import {MoviePage} from "./movie-page";
 import configureStore from "redux-mock-store";
 import Namespace from "../../reducer/namespace";

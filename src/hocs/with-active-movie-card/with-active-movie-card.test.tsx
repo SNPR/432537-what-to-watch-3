@@ -1,9 +1,9 @@
 import * as React from "react";
-import {configure, shallow} from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
+import Enzyme, { shallow } from "enzyme";
+import * as Adapter from "enzyme-adapter-react-16";
 import withActiveMovieCard from "./with-active-movie-card";
 
-configure({adapter: new Adapter()});
+Enzyme.configure({ adapter: new Adapter() });
 
 const MockComponent = () => <div />;
 const MockComponentWrapped = withActiveMovieCard(MockComponent);
@@ -181,7 +181,7 @@ const films = [
 
 it(`Should change selected movie ID on mouseover/mouseout`, () => {
   const wrapper = shallow(
-      <MockComponentWrapped movies={films} onMovieCardClick={() => {}} />
+    <MockComponentWrapped movies={films} onMovieCardClick={() => {}} />
   );
 
   expect(wrapper.props().selectedMovieId).toEqual(null);

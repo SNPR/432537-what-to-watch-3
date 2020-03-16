@@ -1,5 +1,5 @@
 import * as React from "react";
-import renderer from "react-test-renderer";
+import * as renderer  from "react-test-renderer";
 import {ShowMoreButton} from "./show-more-button";
 import {ALL_GENRES, SHOWED_MOVIES_DEFAULT} from "../../utils/constants";
 
