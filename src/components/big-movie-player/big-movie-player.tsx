@@ -1,10 +1,32 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import { getSelectedMovie } from "../../reducer/state/selectors";
 import { ActionCreator } from "../../reducer/state/state";
 import { connect } from "react-redux";
+import { Movie } from "../../types";
 
-class BigMoviePlayer extends React.PureComponent {
+type BigMoviePlayerProps = {
+  isPlaying: boolean;
+  onPlayButtonClick: () => void;
+  onFullscreenButtonClick: () => void;
+  getPlaybackProgress: () => string;
+  getElapsedTime: () => string;
+  videoRef: React.RefObject<HTMLVideoElement>;
+  muted: boolean;
+  autoPlay: boolean;
+  movie: Movie;
+  onExitButtonClick: () => void;
+  onLoadedMetadata: (evt: React.SyntheticEvent<EventTarget>) => void;
+  onTimeUpdate: (evt: React.SyntheticEvent<EventTarget>) => void;
+  changeSelectedMovieId: (
+    id: string | number
+  ) => {
+    type: string;
+    payload: string;
+  };
+  id: number;
+};
+
+class BigMoviePlayer extends React.PureComponent<BigMoviePlayerProps, {}> {
   constructor(props) {
     super(props);
   }
@@ -115,44 +137,6 @@ class BigMoviePlayer extends React.PureComponent {
     );
   }
 }
-
-BigMoviePlayer.propTypes = {
-  movie: PropTypes.shape({
-    name: PropTypes.string,
-    posterUrl: PropTypes.string,
-    previewUrl: PropTypes.string,
-    bigPosterUrl: PropTypes.string,
-    backgroundColor: PropTypes.string,
-    description: PropTypes.string,
-    rating: PropTypes.number,
-    votes: PropTypes.number,
-    director: PropTypes.string,
-    starring: PropTypes.arrayOf(PropTypes.string),
-    runTime: PropTypes.string,
-    genre: PropTypes.string,
-    releaseYear: PropTypes.number,
-    id: PropTypes.number,
-    isFavorite: PropTypes.bool,
-    videoUrl: PropTypes.string,
-    trailerUrl: PropTypes.string
-  }),
-  muted: PropTypes.bool.isRequired,
-  autoPlay: PropTypes.bool.isRequired,
-  isPlaying: PropTypes.bool.isRequired,
-  onPlayButtonClick: PropTypes.func.isRequired,
-  onFullscreenButtonClick: PropTypes.func.isRequired,
-  getPlaybackProgress: PropTypes.func.isRequired,
-  getElapsedTime: PropTypes.func.isRequired,
-  videoRef: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.shape({ current: PropTypes.instanceOf(Element) })
-  ]),
-  onExitButtonClick: PropTypes.func.isRequired,
-  onLoadedMetadata: PropTypes.func.isRequired,
-  onTimeUpdate: PropTypes.func.isRequired,
-  changeSelectedMovieId: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired
-};
 
 const mapStateToProps = state => ({
   movie: getSelectedMovie(state)
