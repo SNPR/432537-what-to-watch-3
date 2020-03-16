@@ -1,9 +1,23 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import { AppRoute } from "../../utils/constants";
 import { Link } from "react-router-dom";
+import { AxiosPromise } from "axios";
 
-class SignIn extends React.PureComponent {
+type SignInProps = {
+  onSubmit: (
+    { login, password }: { login: string; password: string },
+    onSuccess: () => void,
+    onError: (err: string) => void
+  ) => AxiosPromise;
+  goBack: () => void;
+  onError: (err: string) => void;
+  authErrorMessage: string;
+};
+
+class SignIn extends React.PureComponent<SignInProps, {}> {
+  private loginRef: React.RefObject<HTMLInputElement>;
+  private passwordRef: React.RefObject<HTMLInputElement>;
+
   constructor(props) {
     super(props);
 
@@ -119,12 +133,5 @@ class SignIn extends React.PureComponent {
     );
   }
 }
-
-SignIn.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  goBack: PropTypes.func,
-  onError: PropTypes.func,
-  authErrorMessage: PropTypes.string
-};
 
 export default SignIn;
