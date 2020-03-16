@@ -1,10 +1,36 @@
 import * as React from "react";
-import PropTypes from "prop-types";
+import { Movie } from "../../types";
+import { Subtract } from "utility-types";
 
 const PLAYBACK_DELAY_TIMEOUT = 1000;
 
+type InjectingProps = {
+  selectedMovieId: string | null;
+  isPlaying: boolean;
+  onMovieCardMouseOver: (id: string | number) => void;
+  onMovieCardMouseOut: () => void;
+};
+
+type withActiveMovieCardState = {
+  selectedMovieId: null | number;
+  isPlaying: boolean;
+};
+
+type withActiveMovieCardProps = {
+  movies: Movie[];
+  onMovieCardClick: (id: string | number) => void;
+};
+
 const withActiveMovieCard = Component => {
-  class WithActiveMovieCard extends React.PureComponent {
+  type P = React.ComponentProps<typeof Component>;
+  type T = withActiveMovieCardProps & Subtract<P, InjectingProps>;
+
+  class WithActiveMovieCard extends React.PureComponent<
+    T,
+    withActiveMovieCardState
+  > {
+    private playbackTimeout: NodeJS.Timeout;
+
     constructor(props) {
       super(props);
 
@@ -66,31 +92,6 @@ const withActiveMovieCard = Component => {
       );
     }
   }
-
-  WithActiveMovieCard.propTypes = {
-    movies: PropTypes.arrayOf(
-      PropTypes.shape({
-        name: PropTypes.string,
-        posterUrl: PropTypes.string,
-        previewUrl: PropTypes.string,
-        bigPosterUrl: PropTypes.string,
-        backgroundColor: PropTypes.string,
-        description: PropTypes.string,
-        rating: PropTypes.number,
-        votes: PropTypes.number,
-        director: PropTypes.string,
-        starring: PropTypes.arrayOf(PropTypes.string),
-        runTime: PropTypes.string,
-        genre: PropTypes.string,
-        releaseYear: PropTypes.number,
-        id: PropTypes.number,
-        isFavorite: PropTypes.bool,
-        videoUrl: PropTypes.string,
-        trailerUrl: PropTypes.string
-      })
-    ),
-    onMovieCardClick: PropTypes.func
-  };
 
   return WithActiveMovieCard;
 };
