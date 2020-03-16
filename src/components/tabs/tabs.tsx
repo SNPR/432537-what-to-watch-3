@@ -1,11 +1,28 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import { getTextRating } from "../../utils/utils";
 import { connect } from "react-redux";
 import { getComments } from "../../reducer/data/selectors";
 import { Tab } from "../../utils/constants";
+import { Movie } from "../../types";
 
-class Tabs extends React.PureComponent {
+type TabsProps = {
+  movie: Movie;
+  comments: {
+    comment: string;
+    date: string;
+    id: number;
+    rating: number;
+    user: {
+      id: number;
+      name: string;
+    };
+  }[];
+  getActiveClass: (tabName: string) => string;
+  setActiveTab: (tabName: string) => void;
+  selectedTab: string;
+};
+
+class Tabs extends React.PureComponent<TabsProps, {}> {
   constructor(props) {
     super(props);
   }
@@ -162,43 +179,6 @@ class Tabs extends React.PureComponent {
     );
   }
 }
-
-Tabs.propTypes = {
-  movie: PropTypes.shape({
-    name: PropTypes.string,
-    posterUrl: PropTypes.string,
-    previewUrl: PropTypes.string,
-    bigPosterUrl: PropTypes.string,
-    backgroundColor: PropTypes.string,
-    description: PropTypes.string,
-    rating: PropTypes.number,
-    votes: PropTypes.number,
-    director: PropTypes.string,
-    starring: PropTypes.arrayOf(PropTypes.string),
-    runTime: PropTypes.string,
-    genre: PropTypes.string,
-    releaseYear: PropTypes.number,
-    id: PropTypes.number,
-    isFavorite: PropTypes.bool,
-    videoUrl: PropTypes.string,
-    trailerUrl: PropTypes.string
-  }).isRequired,
-  comments: PropTypes.arrayOf(
-    PropTypes.shape({
-      comment: PropTypes.string,
-      date: PropTypes.string,
-      id: PropTypes.number,
-      rating: PropTypes.number,
-      user: PropTypes.shape({
-        id: PropTypes.number,
-        name: PropTypes.string
-      })
-    })
-  ),
-  getActiveClass: PropTypes.func.isRequired,
-  setActiveTab: PropTypes.func.isRequired,
-  selectedTab: PropTypes.string.isRequired
-};
 
 const mapStateToProps = state => ({
   comments: getComments(state)
