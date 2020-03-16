@@ -1,6 +1,5 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
 import { getSelectedMovie } from "../../reducer/state/selectors";
 import { Operation } from "../../reducer/data/data";
 import { Link } from "react-router-dom";
@@ -11,8 +10,33 @@ import {
 } from "../../utils/constants";
 import history from "../../history";
 import { ActionCreator } from "../../reducer/state/state";
+import { Movie } from "../../types";
+import { AxiosPromise } from "axios";
 
-class AddReview extends React.PureComponent {
+type AddReviewProps = {
+  movie: Movie;
+  onSubmit: (
+    {
+      movieId: number,
+      rating,
+      comment
+    }: { movieId: number | string; rating: number; comment: string },
+    onSuccess: () => void,
+    onError: () => void
+  ) => AxiosPromise;
+  changeSelectedMovieId: (id: string) => void;
+  id: string;
+  isFormInvalid: boolean;
+  onReviewTextChange: (evt: React.SyntheticEvent<EventTarget>) => void;
+  onSubmitError: () => void;
+  isSubmitError: boolean;
+};
+
+class AddReview extends React.PureComponent<AddReviewProps, {}> {
+  private submitFormRef: React.RefObject<HTMLFormElement>;
+  private commentRef: React.RefObject<HTMLTextAreaElement>;
+  private sendCommentButtonRef: React.RefObject<HTMLButtonElement>;
+
   constructor(props) {
     super(props);
 
@@ -222,35 +246,6 @@ class AddReview extends React.PureComponent {
     );
   }
 }
-
-AddReview.propTypes = {
-  movie: PropTypes.shape({
-    name: PropTypes.string,
-    posterUrl: PropTypes.string,
-    previewUrl: PropTypes.string,
-    bigPosterUrl: PropTypes.string,
-    backgroundColor: PropTypes.string,
-    description: PropTypes.string,
-    rating: PropTypes.number,
-    votes: PropTypes.number,
-    director: PropTypes.string,
-    starring: PropTypes.arrayOf(PropTypes.string),
-    runTime: PropTypes.string,
-    genre: PropTypes.string,
-    releaseYear: PropTypes.number,
-    id: PropTypes.number,
-    isFavorite: PropTypes.bool,
-    videoUrl: PropTypes.string,
-    trailerUrl: PropTypes.string
-  }),
-  onSubmit: PropTypes.func.isRequired,
-  changeSelectedMovieId: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired,
-  isFormInvalid: PropTypes.bool,
-  onReviewTextChange: PropTypes.func,
-  onSubmitError: PropTypes.func,
-  isSubmitError: PropTypes.bool
-};
 
 const mapStateToProps = state => ({
   movie: getSelectedMovie(state)
