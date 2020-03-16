@@ -1,6 +1,7 @@
 import * as React from "react";
 import { formatTime } from "../../utils/utils";
 import { Subtract } from "utility-types";
+import { Movie } from "../../types";
 
 type InjectingProps = {
   isPlaying: boolean;
@@ -18,8 +19,7 @@ type InjectingProps = {
 type withPlayerProps = {
   muted: boolean;
   autoPlay: boolean;
-  onExitButtonClick: () => void;
-  id: number | string;
+  movie: Movie;
 };
 
 type withPlayerState = {
