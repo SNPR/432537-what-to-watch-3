@@ -1,13 +1,19 @@
 import * as React from "react";
-import PropTypes from "prop-types";
+import { Movie } from "../../types";
 
-const MoviePlayer = ({
-  movie,
-  muted,
-  autoPlay,
-  onPlayButtonClick,
-  videoRef
-}) => {
+type MoviePlayerProps = {
+  movie: Movie;
+  muted: boolean;
+  autoPlay: boolean;
+  onPlayButtonClick: () => void;
+  videoRef: React.RefObject<HTMLVideoElement>;
+};
+
+const MoviePlayer: React.FunctionComponent<MoviePlayerProps> = (
+  props: MoviePlayerProps
+) => {
+  const { movie, muted, autoPlay, onPlayButtonClick, videoRef } = props;
+
   return (
     <video
       ref={videoRef}
@@ -21,35 +27,6 @@ const MoviePlayer = ({
       <source src={movie.trailerUrl} />
     </video>
   );
-};
-
-MoviePlayer.propTypes = {
-  movie: PropTypes.shape({
-    name: PropTypes.string,
-    posterUrl: PropTypes.string,
-    previewUrl: PropTypes.string,
-    bigPosterUrl: PropTypes.string,
-    backgroundColor: PropTypes.string,
-    description: PropTypes.string,
-    rating: PropTypes.number,
-    votes: PropTypes.number,
-    director: PropTypes.string,
-    starring: PropTypes.arrayOf(PropTypes.string),
-    runTime: PropTypes.string,
-    genre: PropTypes.string,
-    releaseYear: PropTypes.number,
-    id: PropTypes.number,
-    isFavorite: PropTypes.bool,
-    videoUrl: PropTypes.string,
-    trailerUrl: PropTypes.string
-  }).isRequired,
-  muted: PropTypes.bool.isRequired,
-  autoPlay: PropTypes.bool.isRequired,
-  onPlayButtonClick: PropTypes.func,
-  videoRef: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.shape({ current: PropTypes.instanceOf(Element) })
-  ])
 };
 
 export default MoviePlayer;
