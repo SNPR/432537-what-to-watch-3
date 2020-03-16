@@ -1,5 +1,4 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import GenresList from "../genres-list/genres-list";
 import ShowMoreButton from "../show-more-button/show-more-button";
 import { connect } from "react-redux";
@@ -10,14 +9,26 @@ import { Link } from "react-router-dom";
 import { AppRoute } from "../../utils/constants";
 import { Operation } from "../../reducer/data/data";
 import history from "../../history";
+import { Movie } from "../../types";
+import { AxiosPromise } from "axios";
 
-const Main = ({
-  onMovieCardClick,
-  promoMovie,
-  authorizationStatus,
-  addMovieToMyList,
-  removeMovieFromMyList
-}) => {
+type MainProps = {
+  promoMovie: Movie;
+  onMovieCardClick: (id: string | number) => void;
+  authorizationStatus: string;
+  addMovieToMyList: (id: string | number) => AxiosPromise;
+  removeMovieFromMyList: (id: string | number) => AxiosPromise;
+};
+
+const Main: React.FunctionComponent<MainProps> = (props: MainProps) => {
+  const {
+    onMovieCardClick,
+    promoMovie,
+    authorizationStatus,
+    addMovieToMyList,
+    removeMovieFromMyList
+  } = props;
+
   return (
     <>
       <section className="movie-card">
@@ -144,32 +155,6 @@ const Main = ({
       </div>
     </>
   );
-};
-
-Main.propTypes = {
-  promoMovie: PropTypes.shape({
-    name: PropTypes.string,
-    posterUrl: PropTypes.string,
-    previewUrl: PropTypes.string,
-    bigPosterUrl: PropTypes.string,
-    backgroundColor: PropTypes.string,
-    description: PropTypes.string,
-    rating: PropTypes.number,
-    votes: PropTypes.number,
-    director: PropTypes.string,
-    starring: PropTypes.arrayOf(PropTypes.string),
-    runTime: PropTypes.string,
-    genre: PropTypes.string,
-    releaseYear: PropTypes.number,
-    id: PropTypes.number,
-    isFavorite: PropTypes.bool,
-    videoUrl: PropTypes.string,
-    trailerUrl: PropTypes.string
-  }),
-  onMovieCardClick: PropTypes.func.isRequired,
-  authorizationStatus: PropTypes.string.isRequired,
-  addMovieToMyList: PropTypes.func.isRequired,
-  removeMovieFromMyList: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
