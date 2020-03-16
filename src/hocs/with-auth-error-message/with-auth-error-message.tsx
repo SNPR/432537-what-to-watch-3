@@ -1,7 +1,23 @@
 import * as React from "react";
+import { Subtract } from "utility-types";
 
-const withAuthErrorMessage = (Component) => {
-  class WithAuthErrorMessage extends React.PureComponent {
+type InjectingProps = {
+  authErrorMessage: string;
+  onError: (err: string) => void;
+};
+
+type withAuthErrorMessageState = {
+  authErrorMessage: string;
+};
+
+const withAuthErrorMessage = Component => {
+  type P = React.ComponentProps<typeof Component>;
+  type T = Subtract<P, InjectingProps>;
+
+  class WithAuthErrorMessage extends React.PureComponent<
+    T,
+    withAuthErrorMessageState
+  > {
     constructor(props) {
       super(props);
 
@@ -19,7 +35,7 @@ const withAuthErrorMessage = (Component) => {
     }
 
     render() {
-      const {authErrorMessage} = this.state;
+      const { authErrorMessage } = this.state;
 
       return (
         <Component
