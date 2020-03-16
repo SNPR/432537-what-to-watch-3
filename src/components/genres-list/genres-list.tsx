@@ -1,16 +1,34 @@
 import * as React from "react";
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
 import { ALL_GENRES } from "../../utils/constants";
 import { ActionCreator } from "../../reducer/state/state";
 import MoviesList from "../movies-list/movies-list";
 import withActiveMovieCard from "../../hocs/with-active-movie-card/with-active-movie-card";
-import { getGenre, getShowedMovies } from "../../reducer/state/selectors.js";
+import { getGenre, getShowedMovies } from "../../reducer/state/selectors";
 import { getMovies, getMoviesByGenre } from "../../reducer/data/selectors";
+import { Movie } from "../../types";
 
 const MoviesListWrapped = withActiveMovieCard(MoviesList);
 
-class GenresList extends React.PureComponent {
+type GenresListProps = {
+  movies: Movie[];
+  filteredMovies: Movie[];
+  genre: string;
+  changeGenre: (
+    genre: string
+  ) => {
+    type: string;
+    payload: string;
+  };
+  onMovieCardClick: (id: string) => void;
+  showedMovies: number;
+  resetShowedMoviesAmount: () => {
+    type: string;
+    payload: null;
+  };
+};
+
+class GenresList extends React.PureComponent<GenresListProps, {}> {
   constructor(props) {
     super(props);
   }
@@ -60,56 +78,6 @@ class GenresList extends React.PureComponent {
     );
   }
 }
-
-GenresList.propTypes = {
-  movies: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string,
-      posterUrl: PropTypes.string,
-      previewUrl: PropTypes.string,
-      bigPosterUrl: PropTypes.string,
-      backgroundColor: PropTypes.string,
-      description: PropTypes.string,
-      rating: PropTypes.number,
-      votes: PropTypes.number,
-      director: PropTypes.string,
-      starring: PropTypes.arrayOf(PropTypes.string),
-      runTime: PropTypes.string,
-      genre: PropTypes.string,
-      releaseYear: PropTypes.number,
-      id: PropTypes.number,
-      isFavorite: PropTypes.bool,
-      videoUrl: PropTypes.string,
-      trailerUrl: PropTypes.string
-    })
-  ),
-  filteredMovies: PropTypes.arrayOf(
-    PropTypes.shape({
-      name: PropTypes.string,
-      posterUrl: PropTypes.string,
-      previewUrl: PropTypes.string,
-      bigPosterUrl: PropTypes.string,
-      backgroundColor: PropTypes.string,
-      description: PropTypes.string,
-      rating: PropTypes.number,
-      votes: PropTypes.number,
-      director: PropTypes.string,
-      starring: PropTypes.arrayOf(PropTypes.string),
-      runTime: PropTypes.string,
-      genre: PropTypes.string,
-      releaseYear: PropTypes.number,
-      id: PropTypes.number,
-      isFavorite: PropTypes.bool,
-      videoUrl: PropTypes.string,
-      trailerUrl: PropTypes.string
-    })
-  ),
-  genre: PropTypes.string.isRequired,
-  changeGenre: PropTypes.func.isRequired,
-  onMovieCardClick: PropTypes.func.isRequired,
-  showedMovies: PropTypes.number.isRequired,
-  resetShowedMoviesAmount: PropTypes.func.isRequired
-};
 
 const mapStateToProps = state => ({
   genre: getGenre(state),
