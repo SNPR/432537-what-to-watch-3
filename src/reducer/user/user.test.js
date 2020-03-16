@@ -1,12 +1,12 @@
 import MockAdapter from "axios-mock-adapter";
-import {createAPI} from "../../api.js";
+import {createAPI} from "../../api";
 import {
   ActionCreator,
   ActionType,
   AuthorizationStatus,
   Operation,
   reducer
-} from "./user.js";
+} from "./user";
 
 const api = createAPI(() => {});
 

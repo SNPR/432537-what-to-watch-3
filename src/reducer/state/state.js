@@ -1,5 +1,5 @@
-import {extend} from "../../utils/utils.js";
-import {ALL_GENRES, SHOWED_MOVIES_DEFAULT} from "../../utils/constants.js";
+import {extend} from "../../utils/utils";
+import {ALL_GENRES, SHOWED_MOVIES_DEFAULT} from "../../utils/constants";
 
 const initialState = {
   genre: ALL_GENRES,

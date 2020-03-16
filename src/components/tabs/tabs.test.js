@@ -3,8 +3,8 @@ import renderer from "react-test-renderer";
 import Tabs from "./tabs";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
-import Namespace from "../../reducer/namespace.js";
-import {Tab} from "../../utils/constants.js";
+import Namespace from "../../reducer/namespace";
+import {Tab} from "../../utils/constants";
 
 const movie = {
   name: `Movie name`,

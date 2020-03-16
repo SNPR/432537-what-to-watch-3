@@ -1,6 +1,6 @@
 import {createSelector} from "reselect";
-import Namespace from "../namespace.js";
-import {ALL_GENRES} from "../../utils/constants.js";
+import Namespace from "../namespace";
+import {ALL_GENRES} from "../../utils/constants";
 
 export const getMovies = (state) => {
   return state[Namespace.DATA].films;

@@ -2,9 +2,9 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import { Redirect, Route } from "react-router-dom";
 import { connect } from "react-redux";
-import { AppRoute } from "../../utils/constants.js";
-import { AuthorizationStatus } from "../../reducer/user/user.js";
-import { getAuthorizationStatus } from "../../reducer/user/selectors.js";
+import { AppRoute } from "../../utils/constants";
+import { AuthorizationStatus } from "../../reducer/user/user";
+import { getAuthorizationStatus } from "../../reducer/user/selectors";
 
 const PrivateRoute = props => {
   const { render, path, exact, authorizationStatus } = props;

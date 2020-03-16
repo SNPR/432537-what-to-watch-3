@@ -3,8 +3,8 @@ import {
   formatReviewDate,
   normalizeMovieData,
   normalizeMoviesData
-} from "../../utils/utils.js";
-import Namespace from "../namespace.js";
+} from "../../utils/utils";
+import Namespace from "../namespace";
 
 const initialState = {
   promoFilm: {},

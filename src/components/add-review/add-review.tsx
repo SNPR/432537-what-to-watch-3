@@ -1,16 +1,16 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { getSelectedMovie } from "../../reducer/state/selectors.js";
+import { getSelectedMovie } from "../../reducer/state/selectors";
 import { Operation } from "../../reducer/data/data";
 import { Link } from "react-router-dom";
 import {
   AppRoute,
   MAX_REVIEW_LENGTH,
   MIN_REVIEW_LENGTH
-} from "../../utils/constants.js";
-import history from "../../history.js";
-import { ActionCreator } from "../../reducer/state/state.js";
+} from "../../utils/constants";
+import history from "../../history";
+import { ActionCreator } from "../../reducer/state/state";
 
 class AddReview extends React.PureComponent {
   constructor(props) {

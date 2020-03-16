@@ -4,7 +4,7 @@ import withActiveMovieCard from "../../hocs/with-active-movie-card/with-active-m
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { AppRoute } from "../../utils/constants";
-import { getMyMoviesList } from "../../reducer/data/selectors.js";
+import { getMyMoviesList } from "../../reducer/data/selectors";
 import { connect } from "react-redux";
 
 const MoviesListWrapped = withActiveMovieCard(MoviesList);

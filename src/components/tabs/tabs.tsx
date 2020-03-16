@@ -2,8 +2,8 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import { getTextRating } from "../../utils/utils";
 import { connect } from "react-redux";
-import { getComments } from "../../reducer/data/selectors.js";
-import { Tab } from "../../utils/constants.js";
+import { getComments } from "../../reducer/data/selectors";
+import { Tab } from "../../utils/constants";
 
 class Tabs extends React.PureComponent {
   constructor(props) {

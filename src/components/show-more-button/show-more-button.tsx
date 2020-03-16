@@ -1,10 +1,10 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { ActionCreator } from "../../reducer/state/state.js";
-import { getMovies, getMoviesByGenre } from "../../reducer/data/selectors.js";
-import { getGenre, getShowedMovies } from "../../reducer/state/selectors.js";
-import { ALL_GENRES, SHOWED_MOVIES_DEFAULT } from "../../utils/constants.js";
+import { ActionCreator } from "../../reducer/state/state";
+import { getMovies, getMoviesByGenre } from "../../reducer/data/selectors";
+import { getGenre, getShowedMovies } from "../../reducer/state/selectors";
+import { ALL_GENRES, SHOWED_MOVIES_DEFAULT } from "../../utils/constants";
 
 const ShowMoreButton = ({
   movies,

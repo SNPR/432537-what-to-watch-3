@@ -3,13 +3,13 @@ import PropTypes from "prop-types";
 import GenresList from "../genres-list/genres-list";
 import ShowMoreButton from "../show-more-button/show-more-button";
 import { connect } from "react-redux";
-import { getPromoMovie } from "../../reducer/data/selectors.js";
-import { getAuthorizationStatus } from "../../reducer/user/selectors.js";
-import { AuthorizationStatus } from "../../reducer/user/user.js";
+import { getPromoMovie } from "../../reducer/data/selectors";
+import { getAuthorizationStatus } from "../../reducer/user/selectors";
+import { AuthorizationStatus } from "../../reducer/user/user";
 import { Link } from "react-router-dom";
-import { AppRoute } from "../../utils/constants.js";
-import { Operation } from "../../reducer/data/data.js";
-import history from "../../history.js";
+import { AppRoute } from "../../utils/constants";
+import { Operation } from "../../reducer/data/data";
+import history from "../../history";
 
 const Main = ({
   onMovieCardClick,

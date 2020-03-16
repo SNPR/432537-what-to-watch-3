@@ -3,16 +3,16 @@ import * as ReactDOM from "react-dom";
 import App from "./components/app/app";
 import { applyMiddleware, createStore } from "redux";
 import { Provider } from "react-redux";
-import reducer from "./reducer/reducer.js";
+import reducer from "./reducer/reducer";
 import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { createAPI } from "./api.js";
-import { Operation as DataOperation } from "./reducer/data/data.js";
+import { createAPI } from "./api";
+import { Operation as DataOperation } from "./reducer/data/data";
 import {
   ActionCreator,
   AuthorizationStatus,
   Operation as UserOperation
-} from "./reducer/user/user.js";
+} from "./reducer/user/user";
 
 const onUnauthorized = () => {
   store.dispatch(

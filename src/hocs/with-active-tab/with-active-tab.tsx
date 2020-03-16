@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Tab } from "../../utils/constants.js";
+import { Tab } from "../../utils/constants";
 
 const withActiveTab = Component => {
   class WithActiveTab extends React.PureComponent {

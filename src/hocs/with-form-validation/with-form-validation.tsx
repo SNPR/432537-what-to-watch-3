@@ -1,5 +1,5 @@
 import * as React from "react";
-import { MAX_REVIEW_LENGTH, MIN_REVIEW_LENGTH } from "../../utils/constants.js";
+import { MAX_REVIEW_LENGTH, MIN_REVIEW_LENGTH } from "../../utils/constants";
 
 const withFormValidation = Component => {
   class WithFormValidation extends React.PureComponent {

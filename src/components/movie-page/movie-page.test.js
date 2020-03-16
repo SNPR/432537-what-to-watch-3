@@ -2,9 +2,9 @@ import * as React from "react";
 import renderer from "react-test-renderer";
 import {MoviePage} from "./movie-page";
 import configureStore from "redux-mock-store";
-import Namespace from "../../reducer/namespace.js";
+import Namespace from "../../reducer/namespace";
 import {Provider} from "react-redux";
-import {ALL_GENRES, SHOWED_MOVIES_DEFAULT} from "../../utils/constants.js";
+import {ALL_GENRES, SHOWED_MOVIES_DEFAULT} from "../../utils/constants";
 import {AuthorizationStatus} from "../../reducer/user/user";
 import {MemoryRouter} from "react-router-dom";
 

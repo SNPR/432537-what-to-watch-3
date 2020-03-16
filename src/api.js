@@ -1,6 +1,6 @@
 import axios from "axios";
-import history from "./history.js";
-import {AppRoute} from "./utils/constants.js";
+import history from "./history";
+import {AppRoute} from "./utils/constants";
 
 const TIMEOUT = 5000;
 const LOGIN_URL = `https://htmlacademy-react-3.appspot.com/wtw/login`;

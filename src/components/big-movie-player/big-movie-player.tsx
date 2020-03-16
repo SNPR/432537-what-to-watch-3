@@ -1,7 +1,7 @@
 import * as React from "react";
 import PropTypes from "prop-types";
-import { getSelectedMovie } from "../../reducer/state/selectors.js";
-import { ActionCreator } from "../../reducer/state/state.js";
+import { getSelectedMovie } from "../../reducer/state/selectors";
+import { ActionCreator } from "../../reducer/state/state";
 import { connect } from "react-redux";
 
 class BigMoviePlayer extends React.PureComponent {

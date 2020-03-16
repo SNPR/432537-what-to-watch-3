@@ -1,4 +1,4 @@
-import Namespace from "../namespace.js";
+import Namespace from "../namespace";
 import {createSelector} from "reselect";
 
 export const getGenre = (state) => {

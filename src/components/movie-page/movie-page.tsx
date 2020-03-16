@@ -3,18 +3,18 @@ import PropTypes from "prop-types";
 import Tabs from "../tabs/tabs";
 import SimilarMovies from "../similar-movies/similar-movies";
 import { connect } from "react-redux";
-import { getMovies } from "../../reducer/data/selectors.js";
-import { getAuthorizationStatus } from "../../reducer/user/selectors.js";
+import { getMovies } from "../../reducer/data/selectors";
+import { getAuthorizationStatus } from "../../reducer/user/selectors";
 import { AuthorizationStatus } from "../../reducer/user/user";
 import { Link } from "react-router-dom";
-import { AppRoute } from "../../utils/constants.js";
+import { AppRoute } from "../../utils/constants";
 import {
   Operation,
   Operation as DataOperation
-} from "../../reducer/data/data.js";
-import history from "../../history.js";
-import { ActionCreator } from "../../reducer/state/state.js";
-import { getSelectedMovie } from "../../reducer/state/selectors.js";
+} from "../../reducer/data/data";
+import history from "../../history";
+import { ActionCreator } from "../../reducer/state/state";
+import { getSelectedMovie } from "../../reducer/state/selectors";
 import withActiveTab from "../../hocs/with-active-tab/with-active-tab";
 
 const TabsWrapped = withActiveTab(Tabs);

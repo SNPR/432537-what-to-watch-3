@@ -1,12 +1,12 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { ALL_GENRES } from "../../utils/constants.js";
-import { ActionCreator } from "../../reducer/state/state.js";
+import { ALL_GENRES } from "../../utils/constants";
+import { ActionCreator } from "../../reducer/state/state";
 import MoviesList from "../movies-list/movies-list";
 import withActiveMovieCard from "../../hocs/with-active-movie-card/with-active-movie-card";
 import { getGenre, getShowedMovies } from "../../reducer/state/selectors.js";
-import { getMovies, getMoviesByGenre } from "../../reducer/data/selectors.js";
+import { getMovies, getMoviesByGenre } from "../../reducer/data/selectors";
 
 const MoviesListWrapped = withActiveMovieCard(MoviesList);
 

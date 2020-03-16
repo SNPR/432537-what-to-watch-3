@@ -4,8 +4,8 @@ import App from "./app";
 import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import {ALL_GENRES, SHOWED_MOVIES_DEFAULT} from "../../utils/constants";
-import Namespace from "../../reducer/namespace.js";
-import {AuthorizationStatus} from "../../reducer/user/user.js";
+import Namespace from "../../reducer/namespace";
+import {AuthorizationStatus} from "../../reducer/user/user";
 
 const mockStore = configureStore([]);
 
