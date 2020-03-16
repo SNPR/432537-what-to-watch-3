@@ -17,14 +17,19 @@ type AddReviewProps = {
   movie: Movie;
   onSubmit: (
     {
-      movieId: number,
+      movieId,
       rating,
       comment
     }: { movieId: number | string; rating: number; comment: string },
     onSuccess: () => void,
     onError: () => void
   ) => AxiosPromise;
-  changeSelectedMovieId: (id: string) => void;
+  changeSelectedMovieId: (
+    id: string
+  ) => {
+    type: string;
+    payload: string;
+  };
   id: string;
   isFormInvalid: boolean;
   onReviewTextChange: (evt: React.SyntheticEvent<EventTarget>) => void;
