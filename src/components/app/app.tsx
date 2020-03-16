@@ -2,7 +2,6 @@ import * as React from "react";
 import { Route, Router, Switch } from "react-router-dom";
 import Main from "../main/main";
 import MoviePage from "../movie-page/movie-page";
-import PropTypes from "prop-types";
 import SignIn from "../sign-in/sign-in";
 import { connect } from "react-redux";
 import { Operation as UserOperation } from "../../reducer/user/user";
@@ -20,12 +19,32 @@ import { ActionCreator } from "../../reducer/state/state";
 import { Operation as DataOperation } from "../../reducer/data/data";
 import withFormValidation from "../../hocs/with-form-validation/with-form-validation";
 import withAuthErrorMessage from "../../hocs/with-auth-error-message/with-auth-error-message";
+import { Movie } from "../../types";
+import { AxiosPromise } from "axios";
 
 const BigMoviePlayerWrapped = withPlayer(BigMoviePlayer);
 const AddReviewWrapped = withFormValidation(AddReview);
 const SignInWrapped = withAuthErrorMessage(SignIn);
 
-class App extends React.PureComponent {
+type AppProps = {
+  login: (
+    { email, password }: { email: string; password: string },
+    onSuccess: () => void,
+    onError: (err: string) => void
+  ) => void;
+  authorizationStatus: string;
+  selectedMovie: Movie;
+  promoMovie: Movie;
+  changeSelectedMovieId: (
+    id: string
+  ) => {
+    type: string;
+    payload: string;
+  };
+  getComments: (id: string) => AxiosPromise;
+};
+
+class App extends React.PureComponent<AppProps, {}> {
   constructor(props) {
     super(props);
     this.handleMovieCardClick = this.handleMovieCardClick.bind(this);
@@ -109,51 +128,6 @@ class App extends React.PureComponent {
     );
   }
 }
-
-App.propTypes = {
-  login: PropTypes.func.isRequired,
-  authorizationStatus: PropTypes.string.isRequired,
-  selectedMovie: PropTypes.shape({
-    name: PropTypes.string,
-    posterUrl: PropTypes.string,
-    previewUrl: PropTypes.string,
-    bigPosterUrl: PropTypes.string,
-    backgroundColor: PropTypes.string,
-    description: PropTypes.string,
-    rating: PropTypes.number,
-    votes: PropTypes.number,
-    director: PropTypes.string,
-    starring: PropTypes.arrayOf(PropTypes.string),
-    runTime: PropTypes.string,
-    genre: PropTypes.string,
-    releaseYear: PropTypes.number,
-    id: PropTypes.number,
-    isFavorite: PropTypes.bool,
-    videoUrl: PropTypes.string,
-    trailerUrl: PropTypes.string
-  }),
-  promoMovie: PropTypes.shape({
-    name: PropTypes.string,
-    posterUrl: PropTypes.string,
-    previewUrl: PropTypes.string,
-    bigPosterUrl: PropTypes.string,
-    backgroundColor: PropTypes.string,
-    description: PropTypes.string,
-    rating: PropTypes.number,
-    votes: PropTypes.number,
-    director: PropTypes.string,
-    starring: PropTypes.arrayOf(PropTypes.string),
-    runTime: PropTypes.string,
-    genre: PropTypes.string,
-    releaseYear: PropTypes.number,
-    id: PropTypes.number,
-    isFavorite: PropTypes.bool,
-    videoUrl: PropTypes.string,
-    trailerUrl: PropTypes.string
-  }),
-  changeSelectedMovieId: PropTypes.func.isRequired,
-  getComments: PropTypes.func.isRequired
-};
 
 const mapStateToProps = state => ({
   authorizationStatus: getAuthorizationStatus(state),
