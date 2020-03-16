@@ -1,8 +1,27 @@
 import * as React from "react";
 import { MAX_REVIEW_LENGTH, MIN_REVIEW_LENGTH } from "../../utils/constants";
+import { Subtract } from "utility-types";
+
+type InjectingProps = {
+  isFormInvalid: boolean;
+  onReviewTextChange: (evt: React.SyntheticEvent<EventTarget>) => void;
+  onSubmitError: () => void;
+  isSubmitError: boolean;
+};
+
+type withAuthErrorMessageState = {
+  isFormInvalid: boolean;
+  isSubmitError: boolean;
+};
 
 const withFormValidation = Component => {
-  class WithFormValidation extends React.PureComponent {
+  type P = React.ComponentProps<typeof Component>;
+  type T = Subtract<P, InjectingProps>;
+
+  class WithFormValidation extends React.PureComponent<
+    T,
+    withAuthErrorMessageState
+  > {
     constructor(props) {
       super(props);
 
