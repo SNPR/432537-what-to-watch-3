@@ -1,13 +1,44 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import { formatTime } from "../../utils/utils";
+import { Subtract } from "utility-types";
+
+type InjectingProps = {
+  isPlaying: boolean;
+  onPlayButtonClick: () => void;
+  onFullscreenButtonClick: () => void;
+  getPlaybackProgress: () => string;
+  getElapsedTime: () => string;
+  videoRef: React.RefObject<HTMLVideoElement>;
+  onExitButtonClick: () => void;
+  onLoadedMetadata: (evt: React.SyntheticEvent<EventTarget>) => void;
+  onTimeUpdate: (evt: React.SyntheticEvent<EventTarget>) => void;
+  id: string | number;
+};
+
+type withPlayerProps = {
+  muted: boolean;
+  autoPlay: boolean;
+  onExitButtonClick: () => void;
+  id: number | string;
+};
+
+type withPlayerState = {
+  isPlaying: boolean;
+  videoDuration: number;
+  currentTime: number;
+};
 
 const withPlayer = Component => {
-  class WithPlayer extends React.PureComponent {
+  type P = React.ComponentProps<typeof Component>;
+  type T = withPlayerProps & Subtract<P, InjectingProps>;
+
+  class WithPlayer extends React.PureComponent<T, withPlayerState> {
+    private videoRef: React.RefObject<HTMLVideoElement>;
+
     constructor(props) {
       super(props);
 
-      this._videoRef = React.createRef();
+      this.videoRef = React.createRef();
 
       this.state = {
         isPlaying: false,
@@ -24,7 +55,7 @@ const withPlayer = Component => {
     }
 
     handleVideoPlay() {
-      const video = this._videoRef.current;
+      const video = this.videoRef.current;
 
       if (video.paused) {
         video.play();
@@ -48,7 +79,7 @@ const withPlayer = Component => {
     }
 
     handleFullscreen() {
-      this.launchIntoFullscreen(this._videoRef.current);
+      this.launchIntoFullscreen(this.videoRef.current);
     }
 
     getPlaybackProgress() {
@@ -85,7 +116,7 @@ const withPlayer = Component => {
           onFullscreenButtonClick={this.handleFullscreen}
           getPlaybackProgress={this.getPlaybackProgress}
           getElapsedTime={this.getElapsedTime}
-          videoRef={this._videoRef}
+          videoRef={this.videoRef}
           onExitButtonClick={onExitButtonClick}
           onLoadedMetadata={this.handleLoadedMetadata}
           onTimeUpdate={this.handleTimeUpdate}
@@ -94,13 +125,6 @@ const withPlayer = Component => {
       );
     }
   }
-
-  WithPlayer.propTypes = {
-    muted: PropTypes.bool.isRequired,
-    autoPlay: PropTypes.bool.isRequired,
-    onExitButtonClick: PropTypes.func,
-    id: PropTypes.number
-  };
 
   return WithPlayer;
 };
