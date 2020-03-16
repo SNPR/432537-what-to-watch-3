@@ -20,7 +20,7 @@ const TabsWrapped = withActiveTab(Tabs);
 type MoviePageProps = {
   movie: Movie;
   movies: Movie[];
-  onMovieCardClick: (evt: React.SyntheticEvent<HTMLElement>) => void;
+  onMovieCardClick: (id: string | number) => void;
   authorizationStatus: string;
   addMovieToMyList: (id: string | number) => AxiosPromise;
   removeMovieFromMyList: (id: string | number) => AxiosPromise;
