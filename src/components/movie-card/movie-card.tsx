@@ -1,17 +1,29 @@
 import * as React from "react";
-import PropTypes from "prop-types";
 import MoviePlayer from "../movie-player/movie-player";
 import withPlayer from "../../hocs/with-player/with-player";
+import { Movie } from "../../types";
 
 const MoviePlayerWrapped = withPlayer(MoviePlayer);
 
-const MovieCard = ({
-  movie,
-  onMovieCardClick,
-  onMovieCardMouseOver,
-  onMovieCardMouseOut,
-  isPlaying
-}) => {
+type MovieCardProps = {
+  movie: Movie;
+  onMovieCardClick: (evt: React.SyntheticEvent<HTMLElement>) => void;
+  onMovieCardMouseOver: (evt: React.SyntheticEvent<HTMLElement>) => void;
+  onMovieCardMouseOut: () => void;
+  isPlaying: boolean;
+};
+
+const MovieCard: React.FunctionComponent<MovieCardProps> = (
+  props: MovieCardProps
+) => {
+  const {
+    movie,
+    onMovieCardClick,
+    onMovieCardMouseOver,
+    onMovieCardMouseOut,
+    isPlaying
+  } = props;
+
   return (
     <article
       className="small-movie-card catalog__movies-card"
@@ -38,32 +50,6 @@ const MovieCard = ({
       </h3>
     </article>
   );
-};
-
-MovieCard.propTypes = {
-  movie: PropTypes.shape({
-    name: PropTypes.string,
-    posterUrl: PropTypes.string,
-    previewUrl: PropTypes.string,
-    bigPosterUrl: PropTypes.string,
-    backgroundColor: PropTypes.string,
-    description: PropTypes.string,
-    rating: PropTypes.number,
-    votes: PropTypes.number,
-    director: PropTypes.string,
-    starring: PropTypes.arrayOf(PropTypes.string),
-    runTime: PropTypes.string,
-    genre: PropTypes.string,
-    releaseYear: PropTypes.number,
-    id: PropTypes.number,
-    isFavorite: PropTypes.bool,
-    videoUrl: PropTypes.string,
-    trailerUrl: PropTypes.string
-  }),
-  isPlaying: PropTypes.bool.isRequired,
-  onMovieCardClick: PropTypes.func.isRequired,
-  onMovieCardMouseOver: PropTypes.func.isRequired,
-  onMovieCardMouseOut: PropTypes.func.isRequired
 };
 
 export default MovieCard;
