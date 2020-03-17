@@ -12,8 +12,8 @@ Array [
         className="movie-card__bg"
       >
         <img
-          alt="Movie name"
-          src="https://image-url.com/1.jpg"
+          alt="MovieName"
+          src="https://url.com"
         />
       </div>
       <h1
@@ -78,7 +78,7 @@ Array [
           <h2
             className="movie-card__title"
           >
-            Movie name
+            MovieName
           </h2>
           <p
             className="movie-card__meta"
@@ -86,12 +86,12 @@ Array [
             <span
               className="movie-card__genre"
             >
-              Movie Genre
+              Action
             </span>
             <span
               className="movie-card__year"
             >
-              2000
+              1995
             </span>
           </p>
           <div
@@ -135,7 +135,7 @@ Array [
             </button>
             <a
               className="btn movie-card__button"
-              href="/films/undefined/add-review"
+              href="/films/1/add-review"
               onClick={[Function]}
             >
               Add review
@@ -154,9 +154,9 @@ Array [
           className="movie-card__poster movie-card__poster--big"
         >
           <img
-            alt="Movie name"
+            alt="MovieName"
             height="327"
-            src="https://poster-url.com"
+            src="https://url.com"
             width="218"
           />
         </div>
@@ -207,7 +207,7 @@ Array [
             <div
               className="movie-rating__score"
             >
-              8.9
+              9
             </div>
             <p
               className="movie-rating__meta"
@@ -220,7 +220,7 @@ Array [
               <span
                 className="movie-rating__count"
               >
-                4235
+                3452
                  ratings
               </span>
             </p>
@@ -229,14 +229,14 @@ Array [
             className="movie-card__text"
           >
             <p>
-              Movie description
+              Descrtiption
             </p>
             <p
               className="movie-card__director"
             >
               <strong>
                 Director: 
-                Director Name
+                Director
               </strong>
             </p>
             <p
@@ -244,7 +244,7 @@ Array [
             >
               <strong>
                 Starring: 
-                Actor 1, Actor 2, Actor 3 and other
+                Artist 1, Artist 2 and other
               </strong>
             </p>
           </div>

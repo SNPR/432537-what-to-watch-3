@@ -8,7 +8,8 @@ import { ALL_GENRES, SHOWED_MOVIES_DEFAULT } from "../../utils/constants";
 import { AuthorizationStatus } from "../../reducer/user/user";
 import { MemoryRouter } from "react-router-dom";
 import { Movie } from "../../types";
-import { AxiosResponse } from "axios";
+import { AxiosPromise } from "axios";
+import { ActionType } from "../../reducer/state/state";
 
 const films: Movie[] = [
   {
@@ -60,11 +61,17 @@ it(`Should render MoviePage component`, () => {
             movies={films}
             authorizationStatus={AuthorizationStatus.AUTH}
             onMovieCardClick={() => {}}
-            addMovieToMyList={() => {}}
-            removeMovieFromMyList={() => {}}
-            getComments={() => {}}
-            changeSelectedMovieId={() => {}}
+            addMovieToMyList={id => new Promise(() => {}) as AxiosPromise}
+            removeMovieFromMyList={id => new Promise(() => {}) as AxiosPromise}
+            getComments={id => new Promise(() => {}) as AxiosPromise}
+            changeSelectedMovieId={id => ({
+              type: ActionType.CHANGE_SELECTED_MOVIE_ID,
+              payload: id
+            })}
             id={id}
+            onMovieCardMouseOver={() => {}}
+            onMovieCardMouseOut={() => {}}
+            isPlaying={false}
           />
         </MemoryRouter>
       </Provider>
