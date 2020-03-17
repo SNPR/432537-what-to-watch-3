@@ -7,177 +7,29 @@ import {ALL_GENRES, SHOWED_MOVIES_DEFAULT} from "../../utils/constants";
 import Namespace from "../../reducer/namespace";
 import {AuthorizationStatus} from "../../reducer/user/user";
 import {noop} from "../../utils/utils";
+import {Movie} from "../../types";
 
 const mockStore = configureStore([]);
 
-const films = [
+const films: Movie[] = [
   {
-    name: `Movie name`,
-    posterUrl: `https://poster-url.com`,
-    bigPosterUrl: `https://image-url.com/1.jpg`,
-    director: `Director Name`,
-    starring: [`Actor 1`, `Actor 2`, `Actor 3`],
-    runTime: `1h 00m`,
-    genre: `Movie Genre`,
-    releaseYear: 2000,
-    rating: 8.9,
-    votes: 4235,
-    description: `Movie description`,
-    reviews: [
-      {
-        rating: 9,
-        date: `November 10, 2019`,
-        author: `Dmitriy`,
-        text: `Review text`
-      }
-    ]
-  },
-  {
-    name: `Movie name`,
-    posterUrl: `https://poster-url.com`,
-    bigPosterUrl: `https://image-url.com/1.jpg`,
-    director: `Director Name`,
-    starring: [`Actor 1`, `Actor 2`, `Actor 3`],
-    runTime: `1h 00m`,
-    genre: `Movie Genre`,
-    releaseYear: 2000,
-    rating: 8.9,
-    votes: 4235,
-    description: `Movie description`,
-    reviews: [
-      {
-        rating: 9,
-        date: `November 10, 2019`,
-        author: `Dmitriy`,
-        text: `Review text`
-      }
-    ]
-  },
-  {
-    name: `Movie name`,
-    posterUrl: `https://poster-url.com`,
-    bigPosterUrl: `https://image-url.com/1.jpg`,
-    director: `Director Name`,
-    starring: [`Actor 1`, `Actor 2`, `Actor 3`],
-    runTime: `1h 00m`,
-    genre: `Movie Genre`,
-    releaseYear: 2000,
-    rating: 8.9,
-    votes: 4235,
-    description: `Movie description`,
-    reviews: [
-      {
-        rating: 9,
-        date: `November 10, 2019`,
-        author: `Dmitriy`,
-        text: `Review text`
-      }
-    ]
-  },
-  {
-    name: `Movie name`,
-    posterUrl: `https://poster-url.com`,
-    bigPosterUrl: `https://image-url.com/1.jpg`,
-    director: `Director Name`,
-    starring: [`Actor 1`, `Actor 2`, `Actor 3`],
-    runTime: `1h 00m`,
-    genre: `Movie Genre`,
-    releaseYear: 2000,
-    rating: 8.9,
-    votes: 4235,
-    description: `Movie description`,
-    reviews: [
-      {
-        rating: 9,
-        date: `November 10, 2019`,
-        author: `Dmitriy`,
-        text: `Review text`
-      }
-    ]
-  },
-  {
-    name: `Movie name`,
-    posterUrl: `https://poster-url.com`,
-    bigPosterUrl: `https://image-url.com/1.jpg`,
-    director: `Director Name`,
-    starring: [`Actor 1`, `Actor 2`, `Actor 3`],
-    runTime: `1h 00m`,
-    genre: `Movie Genre`,
-    releaseYear: 2000,
-    rating: 8.9,
-    votes: 4235,
-    description: `Movie description`,
-    reviews: [
-      {
-        rating: 9,
-        date: `November 10, 2019`,
-        author: `Dmitriy`,
-        text: `Review text`
-      }
-    ]
-  },
-  {
-    name: `Movie name`,
-    posterUrl: `https://poster-url.com`,
-    bigPosterUrl: `https://image-url.com/1.jpg`,
-    director: `Director Name`,
-    starring: [`Actor 1`, `Actor 2`, `Actor 3`],
-    runTime: `1h 00m`,
-    genre: `Movie Genre`,
-    releaseYear: 2000,
-    rating: 8.9,
-    votes: 4235,
-    description: `Movie description`,
-    reviews: [
-      {
-        rating: 9,
-        date: `November 10, 2019`,
-        author: `Dmitriy`,
-        text: `Review text`
-      }
-    ]
-  },
-  {
-    name: `Movie name`,
-    posterUrl: `https://poster-url.com`,
-    bigPosterUrl: `https://image-url.com/1.jpg`,
-    director: `Director Name`,
-    starring: [`Actor 1`, `Actor 2`, `Actor 3`],
-    runTime: `1h 00m`,
-    genre: `Movie Genre`,
-    releaseYear: 2000,
-    rating: 8.9,
-    votes: 4235,
-    description: `Movie description`,
-    reviews: [
-      {
-        rating: 9,
-        date: `November 10, 2019`,
-        author: `Dmitriy`,
-        text: `Review text`
-      }
-    ]
-  },
-  {
-    name: `Movie name`,
-    posterUrl: `https://poster-url.com`,
-    bigPosterUrl: `https://image-url.com/1.jpg`,
-    director: `Director Name`,
-    starring: [`Actor 1`, `Actor 2`, `Actor 3`],
-    runTime: `1h 00m`,
-    genre: `Movie Genre`,
-    releaseYear: 2000,
-    rating: 8.9,
-    votes: 4235,
-    description: `Movie description`,
-    reviews: [
-      {
-        rating: 9,
-        date: `November 10, 2019`,
-        author: `Dmitriy`,
-        text: `Review text`
-      }
-    ]
+    name: `MovieName`,
+    posterUrl: `https://url.com`,
+    previewUrl: `https://url.com`,
+    bigPosterUrl: `https://url.com`,
+    backgroundColor: `blue`,
+    description: `Descrtiption`,
+    rating: 9,
+    votes: 3452,
+    director: `Director`,
+    starring: [`Artist 1`, `Artist 2`],
+    runTime: `2h 30m`,
+    genre: `Action`,
+    releaseYear: 1995,
+    id: 1,
+    isFavorite: false,
+    videoUrl: `https://url.com`,
+    trailerUrl: `https://url.com`
   }
 ];
 

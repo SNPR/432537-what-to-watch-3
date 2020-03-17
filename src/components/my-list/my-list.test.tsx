@@ -6,8 +6,9 @@ import Namespace from "../../reducer/namespace";
 import {Provider} from "react-redux";
 import {MemoryRouter} from "react-router-dom";
 import {noop} from "../../utils/utils";
+import {Movie} from "../../types";
 
-const films = [
+const films: Movie[] = [
   {
     name: `MovieName`,
     posterUrl: `https://url.com`,
