@@ -20,7 +20,7 @@ it(`Should render PrivateRoute component`, () => {
             render={() => HTMLElement as React.ReactNode}
             path={AppRoute.ROOT}
             exact
-            authorizationStatus={AuthorizationStatus.AUTH}
+            authorizationStatus={AuthorizationStatus.NO_AUTH}
           />
         </MemoryRouter>
       </Provider>
