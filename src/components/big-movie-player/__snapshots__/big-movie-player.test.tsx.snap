@@ -11,11 +11,11 @@ exports[`Should render BigMoviePlayer component 1`] = `
     onClick={[Function]}
     onLoadedMetadata={[Function]}
     onTimeUpdate={[Function]}
-    poster="https://image-url.com/1.jpg"
+    poster="https://url.com"
     width="100%"
   >
     <source
-      src="https://image-url.com/1.mp4"
+      src="https://url.com"
     />
   </video>
   <button
@@ -37,12 +37,13 @@ exports[`Should render BigMoviePlayer component 1`] = `
         <progress
           className="player__progress"
           max="100"
+          value="100"
         />
         <div
           className="player__toggler"
           style={
             Object {
-              "left": "undefined%",
+              "left": "100%",
             }
           }
         >
@@ -51,7 +52,9 @@ exports[`Should render BigMoviePlayer component 1`] = `
       </div>
       <div
         className="player__time-value"
-      />
+      >
+        1h 5m
+      </div>
     </div>
     <div
       className="player__controls-row"

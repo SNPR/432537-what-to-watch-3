@@ -5,11 +5,12 @@ exports[`Should render MoviePlayer component 1`] = `
   autoPlay={true}
   controls={true}
   muted={true}
-  poster="https://poster-url.com"
+  onClick={[Function]}
+  poster="https://url.com"
   width="100%"
 >
   <source
-    src="https://upload.wikimedia.org/wikipedia/commons/d/d2/Frankenstein_trailer_%281931%29.webm"
+    src="https://url.com"
   />
 </video>
 `;

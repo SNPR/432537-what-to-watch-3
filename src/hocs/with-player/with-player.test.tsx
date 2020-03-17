@@ -1,28 +1,26 @@
 import * as React from "react";
-import * as renderer  from "react-test-renderer";
+import * as renderer from "react-test-renderer";
 import withPlayer from "./with-player";
+import { Movie } from "../../types";
 
-const movie = {
-  name: `Movie name`,
-  posterUrl: `https://poster-url.com`,
-  bigPosterUrl: `https://image-url.com/1.jpg`,
-  trailerUrl: `https://image-url.com/1.mp4`,
-  director: `Director Name`,
-  starring: [`Actor 1`, `Actor 2`, `Actor 3`],
-  runTime: `1h 00m`,
-  genre: `Movie Genre`,
-  releaseYear: 2000,
-  rating: 8.9,
-  votes: 4235,
-  description: `Movie description`,
-  reviews: [
-    {
-      rating: 9,
-      date: `November 10, 2019`,
-      author: `Dmitriy`,
-      text: `Review text`
-    }
-  ]
+const movie: Movie = {
+  name: `MovieName`,
+  posterUrl: `https://url.com`,
+  previewUrl: `https://url.com`,
+  bigPosterUrl: `https://url.com`,
+  backgroundColor: `blue`,
+  description: `Descrtiption`,
+  rating: 9,
+  votes: 3452,
+  director: `Director`,
+  starring: [`Artist 1`, `Artist 2`],
+  runTime: `2h 30m`,
+  genre: `Action`,
+  releaseYear: 1995,
+  id: 1,
+  isFavorite: false,
+  videoUrl: `https://url.com`,
+  trailerUrl: `https://url.com`
 };
 
 const MockComponent = () => <div></div>;
@@ -31,13 +29,13 @@ const MockComponentWrapped = withPlayer(MockComponent);
 it(`withPlayer is rendered correctly`, () => {
   const tree = renderer
     .create(
-        <MockComponentWrapped
-          movie={movie}
-          muted={true}
-          autoPlay={false}
-          onExitButtonClick={() => {}}
-          id={0}
-        />
+      <MockComponentWrapped
+        movie={movie}
+        muted={true}
+        autoPlay={false}
+        onExitButtonClick={() => {}}
+        id={0}
+      />
     )
     .toJSON();
 

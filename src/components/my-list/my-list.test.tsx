@@ -1,10 +1,10 @@
 import * as React from "react";
-import * as renderer  from "react-test-renderer";
+import * as renderer from "react-test-renderer";
 import MyList from "./my-list";
 import configureStore from "redux-mock-store";
 import Namespace from "../../reducer/namespace";
-import {Provider} from "react-redux";
-import {MemoryRouter} from "react-router-dom";
+import { Provider } from "react-redux";
+import { MemoryRouter } from "react-router-dom";
 
 const films = [
   {
@@ -40,11 +40,11 @@ it(`Should render MyList component`, () => {
 
   const tree = renderer
     .create(
-        <MemoryRouter>
-          <Provider store={store}>
-            <MyList movies={films} onMovieCardClick={() => {}} />
-          </Provider>
-        </MemoryRouter>
+      <MemoryRouter>
+        <Provider store={store}>
+          <MyList movies={films} onMovieCardClick={() => {}} />
+        </Provider>
+      </MemoryRouter>
     )
     .toJSON();
 

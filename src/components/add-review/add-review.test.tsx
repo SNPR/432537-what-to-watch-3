@@ -1,16 +1,17 @@
 import * as React from "react";
-import * as renderer  from "react-test-renderer";
-import {Provider} from "react-redux";
+import * as renderer from "react-test-renderer";
+import { Provider } from "react-redux";
 import configureStore from "redux-mock-store";
 import AddReview from "./add-review";
-import {ALL_GENRES, SHOWED_MOVIES_DEFAULT} from "../../utils/constants";
+import { ALL_GENRES, SHOWED_MOVIES_DEFAULT } from "../../utils/constants";
 import Namespace from "../../reducer/namespace";
-import {AuthorizationStatus} from "../../reducer/user/user";
-import {MemoryRouter} from "react-router-dom";
+import { AuthorizationStatus } from "../../reducer/user/user";
+import { MemoryRouter } from "react-router-dom";
+import { Movie } from "../../types";
 
 const mockStore = configureStore([]);
 
-const movie = {
+const movie: Movie = {
   name: `MovieName`,
   posterUrl: `https://url.com`,
   previewUrl: `https://url.com`,
@@ -48,16 +49,16 @@ it(`Should render AddReview component`, () => {
 
   const tree = renderer
     .create(
-        <MemoryRouter>
-          <Provider store={store}>
-            <AddReview
-              onSubmit={() => {}}
-              movie={movie}
-              id={0}
-              changeSelectedMovieId={() => {}}
-            />
-          </Provider>
-        </MemoryRouter>
+      <MemoryRouter>
+        <Provider store={store}>
+          <AddReview
+            onSubmit={() => {}}
+            movie={movie}
+            id={0}
+            changeSelectedMovieId={() => {}}
+          />
+        </Provider>
+      </MemoryRouter>
     )
     .toJSON();
 

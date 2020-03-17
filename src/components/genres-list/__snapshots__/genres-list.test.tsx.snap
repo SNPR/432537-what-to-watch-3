@@ -22,7 +22,7 @@ Array [
         className="catalog__genres-link"
         onClick={[Function]}
       >
-        Movie Genre
+        Action
       </a>
     </li>
   </ul>,
@@ -39,9 +39,9 @@ Array [
         className="small-movie-card__image"
       >
         <img
-          alt="Movie name"
+          alt="MovieName"
           height="175"
-          src="https://poster-url.com"
+          src="https://url.com"
           width="280"
         />
       </div>
@@ -52,169 +52,7 @@ Array [
           className="small-movie-card__link"
           href="#"
         >
-          Movie name
-        </a>
-      </h3>
-    </article>
-    <article
-      className="small-movie-card catalog__movies-card"
-      onClick={[Function]}
-      onMouseOut={[Function]}
-      onMouseOver={[Function]}
-    >
-      <div
-        className="small-movie-card__image"
-      >
-        <img
-          alt="Movie name"
-          height="175"
-          src="https://poster-url.com"
-          width="280"
-        />
-      </div>
-      <h3
-        className="small-movie-card__title"
-      >
-        <a
-          className="small-movie-card__link"
-          href="#"
-        >
-          Movie name
-        </a>
-      </h3>
-    </article>
-    <article
-      className="small-movie-card catalog__movies-card"
-      onClick={[Function]}
-      onMouseOut={[Function]}
-      onMouseOver={[Function]}
-    >
-      <div
-        className="small-movie-card__image"
-      >
-        <img
-          alt="Movie name"
-          height="175"
-          src="https://poster-url.com"
-          width="280"
-        />
-      </div>
-      <h3
-        className="small-movie-card__title"
-      >
-        <a
-          className="small-movie-card__link"
-          href="#"
-        >
-          Movie name
-        </a>
-      </h3>
-    </article>
-    <article
-      className="small-movie-card catalog__movies-card"
-      onClick={[Function]}
-      onMouseOut={[Function]}
-      onMouseOver={[Function]}
-    >
-      <div
-        className="small-movie-card__image"
-      >
-        <img
-          alt="Movie name"
-          height="175"
-          src="https://poster-url.com"
-          width="280"
-        />
-      </div>
-      <h3
-        className="small-movie-card__title"
-      >
-        <a
-          className="small-movie-card__link"
-          href="#"
-        >
-          Movie name
-        </a>
-      </h3>
-    </article>
-    <article
-      className="small-movie-card catalog__movies-card"
-      onClick={[Function]}
-      onMouseOut={[Function]}
-      onMouseOver={[Function]}
-    >
-      <div
-        className="small-movie-card__image"
-      >
-        <img
-          alt="Movie name"
-          height="175"
-          src="https://poster-url.com"
-          width="280"
-        />
-      </div>
-      <h3
-        className="small-movie-card__title"
-      >
-        <a
-          className="small-movie-card__link"
-          href="#"
-        >
-          Movie name
-        </a>
-      </h3>
-    </article>
-    <article
-      className="small-movie-card catalog__movies-card"
-      onClick={[Function]}
-      onMouseOut={[Function]}
-      onMouseOver={[Function]}
-    >
-      <div
-        className="small-movie-card__image"
-      >
-        <img
-          alt="Movie name"
-          height="175"
-          src="https://poster-url.com"
-          width="280"
-        />
-      </div>
-      <h3
-        className="small-movie-card__title"
-      >
-        <a
-          className="small-movie-card__link"
-          href="#"
-        >
-          Movie name
-        </a>
-      </h3>
-    </article>
-    <article
-      className="small-movie-card catalog__movies-card"
-      onClick={[Function]}
-      onMouseOut={[Function]}
-      onMouseOver={[Function]}
-    >
-      <div
-        className="small-movie-card__image"
-      >
-        <img
-          alt="Movie name"
-          height="175"
-          src="https://poster-url.com"
-          width="280"
-        />
-      </div>
-      <h3
-        className="small-movie-card__title"
-      >
-        <a
-          className="small-movie-card__link"
-          href="#"
-        >
-          Movie name
+          MovieName
         </a>
       </h3>
     </article>

@@ -1,10 +1,10 @@
 import * as React from "react";
-import * as renderer  from "react-test-renderer";
+import * as renderer from "react-test-renderer";
 import Tabs from "./tabs";
-import {Provider} from "react-redux";
+import { Provider } from "react-redux";
 import configureStore from "redux-mock-store";
 import Namespace from "../../reducer/namespace";
-import {Tab} from "../../utils/constants";
+import { Tab } from "../../utils/constants";
 
 const movie = {
   name: `Movie name`,
@@ -40,14 +40,14 @@ it(`Should render Tabs component`, () => {
 
   const tree = renderer
     .create(
-        <Provider store={store}>
-          <Tabs
-            movie={movie}
-            getActiveClass={() => {}}
-            setActiveTab={() => {}}
-            selectedTab={Tab.Name.DETAILS}
-          />
-        </Provider>
+      <Provider store={store}>
+        <Tabs
+          movie={movie}
+          getActiveClass={() => {}}
+          setActiveTab={() => {}}
+          selectedTab={Tab.Name.DETAILS}
+        />
+      </Provider>
     )
     .toJSON();
 

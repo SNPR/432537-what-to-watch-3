@@ -15,11 +15,11 @@ exports[`Should render MovieCard component 1`] = `
       controls={true}
       muted={true}
       onClick={[Function]}
-      poster="https://poster-url.com"
+      poster="https://url.com"
       width="100%"
     >
       <source
-        src="https://video-url.com/1.mp4"
+        src="https://url.com"
       />
     </video>
   </div>
@@ -30,7 +30,7 @@ exports[`Should render MovieCard component 1`] = `
       className="small-movie-card__link"
       href="#"
     >
-      Movie name
+      MovieName
     </a>
   </h3>
 </article>

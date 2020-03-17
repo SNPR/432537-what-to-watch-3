@@ -1,12 +1,12 @@
 import * as React from "react";
-import * as renderer  from "react-test-renderer";
-import {Provider} from "react-redux";
+import * as renderer from "react-test-renderer";
+import { Provider } from "react-redux";
 import configureStore from "redux-mock-store";
 import Main from "./main";
-import {ALL_GENRES, SHOWED_MOVIES_DEFAULT} from "../../utils/constants";
+import { ALL_GENRES, SHOWED_MOVIES_DEFAULT } from "../../utils/constants";
 import Namespace from "../../reducer/namespace";
-import {AuthorizationStatus} from "../../reducer/user/user";
-import {MemoryRouter} from "react-router-dom";
+import { AuthorizationStatus } from "../../reducer/user/user";
+import { MemoryRouter } from "react-router-dom";
 
 const mockStore = configureStore([]);
 
@@ -198,17 +198,17 @@ it(`Should render Main component`, () => {
 
   const tree = renderer
     .create(
-        <Provider store={store}>
-          <MemoryRouter>
-            <Main
-              onMovieCardClick={() => {}}
-              promoMovie={films[0]}
-              isBigMoviePlayerVisible={false}
-              onVisibilityChange={() => {}}
-              authorizationStatus={AuthorizationStatus.NO_AUTH}
-            />
-          </MemoryRouter>
-        </Provider>
+      <Provider store={store}>
+        <MemoryRouter>
+          <Main
+            onMovieCardClick={() => {}}
+            promoMovie={films[0]}
+            isBigMoviePlayerVisible={false}
+            onVisibilityChange={() => {}}
+            authorizationStatus={AuthorizationStatus.NO_AUTH}
+          />
+        </MemoryRouter>
+      </Provider>
     )
     .toJSON();
 

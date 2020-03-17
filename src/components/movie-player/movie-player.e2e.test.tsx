@@ -1,13 +1,14 @@
 import * as React from "react";
-import Enzyme, {shallow} from "enzyme";
+import { configure, shallow } from "enzyme";
 import * as Adapter from "enzyme-adapter-react-16";
 import MoviePlayer from "./movie-player";
+import { Movie } from "../../types";
 
-Enzyme.configure({
+configure({
   adapter: new Adapter()
 });
 
-const movie = {
+const movie: Movie = {
   name: `MovieName`,
   posterUrl: `https://url.com`,
   previewUrl: `https://url.com`,
@@ -31,12 +32,13 @@ it(`Should play video on click`, () => {
   const handleClick = jest.fn();
 
   const moviePlayer = shallow(
-      <MoviePlayer
-        movie={movie}
-        muted={true}
-        autoPlay={false}
-        onPlayButtonClick={handleClick}
-      />
+    <MoviePlayer
+      movie={movie}
+      muted={true}
+      autoPlay={false}
+      onPlayButtonClick={handleClick}
+      videoRef={React.createRef()}
+    />
   );
 
   moviePlayer.simulate(`click`);
