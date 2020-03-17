@@ -26,6 +26,8 @@ type withPlayerState = {
   isPlaying: boolean;
   videoDuration: number;
   currentTime: number;
+  playbackProgress: string;
+  elapsedTime: string;
 };
 
 const withPlayer = Component => {
@@ -43,13 +45,13 @@ const withPlayer = Component => {
       this.state = {
         isPlaying: false,
         videoDuration: 0,
-        currentTime: 0
+        currentTime: 0,
+        playbackProgress: "",
+        elapsedTime: ""
       };
 
       this.handleVideoPlay = this.handleVideoPlay.bind(this);
       this.handleFullscreen = this.handleFullscreen.bind(this);
-      this.getPlaybackProgress = this.getPlaybackProgress.bind(this);
-      this.getElapsedTime = this.getElapsedTime.bind(this);
       this.handleTimeUpdate = this.handleTimeUpdate.bind(this);
       this.handleLoadedMetadata = this.handleLoadedMetadata.bind(this);
     }
@@ -82,17 +84,15 @@ const withPlayer = Component => {
       this.launchIntoFullscreen(this.videoRef.current);
     }
 
-    getPlaybackProgress() {
-      return String((this.state.currentTime / this.state.videoDuration) * 100);
-    }
-
-    getElapsedTime() {
-      return formatTime(this.state.videoDuration - this.state.currentTime);
-    }
-
     handleTimeUpdate(evt) {
       this.setState({
-        currentTime: Math.floor(evt.target.currentTime)
+        currentTime: Math.floor(evt.target.currentTime),
+        playbackProgress: String(
+          (this.state.currentTime / this.state.videoDuration) * 100
+        ),
+        elapsedTime: formatTime(
+          this.state.videoDuration - this.state.currentTime
+        )
       });
     }
 
@@ -106,7 +106,7 @@ const withPlayer = Component => {
     render() {
       const { onExitButtonClick, id } = this.props;
 
-      const { isPlaying } = this.state;
+      const { isPlaying, playbackProgress, elapsedTime } = this.state;
 
       return (
         <Component
@@ -114,8 +114,8 @@ const withPlayer = Component => {
           isPlaying={isPlaying}
           onPlayButtonClick={this.handleVideoPlay}
           onFullscreenButtonClick={this.handleFullscreen}
-          getPlaybackProgress={this.getPlaybackProgress}
-          getElapsedTime={this.getElapsedTime}
+          playbackProgress={playbackProgress}
+          elapsedTime={elapsedTime}
           videoRef={this.videoRef}
           onExitButtonClick={onExitButtonClick}
           onLoadedMetadata={this.handleLoadedMetadata}

@@ -34,8 +34,8 @@ it(`Should render BigMoviePlayer component`, () => {
         autoPlay={false}
         muted={true}
         isPlaying={false}
-        getElapsedTime={() => "1h 5m"}
-        getPlaybackProgress={() => "100"}
+        elapsedTime={"1h 5m"}
+        playbackProgress={"100"}
         onPlayButtonClick={() => {}}
         onFullscreenButtonClick={() => {}}
         onExitButtonClick={() => {}}

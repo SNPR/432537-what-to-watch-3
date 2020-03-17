@@ -8,8 +8,8 @@ type BigMoviePlayerProps = {
   isPlaying: boolean;
   onPlayButtonClick: () => void;
   onFullscreenButtonClick: () => void;
-  getPlaybackProgress: () => string;
-  getElapsedTime: () => string;
+  playbackProgress: string;
+  elapsedTime: string;
   videoRef: React.RefObject<HTMLVideoElement>;
   muted: boolean;
   autoPlay: boolean;
@@ -42,8 +42,8 @@ class BigMoviePlayer extends React.PureComponent<BigMoviePlayerProps, {}> {
       isPlaying,
       onPlayButtonClick,
       onFullscreenButtonClick,
-      getPlaybackProgress,
-      getElapsedTime,
+      playbackProgress,
+      elapsedTime,
       videoRef,
       muted,
       autoPlay,
@@ -82,17 +82,17 @@ class BigMoviePlayer extends React.PureComponent<BigMoviePlayerProps, {}> {
             <div className="player__time">
               <progress
                 className="player__progress"
-                value={getPlaybackProgress()}
+                value={playbackProgress}
                 max="100"
               />
               <div
                 className="player__toggler"
-                style={{ left: `${getPlaybackProgress()}%` }}
+                style={{ left: `${playbackProgress}%` }}
               >
                 Toggler
               </div>
             </div>
-            <div className="player__time-value">{getElapsedTime()}</div>
+            <div className="player__time-value">{elapsedTime}</div>
           </div>
 
           <div className="player__controls-row">
