@@ -62,10 +62,10 @@ it(`Should render MoviePage component`, () => {
               movies={films}
               authorizationStatus={AuthorizationStatus.AUTH}
               onMovieCardClick={noop}
-              addMovieToMyList={(id) => new Promise(noop) as AxiosPromise}
-              removeMovieFromMyList={(id) => new Promise(noop) as AxiosPromise}
-              getComments={(id) => new Promise(noop) as AxiosPromise}
-              changeSelectedMovieId={(id) => ({
+              addMovieToMyList={() => new Promise(noop) as AxiosPromise}
+              removeMovieFromMyList={() => new Promise(noop) as AxiosPromise}
+              getComments={() => new Promise(noop) as AxiosPromise}
+              changeSelectedMovieId={() => ({
                 type: ActionType.CHANGE_SELECTED_MOVIE_ID,
                 payload: id
               })}

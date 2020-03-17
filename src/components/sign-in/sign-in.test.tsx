@@ -10,9 +10,7 @@ it(`SignIn component render correctly`, () => {
     .create(
         <MemoryRouter>
           <SignIn
-            onSubmit={({login, password}) =>
-            new Promise(noop) as AxiosPromise
-            }
+            onSubmit={() => new Promise(noop) as AxiosPromise}
             goBack={noop}
             onError={noop}
             authErrorMessage="err"
