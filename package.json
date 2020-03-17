@@ -5,8 +5,8 @@
   "description": "Личный проект «Что посмотреть» от HTML Academy",
   "scripts": {
     "eslint": "npm run eslint.js && npm run eslint.ts",
-    "eslint.js": "eslint --ext .jsx --ext .js src/",
-    "eslint.ts": "eslint --config .eslintrc-ts.yml --ext .tsx src/",
+    "eslint.js": "eslint --config .eslintrc-js.yml --ext .jsx --ext .js src/",
+    "eslint.ts": "eslint --ext .tsx src/",
     "test": "npm run eslint && npm run test.jest",
     "test.jest": "jest",
     "build": "webpack --mode production",
