@@ -1,7 +1,7 @@
 import * as React from "react";
-import { formatTime } from "../../utils/utils";
-import { Subtract } from "utility-types";
-import { Movie } from "../../types";
+import {formatTime} from "../../utils/utils";
+import {Subtract} from "utility-types";
+import {Movie} from "../../types";
 
 type InjectingProps = {
   isPlaying: boolean;
@@ -30,7 +30,7 @@ type withPlayerState = {
   elapsedTime: string;
 };
 
-const withPlayer = Component => {
+const withPlayer = (Component) => {
   type P = React.ComponentProps<typeof Component>;
   type T = withPlayerProps & Subtract<P, InjectingProps>;
 
@@ -46,8 +46,8 @@ const withPlayer = Component => {
         isPlaying: false,
         videoDuration: 0,
         currentTime: 0,
-        playbackProgress: "",
-        elapsedTime: ""
+        playbackProgress: ``,
+        elapsedTime: ``
       };
 
       this.handleVideoPlay = this.handleVideoPlay.bind(this);
@@ -61,10 +61,10 @@ const withPlayer = Component => {
 
       if (video.paused) {
         video.play();
-        this.setState({ isPlaying: true });
+        this.setState({isPlaying: true});
       } else {
         video.pause();
-        this.setState({ isPlaying: false });
+        this.setState({isPlaying: false});
       }
     }
 
@@ -88,10 +88,10 @@ const withPlayer = Component => {
       this.setState({
         currentTime: Math.floor(evt.target.currentTime),
         playbackProgress: String(
-          (this.state.currentTime / this.state.videoDuration) * 100
+            (this.state.currentTime / this.state.videoDuration) * 100
         ),
         elapsedTime: formatTime(
-          this.state.videoDuration - this.state.currentTime
+            this.state.videoDuration - this.state.currentTime
         )
       });
     }
@@ -104,9 +104,9 @@ const withPlayer = Component => {
     }
 
     render() {
-      const { onExitButtonClick, id } = this.props;
+      const {onExitButtonClick, id} = this.props;
 
-      const { isPlaying, playbackProgress, elapsedTime } = this.state;
+      const {isPlaying, playbackProgress, elapsedTime} = this.state;
 
       return (
         <Component

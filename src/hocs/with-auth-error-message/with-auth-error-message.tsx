@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Subtract } from "utility-types";
+import {Subtract} from "utility-types";
 
 type InjectingProps = {
   authErrorMessage: string;
@@ -10,7 +10,7 @@ type withAuthErrorMessageState = {
   authErrorMessage: string;
 };
 
-const withAuthErrorMessage = Component => {
+const withAuthErrorMessage = (Component) => {
   type P = React.ComponentProps<typeof Component>;
   type T = Subtract<P, InjectingProps>;
 
@@ -35,7 +35,7 @@ const withAuthErrorMessage = Component => {
     }
 
     render() {
-      const { authErrorMessage } = this.state;
+      const {authErrorMessage} = this.state;
 
       return (
         <Component

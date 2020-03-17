@@ -1,9 +1,9 @@
 import * as React from "react";
-import { Redirect, Route, RouteProps } from "react-router-dom";
-import { connect } from "react-redux";
-import { AppRoute } from "../../utils/constants";
-import { AuthorizationStatus } from "../../reducer/user/user";
-import { getAuthorizationStatus } from "../../reducer/user/selectors";
+import {Redirect, Route, RouteProps} from "react-router-dom";
+import {connect} from "react-redux";
+import {AppRoute} from "../../utils/constants";
+import {AuthorizationStatus} from "../../reducer/user/user";
+import {getAuthorizationStatus} from "../../reducer/user/selectors";
 
 type PrivateRouteProps = RouteProps & {
   authorizationStatus: string;
@@ -11,9 +11,9 @@ type PrivateRouteProps = RouteProps & {
 };
 
 const PrivateRoute: React.FunctionComponent<PrivateRouteProps> = (
-  props: PrivateRouteProps
+    props: PrivateRouteProps
 ) => {
-  const { render, path, exact, authorizationStatus } = props;
+  const {render, path, exact, authorizationStatus} = props;
   return (
     <Route
       path={path}
@@ -29,9 +29,9 @@ const PrivateRoute: React.FunctionComponent<PrivateRouteProps> = (
   );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   authorizationStatus: getAuthorizationStatus(state)
 });
 
-export { PrivateRoute };
+export {PrivateRoute};
 export default connect(mapStateToProps)(PrivateRoute);

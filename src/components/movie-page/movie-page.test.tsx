@@ -1,15 +1,15 @@
 import * as React from "react";
 import * as renderer from "react-test-renderer";
-import { MoviePage } from "./movie-page";
+import {MoviePage} from "./movie-page";
 import configureStore from "redux-mock-store";
 import Namespace from "../../reducer/namespace";
-import { Provider } from "react-redux";
-import { ALL_GENRES, SHOWED_MOVIES_DEFAULT } from "../../utils/constants";
-import { AuthorizationStatus } from "../../reducer/user/user";
-import { MemoryRouter } from "react-router-dom";
-import { Movie } from "../../types";
-import { AxiosPromise } from "axios";
-import { ActionType } from "../../reducer/state/state";
+import {Provider} from "react-redux";
+import {ALL_GENRES, SHOWED_MOVIES_DEFAULT} from "../../utils/constants";
+import {AuthorizationStatus} from "../../reducer/user/user";
+import {MemoryRouter} from "react-router-dom";
+import {Movie} from "../../types";
+import {AxiosPromise} from "axios";
+import {ActionType} from "../../reducer/state/state";
 
 const films: Movie[] = [
   {
@@ -50,31 +50,31 @@ it(`Should render MoviePage component`, () => {
     }
   });
 
-  const id: string = "1";
+  const id = `1`;
 
   const tree = renderer
     .create(
-      <Provider store={store}>
-        <MemoryRouter>
-          <MoviePage
-            movie={films[0]}
-            movies={films}
-            authorizationStatus={AuthorizationStatus.AUTH}
-            onMovieCardClick={() => {}}
-            addMovieToMyList={id => new Promise(() => {}) as AxiosPromise}
-            removeMovieFromMyList={id => new Promise(() => {}) as AxiosPromise}
-            getComments={id => new Promise(() => {}) as AxiosPromise}
-            changeSelectedMovieId={id => ({
-              type: ActionType.CHANGE_SELECTED_MOVIE_ID,
-              payload: id
-            })}
-            id={id}
-            onMovieCardMouseOver={() => {}}
-            onMovieCardMouseOut={() => {}}
-            isPlaying={false}
-          />
-        </MemoryRouter>
-      </Provider>
+        <Provider store={store}>
+          <MemoryRouter>
+            <MoviePage
+              movie={films[0]}
+              movies={films}
+              authorizationStatus={AuthorizationStatus.AUTH}
+              onMovieCardClick={() => {}}
+              addMovieToMyList={(id) => new Promise(() => {}) as AxiosPromise}
+              removeMovieFromMyList={(id) => new Promise(() => {}) as AxiosPromise}
+              getComments={(id) => new Promise(() => {}) as AxiosPromise}
+              changeSelectedMovieId={(id) => ({
+                type: ActionType.CHANGE_SELECTED_MOVIE_ID,
+                payload: id
+              })}
+              id={id}
+              onMovieCardMouseOver={() => {}}
+              onMovieCardMouseOut={() => {}}
+              isPlaying={false}
+            />
+          </MemoryRouter>
+        </Provider>
     )
     .toJSON();
 

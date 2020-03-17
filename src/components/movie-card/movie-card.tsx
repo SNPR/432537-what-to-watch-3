@@ -1,7 +1,7 @@
 import * as React from "react";
 import MoviePlayer from "../movie-player/movie-player";
 import withPlayer from "../../hocs/with-player/with-player";
-import { Movie } from "../../types";
+import {Movie} from "../../types";
 
 const MoviePlayerWrapped = withPlayer(MoviePlayer);
 
@@ -14,7 +14,7 @@ type MovieCardProps = {
 };
 
 const MovieCard: React.FunctionComponent<MovieCardProps> = (
-  props: MovieCardProps
+    props: MovieCardProps
 ) => {
   const {
     movie,

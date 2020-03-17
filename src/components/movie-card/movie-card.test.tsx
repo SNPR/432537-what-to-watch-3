@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as renderer from "react-test-renderer";
 import MovieCard from "./movie-card";
-import { Movie } from "../../types";
+import {Movie} from "../../types";
 
 const movie: Movie = {
   name: `MovieName`,
@@ -26,13 +26,13 @@ const movie: Movie = {
 it(`Should render MovieCard component`, () => {
   const tree = renderer
     .create(
-      <MovieCard
-        movie={movie}
-        onMovieCardClick={() => {}}
-        onMovieCardMouseOver={() => {}}
-        onMovieCardMouseOut={() => {}}
-        isPlaying={true}
-      />
+        <MovieCard
+          movie={movie}
+          onMovieCardClick={() => {}}
+          onMovieCardMouseOver={() => {}}
+          onMovieCardMouseOut={() => {}}
+          isPlaying={true}
+        />
     )
     .toJSON();
 

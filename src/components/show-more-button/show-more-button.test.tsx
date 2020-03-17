@@ -1,9 +1,9 @@
 import * as React from "react";
 import * as renderer from "react-test-renderer";
-import { ShowMoreButton } from "./show-more-button";
-import { ALL_GENRES, SHOWED_MOVIES_DEFAULT } from "../../utils/constants";
-import { Movie } from "../../types";
-import { ActionType } from "../../reducer/state/state";
+import {ShowMoreButton} from "./show-more-button";
+import {ALL_GENRES, SHOWED_MOVIES_DEFAULT} from "../../utils/constants";
+import {Movie} from "../../types";
+import {ActionType} from "../../reducer/state/state";
 
 const films: Movie[] = [
   {
@@ -182,16 +182,16 @@ const films: Movie[] = [
 it(`Should render ShowMoreButton component`, () => {
   const tree = renderer
     .create(
-      <ShowMoreButton
-        movies={films}
-        showedMovies={SHOWED_MOVIES_DEFAULT}
-        showMoreMovies={() => ({
-          type: ActionType.SHOW_MORE_MOVIES,
-          payload: null
-        })}
-        filteredMovies={films}
-        genre={ALL_GENRES}
-      />
+        <ShowMoreButton
+          movies={films}
+          showedMovies={SHOWED_MOVIES_DEFAULT}
+          showMoreMovies={() => ({
+            type: ActionType.SHOW_MORE_MOVIES,
+            payload: null
+          })}
+          filteredMovies={films}
+          genre={ALL_GENRES}
+        />
     )
     .toJSON();
 

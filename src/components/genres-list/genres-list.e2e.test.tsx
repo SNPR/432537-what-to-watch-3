@@ -1,9 +1,9 @@
 import * as React from "react";
-import { configure, mount } from "enzyme";
+import {configure, mount} from "enzyme";
 import * as Adapter from "enzyme-adapter-react-16";
-import { GenresList } from "./genres-list";
-import { ALL_GENRES, SHOWED_MOVIES_DEFAULT } from "../../utils/constants";
-import { Movie } from "../../types";
+import {GenresList} from "./genres-list";
+import {ALL_GENRES, SHOWED_MOVIES_DEFAULT} from "../../utils/constants";
+import {Movie} from "../../types";
 
 configure({
   adapter: new Adapter()
@@ -37,15 +37,15 @@ it(`Should call handler on genre link click`, () => {
   const resetShowedMoviesAmountHandler = jest.fn();
 
   const genresList = mount(
-    <GenresList
-      movies={films}
-      genre={ALL_GENRES}
-      changeGenre={changeGenreHandler}
-      onMovieCardClick={movieCardClickHandler}
-      showedMovies={SHOWED_MOVIES_DEFAULT}
-      resetShowedMoviesAmount={resetShowedMoviesAmountHandler}
-      filteredMovies={films}
-    />
+      <GenresList
+        movies={films}
+        genre={ALL_GENRES}
+        changeGenre={changeGenreHandler}
+        onMovieCardClick={movieCardClickHandler}
+        showedMovies={SHOWED_MOVIES_DEFAULT}
+        resetShowedMoviesAmount={resetShowedMoviesAmountHandler}
+        filteredMovies={films}
+      />
   );
 
   const genreLink = genresList.find(`a.catalog__genres-link`).first();

@@ -1,19 +1,19 @@
 import * as React from "react";
 import Tabs from "../tabs/tabs";
 import SimilarMovies from "../similar-movies/similar-movies";
-import { connect } from "react-redux";
-import { getMovies } from "../../reducer/data/selectors";
-import { getAuthorizationStatus } from "../../reducer/user/selectors";
-import { AuthorizationStatus } from "../../reducer/user/user";
-import { Link } from "react-router-dom";
-import { AppRoute } from "../../utils/constants";
-import { Operation, Operation as DataOperation } from "../../reducer/data/data";
+import {connect} from "react-redux";
+import {getMovies} from "../../reducer/data/selectors";
+import {getAuthorizationStatus} from "../../reducer/user/selectors";
+import {AuthorizationStatus} from "../../reducer/user/user";
+import {Link} from "react-router-dom";
+import {AppRoute} from "../../utils/constants";
+import {Operation, Operation as DataOperation} from "../../reducer/data/data";
 import history from "../../history";
-import { ActionCreator } from "../../reducer/state/state";
-import { getSelectedMovie } from "../../reducer/state/selectors";
+import {ActionCreator} from "../../reducer/state/state";
+import {getSelectedMovie} from "../../reducer/state/selectors";
 import withActiveTab from "../../hocs/with-active-tab/with-active-tab";
-import { Movie } from "../../types";
-import { AxiosPromise } from "axios";
+import {Movie} from "../../types";
+import {AxiosPromise} from "axios";
 
 const TabsWrapped = withActiveTab(Tabs);
 
@@ -43,7 +43,7 @@ class MoviePage extends React.PureComponent<MoviePageProps, {}> {
   }
 
   componentDidMount() {
-    const { id, changeSelectedMovieId, getComments } = this.props;
+    const {id, changeSelectedMovieId, getComments} = this.props;
 
     changeSelectedMovieId(id);
     getComments(id);
@@ -112,7 +112,7 @@ class MoviePage extends React.PureComponent<MoviePageProps, {}> {
                     type="button"
                     onClick={() =>
                       history.push(
-                        `${AppRoute.FILMS}/${movie.id}${AppRoute.PLAYER}`
+                          `${AppRoute.FILMS}/${movie.id}${AppRoute.PLAYER}`
                       )
                     }
                   >
@@ -203,13 +203,13 @@ class MoviePage extends React.PureComponent<MoviePageProps, {}> {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   movies: getMovies(state),
   authorizationStatus: getAuthorizationStatus(state),
   movie: getSelectedMovie(state)
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   addMovieToMyList(id) {
     dispatch(Operation.addMovieToMyList(id));
   },
@@ -224,6 +224,6 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
-export { MoviePage };
+export {MoviePage};
 
 export default connect(mapStateToProps, mapDispatchToProps)(MoviePage);

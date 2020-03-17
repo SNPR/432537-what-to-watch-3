@@ -1,10 +1,10 @@
 import * as React from "react";
-import { configure, shallow } from "enzyme";
+import {configure, shallow} from "enzyme";
 import * as Adapter from "enzyme-adapter-react-16";
 import withActiveTab from "./with-active-tab";
-import { Tab } from "../../utils/constants";
+import {Tab} from "../../utils/constants";
 
-configure({ adapter: new Adapter() });
+configure({adapter: new Adapter()});
 
 const MockComponent = () => <div />;
 const MockComponentWrapped = withActiveTab(MockComponent);
@@ -25,7 +25,7 @@ it(`Should get correct active class`, () => {
   expect(wrapper.props().selectedTab).toEqual(Tab.Name.OVERVIEW);
 
   expect(wrapper.instance().getActiveClass(Tab.Name.OVERVIEW)).toEqual(
-    Tab.ACTIVE_CLASS
+      Tab.ACTIVE_CLASS
   );
   expect(wrapper.instance().getActiveClass(Tab.Name.DETAILS)).toEqual(``);
 });

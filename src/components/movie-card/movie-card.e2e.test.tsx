@@ -1,8 +1,8 @@
 import * as React from "react";
-import { configure, shallow } from "enzyme";
+import {configure, shallow} from "enzyme";
 import * as Adapter from "enzyme-adapter-react-16";
 import MovieCard from "./movie-card";
-import { Movie } from "../../types";
+import {Movie} from "../../types";
 
 configure({
   adapter: new Adapter()
@@ -33,13 +33,13 @@ it(`Should pass data to handler on hover`, () => {
   const movieCardMouseOutHandler = jest.fn();
 
   const movieCard = shallow(
-    <MovieCard
-      movie={movie}
-      isPlaying={true}
-      onMovieCardClick={() => {}}
-      onMovieCardMouseOver={() => movieCardMouseOverHandler(movie)}
-      onMovieCardMouseOut={movieCardMouseOutHandler}
-    />
+      <MovieCard
+        movie={movie}
+        isPlaying={true}
+        onMovieCardClick={() => {}}
+        onMovieCardMouseOver={() => movieCardMouseOverHandler(movie)}
+        onMovieCardMouseOut={movieCardMouseOutHandler}
+      />
   );
 
   movieCard.simulate(`mouseover`);

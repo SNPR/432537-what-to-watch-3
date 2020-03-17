@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as renderer from "react-test-renderer";
 import MoviesList from "./movies-list";
-import { Movie } from "../../types";
+import {Movie} from "../../types";
 
 const films: Movie[] = [
   {
@@ -28,14 +28,14 @@ const films: Movie[] = [
 it(`Should render MoviesList component`, () => {
   const tree = renderer
     .create(
-      <MoviesList
-        movies={films}
-        onMovieCardClick={() => {}}
-        onMovieCardMouseOver={() => {}}
-        onMovieCardMouseOut={() => {}}
-        isPlaying={false}
-        selectedMovieId={1}
-      />
+        <MoviesList
+          movies={films}
+          onMovieCardClick={() => {}}
+          onMovieCardMouseOver={() => {}}
+          onMovieCardMouseOut={() => {}}
+          isPlaying={false}
+          selectedMovieId={1}
+        />
     )
     .toJSON();
 

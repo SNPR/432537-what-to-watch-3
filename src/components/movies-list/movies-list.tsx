@@ -1,6 +1,6 @@
 import * as React from "react";
 import MovieCard from "../movie-card/movie-card";
-import { Movie } from "../../types";
+import {Movie} from "../../types";
 
 type MoviesListProps = {
   movies: Movie[];
@@ -12,7 +12,7 @@ type MoviesListProps = {
 };
 
 const MoviesList: React.FunctionComponent<MoviesListProps> = (
-  props: MoviesListProps
+    props: MoviesListProps
 ) => {
   const {
     onMovieCardMouseOver,

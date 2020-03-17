@@ -1,16 +1,16 @@
 import * as React from "react";
 import GenresList from "../genres-list/genres-list";
 import ShowMoreButton from "../show-more-button/show-more-button";
-import { connect } from "react-redux";
-import { getPromoMovie } from "../../reducer/data/selectors";
-import { getAuthorizationStatus } from "../../reducer/user/selectors";
-import { AuthorizationStatus } from "../../reducer/user/user";
-import { Link } from "react-router-dom";
-import { AppRoute } from "../../utils/constants";
-import { Operation } from "../../reducer/data/data";
+import {connect} from "react-redux";
+import {getPromoMovie} from "../../reducer/data/selectors";
+import {getAuthorizationStatus} from "../../reducer/user/selectors";
+import {AuthorizationStatus} from "../../reducer/user/user";
+import {Link} from "react-router-dom";
+import {AppRoute} from "../../utils/constants";
+import {Operation} from "../../reducer/data/data";
 import history from "../../history";
-import { Movie } from "../../types";
-import { AxiosPromise } from "axios";
+import {Movie} from "../../types";
+import {AxiosPromise} from "axios";
 
 type MainProps = {
   promoMovie: Movie;
@@ -93,7 +93,7 @@ const Main: React.FunctionComponent<MainProps> = (props: MainProps) => {
                   type="button"
                   onClick={() =>
                     history.push(
-                      `${AppRoute.FILMS}/${promoMovie.id}${AppRoute.PLAYER}`
+                        `${AppRoute.FILMS}/${promoMovie.id}${AppRoute.PLAYER}`
                     )
                   }
                 >
@@ -157,12 +157,12 @@ const Main: React.FunctionComponent<MainProps> = (props: MainProps) => {
   );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   promoMovie: getPromoMovie(state),
   authorizationStatus: getAuthorizationStatus(state)
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   addMovieToMyList(id) {
     dispatch(Operation.addMovieToMyList(id));
   },

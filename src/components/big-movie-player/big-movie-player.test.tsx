@@ -1,8 +1,8 @@
 import * as React from "react";
 import * as renderer from "react-test-renderer";
-import { BigMoviePlayer } from "./big-movie-player";
-import { Movie } from "../../types";
-import { ActionType } from "../../reducer/state/state";
+import {BigMoviePlayer} from "./big-movie-player";
+import {Movie} from "../../types";
+import {ActionType} from "../../reducer/state/state";
 
 const films: Movie[] = [
   {
@@ -29,25 +29,25 @@ const films: Movie[] = [
 it(`Should render BigMoviePlayer component`, () => {
   const tree = renderer
     .create(
-      <BigMoviePlayer
-        movie={films[0]}
-        autoPlay={false}
-        muted={true}
-        isPlaying={false}
-        elapsedTime={"1h 5m"}
-        playbackProgress={"100"}
-        onPlayButtonClick={() => {}}
-        onFullscreenButtonClick={() => {}}
-        onExitButtonClick={() => {}}
-        onLoadedMetadata={() => {}}
-        onTimeUpdate={() => {}}
-        videoRef={React.createRef()}
-        changeSelectedMovieId={() => ({
-          type: ActionType.RESET_SHOWED_MOVIES_AMOUNT,
-          payload: null
-        })}
-        id={0}
-      />
+        <BigMoviePlayer
+          movie={films[0]}
+          autoPlay={false}
+          muted={true}
+          isPlaying={false}
+          elapsedTime={`1h 5m`}
+          playbackProgress={`100`}
+          onPlayButtonClick={() => {}}
+          onFullscreenButtonClick={() => {}}
+          onExitButtonClick={() => {}}
+          onLoadedMetadata={() => {}}
+          onTimeUpdate={() => {}}
+          videoRef={React.createRef()}
+          changeSelectedMovieId={() => ({
+            type: ActionType.RESET_SHOWED_MOVIES_AMOUNT,
+            payload: null
+          })}
+          id={0}
+        />
     )
     .toJSON();
 

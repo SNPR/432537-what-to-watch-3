@@ -1,13 +1,13 @@
 import * as React from "react";
-import { configure, mount } from "enzyme";
+import {configure, mount} from "enzyme";
 import * as Adapter from "enzyme-adapter-react-16";
-import { Provider } from "react-redux";
+import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import Main from "./main";
-import { ALL_GENRES, SHOWED_MOVIES_DEFAULT } from "../../utils/constants";
+import {ALL_GENRES, SHOWED_MOVIES_DEFAULT} from "../../utils/constants";
 import Namespace from "../../reducer/namespace";
-import { AuthorizationStatus } from "../../reducer/user/user";
-import { MemoryRouter } from "react-router-dom";
+import {AuthorizationStatus} from "../../reducer/user/user";
+import {MemoryRouter} from "react-router-dom";
 
 const mockStore = configureStore([]);
 
@@ -55,17 +55,17 @@ it(`Should movie card be pressed`, () => {
   const movieCardClickHandler = jest.fn();
 
   const main = mount(
-    <Provider store={store}>
-      <MemoryRouter>
-        <Main
-          promoMovie={films[0]}
-          onMovieCardClick={movieCardClickHandler}
-          isBigMoviePlayerVisible={false}
-          onVisibilityChange={() => {}}
-          authorizationStatus={AuthorizationStatus.NO_AUTH}
-        />
-      </MemoryRouter>
-    </Provider>
+      <Provider store={store}>
+        <MemoryRouter>
+          <Main
+            promoMovie={films[0]}
+            onMovieCardClick={movieCardClickHandler}
+            isBigMoviePlayerVisible={false}
+            onVisibilityChange={() => {}}
+            authorizationStatus={AuthorizationStatus.NO_AUTH}
+          />
+        </MemoryRouter>
+      </Provider>
   );
 
   const movieCard = main

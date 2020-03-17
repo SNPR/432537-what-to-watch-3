@@ -1,9 +1,9 @@
 import * as React from "react";
-import { configure, mount } from "enzyme";
+import {configure, mount} from "enzyme";
 import * as Adapter from "enzyme-adapter-react-16";
-import { ShowMoreButton } from "./show-more-button";
-import { ALL_GENRES, SHOWED_MOVIES_DEFAULT } from "../../utils/constants";
-import { Movie } from "../../types";
+import {ShowMoreButton} from "./show-more-button";
+import {ALL_GENRES, SHOWED_MOVIES_DEFAULT} from "../../utils/constants";
+import {Movie} from "../../types";
 
 configure({
   adapter: new Adapter()
@@ -187,13 +187,13 @@ it(`Should call handler on button click`, () => {
   const showMoreMoviesButtonClickHandler = jest.fn();
 
   const showMoreButton = mount(
-    <ShowMoreButton
-      movies={films}
-      showedMovies={SHOWED_MOVIES_DEFAULT}
-      showMoreMovies={showMoreMoviesButtonClickHandler}
-      filteredMovies={films}
-      genre={ALL_GENRES}
-    />
+      <ShowMoreButton
+        movies={films}
+        showedMovies={SHOWED_MOVIES_DEFAULT}
+        showMoreMovies={showMoreMoviesButtonClickHandler}
+        filteredMovies={films}
+        genre={ALL_GENRES}
+      />
   );
 
   showMoreButton.find(`button.catalog__button`).simulate(`click`);

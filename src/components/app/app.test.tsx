@@ -1,11 +1,11 @@
 import * as React from "react";
 import * as renderer from "react-test-renderer";
 import App from "./app";
-import { Provider } from "react-redux";
+import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
-import { ALL_GENRES, SHOWED_MOVIES_DEFAULT } from "../../utils/constants";
+import {ALL_GENRES, SHOWED_MOVIES_DEFAULT} from "../../utils/constants";
 import Namespace from "../../reducer/namespace";
-import { AuthorizationStatus } from "../../reducer/user/user";
+import {AuthorizationStatus} from "../../reducer/user/user";
 
 const mockStore = configureStore([]);
 
@@ -197,13 +197,13 @@ it(`Should render App component`, () => {
 
   const tree = renderer
     .create(
-      <Provider store={store}>
-        <App
-          getComments={() => {}}
-          login={() => {}}
-          authorizationStatus={AuthorizationStatus.NO_AUTH}
-        />
-      </Provider>
+        <Provider store={store}>
+          <App
+            getComments={() => {}}
+            login={() => {}}
+            authorizationStatus={AuthorizationStatus.NO_AUTH}
+          />
+        </Provider>
     )
     .toJSON();
 

@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as renderer from "react-test-renderer";
 import MoviePlayer from "./movie-player";
-import { Movie } from "../../types";
+import {Movie} from "../../types";
 
 const movie: Movie = {
   name: `MovieName`,
@@ -26,13 +26,13 @@ const movie: Movie = {
 it(`Should render MoviePlayer component`, () => {
   const tree = renderer
     .create(
-      <MoviePlayer
-        movie={movie}
-        muted={true}
-        autoPlay={true}
-        onPlayButtonClick={() => {}}
-        videoRef={React.createRef()}
-      />
+        <MoviePlayer
+          movie={movie}
+          muted={true}
+          autoPlay={true}
+          onPlayButtonClick={() => {}}
+          videoRef={React.createRef()}
+        />
     )
     .toJSON();
 

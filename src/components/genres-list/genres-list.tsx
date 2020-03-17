@@ -1,12 +1,12 @@
 import * as React from "react";
-import { connect } from "react-redux";
-import { ALL_GENRES } from "../../utils/constants";
-import { ActionCreator } from "../../reducer/state/state";
+import {connect} from "react-redux";
+import {ALL_GENRES} from "../../utils/constants";
+import {ActionCreator} from "../../reducer/state/state";
 import MoviesList from "../movies-list/movies-list";
 import withActiveMovieCard from "../../hocs/with-active-movie-card/with-active-movie-card";
-import { getGenre, getShowedMovies } from "../../reducer/state/selectors";
-import { getMovies, getMoviesByGenre } from "../../reducer/data/selectors";
-import { Movie } from "../../types";
+import {getGenre, getShowedMovies} from "../../reducer/state/selectors";
+import {getMovies, getMoviesByGenre} from "../../reducer/data/selectors";
+import {Movie} from "../../types";
 
 const MoviesListWrapped = withActiveMovieCard(MoviesList);
 
@@ -34,7 +34,7 @@ class GenresList extends React.PureComponent<GenresListProps, {}> {
   }
 
   getGenresList(movies) {
-    return [ALL_GENRES, ...new Set(movies.map(movie => movie.genre))];
+    return [ALL_GENRES, ...new Set(movies.map((movie) => movie.genre))];
   }
 
   render() {
@@ -79,14 +79,14 @@ class GenresList extends React.PureComponent<GenresListProps, {}> {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   genre: getGenre(state),
   movies: getMovies(state),
   filteredMovies: getMoviesByGenre(state),
   showedMovies: getShowedMovies(state)
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   changeGenre(genre) {
     dispatch(ActionCreator.changeGenre(genre));
   },
@@ -95,5 +95,5 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
-export { GenresList };
+export {GenresList};
 export default connect(mapStateToProps, mapDispatchToProps)(GenresList);

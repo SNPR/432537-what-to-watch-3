@@ -1,9 +1,9 @@
 import * as React from "react";
-import { getTextRating } from "../../utils/utils";
-import { connect } from "react-redux";
-import { getComments } from "../../reducer/data/selectors";
-import { Tab } from "../../utils/constants";
-import { Movie } from "../../types";
+import {getTextRating} from "../../utils/utils";
+import {connect} from "react-redux";
+import {getComments} from "../../reducer/data/selectors";
+import {Tab} from "../../utils/constants";
+import {Movie} from "../../types";
 
 type TabsProps = {
   movie: Movie;
@@ -153,7 +153,7 @@ class Tabs extends React.PureComponent<TabsProps, {}> {
           <>
             <div className="movie-card__reviews movie-card__row">
               <div className="movie-card__reviews-col">
-                {comments.map(review => (
+                {comments.map((review) => (
                   <div className="review" key={review.id}>
                     <blockquote className="review__quote">
                       <p className="review__text">{review.comment}</p>
@@ -180,7 +180,7 @@ class Tabs extends React.PureComponent<TabsProps, {}> {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   comments: getComments(state)
 });
 

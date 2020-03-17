@@ -1,9 +1,9 @@
 import * as React from "react";
 import * as renderer from "react-test-renderer";
-import { GenresList } from "./genres-list";
-import { ALL_GENRES, SHOWED_MOVIES_DEFAULT } from "../../utils/constants";
-import { Movie } from "../../types";
-import { ActionType } from "../../reducer/state/state";
+import {GenresList} from "./genres-list";
+import {ALL_GENRES, SHOWED_MOVIES_DEFAULT} from "../../utils/constants";
+import {Movie} from "../../types";
+import {ActionType} from "../../reducer/state/state";
 
 const films: Movie[] = [
   {
@@ -30,21 +30,21 @@ const films: Movie[] = [
 it(`Should render GenresList component`, () => {
   const tree = renderer
     .create(
-      <GenresList
-        movies={films}
-        genre={ALL_GENRES}
-        changeGenre={() => ({
-          type: ActionType.CHANGE_GENRE,
-          payload: ALL_GENRES
-        })}
-        onMovieCardClick={() => {}}
-        showedMovies={SHOWED_MOVIES_DEFAULT}
-        resetShowedMoviesAmount={() => ({
-          type: ActionType.RESET_SHOWED_MOVIES_AMOUNT,
-          payload: null
-        })}
-        filteredMovies={films}
-      />
+        <GenresList
+          movies={films}
+          genre={ALL_GENRES}
+          changeGenre={() => ({
+            type: ActionType.CHANGE_GENRE,
+            payload: ALL_GENRES
+          })}
+          onMovieCardClick={() => {}}
+          showedMovies={SHOWED_MOVIES_DEFAULT}
+          resetShowedMoviesAmount={() => ({
+            type: ActionType.RESET_SHOWED_MOVIES_AMOUNT,
+            payload: null
+          })}
+          filteredMovies={films}
+        />
     )
     .toJSON();
 

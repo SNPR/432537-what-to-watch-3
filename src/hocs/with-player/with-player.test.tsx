@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as renderer from "react-test-renderer";
 import withPlayer from "./with-player";
-import { Movie } from "../../types";
+import {Movie} from "../../types";
 
 const movie: Movie = {
   name: `MovieName`,
@@ -29,13 +29,13 @@ const MockComponentWrapped = withPlayer(MockComponent);
 it(`withPlayer is rendered correctly`, () => {
   const tree = renderer
     .create(
-      <MockComponentWrapped
-        movie={movie}
-        muted={true}
-        autoPlay={false}
-        onExitButtonClick={() => {}}
-        id={0}
-      />
+        <MockComponentWrapped
+          movie={movie}
+          muted={true}
+          autoPlay={false}
+          onExitButtonClick={() => {}}
+          id={0}
+        />
     )
     .toJSON();
 

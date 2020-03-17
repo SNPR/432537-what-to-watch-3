@@ -1,6 +1,6 @@
 import * as React from "react";
-import { Movie } from "../../types";
-import { Subtract } from "utility-types";
+import {Movie} from "../../types";
+import {Subtract} from "utility-types";
 
 const PLAYBACK_DELAY_TIMEOUT = 1000;
 
@@ -21,7 +21,7 @@ type withActiveMovieCardProps = {
   onMovieCardClick: (id: string | number) => void;
 };
 
-const withActiveMovieCard = Component => {
+const withActiveMovieCard = (Component) => {
   type P = React.ComponentProps<typeof Component>;
   type T = withActiveMovieCardProps & Subtract<P, InjectingProps>;
 
@@ -64,10 +64,10 @@ const withActiveMovieCard = Component => {
 
     handleMovieCardMouseOver(selectedMovieId) {
       this.setState(
-        () => ({
-          selectedMovieId
-        }),
-        () => this.togglePlay(selectedMovieId)
+          () => ({
+            selectedMovieId
+          }),
+          () => this.togglePlay(selectedMovieId)
       );
     }
 
@@ -79,7 +79,7 @@ const withActiveMovieCard = Component => {
     }
 
     render() {
-      const { selectedMovieId, isPlaying } = this.state;
+      const {selectedMovieId, isPlaying} = this.state;
 
       return (
         <Component

@@ -1,11 +1,11 @@
 import * as React from "react";
-import { AppRoute } from "../../utils/constants";
-import { Link } from "react-router-dom";
-import { AxiosPromise } from "axios";
+import {AppRoute} from "../../utils/constants";
+import {Link} from "react-router-dom";
+import {AxiosPromise} from "axios";
 
 type SignInProps = {
   onSubmit: (
-    { login, password }: { login: string; password: string },
+    {login, password}: { login: string; password: string },
     onSuccess: () => void,
     onError: (err: string) => void
   ) => AxiosPromise;
@@ -28,26 +28,26 @@ class SignIn extends React.PureComponent<SignInProps, {}> {
   }
 
   handleFormSubmit(evt) {
-    const { onSubmit, goBack, onError } = this.props;
+    const {onSubmit, goBack, onError} = this.props;
 
     evt.preventDefault();
 
     onSubmit(
-      {
-        login: this.loginRef.current.value,
-        password: this.passwordRef.current.value
-      },
-      () => {
-        goBack();
-      },
-      err => {
-        onError(err);
-      }
+        {
+          login: this.loginRef.current.value,
+          password: this.passwordRef.current.value
+        },
+        () => {
+          goBack();
+        },
+        (err) => {
+          onError(err);
+        }
     );
   }
 
   render() {
-    const { authErrorMessage } = this.props;
+    const {authErrorMessage} = this.props;
 
     return (
       <div className="user-page">

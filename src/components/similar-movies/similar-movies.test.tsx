@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as renderer from "react-test-renderer";
 import SimilarMovies from "./similar-movies";
-import { Movie } from "../../types";
+import {Movie} from "../../types";
 
 const movie: Movie = {
   name: `MovieName`,
@@ -48,7 +48,7 @@ const films: Movie[] = [
 it(`Should render SimilarMovies component`, () => {
   const tree = renderer
     .create(
-      <SimilarMovies movies={films} movie={movie} onMovieCardClick={() => {}} />
+        <SimilarMovies movies={films} movie={movie} onMovieCardClick={() => {}} />
     )
     .toJSON();
 

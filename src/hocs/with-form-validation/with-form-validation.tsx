@@ -1,6 +1,6 @@
 import * as React from "react";
-import { MAX_REVIEW_LENGTH, MIN_REVIEW_LENGTH } from "../../utils/constants";
-import { Subtract } from "utility-types";
+import {MAX_REVIEW_LENGTH, MIN_REVIEW_LENGTH} from "../../utils/constants";
+import {Subtract} from "utility-types";
 
 type InjectingProps = {
   isFormInvalid: boolean;
@@ -14,7 +14,7 @@ type withAuthErrorMessageState = {
   isSubmitError: boolean;
 };
 
-const withFormValidation = Component => {
+const withFormValidation = (Component) => {
   type P = React.ComponentProps<typeof Component>;
   type T = Subtract<P, InjectingProps>;
 
@@ -34,7 +34,7 @@ const withFormValidation = Component => {
       this.handleSubmitError = this.handleSubmitError.bind(this);
     }
 
-    handleChange({ target: { value } }) {
+    handleChange({target: {value}}) {
       this.setState({
         isFormInvalid:
           value.length < MIN_REVIEW_LENGTH || value.length > MAX_REVIEW_LENGTH
@@ -48,7 +48,7 @@ const withFormValidation = Component => {
     }
 
     render() {
-      const { isFormInvalid, isSubmitError: isSubmitError } = this.state;
+      const {isFormInvalid, isSubmitError: isSubmitError} = this.state;
 
       return (
         <Component

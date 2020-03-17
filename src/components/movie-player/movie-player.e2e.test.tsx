@@ -1,8 +1,8 @@
 import * as React from "react";
-import { configure, shallow } from "enzyme";
+import {configure, shallow} from "enzyme";
 import * as Adapter from "enzyme-adapter-react-16";
 import MoviePlayer from "./movie-player";
-import { Movie } from "../../types";
+import {Movie} from "../../types";
 
 configure({
   adapter: new Adapter()
@@ -32,13 +32,13 @@ it(`Should play video on click`, () => {
   const handleClick = jest.fn();
 
   const moviePlayer = shallow(
-    <MoviePlayer
-      movie={movie}
-      muted={true}
-      autoPlay={false}
-      onPlayButtonClick={handleClick}
-      videoRef={React.createRef()}
-    />
+      <MoviePlayer
+        movie={movie}
+        muted={true}
+        autoPlay={false}
+        onPlayButtonClick={handleClick}
+        videoRef={React.createRef()}
+      />
   );
 
   moviePlayer.simulate(`click`);

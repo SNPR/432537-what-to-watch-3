@@ -1,6 +1,6 @@
 import * as React from "react";
-import { Tab } from "../../utils/constants";
-import { Subtract } from "utility-types";
+import {Tab} from "../../utils/constants";
+import {Subtract} from "utility-types";
 
 type InjectingProps = {
   selectedTab: string;
@@ -12,7 +12,7 @@ type withActiveTabState = {
   selectedTab: string;
 };
 
-const withActiveTab = Component => {
+const withActiveTab = (Component) => {
   type P = React.ComponentProps<typeof Component>;
   type T = Subtract<P, InjectingProps>;
 
@@ -20,7 +20,7 @@ const withActiveTab = Component => {
     constructor(props) {
       super(props);
 
-      this.state = { selectedTab: Tab.Name.OVERVIEW };
+      this.state = {selectedTab: Tab.Name.OVERVIEW};
 
       this.getActiveClass = this.getActiveClass.bind(this);
       this.setActiveTab = this.setActiveTab.bind(this);
@@ -31,11 +31,11 @@ const withActiveTab = Component => {
     }
 
     setActiveTab(tabName) {
-      this.setState({ selectedTab: tabName });
+      this.setState({selectedTab: tabName});
     }
 
     render() {
-      const { selectedTab } = this.state;
+      const {selectedTab} = this.state;
 
       return (
         <Component

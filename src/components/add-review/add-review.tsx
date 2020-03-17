@@ -1,17 +1,17 @@
 import * as React from "react";
-import { connect } from "react-redux";
-import { getSelectedMovie } from "../../reducer/state/selectors";
-import { Operation } from "../../reducer/data/data";
-import { Link } from "react-router-dom";
+import {connect} from "react-redux";
+import {getSelectedMovie} from "../../reducer/state/selectors";
+import {Operation} from "../../reducer/data/data";
+import {Link} from "react-router-dom";
 import {
   AppRoute,
   MAX_REVIEW_LENGTH,
   MIN_REVIEW_LENGTH
 } from "../../utils/constants";
 import history from "../../history";
-import { ActionCreator } from "../../reducer/state/state";
-import { Movie } from "../../types";
-import { AxiosPromise } from "axios";
+import {ActionCreator} from "../../reducer/state/state";
+import {Movie} from "../../types";
+import {AxiosPromise} from "axios";
 
 type AddReviewProps = {
   movie: Movie;
@@ -64,24 +64,24 @@ class AddReview extends React.PureComponent<AddReviewProps, {}> {
   }
 
   handleFormSubmit(evt) {
-    const { onSubmit, onSubmitError } = this.props;
+    const {onSubmit, onSubmitError} = this.props;
     evt.preventDefault();
     this.toggleFormDisability();
 
     onSubmit(
-      {
-        movieId: this.props.movie.id,
-        rating: this.submitFormRef.current.rating.value,
-        comment: this.commentRef.current.value
-      },
-      () => {
-        this.toggleFormDisability();
-        history.goBack();
-      },
-      () => {
-        this.toggleFormDisability();
-        onSubmitError();
-      }
+        {
+          movieId: this.props.movie.id,
+          rating: this.submitFormRef.current.rating.value,
+          comment: this.commentRef.current.value
+        },
+        () => {
+          this.toggleFormDisability();
+          history.goBack();
+        },
+        () => {
+          this.toggleFormDisability();
+          onSubmitError();
+        }
     );
   }
 
@@ -240,7 +240,7 @@ class AddReview extends React.PureComponent<AddReviewProps, {}> {
             </form>
           </div>
           {isSubmitError && (
-            <p style={{ color: `red`, textAlign: `center` }}>
+            <p style={{color: `red`, textAlign: `center`}}>
               Error. Please try again
             </p>
           )}
@@ -252,11 +252,11 @@ class AddReview extends React.PureComponent<AddReviewProps, {}> {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   movie: getSelectedMovie(state)
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   onSubmit(commentData, onSuccess, onError) {
     dispatch(Operation.addComment(commentData, onSuccess, onError));
   },

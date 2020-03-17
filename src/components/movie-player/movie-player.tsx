@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Movie } from "../../types";
+import {Movie} from "../../types";
 
 type MoviePlayerProps = {
   movie: Movie;
@@ -10,9 +10,9 @@ type MoviePlayerProps = {
 };
 
 const MoviePlayer: React.FunctionComponent<MoviePlayerProps> = (
-  props: MoviePlayerProps
+    props: MoviePlayerProps
 ) => {
-  const { movie, muted, autoPlay, onPlayButtonClick, videoRef } = props;
+  const {movie, muted, autoPlay, onPlayButtonClick, videoRef} = props;
 
   return (
     <video

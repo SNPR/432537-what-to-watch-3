@@ -1,11 +1,11 @@
 import * as React from "react";
 import MoviesList from "../movies-list/movies-list";
 import withActiveMovieCard from "../../hocs/with-active-movie-card/with-active-movie-card";
-import { Link } from "react-router-dom";
-import { AppRoute } from "../../utils/constants";
-import { getMyMoviesList } from "../../reducer/data/selectors";
-import { connect } from "react-redux";
-import { Movie } from "../../types";
+import {Link} from "react-router-dom";
+import {AppRoute} from "../../utils/constants";
+import {getMyMoviesList} from "../../reducer/data/selectors";
+import {connect} from "react-redux";
+import {Movie} from "../../types";
 
 const MoviesListWrapped = withActiveMovieCard(MoviesList);
 
@@ -15,7 +15,7 @@ type MyListProps = {
 };
 
 const MyList: React.FunctionComponent<MyListProps> = (props: MyListProps) => {
-  const { onMovieCardClick, movies } = props;
+  const {onMovieCardClick, movies} = props;
 
   return (
     <div className="user-page">
@@ -70,7 +70,7 @@ const MyList: React.FunctionComponent<MyListProps> = (props: MyListProps) => {
   );
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   movies: getMyMoviesList(state)
 });
 

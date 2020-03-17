@@ -1,8 +1,8 @@
 import * as React from "react";
-import { getSelectedMovie } from "../../reducer/state/selectors";
-import { ActionCreator } from "../../reducer/state/state";
-import { connect } from "react-redux";
-import { Movie } from "../../types";
+import {getSelectedMovie} from "../../reducer/state/selectors";
+import {ActionCreator} from "../../reducer/state/state";
+import {connect} from "react-redux";
+import {Movie} from "../../types";
 
 type BigMoviePlayerProps = {
   isPlaying: boolean;
@@ -32,7 +32,7 @@ class BigMoviePlayer extends React.PureComponent<BigMoviePlayerProps, {}> {
   }
 
   componentDidMount() {
-    const { id, changeSelectedMovieId } = this.props;
+    const {id, changeSelectedMovieId} = this.props;
 
     changeSelectedMovieId(id);
   }
@@ -87,7 +87,7 @@ class BigMoviePlayer extends React.PureComponent<BigMoviePlayerProps, {}> {
               />
               <div
                 className="player__toggler"
-                style={{ left: `${playbackProgress}%` }}
+                style={{left: `${playbackProgress}%`}}
               >
                 Toggler
               </div>
@@ -138,15 +138,15 @@ class BigMoviePlayer extends React.PureComponent<BigMoviePlayerProps, {}> {
   }
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   movie: getSelectedMovie(state)
 });
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch) => ({
   changeSelectedMovieId(id) {
     dispatch(ActionCreator.changeSelectedMovieId(id));
   }
 });
 
-export { BigMoviePlayer };
+export {BigMoviePlayer};
 export default connect(mapStateToProps, mapDispatchToProps)(BigMoviePlayer);
