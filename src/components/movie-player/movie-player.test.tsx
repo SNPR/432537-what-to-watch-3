@@ -2,6 +2,7 @@ import * as React from "react";
 import * as renderer from "react-test-renderer";
 import MoviePlayer from "./movie-player";
 import {Movie} from "../../types";
+import {noop} from "../../utils/utils";
 
 const movie: Movie = {
   name: `MovieName`,
@@ -30,7 +31,7 @@ it(`Should render MoviePlayer component`, () => {
           movie={movie}
           muted={true}
           autoPlay={true}
-          onPlayButtonClick={() => {}}
+          onPlayButtonClick={noop}
           videoRef={React.createRef()}
         />
     )

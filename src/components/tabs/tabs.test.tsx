@@ -5,6 +5,7 @@ import {Provider} from "react-redux";
 import configureStore from "redux-mock-store";
 import Namespace from "../../reducer/namespace";
 import {Tab} from "../../utils/constants";
+import {noop} from "../../utils/utils";
 
 const movie = {
   name: `Movie name`,
@@ -43,8 +44,8 @@ it(`Should render Tabs component`, () => {
         <Provider store={store}>
           <Tabs
             movie={movie}
-            getActiveClass={() => {}}
-            setActiveTab={() => {}}
+            getActiveClass={noop}
+            setActiveTab={noop}
             selectedTab={Tab.Name.DETAILS}
           />
         </Provider>

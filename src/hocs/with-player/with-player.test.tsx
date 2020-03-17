@@ -2,6 +2,7 @@ import * as React from "react";
 import * as renderer from "react-test-renderer";
 import withPlayer from "./with-player";
 import {Movie} from "../../types";
+import {noop} from "../../utils/utils";
 
 const movie: Movie = {
   name: `MovieName`,
@@ -33,7 +34,7 @@ it(`withPlayer is rendered correctly`, () => {
           movie={movie}
           muted={true}
           autoPlay={false}
-          onExitButtonClick={() => {}}
+          onExitButtonClick={noop}
           id={0}
         />
     )

@@ -2,6 +2,7 @@ import * as React from "react";
 import * as renderer from "react-test-renderer";
 import MovieCard from "./movie-card";
 import {Movie} from "../../types";
+import {noop} from "../../utils/utils";
 
 const movie: Movie = {
   name: `MovieName`,
@@ -28,9 +29,9 @@ it(`Should render MovieCard component`, () => {
     .create(
         <MovieCard
           movie={movie}
-          onMovieCardClick={() => {}}
-          onMovieCardMouseOver={() => {}}
-          onMovieCardMouseOut={() => {}}
+          onMovieCardClick={noop}
+          onMovieCardMouseOver={noop}
+          onMovieCardMouseOut={noop}
           isPlaying={true}
         />
     )

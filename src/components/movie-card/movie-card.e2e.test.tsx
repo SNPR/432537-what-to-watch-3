@@ -3,6 +3,7 @@ import {configure, shallow} from "enzyme";
 import * as Adapter from "enzyme-adapter-react-16";
 import MovieCard from "./movie-card";
 import {Movie} from "../../types";
+import {noop} from "../../utils/utils";
 
 configure({
   adapter: new Adapter()
@@ -36,7 +37,7 @@ it(`Should pass data to handler on hover`, () => {
       <MovieCard
         movie={movie}
         isPlaying={true}
-        onMovieCardClick={() => {}}
+        onMovieCardClick={noop}
         onMovieCardMouseOver={() => movieCardMouseOverHandler(movie)}
         onMovieCardMouseOut={movieCardMouseOutHandler}
       />

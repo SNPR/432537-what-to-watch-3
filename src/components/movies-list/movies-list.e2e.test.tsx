@@ -3,6 +3,7 @@ import {configure, mount} from "enzyme";
 import * as Adapter from "enzyme-adapter-react-16";
 import MoviesList from "./movies-list";
 import {Movie} from "../../types";
+import {noop} from "../../utils/utils";
 
 configure({
   adapter: new Adapter()
@@ -37,8 +38,8 @@ it(`Should pass data to handler on click`, () => {
       <MoviesList
         movies={films}
         onMovieCardClick={movieCardClickHandler}
-        onMovieCardMouseOver={() => {}}
-        onMovieCardMouseOut={() => {}}
+        onMovieCardMouseOver={noop}
+        onMovieCardMouseOut={noop}
         isPlaying={false}
         selectedMovieId={1}
       />

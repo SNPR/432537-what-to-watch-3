@@ -69,3 +69,7 @@ export const formatReviewDate = ({comment, date, id, rating, user}) => ({
   rating,
   user
 });
+
+export const noop = () => {
+  // Do nothing
+};

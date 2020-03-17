@@ -3,6 +3,7 @@ import * as renderer from "react-test-renderer";
 import {BigMoviePlayer} from "./big-movie-player";
 import {Movie} from "../../types";
 import {ActionType} from "../../reducer/state/state";
+import {noop} from "../../utils/utils";
 
 const films: Movie[] = [
   {
@@ -36,11 +37,11 @@ it(`Should render BigMoviePlayer component`, () => {
           isPlaying={false}
           elapsedTime={`1h 5m`}
           playbackProgress={`100`}
-          onPlayButtonClick={() => {}}
-          onFullscreenButtonClick={() => {}}
-          onExitButtonClick={() => {}}
-          onLoadedMetadata={() => {}}
-          onTimeUpdate={() => {}}
+          onPlayButtonClick={noop}
+          onFullscreenButtonClick={noop}
+          onExitButtonClick={noop}
+          onLoadedMetadata={noop}
+          onTimeUpdate={noop}
           videoRef={React.createRef()}
           changeSelectedMovieId={() => ({
             type: ActionType.RESET_SHOWED_MOVIES_AMOUNT,

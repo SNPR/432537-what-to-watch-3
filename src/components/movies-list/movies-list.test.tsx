@@ -2,6 +2,7 @@ import * as React from "react";
 import * as renderer from "react-test-renderer";
 import MoviesList from "./movies-list";
 import {Movie} from "../../types";
+import {noop} from "../../utils/utils";
 
 const films: Movie[] = [
   {
@@ -30,9 +31,9 @@ it(`Should render MoviesList component`, () => {
     .create(
         <MoviesList
           movies={films}
-          onMovieCardClick={() => {}}
-          onMovieCardMouseOver={() => {}}
-          onMovieCardMouseOut={() => {}}
+          onMovieCardClick={noop}
+          onMovieCardMouseOver={noop}
+          onMovieCardMouseOut={noop}
           isPlaying={false}
           selectedMovieId={1}
         />

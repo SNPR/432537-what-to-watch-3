@@ -5,6 +5,7 @@ import configureStore from "redux-mock-store";
 import Namespace from "../../reducer/namespace";
 import {Provider} from "react-redux";
 import {MemoryRouter} from "react-router-dom";
+import {noop} from "../../utils/utils";
 
 const films = [
   {
@@ -42,7 +43,7 @@ it(`Should render MyList component`, () => {
     .create(
         <MemoryRouter>
           <Provider store={store}>
-            <MyList movies={films} onMovieCardClick={() => {}} />
+            <MyList movies={films} onMovieCardClick={noop} />
           </Provider>
         </MemoryRouter>
     )

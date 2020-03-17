@@ -8,6 +8,7 @@ import Namespace from "../../reducer/namespace";
 import {AuthorizationStatus} from "../../reducer/user/user";
 import {MemoryRouter} from "react-router-dom";
 import {Movie} from "../../types";
+import {noop} from "../../utils/utils";
 
 const mockStore = configureStore([]);
 
@@ -52,10 +53,10 @@ it(`Should render AddReview component`, () => {
         <MemoryRouter>
           <Provider store={store}>
             <AddReview
-              onSubmit={() => {}}
+              onSubmit={noop}
               movie={movie}
               id={0}
-              changeSelectedMovieId={() => {}}
+              changeSelectedMovieId={noop}
             />
           </Provider>
         </MemoryRouter>

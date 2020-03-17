@@ -4,6 +4,7 @@ import {GenresList} from "./genres-list";
 import {ALL_GENRES, SHOWED_MOVIES_DEFAULT} from "../../utils/constants";
 import {Movie} from "../../types";
 import {ActionType} from "../../reducer/state/state";
+import {noop} from "../../utils/utils";
 
 const films: Movie[] = [
   {
@@ -37,7 +38,7 @@ it(`Should render GenresList component`, () => {
             type: ActionType.CHANGE_GENRE,
             payload: ALL_GENRES
           })}
-          onMovieCardClick={() => {}}
+          onMovieCardClick={noop}
           showedMovies={SHOWED_MOVIES_DEFAULT}
           resetShowedMoviesAmount={() => ({
             type: ActionType.RESET_SHOWED_MOVIES_AMOUNT,

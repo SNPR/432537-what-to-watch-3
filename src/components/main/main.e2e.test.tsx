@@ -8,6 +8,7 @@ import {ALL_GENRES, SHOWED_MOVIES_DEFAULT} from "../../utils/constants";
 import Namespace from "../../reducer/namespace";
 import {AuthorizationStatus} from "../../reducer/user/user";
 import {MemoryRouter} from "react-router-dom";
+import {noop} from "../../utils/utils";
 
 const mockStore = configureStore([]);
 
@@ -61,7 +62,7 @@ it(`Should movie card be pressed`, () => {
             promoMovie={films[0]}
             onMovieCardClick={movieCardClickHandler}
             isBigMoviePlayerVisible={false}
-            onVisibilityChange={() => {}}
+            onVisibilityChange={noop}
             authorizationStatus={AuthorizationStatus.NO_AUTH}
           />
         </MemoryRouter>

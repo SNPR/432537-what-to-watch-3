@@ -10,6 +10,7 @@ import {MemoryRouter} from "react-router-dom";
 import {Movie} from "../../types";
 import {AxiosPromise} from "axios";
 import {ActionType} from "../../reducer/state/state";
+import {noop} from "../../utils/utils";
 
 const films: Movie[] = [
   {
@@ -60,17 +61,17 @@ it(`Should render MoviePage component`, () => {
               movie={films[0]}
               movies={films}
               authorizationStatus={AuthorizationStatus.AUTH}
-              onMovieCardClick={() => {}}
-              addMovieToMyList={(id) => new Promise(() => {}) as AxiosPromise}
-              removeMovieFromMyList={(id) => new Promise(() => {}) as AxiosPromise}
-              getComments={(id) => new Promise(() => {}) as AxiosPromise}
+              onMovieCardClick={noop}
+              addMovieToMyList={(id) => new Promise(noop) as AxiosPromise}
+              removeMovieFromMyList={(id) => new Promise(noop) as AxiosPromise}
+              getComments={(id) => new Promise(noop) as AxiosPromise}
               changeSelectedMovieId={(id) => ({
                 type: ActionType.CHANGE_SELECTED_MOVIE_ID,
                 payload: id
               })}
               id={id}
-              onMovieCardMouseOver={() => {}}
-              onMovieCardMouseOut={() => {}}
+              onMovieCardMouseOver={noop}
+              onMovieCardMouseOut={noop}
               isPlaying={false}
             />
           </MemoryRouter>

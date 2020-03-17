@@ -6,6 +6,7 @@ import configureStore from "redux-mock-store";
 import {ALL_GENRES, SHOWED_MOVIES_DEFAULT} from "../../utils/constants";
 import Namespace from "../../reducer/namespace";
 import {AuthorizationStatus} from "../../reducer/user/user";
+import {noop} from "../../utils/utils";
 
 const mockStore = configureStore([]);
 
@@ -199,8 +200,8 @@ it(`Should render App component`, () => {
     .create(
         <Provider store={store}>
           <App
-            getComments={() => {}}
-            login={() => {}}
+            getComments={noop}
+            login={noop}
             authorizationStatus={AuthorizationStatus.NO_AUTH}
           />
         </Provider>

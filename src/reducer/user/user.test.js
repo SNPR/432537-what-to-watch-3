@@ -7,8 +7,9 @@ import {
   Operation,
   reducer
 } from "./user";
+import {noop} from "../../utils/utils";
 
-const api = createAPI(() => {});
+const api = createAPI(noop);
 
 it(`Reducer without additional parameters should return initial state`, () => {
   expect(reducer(void 0, {})).toEqual({
@@ -42,7 +43,7 @@ it(`Should make a correct API call to /login`, function () {
 
   apiMock.onPost(`/login`).reply(200, []);
 
-  return login(dispatch, () => {}, api).then(() => {
+  return login(dispatch, noop, api).then(() => {
     expect(dispatch).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenNthCalledWith(1, {
       type: ActionType.REQUIRE_AUTHORIZATION,
