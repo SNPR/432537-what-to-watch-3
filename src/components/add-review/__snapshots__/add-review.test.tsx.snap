@@ -88,7 +88,7 @@ exports[`Should render AddReview component 1`] = `
             <img
               alt="User avatar"
               height="63"
-              src="/img/avatar.jpg"
+              src=""
               width="63"
             />
           </a>

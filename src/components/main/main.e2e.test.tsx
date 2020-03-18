@@ -50,7 +50,8 @@ it(`Should movie card be pressed`, () => {
       showedMovies: SHOWED_MOVIES_DEFAULT
     },
     [Namespace.USER]: {
-      authorizationStatus: AuthorizationStatus.NO_AUTH
+      authorizationStatus: AuthorizationStatus.NO_AUTH,
+      avatarUrl: ``
     }
   });
 
@@ -65,6 +66,7 @@ it(`Should movie card be pressed`, () => {
             isBigMoviePlayerVisible={false}
             onVisibilityChange={noop}
             authorizationStatus={AuthorizationStatus.NO_AUTH}
+            avatarUrl=""
           />
         </MemoryRouter>
       </Provider>

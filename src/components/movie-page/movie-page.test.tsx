@@ -47,7 +47,8 @@ it(`Should render MoviePage component`, () => {
       showedMovies: SHOWED_MOVIES_DEFAULT
     },
     [Namespace.USER]: {
-      authorizationStatus: AuthorizationStatus.AUTH
+      authorizationStatus: AuthorizationStatus.AUTH,
+      avatarUrl: ``
     }
   });
 
@@ -73,6 +74,7 @@ it(`Should render MoviePage component`, () => {
               onMovieCardMouseOver={noop}
               onMovieCardMouseOut={noop}
               isPlaying={false}
+              avatarUrl=""
             />
           </MemoryRouter>
         </Provider>

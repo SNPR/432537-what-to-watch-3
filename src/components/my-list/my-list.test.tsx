@@ -37,6 +37,9 @@ it(`Should render MyList component`, () => {
     [Namespace.DATA]: {
       films,
       promoFilm: films[0]
+    },
+    [Namespace.USER]: {
+      avatarUrl: ``
     }
   });
 
@@ -44,7 +47,7 @@ it(`Should render MyList component`, () => {
     .create(
         <MemoryRouter>
           <Provider store={store}>
-            <MyList movies={films} onMovieCardClick={noop} />
+            <MyList movies={films} onMovieCardClick={noop} avatarUrl="" />
           </Provider>
         </MemoryRouter>
     )

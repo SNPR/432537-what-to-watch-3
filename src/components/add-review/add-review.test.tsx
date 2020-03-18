@@ -44,7 +44,8 @@ it(`Should render AddReview component`, () => {
       selectedMovieId: 1
     },
     [Namespace.USER]: {
-      authorizationStatus: AuthorizationStatus.NO_AUTH
+      authorizationStatus: AuthorizationStatus.NO_AUTH,
+      avatarUrl: ``
     }
   });
 
@@ -57,6 +58,7 @@ it(`Should render AddReview component`, () => {
               movie={movie}
               id={0}
               changeSelectedMovieId={noop}
+              avatarUrl=""
             />
           </Provider>
         </MemoryRouter>
