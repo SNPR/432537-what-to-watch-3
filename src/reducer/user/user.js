@@ -51,8 +51,9 @@ const Operation = {
   checkAuth: () => (dispatch, getState, api) => {
     return api
       .get(`/login`)
-      .then(() => {
+      .then((response) => {
         dispatch(ActionCreator.requireAuthorization(AuthorizationStatus.AUTH));
+        dispatch(ActionCreator.setAvatarUrl(response.data.avatar_url));
       })
       .catch((err) => {
         throw err;
