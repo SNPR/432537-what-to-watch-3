@@ -1,6 +1,7 @@
 import * as React from "react";
 import {connect} from "react-redux";
 import {getSelectedMovie} from "../../reducer/state/selectors";
+import {getAvatarUrl} from "../../reducer/user/selectors";
 import {Operation} from "../../reducer/data/data";
 import {Link} from "react-router-dom";
 import {
@@ -35,6 +36,7 @@ type AddReviewProps = {
   onReviewTextChange: (evt: React.SyntheticEvent<EventTarget>) => void;
   onSubmitError: () => void;
   isSubmitError: boolean;
+  avatarUrl: string;
 };
 
 class AddReview extends React.PureComponent<AddReviewProps, {}> {
@@ -90,7 +92,8 @@ class AddReview extends React.PureComponent<AddReviewProps, {}> {
       movie,
       isFormInvalid,
       onReviewTextChange,
-      isSubmitError
+      isSubmitError,
+      avatarUrl
     } = this.props;
     return movie ? (
       <>
@@ -128,7 +131,7 @@ class AddReview extends React.PureComponent<AddReviewProps, {}> {
                 <div className="user-block__avatar">
                   <Link to={AppRoute.MY_LIST}>
                     <img
-                      src="/img/avatar.jpg"
+                      src={avatarUrl}
                       alt="User avatar"
                       width="63"
                       height="63"
@@ -253,7 +256,8 @@ class AddReview extends React.PureComponent<AddReviewProps, {}> {
 }
 
 const mapStateToProps = (state) => ({
-  movie: getSelectedMovie(state)
+  movie: getSelectedMovie(state),
+  avatarUrl: getAvatarUrl(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({

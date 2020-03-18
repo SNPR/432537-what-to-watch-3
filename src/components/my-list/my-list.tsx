@@ -4,6 +4,7 @@ import withActiveMovieCard from "../../hocs/with-active-movie-card/with-active-m
 import {Link} from "react-router-dom";
 import {AppRoute} from "../../utils/constants";
 import {getMyMoviesList} from "../../reducer/data/selectors";
+import {getAvatarUrl} from "../../reducer/user/selectors";
 import {connect} from "react-redux";
 import {Movie} from "../../types";
 
@@ -12,10 +13,11 @@ const MoviesListWrapped = withActiveMovieCard(MoviesList);
 type MyListProps = {
   movies: Movie[];
   onMovieCardClick: (id: number | string) => void;
+  avatarUrl: string;
 };
 
 const MyList: React.FunctionComponent<MyListProps> = (props: MyListProps) => {
-  const {onMovieCardClick, movies} = props;
+  const {onMovieCardClick, movies, avatarUrl} = props;
 
   return (
     <div className="user-page">
@@ -33,12 +35,7 @@ const MyList: React.FunctionComponent<MyListProps> = (props: MyListProps) => {
         <div className="user-block">
           <Link to={AppRoute.MY_LIST}>
             <div className="user-block__avatar">
-              <img
-                src="img/avatar.jpg"
-                alt="User avatar"
-                width="63"
-                height="63"
-              />
+              <img src={avatarUrl} alt="User avatar" width="63" height="63" />
             </div>
           </Link>
         </div>
@@ -71,7 +68,8 @@ const MyList: React.FunctionComponent<MyListProps> = (props: MyListProps) => {
 };
 
 const mapStateToProps = (state) => ({
-  movies: getMyMoviesList(state)
+  movies: getMyMoviesList(state),
+  avatarUrl: getAvatarUrl(state)
 });
 
 export default connect(mapStateToProps)(MyList);

@@ -3,7 +3,10 @@ import Tabs from "../tabs/tabs";
 import SimilarMovies from "../similar-movies/similar-movies";
 import {connect} from "react-redux";
 import {getMovies} from "../../reducer/data/selectors";
-import {getAuthorizationStatus} from "../../reducer/user/selectors";
+import {
+  getAuthorizationStatus,
+  getAvatarUrl
+} from "../../reducer/user/selectors";
 import {AuthorizationStatus} from "../../reducer/user/user";
 import {Link} from "react-router-dom";
 import {AppRoute} from "../../utils/constants";
@@ -35,6 +38,7 @@ type MoviePageProps = {
   };
   getComments: (id: string) => AxiosPromise;
   id: string;
+  avatarUrl: string;
 };
 
 class MoviePage extends React.PureComponent<MoviePageProps, {}> {
@@ -56,7 +60,8 @@ class MoviePage extends React.PureComponent<MoviePageProps, {}> {
       movies,
       authorizationStatus,
       addMovieToMyList,
-      removeMovieFromMyList
+      removeMovieFromMyList,
+      avatarUrl
     } = this.props;
 
     return movie ? (
@@ -83,7 +88,7 @@ class MoviePage extends React.PureComponent<MoviePageProps, {}> {
                   <Link to={AppRoute.MY_LIST}>
                     <div className="user-block__avatar">
                       <img
-                        src="/img/avatar.jpg"
+                        src={avatarUrl}
                         alt="User avatar"
                         width="63"
                         height="63"
@@ -206,7 +211,8 @@ class MoviePage extends React.PureComponent<MoviePageProps, {}> {
 const mapStateToProps = (state) => ({
   movies: getMovies(state),
   authorizationStatus: getAuthorizationStatus(state),
-  movie: getSelectedMovie(state)
+  movie: getSelectedMovie(state),
+  avatarUrl: getAvatarUrl(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({

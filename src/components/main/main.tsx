@@ -3,7 +3,10 @@ import GenresList from "../genres-list/genres-list";
 import ShowMoreButton from "../show-more-button/show-more-button";
 import {connect} from "react-redux";
 import {getPromoMovie} from "../../reducer/data/selectors";
-import {getAuthorizationStatus} from "../../reducer/user/selectors";
+import {
+  getAuthorizationStatus,
+  getAvatarUrl
+} from "../../reducer/user/selectors";
 import {AuthorizationStatus} from "../../reducer/user/user";
 import {Link} from "react-router-dom";
 import {AppRoute} from "../../utils/constants";
@@ -18,6 +21,7 @@ type MainProps = {
   authorizationStatus: string;
   addMovieToMyList: (id: string | number) => AxiosPromise;
   removeMovieFromMyList: (id: string | number) => AxiosPromise;
+  avatarUrl: string;
 };
 
 const Main: React.FunctionComponent<MainProps> = (props: MainProps) => {
@@ -26,7 +30,8 @@ const Main: React.FunctionComponent<MainProps> = (props: MainProps) => {
     promoMovie,
     authorizationStatus,
     addMovieToMyList,
-    removeMovieFromMyList
+    removeMovieFromMyList,
+    avatarUrl
   } = props;
 
   return (
@@ -52,7 +57,7 @@ const Main: React.FunctionComponent<MainProps> = (props: MainProps) => {
               <div className="user-block__avatar">
                 <Link to={AppRoute.MY_LIST}>
                   <img
-                    src="img/avatar.jpg"
+                    src={avatarUrl}
                     alt="User avatar"
                     width="63"
                     height="63"
@@ -159,7 +164,8 @@ const Main: React.FunctionComponent<MainProps> = (props: MainProps) => {
 
 const mapStateToProps = (state) => ({
   promoMovie: getPromoMovie(state),
-  authorizationStatus: getAuthorizationStatus(state)
+  authorizationStatus: getAuthorizationStatus(state),
+  avatarUrl: getAvatarUrl(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
