@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render MoviePlayer component 1`] = `
+<video
+  autoPlay={true}
+  controls={true}
+  muted={true}
+  onClick={[Function]}
+  poster="https://url.com"
+  width="100%"
+>
+  <source
+    src="https://url.com"
+  />
+</video>
+`;

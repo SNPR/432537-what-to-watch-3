@@ -46,7 +46,7 @@ export const normalizeMovieData = (movie) =>
       votes: movie.scores_count,
       director: movie.director,
       starring: movie.starring,
-      runTime: formatMovieDuration(movie.run_time),
+      runTime: movie.run_time,
       genre: movie.genre,
       releaseYear: movie.released,
       id: movie.id,
@@ -57,3 +57,19 @@ export const normalizeMovieData = (movie) =>
     : {};
 
 export const normalizeMoviesData = (movies) => movies.map(normalizeMovieData);
+
+export const formatReviewDate = ({comment, date, id, rating, user}) => ({
+  comment,
+  date: new Date(date).toLocaleString(`en-us`, {
+    month: `long`,
+    year: `numeric`,
+    day: `numeric`
+  }),
+  id,
+  rating,
+  user
+});
+
+export const noop = () => {
+  void 0;
+};

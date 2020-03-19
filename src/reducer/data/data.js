@@ -1,6 +1,10 @@
-import {extend} from "../../utils/utils.js";
-import {normalizeMovieData, normalizeMoviesData} from "../../utils/utils.js";
-import Namespace from "../namespace.js";
+import {
+  extend,
+  formatReviewDate,
+  normalizeMovieData,
+  normalizeMoviesData
+} from "../../utils/utils";
+import Namespace from "../namespace";
 
 const initialState = {
   promoFilm: {},
@@ -20,7 +24,9 @@ const ActionType = {
 const Operation = {
   getMovies: () => (dispatch, getState, api) => {
     return api.get(`/films`).then((response) => {
-      dispatch(ActionCreator.getMovies(normalizeMoviesData(response.data)));
+      const normalizedMovies = normalizeMoviesData(response.data);
+
+      dispatch(ActionCreator.getMovies(normalizedMovies));
     });
   },
   getPromoMovie: () => (dispatch, getState, api) => {
@@ -30,7 +36,7 @@ const Operation = {
   },
   getComments: (movieId) => (dispatch, getState, api) => {
     return api.get(`/comments/${movieId}`).then((response) => {
-      dispatch(ActionCreator.getComments(response.data));
+      dispatch(ActionCreator.getComments(response.data.map(formatReviewDate)));
     });
   },
   addComment: (commentData, onSuccess, onError) => (

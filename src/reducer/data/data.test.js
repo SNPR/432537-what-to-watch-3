@@ -1,8 +1,9 @@
 import MockAdapter from "axios-mock-adapter";
-import {createAPI} from "../../api.js";
-import {reducer, ActionType, Operation} from "./data.js";
+import {createAPI} from "../../api";
+import {ActionType, Operation, reducer} from "./data";
+import {noop} from "../../utils/utils";
 
-const api = createAPI(() => {});
+const api = createAPI(noop);
 
 const films = [
   {
@@ -62,7 +63,7 @@ describe(`Operation work correctly`, () => {
 
     apiMock.onGet(`/films`).reply(200, []);
 
-    return moviesLoader(dispatch, () => {}, api).then(() => {
+    return moviesLoader(dispatch, noop, api).then(() => {
       expect(dispatch).toHaveBeenCalledTimes(1);
       expect(dispatch).toHaveBeenNthCalledWith(1, {
         type: ActionType.GET_MOVIES,
@@ -78,7 +79,7 @@ describe(`Operation work correctly`, () => {
 
     apiMock.onGet(`/films/promo`).reply(200, {});
 
-    return moviesLoader(dispatch, () => {}, api).then(() => {
+    return moviesLoader(dispatch, noop, api).then(() => {
       expect(dispatch).toHaveBeenCalledTimes(1);
       expect(dispatch).toHaveBeenNthCalledWith(1, {
         type: ActionType.GET_PROMO_MOVIE,
@@ -94,7 +95,7 @@ describe(`Operation work correctly`, () => {
 
     apiMock.onGet(`/comments/1`).reply(200, []);
 
-    return moviesLoader(dispatch, () => {}, api).then(() => {
+    return moviesLoader(dispatch, noop, api).then(() => {
       expect(dispatch).toHaveBeenCalledTimes(1);
       expect(dispatch).toHaveBeenNthCalledWith(1, {
         type: ActionType.GET_COMMENTS,

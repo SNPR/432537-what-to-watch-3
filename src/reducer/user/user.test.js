@@ -1,18 +1,20 @@
 import MockAdapter from "axios-mock-adapter";
-import {createAPI} from "../../api.js";
+import {createAPI} from "../../api";
 import {
-  reducer,
+  ActionCreator,
   ActionType,
-  Operation,
   AuthorizationStatus,
-  ActionCreator
-} from "./user.js";
+  Operation,
+  reducer
+} from "./user";
+import {noop} from "../../utils/utils";
 
-const api = createAPI(() => {});
+const api = createAPI(noop);
 
 it(`Reducer without additional parameters should return initial state`, () => {
   expect(reducer(void 0, {})).toEqual({
-    authorizationStatus: AuthorizationStatus.NO_AUTH
+    authorizationStatus: AuthorizationStatus.NO_AUTH,
+    avatarUrl: ``
   });
 });
 
@@ -20,7 +22,8 @@ it(`Reducer update authorization status`, () => {
   expect(
       reducer(
           {
-            authorizationStatus: AuthorizationStatus.NO_AUTH
+            authorizationStatus: AuthorizationStatus.NO_AUTH,
+            avatarUrl: ``
           },
           {
             type: ActionType.REQUIRE_AUTHORIZATION,
@@ -28,7 +31,8 @@ it(`Reducer update authorization status`, () => {
           }
       )
   ).toEqual({
-    authorizationStatus: AuthorizationStatus.AUTH
+    authorizationStatus: AuthorizationStatus.AUTH,
+    avatarUrl: ``
   });
 });
 
@@ -42,8 +46,8 @@ it(`Should make a correct API call to /login`, function () {
 
   apiMock.onPost(`/login`).reply(200, []);
 
-  return login(dispatch, () => {}, api).then(() => {
-    expect(dispatch).toHaveBeenCalledTimes(1);
+  return login(dispatch, noop, api).then(() => {
+    expect(dispatch).toHaveBeenCalledTimes(2);
     expect(dispatch).toHaveBeenNthCalledWith(1, {
       type: ActionType.REQUIRE_AUTHORIZATION,
       payload: AuthorizationStatus.AUTH

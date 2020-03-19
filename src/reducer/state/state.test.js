@@ -1,8 +1,4 @@
-import {
-  reducer,
-  ActionCreator,
-  ActionType
-} from "../../reducer/state/state.js";
+import {ActionCreator, ActionType, reducer} from "../../reducer/state/state";
 import {ALL_GENRES, SHOWED_MOVIES_DEFAULT} from "../../utils/constants";
 
 const initialState = {

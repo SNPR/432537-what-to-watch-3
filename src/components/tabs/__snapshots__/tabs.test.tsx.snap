@@ -1,0 +1,136 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render Tabs component 1`] = `
+<div
+  className="movie-card__desc"
+>
+  <nav
+    className="movie-nav movie-card__nav"
+  >
+    <ul
+      className="movie-nav__list"
+    >
+      <li
+        className="movie-nav__item undefined"
+      >
+        <a
+          className="movie-nav__link"
+          onClick={[Function]}
+        >
+          Overview
+        </a>
+      </li>
+      <li
+        className="movie-nav__item undefined"
+      >
+        <a
+          className="movie-nav__link"
+          onClick={[Function]}
+        >
+          Details
+        </a>
+      </li>
+      <li
+        className="movie-nav__item undefined"
+      >
+        <a
+          className="movie-nav__link"
+          onClick={[Function]}
+        >
+          Reviews
+        </a>
+      </li>
+    </ul>
+  </nav>
+  <div
+    className="movie-card__text movie-card__row"
+  >
+    <div
+      className="movie-card__text-col"
+    >
+      <p
+        className="movie-card__details-item"
+      >
+        <strong
+          className="movie-card__details-name"
+        >
+          Director
+        </strong>
+        <span
+          className="movie-card__details-value"
+        >
+          Director Name
+        </span>
+      </p>
+      <p
+        className="movie-card__details-item"
+      >
+        <strong
+          className="movie-card__details-name"
+        >
+          Starring
+        </strong>
+        <span
+          className="movie-card__details-value"
+        >
+          Actor 1
+           
+          <br />
+          Actor 2
+           
+          <br />
+          Actor 3
+           
+          <br />
+        </span>
+      </p>
+    </div>
+    <div
+      className="movie-card__text-col"
+    >
+      <p
+        className="movie-card__details-item"
+      >
+        <strong
+          className="movie-card__details-name"
+        >
+          Run Time
+        </strong>
+        <span
+          className="movie-card__details-value"
+        >
+          1h 00m
+        </span>
+      </p>
+      <p
+        className="movie-card__details-item"
+      >
+        <strong
+          className="movie-card__details-name"
+        >
+          Genre
+        </strong>
+        <span
+          className="movie-card__details-value"
+        >
+          Movie Genre
+        </span>
+      </p>
+      <p
+        className="movie-card__details-item"
+      >
+        <strong
+          className="movie-card__details-name"
+        >
+          Released
+        </strong>
+        <span
+          className="movie-card__details-value"
+        >
+          2000
+        </span>
+      </p>
+    </div>
+  </div>
+</div>
+`;

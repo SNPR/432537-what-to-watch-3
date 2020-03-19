@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should render MovieCard component 1`] = `
+<article
+  className="small-movie-card catalog__movies-card"
+  onClick={[Function]}
+  onMouseOut={[Function]}
+  onMouseOver={[Function]}
+>
+  <div
+    className="small-movie-card__image"
+  >
+    <video
+      autoPlay={true}
+      controls={true}
+      muted={true}
+      onClick={[Function]}
+      poster="https://url.com"
+      width="100%"
+    >
+      <source
+        src="https://url.com"
+      />
+    </video>
+  </div>
+  <h3
+    className="small-movie-card__title"
+  >
+    <a
+      className="small-movie-card__link"
+      href="#"
+    >
+      MovieName
+    </a>
+  </h3>
+</article>
+`;

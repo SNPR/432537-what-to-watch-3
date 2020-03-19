@@ -1,5 +1,5 @@
-import {extend} from "../../utils/utils.js";
-import {ALL_GENRES, SHOWED_MOVIES_DEFAULT} from "../../utils/constants.js";
+import {extend} from "../../utils/utils";
+import {ALL_GENRES, SHOWED_MOVIES_DEFAULT} from "../../utils/constants";
 
 const initialState = {
   genre: ALL_GENRES,
@@ -41,7 +41,7 @@ const reducer = (state = initialState, action) => {
       });
     case ActionType.SHOW_MORE_MOVIES:
       return extend(state, {
-        showedMovies: state.showedMovies + 8
+        showedMovies: state.showedMovies + SHOWED_MOVIES_DEFAULT
       });
     case ActionType.RESET_SHOWED_MOVIES_AMOUNT:
       return extend(state, {
