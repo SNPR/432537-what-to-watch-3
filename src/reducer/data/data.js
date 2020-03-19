@@ -24,7 +24,9 @@ const ActionType = {
 const Operation = {
   getMovies: () => (dispatch, getState, api) => {
     return api.get(`/films`).then((response) => {
-      dispatch(ActionCreator.getMovies(normalizeMoviesData(response.data)));
+      const normalizedMovies = normalizeMoviesData(response.data);
+
+      dispatch(ActionCreator.getMovies(normalizedMovies));
     });
   },
   getPromoMovie: () => (dispatch, getState, api) => {
