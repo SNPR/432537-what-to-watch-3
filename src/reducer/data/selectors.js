@@ -14,18 +14,16 @@ export const getComments = (state) => {
   return state[Namespace.DATA].currentFilmComments;
 };
 
-const filterMoviesByGenre = (state) => {
-  const movies = state[Namespace.DATA].films;
-  const showedMovies = state[Namespace.STATE].showedMovies;
-  const genre = state[Namespace.STATE].genre;
-
+const filterMoviesByGenre = (movies, showedMovies, genre) => {
   return genre === ALL_GENRES
     ? movies.slice(0, showedMovies)
     : movies.filter((movie) => movie.genre === genre).slice(0, showedMovies);
 };
 
 export const getMoviesByGenre = createSelector(
-    (state) => state,
+    (state) => state[Namespace.DATA].films,
+    (state) => state[Namespace.STATE].showedMovies,
+    (state) => state[Namespace.STATE].genre,
     filterMoviesByGenre
 );
 
