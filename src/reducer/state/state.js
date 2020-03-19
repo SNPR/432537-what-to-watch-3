@@ -41,7 +41,7 @@ const reducer = (state = initialState, action) => {
       });
     case ActionType.SHOW_MORE_MOVIES:
       return extend(state, {
-        showedMovies: state.showedMovies + 8
+        showedMovies: state.showedMovies + SHOWED_MOVIES_DEFAULT
       });
     case ActionType.RESET_SHOWED_MOVIES_AMOUNT:
       return extend(state, {
