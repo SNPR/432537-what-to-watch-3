@@ -46,7 +46,7 @@ export const normalizeMovieData = (movie) =>
       votes: movie.scores_count,
       director: movie.director,
       starring: movie.starring,
-      runTime: formatMovieDuration(movie.run_time),
+      runTime: movie.run_time,
       genre: movie.genre,
       releaseYear: movie.released,
       id: movie.id,

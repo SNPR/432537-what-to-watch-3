@@ -1,5 +1,5 @@
 import * as React from "react";
-import {getTextRating} from "../../utils/utils";
+import {getTextRating, formatMovieDuration} from "../../utils/utils";
 import {connect} from "react-redux";
 import {getComments} from "../../reducer/data/selectors";
 import {Tab} from "../../utils/constants";
@@ -129,7 +129,7 @@ class Tabs extends React.PureComponent<TabsProps, {}> {
                 <p className="movie-card__details-item">
                   <strong className="movie-card__details-name">Run Time</strong>
                   <span className="movie-card__details-value">
-                    {movie.runTime}
+                    {formatMovieDuration(movie.runTime)}
                   </span>
                 </p>
                 <p className="movie-card__details-item">
