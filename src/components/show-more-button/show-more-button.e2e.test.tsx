@@ -190,7 +190,7 @@ it(`Should call handler on button click`, () => {
       <ShowMoreButton
         movies={films}
         showedMovies={SHOWED_MOVIES_DEFAULT}
-        showMoreMovies={showMoreMoviesButtonClickHandler}
+        onShowMoreMoviesButtonClick={showMoreMoviesButtonClickHandler}
         filteredMovies={films}
         genre={ALL_GENRES}
       />

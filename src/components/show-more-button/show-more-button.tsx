@@ -9,7 +9,7 @@ import {Movie} from "../../types";
 type ShowMoreButtonProps = {
   movies: Movie[];
   filteredMovies: Movie[];
-  showMoreMovies: () => {
+  onShowMoreMoviesButtonClick: () => {
     type: string;
     payload: null;
   };
@@ -20,7 +20,13 @@ type ShowMoreButtonProps = {
 const ShowMoreButton: React.FunctionComponent<ShowMoreButtonProps> = (
     props: ShowMoreButtonProps
 ) => {
-  const {movies, showedMovies, showMoreMovies, filteredMovies, genre} = props;
+  const {
+    movies,
+    showedMovies,
+    onShowMoreMoviesButtonClick,
+    filteredMovies,
+    genre
+  } = props;
   return (filteredMovies.length > SHOWED_MOVIES_DEFAULT &&
     genre !== ALL_GENRES) ||
     (showedMovies < movies.length && genre === ALL_GENRES) ? (
@@ -28,7 +34,7 @@ const ShowMoreButton: React.FunctionComponent<ShowMoreButtonProps> = (
         <button
           className="catalog__button"
           type="button"
-          onClick={showMoreMovies}
+          onClick={onShowMoreMoviesButtonClick}
         >
         Show more
         </button>
@@ -44,7 +50,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  showMoreMovies() {
+  onShowMoreMoviesButtonClick() {
     dispatch(ActionCreator.showMoreMovies());
   }
 });

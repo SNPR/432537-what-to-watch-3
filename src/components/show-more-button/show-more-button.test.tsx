@@ -185,7 +185,7 @@ it(`Should render ShowMoreButton component`, () => {
         <ShowMoreButton
           movies={films}
           showedMovies={SHOWED_MOVIES_DEFAULT}
-          showMoreMovies={() => ({
+          onShowMoreMoviesButtonClick={() => ({
             type: ActionType.SHOW_MORE_MOVIES,
             payload: null
           })}
