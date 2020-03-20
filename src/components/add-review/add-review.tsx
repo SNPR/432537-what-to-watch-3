@@ -4,11 +4,7 @@ import {getSelectedMovie} from "../../reducer/state/selectors";
 import {getAvatarUrl} from "../../reducer/user/selectors";
 import {Operation} from "../../reducer/data/data";
 import {Link} from "react-router-dom";
-import {
-  AppRoute,
-  MAX_REVIEW_LENGTH,
-  MIN_REVIEW_LENGTH
-} from "../../utils/constants";
+import {AppRoute, ReviewLength} from "../../utils/constants";
 import history from "../../history";
 import {ActionCreator} from "../../reducer/state/state";
 import {Movie} from "../../types";
@@ -225,8 +221,8 @@ class AddReview extends React.PureComponent<AddReviewProps, {}> {
                   id="review-text"
                   placeholder="Review text"
                   ref={this.commentRef}
-                  minLength={MIN_REVIEW_LENGTH}
-                  maxLength={MAX_REVIEW_LENGTH}
+                  minLength={ReviewLength.MIN}
+                  maxLength={ReviewLength.MAX}
                   onChange={onReviewTextChange}
                 />
                 <div className="add-review__submit">

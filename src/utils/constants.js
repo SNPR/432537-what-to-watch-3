@@ -11,8 +11,10 @@ export const AppRoute = {
 
 export const SHOWED_MOVIES_DEFAULT = 8;
 
-export const MIN_REVIEW_LENGTH = 50;
-export const MAX_REVIEW_LENGTH = 400;
+export const ReviewLength = {
+  MIN: 50,
+  MAX: 400
+};
 
 export const Tab = {
   Name: {

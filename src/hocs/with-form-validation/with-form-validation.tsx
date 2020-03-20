@@ -1,5 +1,5 @@
 import * as React from "react";
-import {MAX_REVIEW_LENGTH, MIN_REVIEW_LENGTH} from "../../utils/constants";
+import {ReviewLength} from "../../utils/constants";
 import {Subtract} from "utility-types";
 
 type InjectingProps = {
@@ -37,7 +37,7 @@ const withFormValidation = (Component) => {
     handleChange({target: {value}}) {
       this.setState({
         isFormInvalid:
-          value.length < MIN_REVIEW_LENGTH || value.length > MAX_REVIEW_LENGTH
+          value.length < ReviewLength.MIN || value.length > ReviewLength.MAX
       });
     }
 
