@@ -59,7 +59,7 @@ exports[`Should render Tabs component 1`] = `
         <span
           className="movie-card__details-value"
         >
-          Director Name
+          Director
         </span>
       </p>
       <p
@@ -73,13 +73,10 @@ exports[`Should render Tabs component 1`] = `
         <span
           className="movie-card__details-value"
         >
-          Actor 1
+          Artist 1
            
           <br />
-          Actor 2
-           
-          <br />
-          Actor 3
+          Artist 2
            
           <br />
         </span>
@@ -99,7 +96,7 @@ exports[`Should render Tabs component 1`] = `
         <span
           className="movie-card__details-value"
         >
-          1h 00m
+          2h 13m
         </span>
       </p>
       <p
@@ -113,7 +110,7 @@ exports[`Should render Tabs component 1`] = `
         <span
           className="movie-card__details-value"
         >
-          Movie Genre
+          Action
         </span>
       </p>
       <p
@@ -127,7 +124,7 @@ exports[`Should render Tabs component 1`] = `
         <span
           className="movie-card__details-value"
         >
-          2000
+          1995
         </span>
       </p>
     </div>
